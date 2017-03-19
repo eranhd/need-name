@@ -1,5 +1,5 @@
 
-# Anti Drug Jerusalem (ADJ)
+# Jerusalem union against drugs and alcohol (ADJ)
 
 create app for "anti drugs Jeruslaem" - Our application will serve a organization who are responsible for teenager that use drugs and alcohol at Jerusalem.
 
