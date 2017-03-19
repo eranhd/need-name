@@ -5,7 +5,7 @@ create app for "anti drugs Jeruslaem" - Our application will serve a organizatio
 
 The aforementioned organization will use our applicatoin to manage patrol data document, to fill patrol document and follow for teens which the organization help them.
 
-![project logo (this one for is taken from basecamp - a project management service)](https://www.klipfolio.com/sites/default/files/integrations/basecamp.png)
+(https://static.wixstatic.com/media/00de82_2038740ff78f497c8cc89cd7a564926b.png/v1/fill/w_291,h_115,al_c,usm_0.66_1.00_0.01/00de82_2038740ff78f497c8cc89cd7a564926b.png)
 
 ## Tools & Practices
 We're trying to use the best tools and practices in order to produce a quality enginneered product.
