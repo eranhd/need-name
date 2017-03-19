@@ -1,16 +1,54 @@
-<span align="right">
-<h2>באופן כללי דיברנו על האפליקציה והסכמנו שלא מכניסים אליה מעקב ג'יפיאס ונתמקד בפונקציונליות החשובה יותר</h2>
-החלטנו כרגע על מספר עמודים:<br>
-<p>
-1. עמוד כניסה בו יש כניסה לשירות על ידי שם משתמש וסיסמא.<br>
-2.לאחר הזמנת שם משתמש וסיסמא הסיירים(לא מנהלים, בעלי ההרשאה הנמוכה ביותר) יועברו לדף ניווט ראשי<br>
-3.עמוד התחלת סיור, עם מילוי שמות הסיירים וראש הצוות. כמו כן נקודת התתחלה של הסיור<br>
-4.עמוד דיווח על אירוע לפי פורמט שלהם. צריך לקבל מהם את הפורמט<br>
-5.מילוי משוב כללי על סיור בסוף הסיור<br>
-</p>
+Anti Drug Jerusalem (ADJ)
 
-<p>
-כיוון שאין לאיגוד מסד נתונים אנחנו נתממשק למסד של פיירבייס ושם נאחסן את כל הנתונים<br>
-צריכים לדון גם בנושא של האתר שבו יוצג כל המידע שנאסף.
-</p>
-</span>
+create app for "anti drugs Jeruslaem" - Our application will serve a organization who are responsible for teenager that use drugs and alcohol at Jerusalem.
+
+The aforementioned organization will use our applicatoin to manage patrol data document, to fill patrol document and follow for teens which the organization help them.
+
+project logo - nneded
+
+Tools & Practices
+
+We're trying to use the best tools and practices in order to produce a quality enginneered product. (replace 'jce-il/project-template' with your 'username/repo' and register to the relevant services)
+
+Category	Status
+Version Control System	git & github
+Recommended IDE	VSCode
+Group Chat	Join the chat at https://gitter.im/jce-il/project-template
+Build Status (CI)	Build Status
+Dependencies	David
+License	Open Source Love
+Test Coverege	codecov.io
+Code Quality	Code Climate
+Code Style	XO code style
+Current Release	Current Version
+Github Issues	GitHub issues
+Project Management Board	here
+Deployment	[Heroku]
+Security	Known Vulnerabilities
+Project Course Status	...
+Please visit our live application
+
+Alright, currently only a landing page...
+Disclaimer
+
+This project is developed as part of the requirements for a software engineering course at the software engineering department - Azrieli College of Engineering, Jerusalem, Israel.
+
+Please visit our wiki for furthur project info:
+
+User Manual (empty for now)
+
+Team Page
+
+Project Documents
+
+Project Idea (Presentation)
+Project Inception
+Software Requirements Specification
+Software Design Specification
+Iteration Pages
+
+Iteration 0 - ZFR
+Iteration 1 - MVP
+Iteration 2 - Database creation, Calender display, Facebook event handler
+Iteration 3 - Event handler, permissoin handler
+Iteration 4 - recommendations handler, add display options to Calender
