@@ -1,6 +1,6 @@
-<div class='container'>
+<div class='container' align='right'>
   <div class='row nav_menu'>
-    <span *ngFor='let item of navSer.getArrItems()' [id]='item.getId()' class='col-md-2 nav-item'>
+    <span *ngFor='let item of navSer.getArrItems()' [id]='item.getId()' routerLink='../main' class='nav-item'>
       {{item.getTxt()}}
     </span>
   </div>
