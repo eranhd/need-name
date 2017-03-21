@@ -1,0 +1,7 @@
+<div class='container'>
+  <div class='row nav_menu'>
+    <span *ngFor='let item of navSer.getArrItems()' [id]='item.getId()' class='col-md-2 nav-item'>
+      {{item.getTxt()}}
+    </span>
+  </div>
+</div>
