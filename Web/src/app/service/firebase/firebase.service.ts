@@ -47,8 +47,8 @@ export class FirebaseService {
 
    public getReportFields(){
      firebase.database().ref('report-fields').once('value').then(function(snapshot) {
-      var settServ:SettingReportService = new SettingReportService(this);
-      settServ.inputs =  snapshot.val();      
+     // var settServ:SettingReportService = new SettingReportService(this);
+      //settServ.inputs =  snapshot.val();      
     });
    }
 

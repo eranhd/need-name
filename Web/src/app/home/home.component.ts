@@ -17,8 +17,8 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService, 
   private router:Router
   ) {
-    if(!this.userService.isLogin())
-      this.router.navigate(['login']);
+   /* if(!this.userService.isLogin())
+      this.router.navigate(['login']);*/
     this.lastReport = new TableItem('lastReport',3, [ 'תאריך', 'שעה', 'צוות']);
     this.hotArea = new TableItem('hotArea', 2, ['איזור', 'מספר תקריות']);
     this.nowActive = new TableItem('nowActive', 2, ['איזור', 'דוח תחילת משמרת']);

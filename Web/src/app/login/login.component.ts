@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FirebaseService } from '../service/firebase/firebase.service';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   title:string = "התחברות למערכת";
 
 
-  constructor(private router:Router, private userSer:UserService,
+  constructor(private router:Router, 
+    private userServ:UserService,
     private af:AngularFire) { 
     this.signOut();
     
@@ -25,11 +27,17 @@ export class LoginComponent implements OnInit {
 
   public signIn(){
     var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
-    this.af.auth.login({email:email, password:password}).then((succsess)=>{
-      
+    this.af.auth.login({
+      email:email, 
+      password:password
+    }).then((succsess)=>{
+      var userSer:UserService = new UserService();
+      userSer.setUserLogin(true);
+      this.router.navigate(['home']);
     }).catch((error)=>{
       console.log(error.message);
     });
+  
     
   };
 
