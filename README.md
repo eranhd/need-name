@@ -6,6 +6,8 @@ The app create for "Jerusalem union against drugs and alcohol" - Our application
 The aforementioned organization will use our applicatoin to manage patrol data document, to fill patrol document and follow for teens which the organization help them.
 The app comes ease the volunteers and the organization collecting the data and analyzing it afterwards to see where the hot early.
 
+this project developed at Azrieli College of Engineering for a social project.
+
 ##
 
 ## Tools & Practices
