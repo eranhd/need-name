@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { initializeApp } from 'firebase';
+import { FirebaseService } from './service/firebase/firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +10,7 @@ import { initializeApp } from 'firebase';
 export class AppComponent {
   title = 'app works!';
 
-  constructor(){
-
-    var config = {
-    apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
-    authDomain: "anti-drugs-jerusalem.firebaseapp.com",
-    databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
-    storageBucket: "anti-drugs-jerusalem.appspot.com",
-    messagingSenderId: "944977183444"
-  };
-  firebase.initializeApp(config);
+  constructor(private firebaseService:FirebaseService){
+    //firebaseService.initFirebase();     
   };
 }

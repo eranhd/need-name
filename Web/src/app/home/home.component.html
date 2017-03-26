@@ -1,13 +1,46 @@
 <div class='container'>
-  <span class='row'>
-    <span class='col-md-4 span_main_section'>
-      1
+    <span class='col-md-4'>
+      <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th *ngFor='let item of lastReport.getHead()'>{{item}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let item of lastReport.getRows()'>
+            <td *ngFor='let col of item'>{{col}}</td>
+          </tr>
+        </tbody>
+      </table>
     </span>
-    <span class='col-md-4 span_main_section'>
-      2
+
+    <span class='col-md-4'>
+      <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th *ngFor='let item of hotArea.getHead()'>{{item}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let item of hotArea.getRows()'>
+            <td *ngFor='let col of item'>{{col}}</td>
+          </tr>
+        </tbody>
+      </table>
     </span>
-    <span class='col-md-4 span_main_section'>
-      3
+
+    <span class='col-md-4'>
+      <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th *ngFor='let item of nowActive.getHead()'>{{item}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let item of nowActive.getRows()'>
+            <td *ngFor='let col of item'>{{col}}</td>
+          </tr>
+        </tbody>
+      </table>
     </span>
-  </span>
 </div>

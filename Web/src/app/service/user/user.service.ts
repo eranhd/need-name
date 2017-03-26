@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
+import { CanActivate, Router }    from '@angular/router';
+import { auth, initializeApp } from 'firebase';
 
 
 @Injectable()
-export class UserService {
-  private user;
+export class UserService{
+  private firebaseinit
+  private userLogin;
   private username:string;
   private password:string;
   
-  constructor() { 
-    
+  constructor() {   
   };
+ 
 
-  public setUser(user){
-    this.user = user;
+  public setUserLogin(user){
+    this.userLogin = user;
     console.log('user set');
   };
 
@@ -27,6 +30,10 @@ export class UserService {
     this.username = username;
     this.password = password;
    // console.log(this.username + ' ' + this.password);
+  };
+
+  public isLogin(){
+    return (firebase.auth().currentUser != null);
   };
 
 

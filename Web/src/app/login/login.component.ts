@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { auth, initializeApp } from 'firebase';
 import { UserService } from '../service/user/user.service';
 import { Router } from '@angular/router';
+import { FirebaseService } from '../service/firebase/firebase.service';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-login',
@@ -15,35 +17,24 @@ export class LoginComponent implements OnInit {
   title:string = "התחברות למערכת";
 
 
-  constructor(private router:Router, private userSer:UserService) { 
+  constructor(private router:Router, private userSer:UserService,
+    private af:AngularFire) { 
+    this.signOut();
     
   }
 
   public signIn(){
     var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
-    if(email == '' || password == '')
-      return;
-    this.userSer.setUsernameAndPassword(email, password);
-    var loginSuccess:boolean = false;
-    try{
-      firebase.auth().signInWithEmailAndPassword(this.userSer.getUsername(), this.userSer.getPassword())
-        var user = firebase.auth().currentUser;
-        if(user)
-          this.router.navigate(['home']);
-        console.log(user);
+    this.af.auth.login({email:email, password:password}).then((succsess)=>{
       
-    }catch(error){
-      console.log(error);
-    }
+    }).catch((error)=>{
+      console.log(error.message);
+    });
+    
   };
 
   public signOut(){
-    console.log('try to out');
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-    }).catch(function(error) {
-      // An error happened.
-    });
+    this.af.auth.logout();
   }
 
   ngOnInit() {
