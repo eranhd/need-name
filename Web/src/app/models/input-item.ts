@@ -1,6 +1,6 @@
 export class InputItem{
 
-    constructor(private id:string,
+    constructor(public id:string,
     private type:string,
     private label:string,
     private placeHolder:string){

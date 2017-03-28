@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingReportService } from '../service/setting-report/setting-report.service';
+import { SettingReportService } from '../../service/setting-report/setting-report.service';
 @Component({
   selector: 'app-setting-report',
   templateUrl: './setting-report.component.html',
@@ -8,8 +8,6 @@ import { SettingReportService } from '../service/setting-report/setting-report.s
 export class SettingReportComponent implements OnInit {
 
   constructor(private settingReportService:SettingReportService) {
-    
-    //settingReportService.addInputItem('a','a','a','a');
    };
 
    public addToInputItem(){
@@ -17,11 +15,18 @@ export class SettingReportComponent implements OnInit {
     var placeHolder:string = (<HTMLInputElement>document.getElementById('fieldDescription')).value;
     var id:string = (<HTMLInputElement>document.getElementById('fieldDescriptionInEnglish')).value;
     var type:string = (<HTMLInputElement>document.getElementById('selectedType')).value;
-    this.settingReportService.addInputItem(id, label, placeHolder, type);
+    this.settingReportService.addInputItem(id, type, label, placeHolder);
+    this.cleanInput();
 
 
    };
 
+   public cleanInput(){
+    (<HTMLInputElement>document.getElementById('fieldName')).value = "";
+    (<HTMLInputElement>document.getElementById('fieldDescription')).value = "";
+    (<HTMLInputElement>document.getElementById('fieldDescriptionInEnglish')).value = "";
+    (<HTMLInputElement>document.getElementById('selectedType')).value = "text";
+   };
   ngOnInit() {
   }
 

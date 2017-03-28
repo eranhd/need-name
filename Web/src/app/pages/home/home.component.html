@@ -15,18 +15,7 @@
     </span>
 
     <span class='col-md-4'>
-      <table class="table table-inverse">
-        <thead>
-          <tr>
-            <th *ngFor='let item of hotArea.getHead()'>{{item}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor='let item of hotArea.getRows()'>
-            <td *ngFor='let col of item'>{{col}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <app-maps></app-maps>
     </span>
 
     <span class='col-md-4'>

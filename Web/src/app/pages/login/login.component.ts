@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { auth, initializeApp } from 'firebase';
-import { UserService } from '../service/user/user.service';
+import { UserService } from '../../service/user/user.service';
 import { Router } from '@angular/router';
-import { FirebaseService } from '../service/firebase/firebase.service';
+import { FirebaseService } from '../../service/firebase/firebase.service';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     }).then((succsess)=>{
       var userSer:UserService = new UserService();
       userSer.setUserLogin(true);
+      userSer.setUser('1122');
       this.router.navigate(['home']);
     }).catch((error)=>{
       console.log(error.message);

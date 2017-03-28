@@ -1,9 +1,12 @@
-<div class='container'>
-  <app-header></app-header>
-</div>  
-<div class='container'>
-  <app-nav></app-nav>
+<div class='container' *ngIf='showNav'>
+  <div class='container'>
+    <app-header></app-header>
+  </div>  
+  <div class='container'>
+    <app-nav></app-nav>
+  </div>
 </div>
+
 <div class='container' align='right'>
   <router-outlet></router-outlet>
 </div>

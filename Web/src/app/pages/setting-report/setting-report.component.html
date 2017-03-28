@@ -1,0 +1,27 @@
+<div class='container'>
+
+  <div class="row">
+    <div class='col-md-6'>
+    </div>
+
+    <div class='col-md-6'>
+      <label class="control-label col-sm-8">
+        הוספת שדה
+        <div class='row'>
+          <input type='text' class='form-control ben' id='fieldName' placeholder="שם השדה">
+          <input type='text' class='form-control' id='fieldDescription' placeholder="תיאור">
+          <input type='text' class='form-control' id='fieldDescriptionInEnglish' placeholder="תיאור באנגלית">
+          <select id='selectedType'>
+            <option value="text">text</option>
+            <option value="number">number</option>
+          </select>
+          <button class='btn btn-success' (click)='addToInputItem()'>save</button>
+        </div>
+      </label>
+    </div>
+  </div>
+
+<hr>
+</div>
+
+<app-report></app-report>

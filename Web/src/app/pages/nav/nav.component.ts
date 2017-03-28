@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NavItem} from '../items/nav';
-import {NavServiceService} from'./service/nav-service.service';
-import { UserService } from '../service/user/user.service'
+import {NavItem} from '../../models/nav';
+import {NavServiceService} from'../../service/nav/nav-service.service';
+import { UserService } from '../../service/user/user.service'
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({

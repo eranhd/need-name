@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../service/user/user.service'
+import { UserService } from '../../service/user/user.service'
 import { Router } from '@angular/router';
-import { TableItem } from '../items/Table';
-import { ReportService } from '../service/report/report.service';
+import { TableItem } from '../../models/Table';
+import { ReportService } from '../../service/report/report.service';
 
 @Component({
   selector: 'app-home',

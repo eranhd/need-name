@@ -10,7 +10,9 @@ import { FirebaseService } from './service/firebase/firebase.service';
 export class AppComponent {
   title = 'app works!';
 
-  constructor(private firebaseService:FirebaseService){
-    //firebaseService.initFirebase();     
+  showNav:boolean;
+  constructor(){
+    this.showNav = true;
   };
+
 }

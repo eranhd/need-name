@@ -5,26 +5,34 @@ import { HttpModule } from '@angular/http';
 import {routes} from './app.router';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { LoginComponent } from './login/login.component';
+import { NavComponent } from './pages/nav/nav.component';
+import { LoginComponent } from './pages/login/login.component';
 
-import {NavServiceService} from'./nav/service/nav-service.service';
+import {NavServiceService} from'./service/nav/nav-service.service';
 import { SettingReportService } from './service/setting-report/setting-report.service';
 import { UserService } from './service/user/user.service';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component';
-import { SettingReportComponent } from './setting-report/setting-report.component';
+import { ManageUserService } from './service/manage-users/manage-user.service';
+import { MapsService } from './service/maps/maps.service';
+
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './pages/header/header.component';
+import { MainComponent } from './pages/main/main.component';
+import { SettingReportComponent } from './pages/setting-report/setting-report.component';
 import { FirebaseService } from './service/firebase/firebase.service';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AddNewUserComponent } from './pages/add-new-user/add-new-user.component';
+import { ReportComponent } from './pages/report/report.component';
+
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import { MapsComponent } from './pages/maps/maps.component';
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
-  authDomain: "anti-drugs-jerusalem.firebaseapp.com",
-  databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
-  storageBucket: "anti-drugs-jerusalem.appspot.com",
-  messagingSenderId: "944977183444" 
+  apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
+    authDomain: "antidrugsjerusalem.firebaseapp.com",
+    databaseURL: "https://antidrugsjerusalem.firebaseio.com",
+    storageBucket: "antidrugsjerusalem.appspot.com",
+    messagingSenderId: "767801084656"
 };
 
 const myFirebaseAuthConfig = {
@@ -40,21 +48,41 @@ const myFirebaseAuthConfig = {
     HomeComponent,
     HeaderComponent,
     MainComponent,
-    SettingReportComponent
+    SettingReportComponent,
+    AddNewUserComponent,
+    ReportComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routes,
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE'
+    })
   ],
   providers: [
     UserService,
     NavServiceService,
     SettingReportService,
-    FirebaseService
+    FirebaseService,
+    ManageUserService,
+    MapsService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(){
+    var str = {
+      apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
+      authDomain: "anti-drugs-jerusalem.firebaseapp.com",
+      databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
+      storageBucket: "anti-drugs-jerusalem.appspot.com",
+      messagingSenderId: "944977183444" 
+    };
+    firebase.initializeApp(firebaseConfig);
+  }
+  
+ }

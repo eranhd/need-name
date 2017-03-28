@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {NavItem} from '../../items/nav';
+import {NavItem} from '../../models/nav';
 
 @Injectable()
 export class NavServiceService {
@@ -8,9 +8,11 @@ export class NavServiceService {
   
   constructor() {
     this.arrItems = [
-      new NavItem('הצגת דיווחים', 'report', 'report'),
+     // new NavItem('הצגת דיווחים', 'report', 'report'),
       new NavItem('ראשי', 'home', 'home'),
       new NavItem('הגדרת טפסים', 'settingReport', 'settingReport'),
+      new NavItem('ניהול משתמשים', 'addNewUser', 'addNewUser'),
+      new NavItem('report', 'report', 'report')
       
     ];
    };
