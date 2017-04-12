@@ -19,7 +19,6 @@ export const router:Routes = [
     {path: 'addNewUser', component:AddNewUserComponent},
     {path: 'report' , component:ReportComponent}
 
-
 ];
 
 export const routes:ModuleWithProviders = RouterModule.forRoot(router);
