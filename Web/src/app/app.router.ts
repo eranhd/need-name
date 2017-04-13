@@ -22,7 +22,6 @@ export const router:Routes = [
     {path: 'mobile_main' , component:MobileMainComponent}
 
 
-
 ];
 
 export const routes:ModuleWithProviders = RouterModule.forRoot(router);
