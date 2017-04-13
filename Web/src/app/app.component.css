@@ -1,0 +1,16 @@
+.div_sidenav{
+    z-index: 99999;
+    width: 5%;
+    height: 100%;
+    background-color: aliceblue;
+    display: inline-block;
+    position: absolute;
+}
+
+.div_sidenav:hover{
+    width: 15%;
+}
+
+md-sidenav{
+    width: 100%;
+}

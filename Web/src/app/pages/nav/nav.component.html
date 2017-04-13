@@ -1,8 +1,6 @@
-<md-toolbar color="primary">
-    <button *ngFor='let item of navSer.getArrItems()' md-button [routerLink]=item.getUrl()>
-      <md-icon *ngIf='item.getIcon() != ""'>
-        {{item.getIcon()}}
-      </md-icon> 
-      {{item.getTxt()}}
-    </button>
-</md-toolbar>
+      <button class='button_nav_row' *ngFor='let item of navSer.getArrItems()' md-button [routerLink]=item.getUrl()>
+        <md-icon *ngIf='item.getIcon() != ""'>
+          {{item.getIcon()}}
+        </md-icon> 
+        {{item.getTxt()}}
+      </button>

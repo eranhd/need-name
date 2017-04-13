@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.lastReport = new TableItem('lastReport',3, [ 'תאריך', 'שעה', 'צוות']);
     this.hotArea = new TableItem('hotArea', 2, ['איזור', 'מספר תקריות']);
     this.nowActive = new TableItem('nowActive', 2, ['איזור', 'דוח תחילת משמרת']);
+    this.lastReport.getTypeRows();
    };
 
 

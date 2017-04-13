@@ -1,32 +1,35 @@
 <div class='container'>
+  
+
     <span class='col-md-4'>
-      <table class="table table-inverse">
+      <table class="table">
         <thead>
-          <tr>
-            <th *ngFor='let item of lastReport.getHead()'>{{item}}</th>
+          <tr class='text-right'>
+            <th class='text-right' *ngFor='let item of lastReport.getHead()'>{{item}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let item of lastReport.getRows()'>
+          <tr class='table_row text-right' *ngFor='let item of lastReport.getRows()'>
             <td *ngFor='let col of item'>{{col}}</td>
           </tr>
         </tbody>
       </table>
     </span>
+  
 
     <span class='col-md-4'>
       <app-maps></app-maps>
     </span>
 
     <span class='col-md-4'>
-      <table class="table table-inverse">
+      <table class="table">
         <thead>
-          <tr>
+          <tr class='table_row text-right'>
             <th *ngFor='let item of nowActive.getHead()'>{{item}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let item of nowActive.getRows()'>
+          <tr class='table_row text-right' *ngFor='let item of nowActive.getRows()'>
             <td *ngFor='let col of item'>{{col}}</td>
           </tr>
         </tbody>

@@ -1,9 +1,17 @@
+<md-sidenav-container class="container div_sidenav" (mouseover)="sidenav.open()" (mouseout)='sidenav.close()'>
+  <md-sidenav #sidenav class="sidenav">
+    <app-nav></app-nav>
+  </md-sidenav>
+</md-sidenav-container>
+
+
+
 <div class='container'>
   <div class='container'>
     <app-header></app-header>
   </div>  
   <div class='container'>
-    <app-nav></app-nav>
+    
   </div>
 </div>
 
