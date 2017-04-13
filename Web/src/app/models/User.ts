@@ -33,5 +33,9 @@ export class Role{
     constructor(type:number, name:string){
         this.type = type;
         this.name = name;
+    };
+
+    public canDirect(path){
+        
     }
 };

@@ -8,25 +8,31 @@ export class UserService{
   private item;
   user:User;
   private userLogin:boolean;
+  private router:Router;
   
   
   constructor() {   
-    this.user = new User('1122');
-    //this.setUser('1122');
+    this.userLogin = true;
   };
 
   public setUser(id:string){
-    
+    this.user = new User(id);
     this.item = firebase.database().ref('/users/' + firebase.auth().currentUser.uid);
-    this.item.update({'details' : this.user.getUser('1122')});
+    this.item.update({'details' : this.user.getUser(id)});//neew to get the user from firebase
     console.log('write');
+    this.userLogin = true;
   }
- 
 
-  public setUserLogin(user){
-    this.userLogin = user;
-  };
+  public setRouter(r:Router){
+    this.router = r;
+    r.navigate(['home']);
+  }
 
+
+
+  public setUserLogin(b){
+
+  }
 
   public isLogin(){
     return this.userLogin;

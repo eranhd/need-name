@@ -8,6 +8,7 @@ import { MainComponent } from './pages/main/main.component';
 import { SettingReportComponent } from './pages/setting-report/setting-report.component';
 import { AddNewUserComponent } from './pages/add-new-user/add-new-user.component';
 import { ReportComponent } from './pages/report/report.component';
+import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
 //import { }
 
 export const router:Routes = [
@@ -17,7 +18,9 @@ export const router:Routes = [
     {path: 'main', component:MainComponent},
     {path: 'settingReport', component:SettingReportComponent},
     {path: 'addNewUser', component:AddNewUserComponent},
-    {path: 'report' , component:ReportComponent}
+    {path: 'report' , component:ReportComponent},
+    {path: 'mobile_main' , component:MobileMainComponent}
+
 
 
 ];

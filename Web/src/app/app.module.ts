@@ -13,6 +13,7 @@ import { SettingReportService } from './service/setting-report/setting-report.se
 import { UserService } from './service/user/user.service';
 import { ManageUserService } from './service/manage-users/manage-user.service';
 import { MapsService } from './service/maps/maps.service';
+import { RoleService } from './service/role/role.service';
 
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './pages/header/header.component';
@@ -23,8 +24,13 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AddNewUserComponent } from './pages/add-new-user/add-new-user.component';
 import { ReportComponent } from './pages/report/report.component';
 
+
+
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MapsComponent } from './pages/maps/maps.component';
+import { MaterialModule } from '@angular/material';
+import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
+import { StartShiftComponent } from './pages/report/start-shift/start-shift.component';
 
 
 export const firebaseConfig = {
@@ -51,7 +57,10 @@ const myFirebaseAuthConfig = {
     SettingReportComponent,
     AddNewUserComponent,
     ReportComponent,
-    MapsComponent
+    MapsComponent,
+    MobileMainComponent,
+    StartShiftComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -61,7 +70,8 @@ const myFirebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE'
-    })
+    }),
+    MaterialModule
   ],
   providers: [
     UserService,
@@ -69,7 +79,8 @@ const myFirebaseAuthConfig = {
     SettingReportService,
     FirebaseService,
     ManageUserService,
-    MapsService
+    MapsService,
+    RoleService
   ],
   bootstrap: [AppComponent]
 })

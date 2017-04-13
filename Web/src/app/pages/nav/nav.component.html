@@ -1,11 +1,8 @@
-<!--<nav class="navbar navbar-inverse" *ngIf='userService.isLogin()'>-->
-  <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li *ngFor='let item of navSer.getArrItems()' [routerLink]=item.getUrl()><a>{{item.getTxt()}}</a></li>
-    </ul>
-  </div>
-</nav>
+<md-toolbar color="primary">
+    <button *ngFor='let item of navSer.getArrItems()' md-button [routerLink]=item.getUrl()>
+      <md-icon *ngIf='item.getIcon() != ""'>
+        {{item.getIcon()}}
+      </md-icon> 
+      {{item.getTxt()}}
+    </button>
+</md-toolbar>

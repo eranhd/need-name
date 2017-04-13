@@ -1,0 +1,38 @@
+<div class='container'>
+  
+  
+  <div class='row'>
+      <md-card class='col-xs-6 span_report' (click)='buttonAddReport()'>
+        <span>הוסף דיווח</span>
+      </md-card>
+      <md-card *ngIf='!hotPressed' (click)='buttonPointPressed()' class='col-xs-6 span_point_report'>
+        <span >נקודה</span>
+      </md-card>
+       <md-card *ngIf='hotPressed' class='col-xs-6 span_decision_report'>
+        <span class='span_hot_report' (click)='buttonPointUnpressed()'>חמה</span>
+        <span class='span_cold_report' (click)='buttonPointUnpressed()'>קרה</span>
+      </md-card>
+    </div>
+
+
+    <div class='row'>
+      <span class='col-xs-3'></span>
+
+      <md-card class='col-xs-6 span_start_patrol'>
+        <span>
+          התחל סיור
+          <i class="material-icons">play_arrow</i>
+        </span>
+      </md-card>
+
+      <span class='col-xs-3'></span>
+    </div>
+    <div class='row'>
+      <span class='col-xs-1'></span>
+      <md-card class='col-xs-10'>
+      </md-card>
+      <span class='col-xs-1'></span>
+  </div>
+
+
+</div>

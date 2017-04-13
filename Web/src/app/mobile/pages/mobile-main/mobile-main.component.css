@@ -1,0 +1,51 @@
+md-card{
+    text-align: center;
+}
+
+.span_report{
+    background-color: springgreen;  
+    cursor: pointer;
+}
+.span_report:hover{
+    background-color: limegreen;  
+}
+
+.span_point_report{
+    background-color: firebrick;
+    color: white;
+    cursor: pointer;
+}
+.span_point_report:hover{
+    background-color: darkred;
+    color: white;
+}
+
+.span_hot_report{
+    color: white;
+    cursor: pointer;
+}
+
+.span_cold_report{
+    color: black;
+    cursor: pointer;
+}
+
+.span_decision_report{
+    background: linear-gradient(90deg, aquamarine 50%, darkred 50%);
+}
+
+
+
+
+.span_start_patrol{
+    background-color: greenyellow
+}
+
+.col-xs-6{
+    display: inline-block;  
+    font-family: arial;
+    font-size: 200%;
+    width: 42%;
+    height: 100%;
+    margin: 3%;
+}

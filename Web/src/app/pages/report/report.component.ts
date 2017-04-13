@@ -20,11 +20,13 @@ export class ReportComponent implements OnInit {
 
   public submit(){
     var d = new Date();
-    var str = d.getFullYear() + '_' + (d.getMonth()+1) + '_' + d.getDate() + '__' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-    var obj = {id : str,
+    var date = d.getDate() + '_' + (d.getMonth()+1) + '_' + d.getFullYear(); 
+    var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+    var obj = {time : time,
+      date : date,
       latitude : 0,
       longitude : 0
-  };
+    };
     var items = this.settingReportService.getInputs();
     for(var i = 0; i < items.length; i++)
       obj[items[i].id] = (<HTMLInputElement>document.getElementById(items[i].id)).value;

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { TableItem } from '../../models/Table';
 import { ReportService } from '../../service/report/report.service';
 
+import { RoleService } from '../../service/role/role.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,7 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService, 
   private router:Router
   ) {
-   /* if(!this.userService.isLogin())
+    /*if(!this.userService.isLogin())
       this.router.navigate(['login']);*/
     this.lastReport = new TableItem('lastReport',3, [ 'תאריך', 'שעה', 'צוות']);
     this.hotArea = new TableItem('hotArea', 2, ['איזור', 'מספר תקריות']);

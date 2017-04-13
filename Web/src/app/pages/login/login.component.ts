@@ -6,6 +6,9 @@ import { FirebaseService } from '../../service/firebase/firebase.service';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 
+import { RoleService } from '../../service/role/role.service';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router:Router, 
     private userServ:UserService,
+    private role:RoleService,
     private af:AngularFire) { 
     this.signOut();
     
@@ -32,8 +36,9 @@ export class LoginComponent implements OnInit {
       password:password
     }).then((succsess)=>{
       var userSer:UserService = new UserService();
-      userSer.setUserLogin(true);
-      userSer.setUser('1122');
+      console.log(succsess);
+      userSer.setRouter(this.router);
+      userSer.setUser(firebase.auth().currentUser.uid);
       this.router.navigate(['home']);
     }).catch((error)=>{
       console.log(error.message);
