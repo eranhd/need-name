@@ -6,11 +6,13 @@ import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {MdButtonModule, MdCheckboxModule} from '@angular/material';
-import 'hammerjs'
+import 'hammerjs';
+import { LoginComponent } from './Screens/login/login/login.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
