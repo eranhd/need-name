@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
+import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import 'hammerjs'
 
 @NgModule({
@@ -15,8 +16,14 @@ import 'hammerjs'
     BrowserModule,
     FormsModule,
     HttpModule,
+    MdButtonModule,
+    MdCheckboxModule,
     MaterialModule.forRoot(),
     BrowserAnimationsModule
+  ],
+  exports: 
+    [MdButtonModule,
+    MdCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
