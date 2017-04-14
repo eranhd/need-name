@@ -1,3 +1,7 @@
 .table_row:hover{
     opacity: 0.3;
 }
+
+.center{
+    padding: 2%;
+}

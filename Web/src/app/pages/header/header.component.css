@@ -10,6 +10,9 @@ h1{
 }
 
 .title{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
     border-style: solid;
     border-color: black;
     border-width: 0px 0px 0px 1px; 

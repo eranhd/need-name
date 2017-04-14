@@ -30,6 +30,7 @@ import { MapsComponent } from './pages/maps/maps.component';
 import { MaterialModule } from '@angular/material';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
 import { StartShiftComponent } from './pages/report/start-shift/start-shift.component';
+import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 
 
 export const firebaseConfig = {
@@ -59,6 +60,7 @@ const myFirebaseAuthConfig = {
     MapsComponent,
     MobileMainComponent,
     StartShiftComponent,
+    GraphsComponent,
     
   ],
   imports: [

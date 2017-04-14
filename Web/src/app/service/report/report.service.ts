@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {Report } from '../../models/Report';
+import {Team } from '../../models/Team';
 
 @Injectable()
 export class ReportService {
@@ -7,12 +9,21 @@ export class ReportService {
     
   };
 
-  public createStartShift(teamMembers:string){
+  public startShift(teamMembers:string){
     
-  }
+  };
+
+  public getLastReport(){
+    var arr:Report[] = [
+      new Report(new Date, new Team),
+      new Report(new Date, new Team),
+      new Report(new Date, new Team)
+    ];
+    return arr;
+  };
 
   public getReports(){
-    return ['a', 'a', 'a'];
+
   };
 
 }

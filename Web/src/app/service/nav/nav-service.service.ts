@@ -10,9 +10,11 @@ export class NavServiceService {
     this.arrItems = [
      // new NavItem('הצגת דיווחים', 'report', 'report'),
       new NavItem('ראשי', 'home', 'home', 'home'),
-      new NavItem('הגדרת טפסים', 'settingReport', 'settingReport', ''),
-      new NavItem('ניהול משתמשים', 'addNewUser', 'addNewUser', ''),
-      new NavItem('report', 'report', 'report', '')
+      new NavItem('הגדרת טפסים', 'settingReport', 'settingReport', 'settings'),
+      new NavItem('ניהול משתמשים', 'addNewUser', 'addNewUser', 'people'),
+      new NavItem('דוחות', 'report', 'report', 'report'),
+      new NavItem('מפה', 'maps', 'maps', 'map'),
+      new NavItem('סטטיסטיקות', 'graphs', 'graphs', 'insert_chart')
       
     ];
    };

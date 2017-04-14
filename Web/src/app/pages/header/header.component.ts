@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ReportService } from '../../service/report/report.service';
+
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,10 @@ export class HeaderComponent implements OnInit {
   newsData:string[];
   curr:string;
   index:number;
-  constructor() { 
+
+
+  constructor(private report:ReportService) { 
+    
     this.index = 0;
     this.newsData = ['מספר נערים נצפו בקרית יובל','מקרה אונס חמור בקריות', 'תה חם הועבר לילדים'];
     this.curr = this.newsData[0];
@@ -19,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
     setInterval(function(){
       that.index++;
-      that.curr = that.newsData[that.index%that.newsData.length];
+     // that.curr = that.report.getLastReport()[that.index%that.newsData.length].getSummary();
     },3000)
   }
 

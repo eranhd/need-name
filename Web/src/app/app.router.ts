@@ -9,7 +9,8 @@ import { SettingReportComponent } from './pages/setting-report/setting-report.co
 import { AddNewUserComponent } from './pages/add-new-user/add-new-user.component';
 import { ReportComponent } from './pages/report/report.component';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
-//import { }
+import { MapsComponent } from './pages/maps/maps.component';
+import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 
 export const router:Routes = [
     {path: '', redirectTo:'login', pathMatch:'full'},
@@ -19,7 +20,9 @@ export const router:Routes = [
     {path: 'settingReport', component:SettingReportComponent},
     {path: 'addNewUser', component:AddNewUserComponent},
     {path: 'report' , component:ReportComponent},
-    {path: 'mobile_main' , component:MobileMainComponent}
+    {path: 'mobile_main', component:MobileMainComponent},
+    {path: 'maps', component:MapsComponent},
+    {path: 'graphs', component:GraphsComponent}
 
 
 ];
