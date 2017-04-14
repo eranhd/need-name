@@ -1,10 +1,10 @@
-import { ApplictionPage } from './app.po';
+import { AppMobilePage } from './app.po';
 
-describe('appliction App', function() {
-  let page: ApplictionPage;
+describe('app-mobile App', () => {
+  let page: AppMobilePage;
 
   beforeEach(() => {
-    page = new ApplictionPage();
+    page = new AppMobilePage();
   });
 
   it('should display message saying app works', () => {
