@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+
+  newsData:string[];
+  curr:string;
+  index:number;
+  constructor() { 
+    this.index = 0;
+    this.newsData = ['מספר נערים נצפו בקרית יובל','מקרה אונס חמור בקריות', 'תה חם הועבר לילדים'];
+    this.curr = this.newsData[0];
+    var that = this;
+
+    setInterval(function(){
+      that.index++;
+      that.curr = that.newsData[that.index%that.newsData.length];
+    },3000)
+  }
 
   ngOnInit() {
   }

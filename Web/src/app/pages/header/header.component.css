@@ -2,3 +2,15 @@ h1{
     display: inline;
     float: left;
 }
+
+.div_change_news{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0px 1px 0px;
+}
+
+.title{
+    border-style: solid;
+    border-color: black;
+    border-width: 0px 0px 0px 1px; 
+}
