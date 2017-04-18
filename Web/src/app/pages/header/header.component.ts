@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   index:number;
 
 
-  constructor(private report:ReportService) { 
+  constructor() { 
     
     this.index = 0;
     this.newsData = ['מספר נערים נצפו בקרית יובל','מקרה אונס חמור בקריות', 'תה חם הועבר לילדים'];

@@ -7,8 +7,9 @@ export class User{
     private role:Role;
     private sons:User[];
 
-    constructor(id:string){
-        this.getUser(id);
+    constructor(id?:string){
+        if(id)
+            this.getUser(id);
     }
 
 

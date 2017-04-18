@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingReportService } from '../../service/setting-report/setting-report.service';
 import { AppComponent } from '../../app.component';
+import { Report } from '../../models/Report';
 
 @Component({
   selector: 'app-report',
@@ -19,7 +20,10 @@ export class ReportComponent implements OnInit {
    }
 
   public submit(){
+
+    var report:Report;
     var d = new Date();
+    
     var date = d.getDate() + '_' + (d.getMonth()+1) + '_' + d.getFullYear(); 
     var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
     var obj = {time : time,
@@ -27,9 +31,18 @@ export class ReportComponent implements OnInit {
       latitude : 0,
       longitude : 0
     };
+
+    var title = (<HTMLInputElement>document.getElementById('title')).value;
+
+    report = new Report(new Date(), undefined, title, undefined);
+
     var items = this.settingReportService.getInputs();
-    for(var i = 0; i < items.length; i++)
-      obj[items[i].id] = (<HTMLInputElement>document.getElementById(items[i].id)).value;
+    for(var i = 0; i < items.length; i++){
+      if(items[i].id != 'title')
+        report.addFiled(undefined, items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value);
+        //obj[items[i].id] = (<HTMLInputElement>document.getElementById(items[i].id)).value;
+
+    }
    // obj['latitude'] = ""//that.lat;
    // obj['longitude'] = ''//that.lng;
     
@@ -41,7 +54,10 @@ export class ReportComponent implements OnInit {
      obj.longitude = that.lng;
      
     });
-    that.settingReportService.save(obj);
+
+    
+    console.log(report);
+    that.settingReportService.save(report);
     
     
     

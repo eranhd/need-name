@@ -2,7 +2,7 @@ export class InputItem{
 
     constructor(public id:string,
     private type:string,
-    private label:string,
+    public label:string,
     private placeHolder:string){
 
     };
