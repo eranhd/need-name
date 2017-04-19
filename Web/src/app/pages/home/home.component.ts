@@ -6,6 +6,8 @@ import { ReportService } from '../../service/report/report.service';
 
 import { RoleService } from '../../service/role/role.service';
 
+import {MdDialog} from '@angular/material';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private userService:UserService, 
               private reportService:ReportService,
-              private router:Router
+              private router:Router,
   ) 
   {
     /*if(!this.userService.isLogin())
@@ -31,12 +33,11 @@ export class HomeComponent implements OnInit {
    };
 
    private lastReportSelected(index){
-     console.log(index);
+     console.log(this.reportService.lastReportArr[index]);
 
    }
 
 
   ngOnInit() {
   };
-
 }

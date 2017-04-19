@@ -9,9 +9,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr class='table_row text-right' *ngFor='let item of lastReport.getRows()' (click)='lastReportSelected(item)'>
+          
+          
+          <tr class='table_row text-right' *ngFor='let item of lastReport.getRows()' (click)='lastReportSelected(item[3])'>
             <td *ngFor='let col of item'>{{col}}</td>
           </tr>
+          
+
         </tbody>
       </table>
     </span>
@@ -36,3 +40,5 @@
       </table>
     </span>
 </div>
+
+

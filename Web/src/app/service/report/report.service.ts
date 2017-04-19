@@ -8,7 +8,7 @@ import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'a
 export class ReportService {
 
   private lastReport:FirebaseObjectObservable<any>;
-  private lastReportArr:Report[];
+  public lastReportArr:Report[];
 
   constructor(private af:AngularFire) { 
     this.lastReportArr = [];    
@@ -27,11 +27,13 @@ export class ReportService {
     var that = this;
      this.lastReport.subscribe(snapshot => {
         that.lastReportArr = [];
+        var i = 0;
        // console.log(snapshot);
         for(var key in snapshot){
           //console.log(snapshot[key]);
           that.lastReportArr.push(snapshot[key]);     
-          table.addRow([ snapshot[key].date, snapshot[key].time, snapshot[key].location]);
+          table.addRow([ snapshot[key].date, snapshot[key].time, snapshot[key].location, i]);
+          i++;
       }
      // console.log(this.lastReportArr);
     });

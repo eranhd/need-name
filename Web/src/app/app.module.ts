@@ -75,6 +75,7 @@ const myFirebaseAuthConfig = {
     }),
     MaterialModule
   ],
+  
   providers: [
     UserService,
     NavServiceService,
