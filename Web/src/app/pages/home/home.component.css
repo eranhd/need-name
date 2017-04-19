@@ -1,5 +1,6 @@
 .table_row:hover{
     opacity: 0.3;
+    cursor: pointer;
 }
 
 .center{

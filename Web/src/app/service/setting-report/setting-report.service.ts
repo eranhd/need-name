@@ -14,25 +14,19 @@ export class SettingReportService {
   constructor(
     private af:AngularFire
     ) {
-
-
-      var d = new Date();
-      var date = d.getDate() + '_' + (d.getMonth()+1) + '_' + d.getFullYear();
       console.log(firebase.auth().currentUser.uid);
       this.item = af.database.object('/report_fields');
-      this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/reports/' + date);
-      //this.itemToSave = af.database.object('/users/' + firebase.auth().currentUser.uid);
+      this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/reports');
     
     this.inputs = [];
     this.item = af.database.object('/report_fields', { preserveSnapshot: true });
+  
     this.item.subscribe(snapshot => {
-      //console.log(snapshot.key);
-      //console.log(snapshot.val());
+
       this.inputs = snapshot.val().report_fields;
       if(this.inputs == null)
         this.inputs = [];
     });
-   // this.getInputs();
     
   };
 
@@ -42,9 +36,6 @@ export class SettingReportService {
     var obj = new InputItem(id, type, label, placeHolder);
     this.inputs.push(obj);
     this.item.set({'report_fields' : this.inputs});
-    //firebase.database().ref('report-fields').set(this.inputs);
-    //this.inputs.push(new InputItem(id, type, lable, placeHolder));
-    //need to save in data base
   };
 
   public getInputs(){
@@ -52,7 +43,6 @@ export class SettingReportService {
   };
 
   public save(obj){
-    console.log(obj);
     this.itemToSave.push(obj);
   }
 

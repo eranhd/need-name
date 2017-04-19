@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../../service/report/report.service';
+import { UserService } from '../../service/user/user.service'
+import {Report } from '../../models/Report';
 
 
 @Component({
@@ -15,16 +17,24 @@ export class HeaderComponent implements OnInit {
   index:number;
 
 
-  constructor() { 
+  constructor(private userService:UserService, 
+              private reportService:ReportService) { 
     
     this.index = 0;
-    this.newsData = ['מספר נערים נצפו בקרית יובל','מקרה אונס חמור בקריות', 'תה חם הועבר לילדים'];
-    this.curr = this.newsData[0];
     var that = this;
+    var currArr:Report[] = that.reportService.getLastReportArr();
+   // console.log(currArr);
+    var curr = '';
 
     setInterval(function(){
-      that.index++;
-     // that.curr = that.report.getLastReport()[that.index%that.newsData.length].getSummary();
+      if( that.reportService.getLastReportArr().length != 0 ){
+        currArr = that.reportService.getLastReportArr();
+        //console.log(currArr);
+        that.index++;
+        that.index %= currArr.length;
+        //console.log(that.reportService.getLastReportArr(that.index));
+        that.curr = currArr[that.index].title;
+      }
     },3000)
   }
 

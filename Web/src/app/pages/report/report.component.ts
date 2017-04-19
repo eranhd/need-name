@@ -22,15 +22,6 @@ export class ReportComponent implements OnInit {
   public submit(){
 
     var report:Report;
-    var d = new Date();
-    
-    var date = d.getDate() + '_' + (d.getMonth()+1) + '_' + d.getFullYear(); 
-    var time = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-    var obj = {time : time,
-      date : date,
-      latitude : 0,
-      longitude : 0
-    };
 
     var title = (<HTMLInputElement>document.getElementById('title')).value;
 
@@ -40,18 +31,12 @@ export class ReportComponent implements OnInit {
     for(var i = 0; i < items.length; i++){
       if(items[i].id != 'title')
         report.addFiled(undefined, items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value);
-        //obj[items[i].id] = (<HTMLInputElement>document.getElementById(items[i].id)).value;
-
     }
-   // obj['latitude'] = ""//that.lat;
-   // obj['longitude'] = ''//that.lng;
     
     var that = this;
      navigator.geolocation.getCurrentPosition(function(position){
      that.lat = position.coords.latitude;
      that.lng = position.coords.longitude;
-     obj.latitude = that.lat;
-     obj.longitude = that.lng;
      
     });
 

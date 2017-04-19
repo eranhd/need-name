@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 
 import {NavServiceService} from'./service/nav/nav-service.service';
 import { SettingReportService } from './service/setting-report/setting-report.service';
+import { ReportService } from './service/report/report.service'
 import { UserService } from './service/user/user.service';
 import { ManageUserService } from './service/manage-users/manage-user.service';
 import { MapsService } from './service/maps/maps.service';
@@ -19,7 +20,7 @@ import { HeaderComponent } from './pages/header/header.component';
 import { MainComponent } from './pages/main/main.component';
 import { SettingReportComponent } from './pages/setting-report/setting-report.component';
 import { FirebaseService } from './service/firebase/firebase.service';
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods,  FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 import { AddNewUserComponent } from './pages/add-new-user/add-new-user.component';
 import { ReportComponent } from './pages/report/report.component';
 
@@ -81,7 +82,8 @@ const myFirebaseAuthConfig = {
     FirebaseService,
     ManageUserService,
     MapsService,
-    RoleService
+    RoleService,
+    ReportService
   ],
   bootstrap: [AppComponent]
 })

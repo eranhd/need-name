@@ -1,12 +1,13 @@
 import { Team } from './Team';
 
 export class Report{
+
     private id:string;
     private date:string;
     private time:string;
     private team:Team;
     private location:string;
-    private title:string;
+    public title:string;
     private fields:ReportField[];
 
     constructor(date:Date, team?:Team, title?:string, fields?:ReportField[]){
@@ -56,7 +57,6 @@ export class Report{
     public getlocation() : string {
         return this.location;
     }
-    
     
     
 

@@ -12,8 +12,6 @@ export class TableItem{
     };
 
     public getTypeRows(){
-        this.addRow(['10/11/2017','18:00','yosi']);
-        this.addRow(['10/11/2017','20:00','dani']);
     };
 
     public addRow(row:string[]){
