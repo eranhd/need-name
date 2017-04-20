@@ -8,6 +8,16 @@ import { AppComponent } from './app.component';
 import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import 'hammerjs';
 import { LoginComponent } from './Screens/login/login.component'
+import { AngularFireModule} from 'angularfire2';
+import {Routes, RouterModule} from '@angular/router';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
+    authDomain: "antidrugsjerusalem.firebaseapp.com",
+    databaseURL: "https://antidrugsjerusalem.firebaseio.com",
+    storageBucket: "antidrugsjerusalem.appspot.com",
+    messagingSenderId: "767801084656"
+};
 
 @NgModule({
   declarations: [
@@ -20,6 +30,7 @@ import { LoginComponent } from './Screens/login/login.component'
     HttpModule,
     MdButtonModule,
     MdCheckboxModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     MaterialModule.forRoot(),
     BrowserAnimationsModule
   ],
