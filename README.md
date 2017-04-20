@@ -8,7 +8,7 @@ The app comes ease the volunteers and the organization collecting the data and a
 
 this project developed at Azrieli College of Engineering for a social project.
 
-##hosting
+##hostinghh
 https://anti-drugs-jerusalem.firebaseapp.com
 
 ## Tools & Practices
