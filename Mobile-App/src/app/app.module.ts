@@ -6,7 +6,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './screens/login/login.component';
 import { MaterialModule } from '@angular/material';
-
+import {} from 'jasmine';
+import 'hammerjs';
 
 export const firebaseConfig = {
   apiKey: '',
