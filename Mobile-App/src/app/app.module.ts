@@ -6,16 +6,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './screens/login/login.component';
 import { MaterialModule } from '@angular/material';
+import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import {} from 'jasmine';
 import 'hammerjs';
 
-export const firebaseConfig = {
-  apiKey: '',
-  authDomain: '',
-  databaseURL: '',
-  storageBucket: '',
-  messagingSenderId: ''
-};
+
 
 @NgModule({
   declarations: [
@@ -24,8 +19,10 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    MdButtonModule,
+    MdCheckboxModule,
     MaterialModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig),
+   //AngularFireModule.initializeApp(firebaseConfig),
     FormsModule,
     HttpModule
   ],
