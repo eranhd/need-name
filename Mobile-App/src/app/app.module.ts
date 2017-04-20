@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import {MdButtonModule, MdCheckboxModule,MaterialModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +18,7 @@ export const firebaseConfig = {
 };
 
 @NgModule({
+
   declarations: [
     AppComponent,
     LoginComponent
@@ -30,6 +32,7 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule
   ],
+   exports: [MdButtonModule, MdCheckboxModule],
   providers: [],
   bootstrap: [AppComponent]
 })
