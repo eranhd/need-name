@@ -14,3 +14,7 @@
 md-sidenav{
     width: 100%;
 }
+
+app-home{
+    display: flex;
+}
