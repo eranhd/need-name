@@ -23,6 +23,7 @@ import { FirebaseService } from './service/firebase/firebase.service';
 import { AngularFireModule, AuthProviders, AuthMethods,  FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 import { AddNewUserComponent } from './pages/add-new-user/add-new-user.component';
 import { ReportComponent } from './pages/report/report.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -32,6 +33,8 @@ import { MaterialModule } from '@angular/material';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
 import { StartShiftComponent } from './pages/report/start-shift/start-shift.component';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
+import { LastReportComponent } from './pages/home/last-report/last-report.component';
+import { PopupReportComponent } from './pages/home/popup-report/popup-report.component';
 
 
 export const firebaseConfig = {
@@ -62,6 +65,8 @@ const myFirebaseAuthConfig = {
     MobileMainComponent,
     StartShiftComponent,
     GraphsComponent,
+    LastReportComponent,
+    PopupReportComponent,
     
   ],
   imports: [
@@ -73,7 +78,8 @@ const myFirebaseAuthConfig = {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE'
     }),
-    MaterialModule
+    MaterialModule,
+    ChartsModule
   ],
   
   providers: [

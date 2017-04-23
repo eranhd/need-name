@@ -3,9 +3,9 @@ import { Team } from './Team';
 export class Report{
 
     private id:string;
-    private date:string;
-    private time:string;
-    private team:Team;
+    public date:string;
+    public time:string;
+    public team:Team;
     private location:string;
     public title:string;
     private fields:ReportField[];

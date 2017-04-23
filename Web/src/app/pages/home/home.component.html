@@ -1,7 +1,7 @@
 <div class='container center'>
-  
 
-    <span class='col-md-4'>
+
+  <span class='col-md-4'>
       <table class="table">
         <thead>
           <tr class='text-right'>
@@ -11,7 +11,11 @@
         <tbody>
           
           
-          <tr class='table_row text-right' *ngFor='let item of lastReport.getRows()' (click)='lastReportSelected(item[3])'>
+          <tr class='table_row text-right' 
+          *ngFor='let item of lastReport.getRows()' 
+          (click)='lastReportSelected(item[3])'
+          data-toggle="infoModal" 
+          data-target="#infoEvent">
             <td *ngFor='let col of item'>{{col}}</td>
           </tr>
           
@@ -19,13 +23,13 @@
         </tbody>
       </table>
     </span>
-  
 
-    <span class='col-md-4'>
+
+  <span class='col-md-4'>
       <app-maps></app-maps>
     </span>
 
-    <span class='col-md-4'>
+  <span class='col-md-4'>
       <table class="table">
         <thead>
           <tr class='table_row text-right'>
@@ -42,3 +46,35 @@
 </div>
 
 
+<!-- Modal -->
+<div id="infoEvent" class="infoModal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content"> <!--here insert design-->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="infoModal">&times;</button>
+        {{selectedTitle}}
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        {{selectedBody}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class='container'>
+  <div class='row'> 
+    <app-last-report
+    *ngFor='let item of reportService.getLastReportArr()'
+    [report]='item'
+    >
+    </app-last-report>
+  </div>
+</div>

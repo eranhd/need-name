@@ -8,6 +8,9 @@ import { RoleService } from '../../service/role/role.service';
 
 import {MdDialog} from '@angular/material';
 
+
+import { LastReportComponent } from './last-report/last-report.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,6 +20,9 @@ export class HomeComponent implements OnInit {
   private lastReport:TableItem;
   private hotArea:TableItem;
   private nowActive:TableItem;
+
+  private selectedTitle:string;
+  private selectedBody:string;
 
   constructor(private userService:UserService, 
               private reportService:ReportService,
@@ -33,7 +39,10 @@ export class HomeComponent implements OnInit {
    };
 
    private lastReportSelected(index){
-     console.log(this.reportService.lastReportArr[index]);
+     var event = this.reportService.lastReportArr[index];
+     this.selectedTitle = event.title;
+     this.selectedBody = event.title;
+     console.log('show');
 
    }
 
