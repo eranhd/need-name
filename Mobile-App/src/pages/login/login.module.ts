@@ -17,6 +17,6 @@ import { login } from './login';
 
 @Component({
   selector: 'app-page-login',
-  templateUrl: '.login.html',
+  templateUrl: './login.html',
 })
 export class LoginModule {}
