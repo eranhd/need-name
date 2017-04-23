@@ -6,9 +6,9 @@ export class Report{
     public date:string;
     public time:string;
     public team:Team;
-    private location:string;
+    public location:string;
     public title:string;
-    private fields:ReportField[];
+    public fields:ReportField[];
 
     constructor(date:Date, team?:Team, title?:string, fields?:ReportField[]){
         this.date = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
@@ -74,7 +74,8 @@ export class ReportField{
     constructor(public name:string,
                 public data:string){
 
-                }
+    }
+
     public toString(){
         return this.name + ': ' + this.data;
     }

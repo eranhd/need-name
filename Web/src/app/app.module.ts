@@ -35,6 +35,10 @@ import { StartShiftComponent } from './pages/report/start-shift/start-shift.comp
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 import { LastReportComponent } from './pages/home/last-report/last-report.component';
 import { PopupReportComponent } from './pages/home/popup-report/popup-report.component';
+import { TitleComponent } from './pages/home/popup-report/title/title.component';
+import { BodyComponent } from './pages/home/popup-report/body/body.component';
+import { DateComponent } from './pages/home/popup-report/title/date/date.component';
+import { TeamComponent } from './pages/home/popup-report/title/team/team.component';
 
 
 export const firebaseConfig = {
@@ -67,6 +71,10 @@ const myFirebaseAuthConfig = {
     GraphsComponent,
     LastReportComponent,
     PopupReportComponent,
+    TitleComponent,
+    BodyComponent,
+    DateComponent,
+    TeamComponent,
     
   ],
   imports: [

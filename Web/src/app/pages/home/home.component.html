@@ -11,12 +11,9 @@
         <tbody>
           
           
-          <tr class='table_row text-right' 
-          *ngFor='let item of lastReport.getRows()' 
-          (click)='lastReportSelected(item[3])'
-          data-toggle="infoModal" 
-          data-target="#infoEvent">
-            <td *ngFor='let col of item'>{{col}}</td>
+          <tr  *ngFor='let item of reportService.getLastReportArr()'>
+            <app-last-report [report]='item'>
+            </app-last-report>
           </tr>
           
 
@@ -51,10 +48,10 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content"> <!--here insert design-->
+    <div class="modal-content">
+      <!--here insert design-->
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="infoModal">&times;</button>
-        {{selectedTitle}}
+        <button type="button" class="close" data-dismiss="infoModal">&times;</button> {{selectedTitle}}
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
@@ -70,11 +67,8 @@
 
 
 <div class='container'>
-  <div class='row'> 
-    <app-last-report
-    *ngFor='let item of reportService.getLastReportArr()'
-    [report]='item'
-    >
+  <div class='row'>
+    <app-last-report *ngFor='let item of reportService.getLastReportArr()' [report]='item'>
     </app-last-report>
   </div>
 </div>

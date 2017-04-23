@@ -1,9 +1,15 @@
 export class Team{
 
-    private lead:string;
+    public lead:string;
+    public members:string[];
 
 
     constructor(){
-        this.lead = '';
+        this.lead = 'leader';
     };
+
+    public toString():string
+    {
+        return this.lead + '';
+    }
 }

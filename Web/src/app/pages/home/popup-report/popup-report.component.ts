@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Report } from '../../../models/Report';
+import { TitleComponent } from './title/title.component';
+import { BodyComponent } from './body/body.component';
 
 @Component({
   selector: 'popup-report',

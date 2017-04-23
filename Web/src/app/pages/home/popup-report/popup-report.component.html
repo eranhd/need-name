@@ -1,11 +1,9 @@
 <div class='popup-over'>
-  <div class='container'>
-    <div class='row title'>
-      {{report.title}}
-    </div>
-
-    <div class='row body'>
-      {{report.time}}
-    </div>
-  </div>
+  <popup-title 
+  [date]='report.date'
+  [time]='report.time'
+  [team]='report.team'>
+  </popup-title>
+  
+  <popup-body [fields]='report.fields'></popup-body>
 </div>
