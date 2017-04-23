@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { login } from './login';
 
 @NgModule({
   declarations: [
-    login
-  ],
+    ],
   imports: [
    // IonicModule.forChild(LoginPage),
     IonicModule.forRoot(login)
@@ -13,5 +12,11 @@ import { login } from './login';
   exports: [
     login
   ]
+})
+
+
+@Component({
+  selector: 'app-page-login',
+  templateUrl: '.login.html',
 })
 export class LoginModule {}

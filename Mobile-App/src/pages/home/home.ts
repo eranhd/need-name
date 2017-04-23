@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginPage } from '../pages/login/login';
+import { LoginModule } from '../login/login.module';
 
 @Component({
   selector: 'page-home',
@@ -9,11 +9,11 @@ import { LoginPage } from '../pages/login/login';
 export class HomePage {
 
   constructor(public navCtrl: NavController) {
-    window.localStorage.removeItem('currenuser')
+    /*window.localStorage.removeItem('currenuser')
     if(!this.isLoggedin()){
-      console.log('You are not logged in');
-      this.navCtrl.push(LoginPage);
-    }
+      console.log('You are not logged in');*/
+      this.navCtrl.push(LoginModule);
+    //}
   }
 
 isLoggedin(){
