@@ -25,15 +25,15 @@ export class LoginComponent implements OnInit {
     private userServ:UserService,
     private role:RoleService,
     private af:AngularFire) { 
-    this.signOut();
-    
+    //this.signOut();
+    this.signIn();
   }
 
   public signIn(){
-    var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
+    //var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
     this.af.auth.login({
-      email:email, 
-      password:password
+      email:'eranm22@gmail.com',//email:email, 
+      password:'111111'//password:password
     }).then((succsess)=>{
       var userSer:UserService = new UserService();
       console.log(succsess);
