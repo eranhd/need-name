@@ -1,12 +1,9 @@
-<div
-(click)='showPopup = !showPopup'
-(mouseleave)='showPopup = flase'>
-  <span class='report-data-col col-md-4'>{{report.date}}</span>
-  <span class='report-data-col col-md-4'>{{report.time}}</span>
-  <span class='report-data-col col-md-4'>{{report.location}}</span>
+<div *ngIf='report.date != null' (click)='showPopup = !showPopup' (mouseleave)='showPopup = flase'>
+  <span class='report-data-col col-md-4 col-xs-4'>{{report.date}}</span>
+  <span class='report-data-col col-md-4 col-xs-4'>{{report.time}}</span>
+  <span class='report-data-col col-md-4 col-xs-4'>{{report.location}}</span>
+  <popup-report [report]='report' *ngIf='showPopup'>
+  </popup-report>
 </div>
 
-<popup-report 
-[report]='report'
-*ngIf='showPopup'>
-</popup-report>
+<!-- -->

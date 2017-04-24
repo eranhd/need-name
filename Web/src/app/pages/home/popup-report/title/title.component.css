@@ -1,3 +1,4 @@
-.title{
-    background-color: blue;
+app-popup-date app-popup-team{
+    width: 100%;
+    display: inline-block;
 }

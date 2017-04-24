@@ -1,12 +1,11 @@
 popup-report{
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    background-color: white;
     z-index: 99999;
-    width: 40%;
-    border:1px;
-    border-style: solid;
-    border-color: black;
+    right: 0%;
+    top : 0%;
+    width: 80%;
+    height: 400px;
+    position: absolute;
+    box-shadow: 5px 5px 5px;
+    cursor: pointer;
 }
 

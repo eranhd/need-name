@@ -7,8 +7,10 @@ export class Report{
     public time:string;
     public team:Team;
     public location:string;
+    public loc:Location;
     public title:string;
     public fields:ReportField[];
+    
 
     constructor(date:Date, team?:Team, title?:string, fields?:ReportField[]){
         this.date = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
@@ -66,6 +68,10 @@ export class Report{
         str += ', ' + this.title;
         return str;
     }
+
+    public setLocation(lng, lat){
+        this.loc = new Location(lng, lat);
+    }
 }
 
 
@@ -78,5 +84,11 @@ export class ReportField{
 
     public toString(){
         return this.name + ': ' + this.data;
+    }
+}
+
+export class Location{
+    constructor(public lng, public lat){
+
     }
 }

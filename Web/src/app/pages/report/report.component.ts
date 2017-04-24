@@ -37,12 +37,14 @@ export class ReportComponent implements OnInit {
      navigator.geolocation.getCurrentPosition(function(position){
      that.lat = position.coords.latitude;
      that.lng = position.coords.longitude;
-     
+     report.setLocation(that.lng, that.lat);
+     that.settingReportService.save(report);
     });
-
+    
+    
     
     console.log(report);
-    that.settingReportService.save(report);
+    
     
     
     

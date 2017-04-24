@@ -6,8 +6,6 @@ import { ReportService } from '../../service/report/report.service';
 
 import { RoleService } from '../../service/role/role.service';
 
-import {MdDialog} from '@angular/material';
-
 
 import { LastReportComponent } from './last-report/last-report.component';
 

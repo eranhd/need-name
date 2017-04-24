@@ -1,4 +1,18 @@
-<div class='popup-over'>
+
+<div class='title'>
+  <span>{{report.date}}</span>
+  <span>{{report.time}}</span>
+  <span>{{report.team.lead}}</span>
+</div>  
+  
+
+  <div class='body'>
+    <div class='report-fields' *ngFor='let item of report.fields'>
+      <span>{{item.name}}</span>
+      <span>: {{item.data}} </span>
+      </div>
+  </div>
+  <!--
   <popup-title 
   [date]='report.date'
   [time]='report.time'
@@ -6,4 +20,4 @@
   </popup-title>
   
   <popup-body [fields]='report.fields'></popup-body>
-</div>
+-->
