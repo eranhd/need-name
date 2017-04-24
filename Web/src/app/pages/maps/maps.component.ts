@@ -18,7 +18,7 @@ export class MapsComponent implements OnInit {
   lng: number = 0;
   lat2: number = 0;
   lng2: number = 0;
-  zoom: number = 10;
+  zoom: number = 13;
 
   reports:Report[];
 
