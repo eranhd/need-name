@@ -36,8 +36,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Project Course Status | ... |
 |mockup|[mockup flow](https://wireframepro.mockflow.com/view/D2231ba9b82f08d9041b6c49928bdc6e1)|
 
-## Please visit our [live application](https://demo.reactstarterkit.com/)
-- Alright, currently only a landing page...
+## Please visit our [live application](https://antidrugsjerusalem.firebaseapp.com)
 
 
 ## Disclaimer
