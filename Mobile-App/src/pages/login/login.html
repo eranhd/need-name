@@ -15,9 +15,9 @@
 
 <ion-content padding>
     <form>
-
         <ion-input type="text" name="email" [(ngModel)]="email" placeholder="email"></ion-input>
+        <p>{{ngModel.email}}</p>
         <ion-input type="password" name="password" [(ngModel)]="password" placeholder="password"></ion-input>
-        <button ion-button (click)="login()">התחבר</button>
+        <button ion-button round block (click)="login()">התחבר</button>
     </form>
 </ion-content>

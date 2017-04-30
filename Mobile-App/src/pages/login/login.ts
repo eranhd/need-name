@@ -22,10 +22,10 @@ export class login {
     console.log('ionViewDidLoad Login');
   }
 
-  login() {
+  public login() {
     this.angfire.auth.login({
-      email: this.email,
-      password: this.password
+      email:'tubulben@gmail.com',// this.email,
+      password: '123456'//this.password
     },
       {
         provider: AuthProviders.Password,
@@ -38,6 +38,7 @@ export class login {
         };
         window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
         this.navCtrl.pop();
+        this.navCtrl.setRoot('HomePage');
       }).catch((error) => {
         console.log(error);
       })

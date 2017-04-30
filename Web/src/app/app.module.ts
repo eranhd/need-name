@@ -39,6 +39,7 @@ import { TitleComponent } from './pages/home/popup-report/title/title.component'
 import { BodyComponent } from './pages/home/popup-report/body/body.component';
 import { DateComponent } from './pages/home/popup-report/title/date/date.component';
 import { TeamComponent } from './pages/home/popup-report/title/team/team.component';
+import { MobileLoginComponent } from './mobile/pages/mobile-login/mobile-login.component';
 
 
 export const firebaseConfig = {
@@ -75,6 +76,7 @@ const myFirebaseAuthConfig = {
     BodyComponent,
     DateComponent,
     TeamComponent,
+    MobileLoginComponent,
     
   ],
   imports: [
