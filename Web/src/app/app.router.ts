@@ -18,6 +18,7 @@ export const router: Routes = [
     {
         path: 'main', component: MainComponent,
         children: [
+            {path: '', redirectTo: 'home', pathMatch: 'full'},
             { path: 'home', component: HomeComponent },
             { path: 'settingReport', component: SettingReportComponent },
             { path: 'addNewUser', component: AddNewUserComponent },
