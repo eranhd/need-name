@@ -3,3 +3,15 @@
     height: 25px;
     border-radius: 5%;
 }
+
+.full-width{
+    width: 100%;
+    text-align: right;
+    
+}
+
+input{
+    font-weight: normal;
+    text-align: right;
+}
+
