@@ -1,8 +1,10 @@
 <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
-  <sebm-google-map-marker *ngFor='let item of reportService.getLastReportArr()' [latitude]="item.loc.lat" [longitude]="item.loc.lng" ></sebm-google-map-marker>
- <!-- <semb-google-map-marker *ngFor='let loc of reportService.lastReportArr()'
-   [latitude]="loc.lat"
-   [longitude]="loc.lng"></semb-google-map-marker>-->
+  <span *ngFor='let item of reportService.getLastReportArr()'>
+    <sebm-google-map-marker *ngIf='item != null' [latitude]="item.loc.lat" [longitude]="item.loc.lng"></sebm-google-map-marker>
+  </span>
+  <!-- 
+   
+ -->
   <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
   <sebm-google-map-marker [latitude]="lat2" [longitude]="lng2"></sebm-google-map-marker>
 </sebm-google-map>

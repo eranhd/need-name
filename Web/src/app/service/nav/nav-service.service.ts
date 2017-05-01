@@ -19,6 +19,8 @@ export class NavServiceService {
     ];
    };
 
+   
+
    public getArrItems(){
      return this.arrItems;
    };

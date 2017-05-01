@@ -7,11 +7,20 @@
       <div class='col-md-6'>
         <form class="form-horizontal">
           <div class="form-group" *ngFor='let item of settingReportService.getInputs()'>
+        
+
             <label class="control-label col-sm-2" [for]=item.id>
               {{item.label}}
             </label>
-            <div class="col-sm-10">
+            <div *ngIf='item.type != "select"' class="col-sm-10">
               <input [type]=item.type class="form-control" [id]=item.id [placeholder]=item.placeHolder>
+            </div>
+
+
+            <div *ngIf='item.type == "select"' class="col-sm-10">
+              <select class="selectpicker" [id]=item.id>
+                <option *ngFor='let val of item.getValues()'>{{val}}</option>
+              </select>
             </div>
           </div>
 

@@ -3,12 +3,14 @@ export class NavItem{
     private id:string;
     private url:string;
     private icon:string;
+    public selected:boolean;
 
     constructor(txt:string, id:string, url:string, icon:string){
         this.txt = txt;
         this.id = 'nav_item_' + id;
         this.url = url;
         this.icon = icon;
+        this.selected = false;
     };
 
     public setIcon(icon){

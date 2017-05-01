@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       console.log(succsess);
       userSer.setRouter(this.router);
       userSer.setUser(firebase.auth().currentUser.uid);
-      this.router.navigate(['home']);
+      this.router.navigate(['main']);
     }).catch((error)=>{
       console.log(error.message);
     });

@@ -3,7 +3,8 @@ export class InputItem{
     constructor(public id:string,
     private type:string,
     public label:string,
-    private placeHolder:string){
+    private placeHolder:string,
+    private valuse?:string[]){
 
     };
 
@@ -16,4 +17,5 @@ export class InputItem{
     public getType(){return this.type};
 
     public getPlaceHolder(){return this.placeHolder;};
+    public getValues():string[]{if(this.valuse) return this.valuse;}
 };

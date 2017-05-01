@@ -23,27 +23,30 @@ export class ReportComponent implements OnInit {
 
     var report:Report;
 
-    var title = (<HTMLInputElement>document.getElementById('title')).value;
+    var title = (<HTMLInputElement>document.getElementById('summary')).value;
 
     report = new Report(new Date(), undefined, title, undefined);
 
     var items = this.settingReportService.getInputs();
     for(var i = 0; i < items.length; i++){
-      if(items[i].id != 'title')
+      if(items[i].id != 'summary')
         report.addFiled(undefined, items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value);
     }
     
     var that = this;
+
+    
      navigator.geolocation.getCurrentPosition(function(position){
      that.lat = position.coords.latitude;
      that.lng = position.coords.longitude;
      report.setLocation(that.lng, that.lat);
      that.settingReportService.save(report);
+     console.log(report);
     });
     
     
     
-    console.log(report);
+    
     
     
     

@@ -1,94 +1,102 @@
 import { Team } from './Team';
 
-export class Report{
+export class Report {
 
-    private id:string;
-    public date:string;
-    public time:string;
-    public team:Team;
-    public location:string;
-    public loc:Location;
-    public title:string;
-    public fields:ReportField[];
-    
+    private id: string;
+    public date: string;
+    public time: string;
+    public team: Team;
+    public location: string;
+    public loc: Location;
+    public title: string;
+    public fields: ReportField[];
 
-    constructor(date:Date, team?:Team, title?:string, fields?:ReportField[]){
+
+    constructor(date: Date, team?: Team, title?: string, fields?: ReportField[]) {
         this.date = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
         this.time = date.getHours() + ':' + date.getMinutes();
         this.location = 'ירושלים';
-        if(team)
+        if (team)
             this.team = team;
-        else{
+        else {
             this.team = new Team();
         }
 
-        if(title)
+        if (title)
             this.title = title;
-        else    
+        else
             this.title = '';
-        
-        if(fields)
+
+        if (fields)
             this.fields = fields;
         else
             this.fields = [];
         this.id = '5';
     };
 
-    public addFiled(field?:ReportField, name?:string, data?:string){
-        if(!field)
+    public addFiled(field?: ReportField, name?: string, data?: string) {
+        if (!field)
             this.fields.push(new ReportField(name, data));
         else
             this.fields.push(field);
     }
 
-    public setTitle(str){
+    public setTitle(str) {
         this.title = str;
     }
 
-    
-    public getdate() : string {
+
+    public getdate(): string {
         return this.date;
     }
 
-    
-    public gettime() : string {
+
+    public gettime(): string {
         return this.time;
     }
 
-    
-    public getlocation() : string {
+
+    public getlocation(): string {
         return this.location;
     }
-    
-    
 
-    public getSummary(){
+
+
+    public getSummary() {
         var str = 'בתאריך ' + this.date + ', שעה' + this.time;
-        str +=  "ב" + this.location;
+        str += "ב" + this.location;
         str += ', ' + this.title;
         return str;
     }
 
-    public setLocation(lng, lat){
+    public setLocation(lng, lat) {
         this.loc = new Location(lng, lat);
+        this.location = this.loc.getLocationName();
     }
 }
 
 
-export class ReportField{
+export class ReportField {
 
-    constructor(public name:string,
-                public data:string){
+    constructor(public name: string,
+        public data: string) {
 
     }
 
-    public toString(){
+    public toString() {
         return this.name + ': ' + this.data;
     }
 }
 
-export class Location{
-    constructor(public lng, public lat){
+export class Location {
+    constructor(public lng, public lat) {
 
+    }
+
+    getLocationName(): string {
+        let name = '';
+        if(this.lat > 31.7683967 - 0.001 && this.lat < 31.7683967 + 0.001 && this.lng > 35.1938181 - 0.001 && this.lng < 35.1938181 + 0.001)
+            name = 'רמת בית הכרם';
+        return name;
     }
 }

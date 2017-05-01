@@ -1,3 +1,17 @@
-<p>
-  main works!
-</p>
+<!--<md-sidenav-container class="container div_sidenav" (mouseover)="sidenav.open()" (mouseout)='sidenav.close()'>
+  <md-sidenav #sidenav class="sidenav md-sidenav-right">
+    <app-nav></app-nav>
+  </md-sidenav>
+</md-sidenav-container>
+-->
+
+<app-nav></app-nav>
+
+
+<div class='container'>
+    <app-header></app-header>
+  </div>  
+
+<div class='container' align='right'>
+  <router-outlet></router-outlet>
+</div>

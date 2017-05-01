@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Report } from '../../../models/Report';
+import { MdDialogModule } from '@angular/material';
 
 
 @Component({
@@ -11,15 +12,32 @@ export class LastReportComponent implements OnInit {
 
   @Input() report:Report;
   private showPopup:boolean;
-  constructor() { 
+  constructor(public dialog:MdDialogModule) { 
     this.showPopup = false;
   }
 
   private setPopup(){
-    this.showPopup = !this.showPopup;
+    
+  /*  console.log(Report);
+    this.showPopup = !this.showPopup;*/
+    /*this.dialog.open(DialogLastReport,{
+      position: 'absolute',
+      width: '50%',
+      height: '50%'
+    });*/
   }
 
   ngOnInit() {
   }
+
+}
+
+
+@Component({
+  selector: 'md-dialog-last-report',
+  templateUrl: './dialog.html'
+})
+
+export class DialogLastReport{
 
 }

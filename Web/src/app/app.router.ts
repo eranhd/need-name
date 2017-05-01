@@ -1,5 +1,5 @@
-import {ModuleWithProviders} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -12,19 +12,24 @@ import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.comp
 import { MapsComponent } from './pages/maps/maps.component';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 
-export const router:Routes = [
-    {path: '', redirectTo:'login', pathMatch:'full'},
-    {path: 'login', component:LoginComponent},
-    {path: 'home', component:HomeComponent},
-    {path: 'main', component:MainComponent},
-    {path: 'settingReport', component:SettingReportComponent},
-    {path: 'addNewUser', component:AddNewUserComponent},
-    {path: 'report' , component:ReportComponent},
-    {path: 'mobile_main', component:MobileMainComponent},
-    {path: 'maps', component:MapsComponent},
-    {path: 'graphs', component:GraphsComponent}
+export const router: Routes = [
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    {
+        path: 'main', component: MainComponent,
+        children: [
+            { path: 'home', component: HomeComponent },
+            { path: 'settingReport', component: SettingReportComponent },
+            { path: 'addNewUser', component: AddNewUserComponent },
+            { path: 'report', component: ReportComponent }, 
+            { path: 'maps', component: MapsComponent },
+            { path: 'graphs', component: GraphsComponent }
+        ]
+    },
+    { path: 'mobile_main', component: MobileMainComponent },
+
 
 
 ];
 
-export const routes:ModuleWithProviders = RouterModule.forRoot(router);
+export const routes: ModuleWithProviders = RouterModule.forRoot(router);

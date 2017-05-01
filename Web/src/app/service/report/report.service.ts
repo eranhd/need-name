@@ -12,7 +12,7 @@ export class ReportService {
 
   constructor(private af: AngularFire) {
     this.lastReportArr = [];
-    
+
   };
 
   public startShift(teamMembers: string) {
@@ -32,8 +32,10 @@ export class ReportService {
       // console.log(snapshot);
       for (var key in snapshot) {
         //console.log(snapshot[key]);
-        that.lastReportArr.push(snapshot[key]);
-        table.addRow([snapshot[key].date, snapshot[key].time, snapshot[key].location, i]);
+       // if (snapshot[key] != null) {
+          that.lastReportArr.push(snapshot[key]);
+         // table.addRow([snapshot[key].date, snapshot[key].time, snapshot[key].location, i]);
+        //}
         i++;
       }
       // console.log(this.lastReportArr);
@@ -43,7 +45,7 @@ export class ReportService {
   };
 
   public getLastReportArr(): Report[] {
-    
+
     return this.lastReportArr;
   }
 

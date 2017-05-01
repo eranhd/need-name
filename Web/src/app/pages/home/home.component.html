@@ -2,15 +2,18 @@
 
 
   <div class='col-md-4'>
+    <h1>אירועים אחרונים</h1>
     <span class='last-repor-head col-md-4 col-xs-4' *ngFor='let item of lastReport.getHead()'>{{item}}</span>
 
 
+    
     <app-last-report *ngFor='let item of reportService.getLastReportArr()' [report]='item'>
     </app-last-report>
   </div>
 
 
   <span class='col-md-4'>
+    <h1>מפת אירועים</h1>
       <app-maps></app-maps>
     </span>
 

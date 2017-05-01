@@ -29,11 +29,11 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MapsComponent } from './pages/maps/maps.component';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdDialog } from '@angular/material';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
 import { StartShiftComponent } from './pages/report/start-shift/start-shift.component';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
-import { LastReportComponent } from './pages/home/last-report/last-report.component';
+import { LastReportComponent,  DialogLastReport } from './pages/home/last-report/last-report.component';
 import { PopupReportComponent } from './pages/home/popup-report/popup-report.component';
 import { TitleComponent } from './pages/home/popup-report/title/title.component';
 import { BodyComponent } from './pages/home/popup-report/body/body.component';
@@ -77,6 +77,7 @@ const myFirebaseAuthConfig = {
     DateComponent,
     TeamComponent,
     MobileLoginComponent,
+    DialogLastReport
     
   ],
   imports: [
@@ -102,7 +103,10 @@ const myFirebaseAuthConfig = {
     RoleService,
     ReportService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    DialogLastReport
+  ]
 })
 export class AppModule {
   constructor(){

@@ -1,6 +1,30 @@
-      <button class='button_nav_row' *ngFor='let item of navSer.getArrItems()' md-button [routerLink]=item.getUrl()>
+<div class='sidenav_container'
+  (mouseenter)='open = true'
+  (mouseleave)='open = false'>
+
+  <div class='btn_nav' 
+  *ngFor='let item of navSer.getArrItems()'
+  [class.selected]='item.selected'
+  [routerLink]=item.getUrl()
+  (click)='item.selected = true'>
+
+    <span class='sidenav_text' *ngIf='open'> {{item.getTxt()}} </span>
+
+    <md-icon *ngIf='item.getIcon() != ""'>
+      {{item.getIcon()}}
+    </md-icon> 
+    
+  </div>
+</div>
+
+
+<!--
+
+<button class='button_nav_row' *ngFor='let item of navSer.getArrItems()' md-button [routerLink]=item.getUrl()>
         <md-icon *ngIf='item.getIcon() != ""'>
           {{item.getIcon()}}
         </md-icon> 
         {{item.getTxt()}}
       </button>
+
+      -->

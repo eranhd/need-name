@@ -12,7 +12,7 @@ export class AddNewUserComponent implements OnInit {
 
    }
 
-   public signIn(){
+   public signup(){
      var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
      this.manageUsers.signIn(email, password);
    };
