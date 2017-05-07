@@ -21,11 +21,11 @@ export class LoginComponent implements OnInit {
   title:string = "התחברות למערכת";
 
 
-  constructor(private router:Router, 
-    private userServ:UserService,
-    private role:RoleService,
-    private af:AngularFire,
-    private userService:UserService) { 
+  constructor(public router:Router, 
+    public userServ:UserService,
+    public role:RoleService,
+    public af:AngularFire,
+    public userService:UserService) { 
     //this.signOut();
     this.signIn();
   }

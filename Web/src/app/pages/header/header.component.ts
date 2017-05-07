@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit {
   index:number;
 
 
-  constructor(private userService:UserService, 
-              private reportService:ReportService) { 
+  constructor(public userService:UserService, 
+              public reportService:ReportService) { 
     
     this.index = 0;
     var that = this;

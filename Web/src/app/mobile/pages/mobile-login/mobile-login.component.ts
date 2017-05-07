@@ -19,9 +19,9 @@ export class MobileLoginComponent implements OnInit {
 
 
   constructor(private router:Router, 
-    private userServ:UserService,
+    public userServ:UserService,
     //private role:RoleService,
-    private af:AngularFire) { 
+    public af:AngularFire) { 
     //this.signOut();
     this.signIn();
   }

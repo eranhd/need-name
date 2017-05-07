@@ -11,10 +11,10 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class NavComponent implements OnInit {
 
-  private navSer:NavServiceService;
-  private open:boolean;
-  constructor(private userService:UserService,
-  private af:AngularFire) { 
+  public navSer:NavServiceService;
+  public open:boolean;
+  constructor(public userService:UserService,
+  public af:AngularFire) { 
     this.navSer = new NavServiceService();
     this.open = false;
   }

@@ -8,7 +8,7 @@ import { ManageUserService } from '../../service/manage-users/manage-user.servic
 })
 export class AddNewUserComponent implements OnInit {
 
-  constructor(private manageUsers:ManageUserService) {
+  constructor(public manageUsers:ManageUserService) {
 
    }
 
@@ -17,6 +17,9 @@ export class AddNewUserComponent implements OnInit {
      this.manageUsers.signUp(email, password);
    };
 
+   clear(){
+     
+   }
   ngOnInit() {
   }
 

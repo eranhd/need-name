@@ -15,16 +15,16 @@ import { LastReportComponent } from './last-report/last-report.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private lastReport:TableItem;
-  private hotArea:TableItem;
-  private nowActive:TableItem;
+  public lastReport:TableItem;
+  public hotArea:TableItem;
+  public nowActive:TableItem;
 
-  private selectedTitle:string;
-  private selectedBody:string;
+  public selectedTitle:string;
+  public selectedBody:string;
 
-  constructor(private userService:UserService, 
-              private reportService:ReportService,
-              private router:Router,
+  constructor(public userService:UserService, 
+              public reportService:ReportService,
+              public router:Router,
   ) 
   {
     /*if(!this.userService.isLogin())

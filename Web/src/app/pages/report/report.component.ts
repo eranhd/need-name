@@ -13,8 +13,8 @@ export class ReportComponent implements OnInit {
   private lat:number;
   private lng:number;
 
-  constructor(private settingReportService:SettingReportService, 
-  private appComp:AppComponent) {
+  constructor(public settingReportService:SettingReportService, 
+  public appComp:AppComponent) {
     this.lat = 0;
     this.lng = 0;
    }
