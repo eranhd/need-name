@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router, 
     private userServ:UserService,
     private role:RoleService,
-    private af:AngularFire) { 
+    private af:AngularFire,
+    private userService:UserService) { 
     //this.signOut();
     this.signIn();
   }
@@ -35,10 +36,9 @@ export class LoginComponent implements OnInit {
       email:'eranm22@gmail.com',//email:email, 
       password:'111111'//password:password
     }).then((succsess)=>{
-      var userSer:UserService = new UserService();
+      //var userSer:UserService = new UserService();
       console.log(succsess);
-      userSer.setRouter(this.router);
-      userSer.setUser(firebase.auth().currentUser.uid);
+      this.userService.setUser(firebase.auth().currentUser.uid);
       this.router.navigate(['main']);
     }).catch((error)=>{
       console.log(error.message);

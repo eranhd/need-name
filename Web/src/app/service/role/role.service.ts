@@ -9,7 +9,7 @@ export class RoleService {
 
   userService:UserService;
   constructor() {
-    this.userService = new UserService();
+   // this.userService = new UserService();
    };
 
    public canDirect(path){

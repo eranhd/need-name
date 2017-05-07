@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router }    from '@angular/router';
 import { User } from '../../models/User';
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { FirebaseService } from '../firebase/firebase.service';
 
 @Injectable()
 export class UserService{
@@ -11,7 +12,7 @@ export class UserService{
   private router:Router;
   
   
-  constructor() {   
+  constructor(private fireService:FirebaseService) {   
     this.userLogin = true;
   };
 
@@ -21,6 +22,12 @@ export class UserService{
     this.item.update({'details' : this.user.getUser(id)});//neew to get the user from firebase
     console.log('write');
     this.userLogin = true;
+  }
+
+
+  public addSon(user_id:string){
+    this.user.setSon(user_id);
+    this.fireService.updateUser(this.user);
   }
 
   public setRouter(r:Router){

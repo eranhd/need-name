@@ -5,7 +5,7 @@ export class User{
     private name:string;
     private photoUrl:string;
     private role:Role;
-    private sons:User[];
+    private _sons:string[];
 
     constructor(id?:string){
         if(id)
@@ -19,8 +19,16 @@ export class User{
             name : 'eran',
             photoUrl : null,
             role : new Role(1, 'admin'),
-            sons : [null]
+            _sons : [null]
         };
+    }
+
+    public setSon(son:string){
+        this._sons.push(son);
+    }
+
+    get son(){
+        return this._sons;
     }
 
 

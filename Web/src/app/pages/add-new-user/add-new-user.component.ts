@@ -14,7 +14,7 @@ export class AddNewUserComponent implements OnInit {
 
    public signup(){
      var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
-     this.manageUsers.signIn(email, password);
+     this.manageUsers.signUp(email, password);
    };
 
   ngOnInit() {

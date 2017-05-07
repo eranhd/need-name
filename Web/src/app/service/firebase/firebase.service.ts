@@ -2,19 +2,22 @@ import { Injectable } from '@angular/core';
 import { auth, database } from 'firebase';
 import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
-import { SettingReportService } from '../setting-report/setting-report.service'
+import { SettingReportService } from '../setting-report/setting-report.service';
+import { User } from '../../models/User';
+import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 
 @Injectable()
 export class FirebaseService {
 
-
+  private itemToSave: FirebaseListObservable<any>;
   private database;
   private auth;
 
-  constructor() {
+  constructor(private af: AngularFire) {
     /*this.initFirebase();
     this.database = firebase.database();
     this.auth = firebase.auth();*/
+    this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
    };
 
    public getDatabase(){return this.database;};
@@ -52,6 +55,9 @@ export class FirebaseService {
     });
    }
 
+   updateUser(user){
+     this.itemToSave.update('details', user);
+   }
 
    public initFirebase(){
      var config = {
