@@ -17,7 +17,7 @@ export class FirebaseService {
     /*this.initFirebase();
     this.database = firebase.database();
     this.auth = firebase.auth();*/
-    this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
+    //this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
    };
 
    public getDatabase(){return this.database;};
@@ -35,10 +35,10 @@ export class FirebaseService {
     firebase.auth().onAuthStateChanged(function(user){
       if(user){
         //user login
-        var userSer:UserService;
-        userSer = new UserService();
-        userSer.setUserLogin(true);
-        console.log('login');
+        //var userSer:UserService;
+        //userSer = new UserService();
+        //userSer.setUserLogin(true);
+        //console.log('login');
 
       }
       else{
@@ -49,6 +49,7 @@ export class FirebaseService {
    };
 
    public getReportFields(){
+     this.itemToSave = this.af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
      firebase.database().ref('report-fields').once('value').then(function(snapshot) {
      // var settServ:SettingReportService = new SettingReportService(this);
       //settServ.inputs =  snapshot.val();      
