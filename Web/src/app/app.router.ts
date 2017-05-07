@@ -11,7 +11,7 @@ import { ReportComponent } from './pages/report/report.component';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
 import { MapsComponent } from './pages/maps/maps.component';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
-
+import { MobileLoginComponent} from './mobile/pages/mobile-login/mobile-login.component';
 export const router: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
@@ -27,7 +27,8 @@ export const router: Routes = [
             { path: 'graphs', component: GraphsComponent }
         ]
     },
-    { path: 'mobile_main', component: MobileMainComponent },
+    { path: 'mobile_login', component: MobileLoginComponent},
+     { path: 'mobile_main', component: MobileMainComponent },
 
 
 
