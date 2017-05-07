@@ -5,7 +5,8 @@ export class InputItem{
     public label:string,
     private placeHolder:string,
     private valuse?:string[]){
-
+        if(!valuse)
+            this.valuse = null;
     };
 
     public getLabel(){

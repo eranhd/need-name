@@ -23,8 +23,8 @@ export class MapsComponent implements OnInit {
   reports:Report[];
 
   constructor(maps:MapsService, 
-              private userService:UserService,
-              private reportService:ReportService,) { 
+              public userService:UserService,
+              public reportService:ReportService,) { 
     
     this.reports = this.reportService.getLastReportArr();
     

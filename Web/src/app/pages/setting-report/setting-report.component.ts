@@ -7,7 +7,7 @@ import { SettingReportService } from '../../service/setting-report/setting-repor
 })
 export class SettingReportComponent implements OnInit {
 
-  constructor(private settingReportService:SettingReportService) {
+  constructor(public settingReportService:SettingReportService) {
    };
 
    public addToInputItem(){

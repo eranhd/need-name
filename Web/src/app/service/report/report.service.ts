@@ -22,23 +22,15 @@ export class ReportService {
   public getLastReport(table: TableItem) {
 
     this.lastReport = this.af.database.object('users/' + firebase.auth().currentUser.uid + '/reports');
-
-    //console.log('users/' + firebase.auth().currentUser.uid + '/reports');
-
-    var that = this;
+    
     this.lastReport.subscribe(snapshot => {
-      that.lastReportArr = [];
+      this.lastReportArr = [];
       var i = 0;
-      // console.log(snapshot);
+      console.log(snapshot);
       for (var key in snapshot) {
-        //console.log(snapshot[key]);
-       // if (snapshot[key] != null) {
-          that.lastReportArr.push(snapshot[key]);
-         // table.addRow([snapshot[key].date, snapshot[key].time, snapshot[key].location, i]);
-        //}
+        this.lastReportArr.push(snapshot[key]);
         i++;
       }
-      // console.log(this.lastReportArr);
     });
 
     return this.lastReportArr;

@@ -9,7 +9,7 @@
           <div class="form-group" *ngFor='let item of settingReportService.getInputs()'>
             
             <md-input-container class='full-width'>
-              <input mdInput [placeholder]=item.placeHolder>  
+              <input mdInput [placeholder]=item.placeHolder [id]=item.id>  
             </md-input-container>
           </div>
             

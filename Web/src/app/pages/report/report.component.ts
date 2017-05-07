@@ -13,8 +13,8 @@ export class ReportComponent implements OnInit {
   private lat:number;
   private lng:number;
 
-  constructor(private settingReportService:SettingReportService, 
-  private appComp:AppComponent) {
+  constructor(public settingReportService:SettingReportService, 
+  public appComp:AppComponent) {
     this.lat = 0;
     this.lng = 0;
    }
@@ -33,14 +33,14 @@ export class ReportComponent implements OnInit {
         report.addFiled(undefined, items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value);
     }
     
-    var that = this;
+    
 
     
-     navigator.geolocation.getCurrentPosition(function(position){
-     that.lat = position.coords.latitude;
-     that.lng = position.coords.longitude;
-     report.setLocation(that.lng, that.lat);
-     that.settingReportService.save(report);
+     navigator.geolocation.getCurrentPosition((position)=>{
+     this.lat = position.coords.latitude;
+     this.lng = position.coords.longitude;
+     report.setLocation(this.lng, this.lat);
+     this.settingReportService.save(report);
      console.log(report);
     });
     
