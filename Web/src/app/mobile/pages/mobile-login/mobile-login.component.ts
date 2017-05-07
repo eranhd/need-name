@@ -32,7 +32,7 @@ export class MobileLoginComponent implements OnInit {
       email:this.email, 
       password:this.password
     }).then((succsess)=>{
-      var userSer:UserService = new UserService();
+      
       console.log(succsess);
      // userSer.setRouter(this.router);
      // userSer.setUser(firebase.auth().currentUser.uid);

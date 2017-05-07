@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       password:'111111'//password:password
     }).then((succsess)=>{
       //var userSer:UserService = new UserService();
-      console.log(succsess);
+      //console.log(succsess);
       this.userService.setUser(firebase.auth().currentUser.uid);
       this.router.navigate(['main']);
     }).catch((error)=>{

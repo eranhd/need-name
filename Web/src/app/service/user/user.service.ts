@@ -19,15 +19,22 @@ export class UserService{
   public setUser(id:string){
     this.user = new User(id);
     this.item = firebase.database().ref('/users/' + firebase.auth().currentUser.uid);
-    this.item.update({'details' : this.user.getUser(id)});//neew to get the user from firebase
-    console.log('write');
     this.userLogin = true;
+    this.updateUser();
+  }
+
+  updateUser(){
+    this.item.update({'details' : this.user});//new to get the user from firebase
+    console.log('write');
   }
 
 
   public addSon(user_id:string){
+    
     this.user.setSon(user_id);
-    this.fireService.updateUser(this.user);
+    console.log('user:');
+    /*console.log(this.user);
+    this.fireService.updateUser(this.user);*/
   }
 
   public setRouter(r:Router){

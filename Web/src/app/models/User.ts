@@ -10,17 +10,15 @@ export class User{
     constructor(id?:string){
         if(id)
             this.getUser(id);
+        this.name = 'eran';
+        this.photoUrl = null;
+        this.role = new Role(1, 'admin');
+        this._sons = []; 
     }
 
 
     public getUser(id:string){
-        return {
-            id : id,
-            name : 'eran',
-            photoUrl : null,
-            role : new Role(1, 'admin'),
-            _sons : [null]
-        };
+        
     }
 
     public setSon(son:string){
