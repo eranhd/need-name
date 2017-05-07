@@ -26,7 +26,7 @@ export class SettingReportService {
       this.inputs = snapshot.val().report_fields;
       if (this.inputs == null)
         this.inputs = [];
- this.inputs.unshift(new InputItem('summary', 'text', 'תמצית של האירוע', 'תמצית של האירוע'));
+    this.inputs.unshift(new InputItem('summary', 'text', 'תמצית של האירוע', 'תמצית של האירוע'));
   //    this.inputs.unshift(new InputItem('location_name', 'select', "שם המיקום", "שם המיקום", ['בחר מיקום', 'פסגת זאב']));
     });
 

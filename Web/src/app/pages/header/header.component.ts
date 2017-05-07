@@ -23,17 +23,18 @@ export class HeaderComponent implements OnInit {
     this.index = 0;
     var that = this;
     var currArr:Report[] = that.reportService.getLastReportArr();
-   // console.log(currArr);
     var curr = '';
 
     setInterval(function(){
       if( that.reportService.getLastReportArr().length != 0 ){
         currArr = that.reportService.getLastReportArr();
-        //console.log(currArr);
+        
         that.index++;
         that.index %= currArr.length;
-        //console.log(that.reportService.getLastReportArr(that.index));
-        that.curr = currArr[that.index].title;
+        
+        if(currArr[that.index] != null)
+          if(currArr[that.index].title)
+            that.curr = currArr[that.index].title;
       }
     },3000)
   }
