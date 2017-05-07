@@ -23,20 +23,23 @@ export class SettingReportService {
 
     this.item.subscribe(snapshot => {
 
-      this.inputs = snapshot.val().report_fields;
-      if (this.inputs == null)
-        this.inputs = [];
-    this.inputs.unshift(new InputItem('summary', 'text', 'תמצית של האירוע', 'תמצית של האירוע'));
-  //    this.inputs.unshift(new InputItem('location_name', 'select', "שם המיקום", "שם המיקום", ['בחר מיקום', 'פסגת זאב']));
+      if (snapshot.val()) {
+        this.inputs = snapshot.val().report_fields;
+        if (this.inputs == null)
+          this.inputs = [];
+      }
+      else
+        this.inputs.unshift(new InputItem('summary', 'text', 'תמצית של האירוע', 'תמצית של האירוע'));
+      //    this.inputs.unshift(new InputItem('location_name', 'select', "שם המיקום", "שם המיקום", ['בחר מיקום', 'פסגת זאב']));
     });
 
   };
 
   public addInputItem(id: string, type: string, label: string, placeHolder: string) {
-    console.log(this.getInputs());
-    this.getInputs();
+    //this.getInputs();
     var obj = new InputItem(id, type, label, placeHolder);
     this.inputs.push(obj);
+    console.log(this.inputs);
     this.item.set({ 'report_fields': this.inputs });
   };
 
