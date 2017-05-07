@@ -21,7 +21,7 @@ export class User{
         
     }
 
-    public setSon(son:string){
+    public addSon(son:string){
         this._sons.push(son);
     }
 
@@ -36,6 +36,7 @@ export class Role{
 
     private type:number;
     private name:string;
+    
 
     constructor(type:number, name:string){
         this.type = type;

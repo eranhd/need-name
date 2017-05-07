@@ -16,14 +16,18 @@ export class UserService{
     this.userLogin = true;
   };
 
-  public setUser(id:string){
+  public setUser(id:string, u?){
     this.user = new User(id);
+    if(u){
+      //this.user
+    }
     this.item = firebase.database().ref('/users/' + firebase.auth().currentUser.uid);
     this.userLogin = true;
     this.updateUser();
   }
 
   updateUser(){
+    console.log(this.user);
     this.item.update({'details' : this.user});//new to get the user from firebase
     console.log('write');
   }
@@ -31,8 +35,9 @@ export class UserService{
 
   public addSon(user_id:string){
     
-    this.user.setSon(user_id);
+    this.user.addSon(user_id);
     console.log('user:');
+    this.updateUser();
     /*console.log(this.user);
     this.fireService.updateUser(this.user);*/
   }
