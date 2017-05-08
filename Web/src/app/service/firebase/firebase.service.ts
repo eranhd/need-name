@@ -4,7 +4,7 @@ import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
 import { SettingReportService } from '../setting-report/setting-report.service';
 import { User } from '../../models/User';
-import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable, FirebaseListObservable,  } from 'angularfire2';
 
 @Injectable()
 export class FirebaseService {

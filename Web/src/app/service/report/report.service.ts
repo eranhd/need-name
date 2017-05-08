@@ -22,7 +22,8 @@ export class ReportService {
   public getLastReport(table: TableItem) {
 
     this.lastReport = this.af.database.object('users/' + firebase.auth().currentUser.uid + '/reports');
-    
+
+
     this.lastReport.subscribe(snapshot => {
       this.lastReportArr = [];
       var i = 0;
@@ -32,6 +33,12 @@ export class ReportService {
         i++;
       }
     });
+
+    let sons = this.af.database.object('users/' + firebase.auth().currentUser.uid + '/details/_sons');
+    sons.subscribe(snapshot=>{
+      console.log(snapshot);
+    });
+
 
     return this.lastReportArr;
   };
