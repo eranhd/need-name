@@ -22,12 +22,12 @@ export class MobileLoginComponent implements OnInit {
     public af:AngularFire,
     public userService:UserService,) { 
     //this.signOut();
-    this.signIn();
+    //this.signIn();
   }
 
   public signIn(){
-    var email:string = (<HTMLInputElement>document.getElementById('input_username')).value
-    var password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
+    let email:string = (<HTMLInputElement>document.getElementById('input_username')).value
+    let password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
     this.af.auth.login({
       email:email, 
       password:password
