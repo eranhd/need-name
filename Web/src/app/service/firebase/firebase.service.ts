@@ -19,7 +19,6 @@ export class FirebaseService {
     this.auth = firebase.auth();*/
     //this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
    };
-
    public getDatabase(){return this.database;};
    public getAuth(){return this.auth;};
 

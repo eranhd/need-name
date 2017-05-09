@@ -26,14 +26,19 @@ export class LoginComponent implements OnInit {
     public role:RoleService,
     public af:AngularFire,
     public userService:UserService) { 
+      if(window.innerWidth < 800){
+        this.router.navigate(['mobile_login']);
+      }
+      //if()
     //this.signOut();
-    this.signIn();
+    else
+      this.signIn();
   }
 
   public signIn(){
     //var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
     this.af.auth.login({
-      email:'eranm22@gmail.com',//email:email, 
+      email:'b@gmail.com',//email:email, 
       password:'111111'//password:password
     }).then((succsess)=>{
       //var userSer:UserService = new UserService();
