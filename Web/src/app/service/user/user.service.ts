@@ -6,30 +6,34 @@ import { FirebaseService } from '../firebase/firebase.service';
 
 @Injectable()
 export class UserService{
-  private item;
+  private item: FirebaseObjectObservable<any>;
   user:User;
   private userLogin:boolean;
   private router:Router;
   
   
-  constructor(private fireService:FirebaseService) {   
+  constructor(private fireService:FirebaseService, public af:AngularFire) {   
     this.userLogin = true;
   };
 
-  public setUser(id:string, u?){
+  public setUser(id:string, u?:User){
     this.user = new User(id);
     if(u){
-      //this.user
+      this.user = u;
     }
-    this.item = firebase.database().ref('/users/' + firebase.auth().currentUser.uid);
+    this.item = this.af.database.object('/users/' + firebase.auth().currentUser.uid + '/details');
+    this.item.subscribe((snapshot)=>{
+      console.log(snapshot)
+      this.user = snapshot;
+    });
     this.userLogin = true;
     this.updateUser();
   }
 
   updateUser(){
-    console.log(this.user);
-    this.item.update({'details' : this.user});//new to get the user from firebase
-    console.log('write');
+    /*console.log(this.user);
+    this.item.update(this.user);//new to get the user from firebase
+    console.log('write');*/
   }
 
 
@@ -56,6 +60,10 @@ export class UserService{
   public isLogin(){
     return this.userLogin;
   };
+
+  get sons(){
+    return this.user.son;
+  }
 
 
 };

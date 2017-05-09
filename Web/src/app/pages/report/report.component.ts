@@ -42,6 +42,8 @@ export class ReportComponent implements OnInit {
      report.setLocation(this.lng, this.lat);
      this.settingReportService.save(report);
      console.log(report);
+    }, (error)=>{
+      alert("אנא הפעל מיקום");
     });
     
     
