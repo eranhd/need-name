@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SettingReportService } from '../../service/setting-report/setting-report.service';
 import { AppComponent } from '../../app.component';
 import { Report } from '../../models/Report';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-report',
@@ -14,7 +15,7 @@ export class ReportComponent implements OnInit {
   private lng:number;
 
   constructor(public settingReportService:SettingReportService, 
-  public appComp:AppComponent) {
+  public appComp:AppComponent,private router:Router) {
     this.lat = 0;
     this.lng = 0;
    }
@@ -48,11 +49,11 @@ export class ReportComponent implements OnInit {
     
     
     
-    /*
+    
        if(window.innerWidth < 800){
         this.router.navigate(['mobile_main']);
       }
-    */
+    
     
     
   };

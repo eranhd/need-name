@@ -16,6 +16,9 @@ export class MobileMainComponent implements OnInit {
     this.router.navigate(['report']);
   }
 
+ public buttonStartPatrol(){
+    this.router.navigate(['start_pattrol']);
+  }
 
   ngOnInit() {
   }

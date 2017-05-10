@@ -31,7 +31,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MapsComponent } from './pages/maps/maps.component';
 import { MaterialModule, MdDialog } from '@angular/material';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
-import { StartShiftComponent } from './pages/report/start-shift/start-shift.component';
+//import { StartShiftComponent } from './pages/report/start-shift/start-shift.component';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 import { LastReportComponent,  DialogLastReport } from './pages/home/last-report/last-report.component';
 import { PopupReportComponent } from './pages/home/popup-report/popup-report.component';
@@ -41,6 +41,7 @@ import { DateComponent } from './pages/home/popup-report/title/date/date.compone
 import { TeamComponent } from './pages/home/popup-report/title/team/team.component';
 import { MobileLoginComponent } from './mobile/pages/mobile-login/mobile-login.component';
 import { MobileSpotComponent } from './mobile/pages/mobile-spot/mobile-spot.component';
+import { StartPatrolComponent } from './mobile/pages/start-patrol/start-patrol.component';
 
 
 export const firebaseConfig = {
@@ -69,7 +70,7 @@ const myFirebaseAuthConfig = {
     ReportComponent,
     MapsComponent,
     MobileMainComponent,
-    StartShiftComponent,
+  //  StartShiftComponent,
     GraphsComponent,
     LastReportComponent,
     PopupReportComponent,
@@ -79,7 +80,8 @@ const myFirebaseAuthConfig = {
     TeamComponent,
     MobileLoginComponent,
     DialogLastReport,
-    MobileSpotComponent
+    MobileSpotComponent,
+    StartPatrolComponent
     
   ],
   imports: [
