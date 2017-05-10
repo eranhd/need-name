@@ -12,6 +12,7 @@ import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.comp
 import { MapsComponent } from './pages/maps/maps.component';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 import { MobileLoginComponent} from './mobile/pages/mobile-login/mobile-login.component';
+import { MobileSpotComponent} from './mobile/pages/mobile-spot/mobile-spot.component';
 export const router: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
@@ -29,7 +30,8 @@ export const router: Routes = [
     },
     { path: 'mobile_login', component: MobileLoginComponent},
     { path: 'mobile_main', component: MobileMainComponent },
-    { path: 'report', component: ReportComponent }
+    { path: 'report', component: ReportComponent },
+    { path: 'mobile_spot', component: MobileSpotComponent },
 
 ];
 
