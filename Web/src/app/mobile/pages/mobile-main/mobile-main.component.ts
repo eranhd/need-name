@@ -18,6 +18,11 @@ export class MobileMainComponent implements OnInit {
 
  public buttonStartPatrol(){
     this.router.navigate(['start_pattrol']);
+ }
+
+  public buttonAddSpot(){
+    this.router.navigate(['mobile_spot']);
+
   }
 
   ngOnInit() {

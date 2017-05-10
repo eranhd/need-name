@@ -12,7 +12,11 @@ import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.comp
 import { MapsComponent } from './pages/maps/maps.component';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 import { MobileLoginComponent} from './mobile/pages/mobile-login/mobile-login.component';
+
 import { StartPatrolComponent} from './mobile/pages/start-patrol/start-patrol.component'
+
+
+import { MobileSpotComponent} from './mobile/pages/mobile-spot/mobile-spot.component';
 
 export const router: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,7 +36,9 @@ export const router: Routes = [
     { path: 'mobile_login', component: MobileLoginComponent},
     { path: 'mobile_main', component: MobileMainComponent },
     { path: 'report', component: ReportComponent },
-    { path: 'start_pattrol', component: StartPatrolComponent }
+    { path: 'start_pattrol', component: StartPatrolComponent },
+    { path: 'mobile_spot', component: MobileSpotComponent },
+
 
 ];
 
