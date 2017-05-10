@@ -8,23 +8,12 @@ import { Router } from '@angular/router';
 })
 export class MobileMainComponent implements OnInit {
 
-  public hotPressed:boolean;
+  
   constructor(public router:Router) {
-    this.hotPressed = false;
+   
 }
 
-  public buttonAddReport(){
-    this.router.navigate(['report']);
-  }
 
-  public buttonPointPressed(){
-    this.hotPressed = true;
-     this.router.navigate(['mobile_spot']);
-  }
-
-  public buttonPointUnpressed(){
-    this.hotPressed = false;
-  }
 
   ngOnInit() {
   }
