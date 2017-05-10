@@ -40,7 +40,7 @@ import { BodyComponent } from './pages/home/popup-report/body/body.component';
 import { DateComponent } from './pages/home/popup-report/title/date/date.component';
 import { TeamComponent } from './pages/home/popup-report/title/team/team.component';
 import { MobileLoginComponent } from './mobile/pages/mobile-login/mobile-login.component';
-import { MobileSpotComponent } from './mobile/pages/mobile-spot/mobile-spot/mobile-spot.component';
+import { MobileSpotComponent } from './mobile/pages/mobile-spot/mobile-spot.component';
 
 
 export const firebaseConfig = {
