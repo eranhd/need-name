@@ -19,6 +19,7 @@ export class MobileMainComponent implements OnInit {
 
   public buttonPointPressed(){
     this.hotPressed = true;
+     this.router.navigate(['mobile_spot']);
   }
 
   public buttonPointUnpressed(){
