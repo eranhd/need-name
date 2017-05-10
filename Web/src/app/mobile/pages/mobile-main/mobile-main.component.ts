@@ -16,6 +16,9 @@ export class MobileMainComponent implements OnInit {
     this.router.navigate(['report']);
   }
 
+  public buttonAddSpot(){
+    this.router.navigate(['mobile_spot']);
+  }
 
   ngOnInit() {
   }
