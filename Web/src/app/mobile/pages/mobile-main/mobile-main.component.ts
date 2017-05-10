@@ -8,11 +8,13 @@ import { Router } from '@angular/router';
 })
 export class MobileMainComponent implements OnInit {
 
-  
   constructor(public router:Router) {
-   
+    
 }
 
+  public buttonAddReport(){
+    this.router.navigate(['report']);
+  }
 
 
   ngOnInit() {
