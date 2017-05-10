@@ -28,9 +28,8 @@ export const router: Routes = [
         ]
     },
     { path: 'mobile_login', component: MobileLoginComponent},
-     { path: 'mobile_main', component: MobileMainComponent },
-
-
+    { path: 'mobile_main', component: MobileMainComponent },
+    { path: 'report', component: ReportComponent }
 
 ];
 

@@ -24,7 +24,7 @@ export class ReportComponent implements OnInit {
     var report:Report;
 
     var title = (<HTMLInputElement>document.getElementById('summary')).value;
-
+    console.log(title);
     report = new Report(new Date(), undefined, title, undefined);
 
     var items = this.settingReportService.getInputs();
@@ -48,9 +48,11 @@ export class ReportComponent implements OnInit {
     
     
     
-    
-    
-    
+    /*
+       if(window.innerWidth < 800){
+        this.router.navigate(['mobile_main']);
+      }
+    */
     
     
   };
