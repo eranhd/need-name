@@ -6,12 +6,15 @@ md-card{
     border-radius: 15px;
 }
 .btn-start-patrol{
-margin-left: 15%;
+margin-left: 25%;
 }
-
+.kk{
+    padding-left: 3%;
+  /* text-align: center;*/
+}
 .btn-report{
     font-size: 200%;
-    width: 50%;
+    width: 60%;
     text-align: center;
 
 }
@@ -32,5 +35,5 @@ margin-left: 15%;
     font-size: 200%;
     width: 42%;
     height: 100%;
-    margin: 2%;
+    margin: 3%;
 }
