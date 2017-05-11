@@ -1,46 +1,30 @@
 md-card{
+
     text-align: center;
 }
-
-.span_report{
-    background-color: springgreen;  
-    cursor: pointer;
+.btn{
+    border-radius: 15px;
 }
-.span_report:hover{
-    background-color: limegreen;  
+.btn-start-patrol{
+margin-left: 15%;
 }
 
-.span_point_report{
-    background-color: firebrick;
-    color: white;
-    cursor: pointer;
-}
-.span_point_report:hover{
-    background-color: darkred;
-    color: white;
-}
+.btn-report{
+    font-size: 200%;
+    width: 50%;
+    text-align: center;
 
-.span_hot_report{
-    color: white;
-    cursor: pointer;
+}
+.form-actions{
+    margin: 0 ;
+    margin-top: 5%;
+   text-align: center; 
 }
 
-.span_cold_report{
-    color: black;
-    cursor: pointer;
+.btn-lg{
+    height: 70%;
 }
 
-.span_decision_report{
-    background: linear-gradient(90deg, aquamarine 50%, darkred 50%);
-}
-
-
-
-
-.span_start_patrol{
-    background-color: greenyellow
-    
-}
 
 .col-xs-6{
     display: inline-block;  
@@ -48,5 +32,5 @@ md-card{
     font-size: 200%;
     width: 42%;
     height: 100%;
-    margin: 3%;
+    margin: 2%;
 }

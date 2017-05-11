@@ -36,13 +36,8 @@ export const router: Routes = [
     { path: 'mobile_login', component: MobileLoginComponent},
     { path: 'mobile_main', component: MobileMainComponent },
     { path: 'report', component: ReportComponent },
-<<<<<<< HEAD
     { path: 'start_pattrol', component: StartPatrolComponent },
     { path: 'mobile_spot', component: MobileSpotComponent },
-=======
-    { path: 'mobile_spot', component: MobileSpotComponent }
->>>>>>> c632393b4b63295e5bf5ece44f18eb364011184c
-
 
 ];
 
