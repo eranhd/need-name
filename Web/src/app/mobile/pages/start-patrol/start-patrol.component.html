@@ -1,3 +1,21 @@
-<p>
-  start-patrol works!
-</p>
+<div class='container'>
+  <div class='row'>
+  <input type='text' class='form-group' id='teamNumber' placeholder="מספר צוות">
+  <br>
+  <input type='text' class='form-group' id='teamLeader' placeholder="ראש צוות">
+  <br>
+  <input type='number' class='form-group' id='numOfVolunteers' [(ngModel)]="numVolunteers" ng-change='addVolunteers()' placeholder="מספר המתנדבים" >
+ 
+  <br>
+  
+  </div>
+  <div id='volunteers'>
+
+   <input type="text" class="form-group" id="volunteerName1" placeholder="1 מתנדב"><br>
+
+  </div> 
+
+   <button type="button" class="btn btn-addVolunteers" (click)='addVolunteers()'>+</button>
+   <br>
+  <button type="button" class="btn btn-startPatrol" (click)='startPatrol()'>התחל</button>
+</div>
