@@ -1,19 +1,25 @@
 <div class='container'>
   <div class='row'>
-  <input type='text' class='form-group' id='teamNumber' placeholder="מספר צוות">
+  <input type='text' class='form-control' id='teamNumber' placeholder="מספר צוות">
   <br>
-  <input type='text' class='form-group' id='teamLeader' placeholder="ראש צוות">
+  <input type='text' class='form-control' id='teamLeader' placeholder="ראש צוות" [(ngModel)]='team.leader'>
   <br>
-  <input type='number' class='form-group' id='numOfVolunteers' [(ngModel)]="numVolunteers" ng-change='addVolunteers()' placeholder="מספר המתנדבים" >
- 
+  <div class="input-group">
+ <!-- <span class="input-group-btn">
+    <button type="button" class="btn btn-addVolunteers" (click)='addVolunteers()'>+</button>
+  </span>-->
+  <input type='number' class='form-control' id='numOfVolunteers' (focusout)='team.initMembersArray(numOfMembers)' [(ngModel)]="numOfMembers" placeholder="מספר המתנדבים" >
+  </div>
   <br>
   
   </div>
-  <div id='volunteers'>
-   <input type="text" class="form-group" id="volunteerName1" placeholder="1 מתנדב"><br>
-  </div> 
 
-   <button type="button" class="btn btn-addVolunteers" (click)='addVolunteers()'>+</button>
+ <!-- <div class="input-group">  ng-change='addVolunteers()'
+   <input type="text" class="form-control" id="volunteerName1" placeholder="1 מתנדב"><br>
+  </div> -->
+  <div class="input-group">
+   <input *ngFor='let item of team.members' [(ngModel)]="team.members[item.index].name" type="text" class="form-control teamMembersName" placeholder="מתנדב"><br>
+  </div> 
    <br>
   <button type="button" class="btn btn-startPatrol" (click)='startPatrol()'>התחל</button>
 </div>

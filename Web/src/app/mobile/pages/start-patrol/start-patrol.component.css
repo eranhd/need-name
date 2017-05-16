@@ -3,8 +3,7 @@ input{
     text-align: right;
 }
 
-.volunteerName{
-
-     font-weight: normal;
+.form-control{
+    width: 50%;
     text-align: right;
 }
