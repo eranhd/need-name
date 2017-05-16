@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   public signIn(){
     //var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
     this.af.auth.login({
-      email:'b@gmail.com',//email:email, 
+      email:'eranm22@gmail.com',//email:email, 
       password:'111111'//password:password
     }).then((succsess)=>{
       //var userSer:UserService = new UserService();

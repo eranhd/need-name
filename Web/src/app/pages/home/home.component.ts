@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     this.hotArea = new TableItem('hotArea', 2, ['איזור', 'מספר תקריות']);
     this.nowActive = new TableItem('nowActive', 2, ['איזור', 'דוח תחילת משמרת']);
     this.lastReport.getTypeRows();
-    console.log(this.reportService.getLastReport(this.lastReport));
+   console.log(this.reportService.getLastReport());
    };
 
    private lastReportSelected(index){
