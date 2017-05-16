@@ -13,13 +13,25 @@ export class UserService{
   
   
   constructor(private fireService:FirebaseService, public af:AngularFire) {   
-    this.userLogin = true;
+    
   };
 
-  public setUser(id:string, u?:User){
-    this.user = new User(id);
-    if(u){
-      this.user = u;
+  public setUser(id:string, user?:User){
+    
+    if(user){
+      this.user = user;
+      localStorage.setItem('appUser', JSON.stringify(user));
+    }
+    else{
+      let recognizeUser = localStorage.getItem('appUser');
+      console.log(recognizeUser);
+      if(recognizeUser)
+        this.user = JSON.parse(recognizeUser);
+      else{
+        this.user = new User(id);
+        console.log(JSON.stringify(this.user));
+        localStorage.setItem('appUser', JSON.stringify(this.user));
+      }
     }
     this.item = this.af.database.object('/users/' + firebase.auth().currentUser.uid + '/details');
     this.item.subscribe((snapshot)=>{
@@ -47,8 +59,7 @@ export class UserService{
   }
 
   public setRouter(r:Router){
-    this.router = r;
-    r.navigate(['home']);
+    
   }
 
 

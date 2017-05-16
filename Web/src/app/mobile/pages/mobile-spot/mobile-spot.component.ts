@@ -12,4 +12,12 @@ export class MobileSpotComponent implements OnInit {
   ngOnInit() {
   }
 
+  buttonHotSpot(){
+
+  }
+
+  buttonAddSpot(){
+    
+  }
+
 }

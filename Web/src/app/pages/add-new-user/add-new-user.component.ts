@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ManageUserService } from '../../service/manage-users/manage-user.service';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-add-new-user',
@@ -8,8 +9,11 @@ import { ManageUserService } from '../../service/manage-users/manage-user.servic
 })
 export class AddNewUserComponent implements OnInit {
 
-  constructor(public manageUsers:ManageUserService) {
-
+  
+  newUser: User;
+  constructor(public manageUsers:ManageUserService
+              ) {
+      this.newUser = new User();
    }
 
    public signup(){

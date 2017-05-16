@@ -1,11 +1,12 @@
 //this models will describe user class.
 export class User{
 
-    private id:string;
-    private name:string;
-    private photoUrl:string;
-    private role:Role;
-    private _sons:string[];
+    id:string;
+    name:string;
+    photoUrl:string;
+    role:Role;
+    area: string;
+    _sons:string[];
 
     constructor(id?:string){
         if(id)
