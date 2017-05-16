@@ -12,10 +12,27 @@
     width: auto;
 }
 
+/*
+.header{
+    position: fixed;
+    top: 0;
+}*/
+
 md-sidenav{
+    position: fixed;
+    top: 0;
+    right: 0;
     width: 100%;
 }
 
 app-home{
     display: flex;
+}
+
+.body{
+    overflow: hidden;
+}
+
+::-webkit-scrollbar{
+    visibility: hidden;
 }
