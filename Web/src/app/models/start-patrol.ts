@@ -9,7 +9,7 @@ export class startPatrol {
     public location: string;
     public loc: Location;
     public numOfVolunteers:number;
-    public nameOfVolunteers:string[];
+    public nameOfMembers:string[];
 
     constructor(date: Date, teamLeader: string, numOfVolunteers:number , nameOfVolunteers:string[] ) {
         

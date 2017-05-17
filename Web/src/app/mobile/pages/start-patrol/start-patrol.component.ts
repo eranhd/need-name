@@ -13,27 +13,14 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   public numOfMembers:number;
   public teamMember:string[]; 
   team: Team;
-  //arry of volunteers name
- // public numOfVolunteers:number;
+
 
   constructor(public router:Router) {
     this.numOfMembers=0;
     this.team = new Team();
-   // this.teamMember=[];
+
   }
 
-
- // public addVolunteers(){
- //   this.numOfMembers = parseInt((<HTMLInputElement>document.getElementById('numOfVolunteers')).value);
-   // console.log(this.numOfMembers);
-   // var newMember ='<button type="button" class="btn-deleteMember btn-danger" (click)="deleteMember()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button><input _ngcontent-c1 type="text" class="volunteerName" id="volunteerName'+this.numOfMembers+'" placeholder="'+this.numOfMembers+' מתנדב"><br>';
-   // document.getElementById('volunteers').innerHTML += newMember;
-  //    for(var i = 0; i < this.numOfMembers-1; i++){
-   //       var newMember ='<input _ngcontent-c1 type="text" class="form-group" id="volunteerName'+(i+2)+'" placeholder="'+(i+2)+' מתנדב"><br>';
-    //       document.getElementById('volunteers').innerHTML += newMember;
-     //}
-   // };
-   
   private deleteMember(){
 
   };
@@ -41,10 +28,11 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
 
   private startPatrol(){
-   //  for(var i = 0; i < this.numOfMembers; i++){
-
-   //  }
-    console.log(this.team)
+    for(let i =0 ; i< this.team.members.length ; i++){
+      if(this.team.members[i].name == null){
+        console.log("nunu is index"+i+"")
+      }
+    }
   };
 
   ngOnInit() {
@@ -54,10 +42,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(item){
-  //  console.log(item);
-    // if(item){
 
-    // }
   }
 }
 

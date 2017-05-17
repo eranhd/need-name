@@ -1,17 +1,14 @@
 export class Team{
 
-    lead:string;
+    leader:string;
     members:Member[];
+    teamNum:number;
 
 
     constructor(){
-        this.lead = 'leader';
+
     };
 
-    public toString():string
-    {
-        return this.lead + '';
-    }
 
     initMembersArray(num){
         this.members = new Array(num);

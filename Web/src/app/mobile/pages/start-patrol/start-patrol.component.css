@@ -7,3 +7,21 @@ input{
     width: 50%;
     text-align: right;
 }
+
+.teamMembersName{
+    margin: 4px;
+    text-align: right; 
+    width: 64%;
+}
+
+#teamMembersName{
+   text-align: right; 
+   margin-left:57.5%;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-right: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+  border-right: 5px solid #a94442; /* red */
+}
