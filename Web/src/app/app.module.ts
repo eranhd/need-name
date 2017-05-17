@@ -32,6 +32,7 @@ import { MapsComponent } from './pages/maps/maps.component';
 import { MaterialModule, MdDialog } from '@angular/material';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
 //import { StartShiftComponent } from './pages/report/start-shift/start-shift.component';
+import { ShiftService } from './service/shift/shift.service';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 import { LastReportComponent,  DialogLastReport } from './pages/home/last-report/last-report.component';
 import { PopupReportComponent } from './pages/home/popup-report/popup-report.component';
@@ -105,7 +106,8 @@ const myFirebaseAuthConfig = {
     ManageUserService,
     MapsService,
     RoleService,
-    ReportService
+    ReportService,
+    ShiftService
   ],
   bootstrap: [AppComponent],
   entryComponents:[

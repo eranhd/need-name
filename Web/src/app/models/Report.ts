@@ -1,3 +1,5 @@
+import { Location } from './Location';
+
 export class Report {
     public date: Date;
     public location: Location;
@@ -5,7 +7,7 @@ export class Report {
     public fields: ReportField[];
 
 
-    constructor(fields: ReportField[], summary: string, location: Location) {
+    constructor(fields: ReportField[], summary: string, position: Position) {
         this.date = new Date();
 
         if (summary)
@@ -17,7 +19,7 @@ export class Report {
             this.fields = fields;
         else
             this.fields = [];
-        this.location = location;
+        this.location = new Location(position.coords.longitude, position.coords.latitude);
     };
 
     public addFiled(name: string, data: string) {

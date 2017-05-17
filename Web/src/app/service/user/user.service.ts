@@ -1,23 +1,27 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router }    from '@angular/router';
 import { User } from '../../models/User';
-import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 import { FirebaseService } from '../firebase/firebase.service';
+
+
 
 @Injectable()
 export class UserService{
-  private item: FirebaseObjectObservable<any>;
   user:User;
   private userLogin:boolean;
-  private router:Router;
   
   
-  constructor(private fireService:FirebaseService, public af:AngularFire) {   
-    
+  constructor() {   
+    //need delete
+    this.user = new User();
   };
 
+  set _user(user:User){
+    this.user = user;
+  }
+
   public setUser(id:string, user?:User){
-    
+    /*
     if(user){
       this.user = user;
       localStorage.setItem('appUser', JSON.stringify(user));
@@ -40,6 +44,7 @@ export class UserService{
     });
     this.userLogin = true;
     this.updateUser();
+    */
   }
 
   updateUser(){
@@ -50,7 +55,7 @@ export class UserService{
 
 
   public addSon(user_id:string){
-    
+    /*
     this.user.addSon(user_id);
     console.log('user:');
     this.updateUser();
@@ -73,7 +78,7 @@ export class UserService{
   };
 
   get sons(){
-    return this.user.son;
+    return this.user.details.son;
   }
 
 

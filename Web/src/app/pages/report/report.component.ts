@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingReportService } from '../../service/setting-report/setting-report.service';
 import { AppComponent } from '../../app.component';
-import { Report } from '../../models/Report';
+import { Report, ReportField } from '../../models/Report';
 import { Router } from '@angular/router';
+import { Location } from '../../models/Location';
+import { UserService } from '../../service/user/user.service';
+import { FirebaseService } from '../../service/firebase/firebase.service';
+import { ShiftService } from '../../service/shift/shift.service';
+import { Team } from '../../models/Team'; 
 
 @Component({
   selector: 'app-report',
@@ -11,38 +16,43 @@ import { Router } from '@angular/router';
 })
 export class ReportComponent implements OnInit {
 
-  private lat:number;
-  private lng:number;
-
+  summary: string;
   constructor(public settingReportService:SettingReportService, 
-  public appComp:AppComponent,private router:Router) {
-    this.lat = 0;
-    this.lng = 0;
+  public appComp:AppComponent,private router:Router,
+  public userService: UserService, 
+  public firebaseService: FirebaseService,
+  public shiftService: ShiftService) {
    }
 
   public submit(){
 
-    var report:Report;
+    let report:Report;
 
-    var title = (<HTMLInputElement>document.getElementById('summary')).value;
-    console.log(title);
-    report = new Report(new Date(), undefined, title, undefined);
+    this.summary = (<HTMLInputElement>document.getElementById('summary')).value;
+    //console.log(summary);
 
+    //new Report(new Date() undefined, title, undefined);
+
+    let filds: ReportField[] = [];
     var items = this.settingReportService.getInputs();
     for(var i = 0; i < items.length; i++){
       if(items[i].id != 'summary')
-        report.addFiled(undefined, items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value);
+        filds.push(new ReportField(items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value));
+        //report.addFiled(undefined, items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value);
     }
-    
+
     
 
     
      navigator.geolocation.getCurrentPosition((position)=>{
-     this.lat = position.coords.latitude;
-     this.lng = position.coords.longitude;
-     report.setLocation(this.lng, this.lat);
-     this.settingReportService.save(report);
-     console.log(report);
+      report = new Report(filds, this.summary, position);
+      //*********************need to delete */
+      this.shiftService.startShift(new Team());
+      this.shiftService.shift.addReport(report);
+      this.userService.user.updateLastShift(this.shiftService.shift);
+      this.firebaseService.updateUser(this.userService.user);
+      //console.log(this.userService.user);
+
     }, (error)=>{
       alert("אנא הפעל מיקום");
     });

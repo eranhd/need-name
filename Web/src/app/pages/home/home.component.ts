@@ -38,8 +38,8 @@ export class HomeComponent implements OnInit {
 
    private lastReportSelected(index){
      var event = this.reportService.lastReportArr[index];
-     this.selectedTitle = event.title;
-     this.selectedBody = event.title;
+     this.selectedTitle = event.summary;
+     this.selectedBody = event.summary;
      console.log('show');
 
    }

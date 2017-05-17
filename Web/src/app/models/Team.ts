@@ -6,7 +6,9 @@ export class Team{
 
 
     constructor(){
-
+        this.members = [];
+        this.teamNum = 0;
+        this.leader = '';
     };
 
 

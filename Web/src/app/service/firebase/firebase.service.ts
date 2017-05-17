@@ -5,19 +5,27 @@ import { Router } from '@angular/router';
 import { SettingReportService } from '../setting-report/setting-report.service';
 import { User } from '../../models/User';
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable,  } from 'angularfire2';
+import { Report } from '../../models/Report';
+import { ShiftService } from '../shift/shift.service';
 
 @Injectable()
 export class FirebaseService {
 
   private itemToSave: FirebaseListObservable<any>;
+  private userToSave: FirebaseListObservable<any>;//this user and all report saves in firebase
   private database;
   private auth;
 
-  constructor(private af: AngularFire) {
+  constructor(private af: AngularFire,
+              public shiftService: ShiftService,
+              public userService: UserService) {
     /*this.initFirebase();
     this.database = firebase.database();
     this.auth = firebase.auth();*/
     //this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
+    
+      this.userToSave = af.database.list('/users');
+    
    };
    public getDatabase(){return this.database;};
    public getAuth(){return this.auth;};
@@ -56,7 +64,14 @@ export class FirebaseService {
    }
 
    updateUser(user){
-     this.itemToSave.update('details', user);
+     this.userToSave.update(firebase.auth().currentUser.uid, user);
+    //  this.itemToSave.update('details', user);
+    //this.userToSave.
+    console.log(user);
+   }
+
+   uploadReport(report: Report){
+
    }
 
    public initFirebase(){

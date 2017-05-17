@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Team } from '../../../models/Team';
+import { ShiftService } from '../../../service/shift/shift.service';
 
 @Component({
   selector: 'app-start-patrol',
@@ -15,7 +16,8 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   team: Team;
 
 
-  constructor(public router:Router) {
+  constructor(public router:Router,
+              public shiftService: ShiftService) {
     this.numOfMembers=0;
     this.team = new Team();
 
@@ -33,6 +35,9 @@ export class StartPatrolComponent implements OnInit, OnChanges {
         console.log("nunu is index"+i+"")
       }
     }
+
+    this.team = new Team();
+    this.shiftService.startShift(this.team);
   };
 
   ngOnInit() {

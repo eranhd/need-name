@@ -33,8 +33,8 @@ export class HeaderComponent implements OnInit {
         that.index %= currArr.length;
         
         if(currArr[that.index] != null)
-          if(currArr[that.index].title)
-            that.curr = currArr[that.index].title;
+          if(currArr[that.index].summary)
+            that.curr = currArr[that.index].summary;
       }
     },3000)
   }
