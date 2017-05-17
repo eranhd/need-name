@@ -4,3 +4,7 @@ div_login {
 label{
     border-radius: 10px;
 }
+
+btn-default {
+    color: green;
+}
