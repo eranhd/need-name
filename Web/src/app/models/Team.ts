@@ -20,6 +20,8 @@ export class Team{
         }
         console.log(this.members)
     }
+
+    
 }
 
 export class Member{

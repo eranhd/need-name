@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Team } from '../../../models/Team';
 import { ShiftService } from '../../../service/shift/shift.service';
+import { FirebaseService } from '../../../service/firebase/firebase.service';
+import { UserService } from '../../../service/user/user.service';
 
 @Component({
   selector: 'app-start-patrol',
@@ -17,7 +19,9 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
 
   constructor(public router:Router,
-              public shiftService: ShiftService) {
+              public shiftService: ShiftService,
+              public fireService: FirebaseService,
+              public userService: UserService) {
     this.numOfMembers=0;
     this.team = new Team();
 
@@ -36,8 +40,9 @@ export class StartPatrolComponent implements OnInit, OnChanges {
       }
     }
 
-    this.team = new Team();
     this.shiftService.startShift(this.team);
+    this.userService.user.addShift(this.shiftService.shift);
+    this.fireService.updateUser(this.userService.user);
   };
 
   ngOnInit() {

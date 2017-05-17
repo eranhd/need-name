@@ -70,6 +70,8 @@ export class FirebaseService {
     console.log(user);
    }
 
+   
+
    uploadReport(report: Report){
 
    }
