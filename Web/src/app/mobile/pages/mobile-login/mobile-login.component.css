@@ -65,3 +65,8 @@ input:-webkit-autofill {
     color: white;
     font-family: 'Arial';
 }
+
+
+.notValid{
+    border-bottom: 2px darkred solid;
+}

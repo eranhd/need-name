@@ -6,8 +6,8 @@
   </div>
 
   <div class='div_login'>
-    <input id="input_username" type='text' placeholder="שם משתמש" [(ngModel)]='email' />
-    <input id="input_password" type='password' placeholder="" [(ngModel)]='password' />
+    <input id="input_username" type='text' placeholder="שם משתמש" [class.notValid]='email == ""' [(ngModel)]='email' />
+    <input id="input_password" type='password' placeholder="סיסמה" [class.notValid]='password == ""' [(ngModel)]='password' />
     <button type="submit" class='btn_login' (click)='signIn()'>כניסה</button>
   </div>
 

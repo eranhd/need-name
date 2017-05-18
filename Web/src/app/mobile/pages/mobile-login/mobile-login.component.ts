@@ -10,7 +10,7 @@ import { AngularFire, FirebaseListObservable ,AuthProviders,AuthMethods} from 'a
   templateUrl: './mobile-login.component.html',
   styleUrls: ['./mobile-login.component.css'],
 })
-//var b:boolean;
+
 export class MobileLoginComponent implements OnInit {
   email: any;
   password: any;
@@ -22,21 +22,15 @@ export class MobileLoginComponent implements OnInit {
     public userServ:UserService,
     public af:AngularFire,
     public userService:UserService,) { 
-    //this.signOut();
-    //this.signIn();
   }
 
   public signIn(){
-    let email:string = (<HTMLInputElement>document.getElementById('input_username')).value
-    let password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
+    if(this.email == '' || this.password == '')
+      return;
     this.af.auth.login({
-      email:email, 
-      password:password
+      email: this.email, 
+      password:this.password
     }).then((succsess)=>{
-      
-      console.log(succsess);
-      //this.userServ.setRouter(this.router);
-      //this.userServ.setUser(firebase.auth().currentUser.uid);
       this.router.navigate(['mobile_main']);
     }).catch((error)=>{
       console.log(error.message);
@@ -44,10 +38,6 @@ export class MobileLoginComponent implements OnInit {
   
     
   };
-
-  public signOut(){
-    this.af.auth.logout();
-  }
 
   ngOnInit() {
   }
