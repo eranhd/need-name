@@ -14,6 +14,7 @@ import { AngularFire, FirebaseListObservable ,AuthProviders,AuthMethods} from 'a
 export class MobileLoginComponent implements OnInit {
   email: any;
   password: any;
+  copyRight: string = 'כל הזכויות שמורות';
   title:string = "כניסה";
 
 

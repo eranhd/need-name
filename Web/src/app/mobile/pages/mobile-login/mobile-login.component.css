@@ -1,10 +1,67 @@
-div_login {
+.main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0, 69, 127, 0.3);*/
 }
 
-label{
-    border-radius: 10px;
+.div_logo{
+    position: absolute;
+    height: 30%;
+    width: 100%;
+    padding: 0 5%;
+    top: 0;
+    left: 0;
 }
 
-btn btn-default {
-    background-color: green;
+img{
+    width: 100%;
+    margin-top: 5%; 
+}
+
+
+.copyRight{
+    font-size: small;
+    width: 100%;
+    position: fixed;
+    bottom: 2%;
+    text-align: center;
+}
+
+
+.div_login{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    padding: 0 5%;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+}
+
+
+input{
+    display: inline-block; 
+    width: 100%;
+    padding: 5% 28px;
+    margin: 2% 0;
+    border-style: none;
+    border-bottom: 1px lightgray solid;
+    
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.btn_login{
+    border-style: none;
+    width: 80%;
+    margin-top: 20%;
+    background-color: #004381;
+    padding: 5% 0;
+    color: white;
+    font-family: 'Arial';
 }
