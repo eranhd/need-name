@@ -40,7 +40,7 @@ export const router: Routes = [
         children: [
             { path: '', redirectTo: 'mobile_home', pathMatch: 'full' },
             { path: 'report', component: ReportComponent },
-            { path: 'start_pattrol', component: StartPatrolComponent },
+            { path: 'start_patrol', component: StartPatrolComponent },
             { path: 'mobile_spot', component: MobileSpotComponent },
             { path: 'mobile_home' , component: MobileHomeComponent}
         ]
