@@ -43,6 +43,8 @@ import { TeamComponent } from './pages/home/popup-report/title/team/team.compone
 import { MobileLoginComponent } from './mobile/pages/mobile-login/mobile-login.component';
 import { MobileSpotComponent } from './mobile/pages/mobile-spot/mobile-spot.component';
 import { StartPatrolComponent } from './mobile/pages/start-patrol/start-patrol.component';
+import { MobileHeaderComponent } from './mobile/pages/mobile-header/mobile-header.component';
+import { MobileFooterComponent } from './mobile/pages/mobile-footer/mobile-footer.component';
 
 
 export const firebaseConfig = {
@@ -82,7 +84,9 @@ const myFirebaseAuthConfig = {
     MobileLoginComponent,
     DialogLastReport,
     MobileSpotComponent,
-    StartPatrolComponent
+    StartPatrolComponent,
+    MobileHeaderComponent,
+    MobileFooterComponent
     
   ],
   imports: [
