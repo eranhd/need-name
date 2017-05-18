@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MobileFooterComponent implements OnInit {
 
+  copyRight: string = 'כל הזכויות שמורות';
   constructor() { }
 
   ngOnInit() {

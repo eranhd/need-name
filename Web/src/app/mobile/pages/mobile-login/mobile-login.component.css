@@ -7,26 +7,24 @@
     /*background-color: rgba(0, 69, 127, 0.3);*/
 }
 
-.div_logo{
+app-mobile-header{
     position: absolute;
-    height: 30%;
+    height: 20%;
     width: 100%;
     padding: 0 5%;
     top: 0;
     left: 0;
 }
 
-img{
-    width: 100%;
-    margin-top: 5%; 
-}
 
 
-.copyRight{
+app-mobile-footer{
     font-size: small;
     width: 100%;
+    height: 5%;
+    left: 0;
     position: fixed;
-    bottom: 2%;
+    bottom: 1%;
     text-align: center;
 }
 

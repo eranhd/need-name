@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
+import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
+
 
 @Component({
   selector: 'app-mobile-main',

@@ -1,9 +1,6 @@
 <div class='main'>
 
-  <div class='div_logo'>
-    <!--<img src="http://i.imgur.com/i6QRf5Q.png" />-->
-    <img src='http://i.imgur.com/IVLC4tC.png'/>
-  </div>
+  <app-mobile-header></app-mobile-header>
 
   <div class='div_login'>
     <input id="input_username" type='text' placeholder="שם משתמש" [class.notValid]='email == ""' [(ngModel)]='email' />
@@ -11,6 +8,6 @@
     <button type="submit" class='btn_login' (click)='signIn()'>כניסה</button>
   </div>
 
-  <div class='copyRight'>{{copyRight}}</div>
+  <app-mobile-footer></app-mobile-footer>
 
 </div>

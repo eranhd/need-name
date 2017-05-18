@@ -4,6 +4,8 @@ import { UserService } from '../../../service/user/user.service';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { AngularFire, FirebaseListObservable ,AuthProviders,AuthMethods} from 'angularfire2';
+import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
+import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
 
 @Component({
   selector: 'app-mobile-login',
@@ -14,7 +16,7 @@ import { AngularFire, FirebaseListObservable ,AuthProviders,AuthMethods} from 'a
 export class MobileLoginComponent implements OnInit {
   email: any;
   password: any;
-  copyRight: string = 'כל הזכויות שמורות';
+  
   title:string = "כניסה";
 
 
