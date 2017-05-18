@@ -11,12 +11,13 @@ import { ReportComponent } from './pages/report/report.component';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
 import { MapsComponent } from './pages/maps/maps.component';
 import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
-import { MobileLoginComponent} from './mobile/pages/mobile-login/mobile-login.component';
+import { MobileLoginComponent } from './mobile/pages/mobile-login/mobile-login.component';
 
-import { StartPatrolComponent} from './mobile/pages/start-patrol/start-patrol.component'
+import { StartPatrolComponent } from './mobile/pages/start-patrol/start-patrol.component'
 
 
-import { MobileSpotComponent} from './mobile/pages/mobile-spot/mobile-spot.component';
+import { MobileSpotComponent } from './mobile/pages/mobile-spot/mobile-spot.component';
+import { MobileHomeComponent } from './mobile/pages/mobile-home/mobile-home.component';
 
 export const router: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,20 +25,27 @@ export const router: Routes = [
     {
         path: 'main', component: MainComponent,
         children: [
-            {path: '', redirectTo: 'home', pathMatch: 'full'},
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'settingReport', component: SettingReportComponent },
             { path: 'addNewUser', component: AddNewUserComponent },
-            { path: 'report', component: ReportComponent }, 
+            { path: 'report', component: ReportComponent },
             { path: 'maps', component: MapsComponent },
             { path: 'graphs', component: GraphsComponent }
         ]
     },
-    { path: 'mobile_login', component: MobileLoginComponent},
-    { path: 'mobile_main', component: MobileMainComponent },
-    { path: 'report', component: ReportComponent },
-    { path: 'start_pattrol', component: StartPatrolComponent },
-    { path: 'mobile_spot', component: MobileSpotComponent },
+    { path: 'mobile_login', component: MobileLoginComponent },
+    {
+        path: 'mobile_main', component: MobileMainComponent,
+        children: [
+            { path: '', redirectTo: 'mobile_home', pathMatch: 'full' },
+            { path: 'report', component: ReportComponent },
+            { path: 'start_pattrol', component: StartPatrolComponent },
+            { path: 'mobile_spot', component: MobileSpotComponent },
+            { path: 'mobile_home' , component: MobileHomeComponent}
+        ]
+    },
+
 
 ];
 
