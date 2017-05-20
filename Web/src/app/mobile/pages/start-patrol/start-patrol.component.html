@@ -1,5 +1,7 @@
 <div class='container'>
+
   <div class='row'>
+   <div id="error"></div> 
   <input type='text' class='form-control' id='teamNumber' required [(ngModel)]='team.teamNum'placeholder="מספר צוות">
   <br>
   <input type="number" class='form-control' id='numOfVolunteers' required (focusout)='team.initMembersArray(numOfMembers)' [(ngModel)]="numOfMembers" value="" placeholder="מספר המתנדבים" >
