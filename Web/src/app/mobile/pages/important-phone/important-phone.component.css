@@ -4,21 +4,49 @@ main{
 }
 
 .icon{
-    height: 60%;
+    height: 125%;
     display: inline-block;
     padding: 1%;
     padding-left: 5%;
 }
+.police{
+    background-color: aliceblue;
+}
+
+.mada{
+    background-color: ghostwhite;
+}
+
+.fire{
+    background-color: aliceblue;
+}
+
+.charge{
+    background-color: ghostwhite;
+}
+
+
+.noa{
+    background-color: aliceblue;
+}
 
 .name{
     font-size: 100%;
+    font-size: large;
+    font-weight: bold;
     display: inline-block;
 }
 img{
     height: 100%;
 
 }
-.row{
-    height: 20%;
+a.row{
+    margin-top: 2%;
+    display: inline-block;
+    height: 12%;
+    padding: 4%;
     width: 100%;
+    text-decoration: none;
+    border: 1px solid blanchedalmond;
+
 }
