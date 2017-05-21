@@ -5,6 +5,7 @@ import { ShiftService } from '../../../service/shift/shift.service';
 import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { UserService } from '../../../service/user/user.service';
 
+
 @Component({
   selector: 'app-start-patrol',
   templateUrl: './start-patrol.component.html',
@@ -32,17 +33,12 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   };
 
 
+  private startPatrol() {
+    let error:string = "<div class='alert alert-danger' role='alert'> <strong> .נא למלא את השדות</strong></div>";
+   // if( (<HTMLInputElement>document.getElementById('teamNumber')).value == "" || (<HTMLInputElement>document.getElementById('numOfVolunteers')).value == "" || (<HTMLInputElement>document.getElementById('teamLeader')).value == ""){
+      document.getElementById("error").innerHTML = error;
+      //alert("ffff");
 
-   startPatrol(){
-    for(let i =0 ; i< this.team.members.length ; i++){
-      if(this.team.members[i].name == null){
-        console.log("nunu is index"+i+"")
-      }
-    }
-
-    this.shiftService.startShift(this.team);
-    this.userService.user.addShift(this.shiftService.shift);
-    this.fireService.updateUser(this.userService.user);
   };
 
   ngOnInit() {
