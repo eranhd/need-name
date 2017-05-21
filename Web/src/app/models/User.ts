@@ -51,7 +51,10 @@ export class Details {
             this.name = detail.name;
             this.role = new Role(detail.role.type, detail.role.name);
             this.area = detail.area;
-            this._sons = detail._sons;
+            if(this._sons)
+                this._sons = detail._sons;
+            else
+                this._sons = null;
             this.numOfReport = detail.numOfReport;
             this.lastShift = detail.lastShift;
         }
