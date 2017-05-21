@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Shift } from '../../../models/Shift';
 
 @Component({
-  selector: 'app-last-shift',
+  selector: 'last-shift',
   templateUrl: './last-shift.component.html',
   styleUrls: ['./last-shift.component.css']
 })
 export class LastShiftComponent implements OnInit {
 
+  @Input() shift: Shift;
   constructor() { }
 
   ngOnInit() {

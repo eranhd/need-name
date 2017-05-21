@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public router:Router, 
     public userServ:UserService,
+    public firebseService: FirebaseService,
     public role:RoleService,
     public af:AngularFire,
     public userService:UserService) { 
@@ -43,11 +44,13 @@ export class LoginComponent implements OnInit {
     }).then((succsess)=>{
       //var userSer:UserService = new UserService();
       //console.log(succsess);
-      this.userService.setUser(firebase.auth().currentUser.uid);
-      this.router.navigate(['main']);
+      //this.userService.setUser(firebase.auth().currentUser.uid);
+      this.firebseService.initUser('main');
+      //this.router.navigate(['main']);
     }).catch((error)=>{
       console.log(error.message);
     });
+    
   
     
   };

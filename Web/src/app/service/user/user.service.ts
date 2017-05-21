@@ -8,7 +8,7 @@ import { FirebaseService } from '../firebase/firebase.service';
 @Injectable()
 export class UserService{
   user:User;
-  private userLogin:boolean;
+  userLogin:boolean;
   
   
   constructor() {   

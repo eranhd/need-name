@@ -1,6 +1,6 @@
 export class Team{
 
-    leader:string;
+    lead:string;
     members:Member[];
     teamNum:number;
 
@@ -8,7 +8,7 @@ export class Team{
     constructor(){
         this.members = [];
         this.teamNum = 0;
-        this.leader = '';
+        this.lead = '';
     };
 
 

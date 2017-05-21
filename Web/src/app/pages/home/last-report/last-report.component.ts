@@ -28,6 +28,7 @@ export class LastReportComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 }

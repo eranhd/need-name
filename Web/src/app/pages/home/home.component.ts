@@ -3,7 +3,7 @@ import { UserService } from '../../service/user/user.service'
 import { Router } from '@angular/router';
 import { TableItem } from '../../models/Table';
 import { ReportService } from '../../service/report/report.service';
-
+import { FirebaseService } from '../../service/firebase/firebase.service';
 import { RoleService } from '../../service/role/role.service';
 
 
@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
 
   constructor(public userService:UserService, 
               public reportService:ReportService,
-              public router:Router,
+              public firebseService: FirebaseService,
+              public router:Router
   ) 
   {
     /*if(!this.userService.isLogin())
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
     this.hotArea = new TableItem('hotArea', 2, ['איזור', 'מספר תקריות']);
     this.nowActive = new TableItem('nowActive', 2, ['איזור', 'דוח תחילת משמרת']);
     this.lastReport.getTypeRows();
-   console.log(this.reportService.getLastReport());
+    this.firebseService.initShifts();
    };
 
    private lastReportSelected(index){

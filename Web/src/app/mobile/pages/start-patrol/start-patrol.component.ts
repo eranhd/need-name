@@ -27,13 +27,13 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
   }
 
-  private deleteMember(){
+   deleteMember(){
 
   };
 
 
 
-  private startPatrol(){
+   startPatrol(){
     for(let i =0 ; i< this.team.members.length ; i++){
       if(this.team.members[i].name == null){
         console.log("nunu is index"+i+"")

@@ -6,6 +6,7 @@ import { SettingReportService } from '../setting-report/setting-report.service';
 import { User } from '../../models/User';
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable,  } from 'angularfire2';
 import { Report } from '../../models/Report';
+import { Shift } from '../../models/Shift';
 import { ShiftService } from '../shift/shift.service';
 
 @Injectable()
@@ -15,15 +16,18 @@ export class FirebaseService {
   private userToSave: FirebaseListObservable<any>;//this user and all report saves in firebase
   private database;
   private auth;
+  shifts: Shift[];
 
   constructor(private af: AngularFire,
               public shiftService: ShiftService,
-              public userService: UserService) {
+              public userService: UserService,
+              public router: Router
+              ) {
     /*this.initFirebase();
     this.database = firebase.database();
     this.auth = firebase.auth();*/
     //this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
-    
+      this.shifts = [];
       this.userToSave = af.database.list('/users');
     
    };
@@ -68,6 +72,38 @@ export class FirebaseService {
     //  this.itemToSave.update('details', user);
     //this.userToSave.
     console.log(user);
+   }
+
+
+   initUser(goto?:string)
+   {
+    
+    this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user=>{
+      this.userService.user = user;
+      this.userService.userLogin = true;
+      if(goto){
+        this.router.navigate([goto]);
+        console.log('goto')
+      }
+    });
+    
+   }
+
+
+   initShifts(){
+    if(this.userService.user.shifts)
+      this.shifts = this.userService.user.shifts;
+     this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user=>{
+      
+      if(this.userService.user.details._sons)
+      for(let sons of this.userService.user.details._sons)
+        this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user=>{
+          for( let item of user.shifts)
+            this.shifts.push(item);
+        });
+     });
+
+     //return shifts;
    }
 
    
