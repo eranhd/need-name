@@ -31,20 +31,6 @@ export class EndPatrolComponent implements OnInit {
   public endThisShift(filling: string) {
     
     console.log(this.summaryT);
-<<<<<<< HEAD
-    this.shiftService.shift.initEndShift(filling);
-    this.shiftService.shift.endShift.summary=this.summaryT;
-    this.shiftService.isShiftStart = false;
-    
-    this.userService.user.updateLastShift(this.shiftService.shift);
-    this.fireService.updateUser(this.userService.user);
-    this.router.navigate(['mobile_main']);
-=======
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   this.shiftService.shift.endShift.location = new Location(position.coords.longitude, position.coords.latitude);
-    // }, (error) => {
-    //   console.log('position start shift error' + error.message);
-    // });
 
     navigator.geolocation.getCurrentPosition((position) => {
       this.shiftService.shift.initEndShift(filling, position);
@@ -57,7 +43,7 @@ export class EndPatrolComponent implements OnInit {
     }, (error) => {
       alert('אנא הפעל מיקום');
     });
->>>>>>> 13bfe150e2854080126de99150185caca8896014
+
   }
   ngOnInit() {
   }
