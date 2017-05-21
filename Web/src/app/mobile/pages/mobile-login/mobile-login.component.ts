@@ -34,7 +34,7 @@ export class MobileLoginComponent implements OnInit {
       email: this.email, 
       password:this.password
     }).then((succsess)=>{
-      this.firebseService.initUser('mobile_main');
+      this.firebaseService.initUser('mobile_main');
     }).catch((error)=>{
       console.log(error.message);
     });
