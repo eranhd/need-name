@@ -9,11 +9,15 @@ export class User {
 
 
     constructor(user?: User) {
-        if (user) {
-            this.details = user.details;
-            this.shifts = user.shifts;
+        if (user) {//copy constructor
+            this.shifts = [];
+            for(let shift of user.shifts)
+                this.shifts.push(new Shift(shift.team, shift));
+
+            this.details = new Details(user.details);
         }
         else {
+
             this.details = new Details();
             this.shifts = [];
         }
@@ -42,13 +46,25 @@ export class Details {
     numOfReport: number;
     lastShift: Date;
 
-    constructor(){
-        this.name= '';
-        this.role = new Role(1, 'admin');
-        this.area = 'jerusalem';
-        this._sons = [];
-        this.numOfReport = 0;
-        this.lastShift = new Date();
+    constructor(detail?: Details){
+        if(detail){
+            this.name = detail.name;
+            this.role = new Role(detail.role.type, detail.role.name);
+            this.area = detail.area;
+            this._sons = detail._sons;
+            this.numOfReport = detail.numOfReport;
+            this.lastShift = detail.lastShift;
+        }
+        else
+        {
+            this.name= '';
+            this.role = new Role(1, 'admin');
+            this.area = 'jerusalem';
+            this._sons = [];
+            this.numOfReport = 0;
+            this.lastShift = new Date();
+        }
+        
     }
     public addSon(son: string) {
         this._sons.push(son);
@@ -61,14 +77,14 @@ export class Details {
 
 export class Role {
 
-    private type: number;
-    private name: string;
+    type: number;
+    name: string;
 
 
     constructor(type: number, name: string) {
         this.type = type;
         this.name = name;
-    };
+    }
 
     public canDirect(path) {
 
