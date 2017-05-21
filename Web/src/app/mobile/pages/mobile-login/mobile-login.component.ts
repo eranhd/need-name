@@ -6,6 +6,7 @@ import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { AngularFire, FirebaseListObservable ,AuthProviders,AuthMethods} from 'angularfire2';
 import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
 import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
+import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-mobile-login',
@@ -45,6 +46,9 @@ export class MobileLoginComponent implements OnInit {
   };
 
   ngOnInit() {
+    if(LocalStorageService.loadUser()){//if not empty
+    
+    }
   }
 
 }

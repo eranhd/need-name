@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router }    from '@angular/router';
 import { User } from '../../models/User';
 import { FirebaseService } from '../firebase/firebase.service';
-
+import { LocalStorageService } from '../local-storage/local-storage.service';
 
 
 @Injectable()
@@ -14,6 +14,8 @@ export class UserService{
   constructor() {   
     //need delete
     this.user = new User();
+    if(LocalStorageService.loadUser())
+      this.user = new User(LocalStorageService.loadUser());
   };
 
   set _user(user:User){

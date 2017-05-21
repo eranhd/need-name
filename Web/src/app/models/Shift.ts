@@ -16,7 +16,7 @@ export class Shift {
                 this.reports = shift.reports;
             else
                 this.reports = [];
-            this.stratShift = shift.stratShift;
+            this.stratShift = new StartShift(shift.stratShift);
             if(this.endShift)
                 this.endShift = shift.endShift;
             else
@@ -45,7 +45,16 @@ class StartShift {
     date: Date;
     location: Location;
 
-    constructor() {
+    constructor(shift?: StartShift) {
+        if(shift){
+            this.date = shift.date;
+            if(shift.location)
+                this.location = shift.location;
+            else
+                this.location = null;
+        }
+        else{
+            
         this.date = new Date();
         navigator.geolocation.getCurrentPosition((position) => {
             this.location = new Location(position.coords.longitude, position.coords.latitude);
@@ -53,6 +62,7 @@ class StartShift {
         }, (error) => {
             console.log('position start shift error' + error.message);
         });
+        }
     }
 
 
