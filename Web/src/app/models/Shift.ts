@@ -17,7 +17,10 @@ export class Shift {
             else
                 this.reports = [];
             this.stratShift = shift.stratShift;
-            this.endShift = shift.endShift;
+            if(this.endShift)
+                this.endShift = shift.endShift;
+            else
+                this.endShift = null;
         }
         else {
 

@@ -19,6 +19,7 @@ import { EndPatrolComponent } from './mobile/pages//end-patrol/end-patrol.compon
 import { MobileSpotComponent } from './mobile/pages/mobile-spot/mobile-spot.component';
 import { MobileHomeComponent } from './mobile/pages/mobile-home/mobile-home.component';
 import { TeamStatisticsComponent } from './mobile/pages/mobile-home/team-statistics/team-statistics.component';
+import { ImportantPhoneComponent } from './mobile/pages/important-phone/important-phone.component';
 
 export const router: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -50,7 +51,8 @@ export const router: Routes = [
                     { path: 'team-statistics', component: TeamStatisticsComponent }
                 ]
             },
-            { path: 'end_patrol', component: EndPatrolComponent }
+            { path: 'end_patrol', component: EndPatrolComponent },
+            { path: 'important-phone', component: ImportantPhoneComponent}
         ]
     },
 

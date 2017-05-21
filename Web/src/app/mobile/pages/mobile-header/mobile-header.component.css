@@ -11,6 +11,22 @@
 }
 
 
+.btn_phone{
+    position: absolute;
+    height: 60%;
+    width: 10%;
+    text-align: center;
+    top: 20%;
+    right: 10%;
+    padding-top: 1%;
+    background-color: #004381;
+    color: white;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 150%;
+    border-radius: 15%; 
+}
+
 .btn_back{
     position: absolute;
     height: 60%;
@@ -23,7 +39,6 @@
     font-weight: bold;
     font-size: 150%;
     border-radius: 15%; 
-
 }
 
 img{
