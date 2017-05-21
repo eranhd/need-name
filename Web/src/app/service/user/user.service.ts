@@ -20,6 +20,9 @@ export class UserService{
     this.user = user;
   }
 
+  get _user(){
+    return this.user;
+  }
   public setUser(id:string, user?:User){
     /*
     if(user){

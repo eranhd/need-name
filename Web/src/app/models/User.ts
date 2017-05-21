@@ -24,7 +24,7 @@ export class User {
     }
 
     updateLastShift(shift: Shift){
-        this.addShift(shift);//need to delete
+       // this.addShift(shift);//need to delete
         this.shifts[this.shifts.length -1] = shift;
     }
 
