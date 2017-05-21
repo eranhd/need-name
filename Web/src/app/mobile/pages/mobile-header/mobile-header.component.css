@@ -11,6 +11,21 @@
 }
 
 
+.btn_back{
+    position: absolute;
+    height: 60%;
+    width: 15%;
+    text-align: center;
+    top: 20%;
+    background-color: #004381;
+    color: white;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 150%;
+    border-radius: 15%; 
+
+}
+
 img{
     height: 100%;
     
