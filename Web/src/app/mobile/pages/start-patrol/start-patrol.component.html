@@ -1,27 +1,30 @@
 <div class='container'>
 
-  <div class='row'>
+  <div class='row' id='error_msg'>
     <div *ngIf='!isValid' id="error">
       <div class='alert alert-danger' role='alert'> 
         <strong>
-           .נא למלא את השדות
+           נא למלא את השדות
         </strong>
       </div>
     </div> 
-  <input type='text' class='form-control' id='teamNumber' required [(ngModel)]='team.teamNum' placeholder="מספר צוות">
-  <br>
-  <input type="number" class='form-control' id='numOfVolunteers' required (focusout)='team.initMembersArray(numOfMembers)' [(ngModel)]="numOfMembers" value="" placeholder="מספר המתנדבים" >
-  <br>
-  <input type='text' class='form-control' id='teamLeader' required placeholder="ראש צוות" [(ngModel)]='team.lead'>
-  <br>
-  <!--<div class="input-group">
-  
-  </div>-->
-  
   </div>
+
+  <div id='input_details'>
+     <input type='text' class='form-control' id='teamNumber' required [(ngModel)]='team.teamNum' placeholder="מספר צוות">
+    
+     <input type="number" class='form-control' id='numOfVolunteers' required (focusout)='team.initMembersArray(numOfMembers)' [(ngModel)]="numOfMembers" placeholder="מספר המתנדבים" >
+    
+     <input type='text' class='form-control' id='teamLeader' required placeholder="ראש צוות" [(ngModel)]='team.lead'>
+    
+  </div>
+  <div *ngIf='team.members.length!=0' id='members'>:מתנדבים</div>
   <div class="teamMembersName" *ngFor='let item of team.members'>
    <input  [(ngModel)]="team.members[item.index].name" type="text" class="form-control" id="teamMembersName"  required placeholder="שם המתנדב/ת">
   </div> 
   <br>
+
   <button type="button" class="btn btn-startPatrol" (click)='startPatrol()'>התחל</button>
+
+
 </div>

@@ -25,7 +25,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
               public shiftService: ShiftService,
               public fireService: FirebaseService,
               public userService: UserService) {
-    this.numOfMembers=0;
+    this.numOfMembers=null;
     this.team = new Team();
     this.isValid = true;
     this.memberValid=false;
