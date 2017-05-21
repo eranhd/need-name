@@ -14,7 +14,7 @@ import { GraphsComponent } from './pages/graphs/graphs/graphs.component';
 import { MobileLoginComponent } from './mobile/pages/mobile-login/mobile-login.component';
 
 import { StartPatrolComponent } from './mobile/pages/start-patrol/start-patrol.component'
-
+import {EndPatrolComponent} from './mobile/pages//end-patrol/end-patrol.component';
 
 import { MobileSpotComponent } from './mobile/pages/mobile-spot/mobile-spot.component';
 import { MobileHomeComponent } from './mobile/pages/mobile-home/mobile-home.component';
@@ -42,7 +42,8 @@ export const router: Routes = [
             { path: 'report', component: ReportComponent },
             { path: 'start_patrol', component: StartPatrolComponent },
             { path: 'mobile_spot', component: MobileSpotComponent },
-            { path: 'mobile_home' , component: MobileHomeComponent}
+            { path: 'mobile_home' , component: MobileHomeComponent},
+            {path:  'end_patrol', component: EndPatrolComponent}
         ]
     },
 

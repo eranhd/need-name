@@ -47,6 +47,7 @@ import { MobileHeaderComponent } from './mobile/pages/mobile-header/mobile-heade
 import { MobileFooterComponent } from './mobile/pages/mobile-footer/mobile-footer.component';
 import { MobileHomeComponent } from './mobile/pages/mobile-home/mobile-home.component';
 import { LastShiftComponent } from './pages/home/last-shift/last-shift.component';
+import { EndPatrolComponent } from './mobile/pages/end-patrol/end-patrol.component';
 
 
 export const firebaseConfig = {
@@ -90,7 +91,8 @@ const myFirebaseAuthConfig = {
     MobileHeaderComponent,
     MobileFooterComponent,
     MobileHomeComponent,
-    LastShiftComponent
+    LastShiftComponent,
+    EndPatrolComponent
     
   ],
   imports: [
