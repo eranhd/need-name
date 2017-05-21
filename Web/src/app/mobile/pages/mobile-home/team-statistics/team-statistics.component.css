@@ -1,0 +1,37 @@
+.error_message{
+    font-size: 40px;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    width: 90%;
+    margin-left: 5%;
+    height: 90%;
+    background-color: bisque;
+    padding: 10%;
+    border: 1px solid burlywood;
+    /*border-radius: 10%;*/
+}
+
+.details{
+    font-weight: bold;
+    width: 90%;
+    margin-left: 5%;
+    height: 90%;
+    background-color: palegreen;
+    padding: 10%;
+    border: 1px solid darkkhaki;
+
+
+    padding-top: 10px;
+    text-align: right;
+    padding-right: 10px; 
+}
+
+.label ,.description{
+    direction: rtl;
+    text-align: right; 
+    color: gray;
+    font-size: 150%;
+    display: inline-block;
+    
+}

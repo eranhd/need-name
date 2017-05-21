@@ -5,4 +5,8 @@
   <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' routerLink='../report'>דיווח על אירוע</div>
   <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo_canceled' >הוסף נקודה</div>
   <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo_canceled' >דווח על אירוע</div>
+  <div class='statistic'>
+    <router-outlet></router-outlet>
+  </div>
 </main>
+

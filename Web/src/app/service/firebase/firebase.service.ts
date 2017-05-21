@@ -79,7 +79,7 @@ export class FirebaseService {
    {
     
     this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe((user:User)=>{
-      this.userService.user = user;
+      this.userService._user = user;
       this.userService.userLogin = true;
       if(goto){
         this.router.navigate([goto]);

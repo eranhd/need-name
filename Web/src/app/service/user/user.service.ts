@@ -17,7 +17,7 @@ export class UserService{
   };
 
   set _user(user:User){
-    this.user = user;
+    this.user = new User(user);
   }
 
   get _user(){

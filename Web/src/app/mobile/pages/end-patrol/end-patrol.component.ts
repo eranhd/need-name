@@ -19,20 +19,20 @@ export class EndPatrolComponent implements OnInit {
   constructor(public router: Router,
     public shiftService: ShiftService,
     public fireService: FirebaseService,
-    public userService: UserService,
-    public firebaseService: FirebaseService ) {
+    public userService: UserService) {
 
     this.filling = null;
     this.summaryT=null;
     this.shiftService.shift.endShift.summary=this.summaryT;
   }
 
+
   public endThisShift(filling: string) {
     this.shiftService.shift.endShift.summary=this.summaryT;
     this.shiftService.shift.initEndShift(filling);
     this.shiftService.isShiftStart = false;
     this.userService.user.updateLastShift(this.shiftService.shift);
-    this.firebaseService.updateUser(this.userService.user);
+    this.fireService.updateUser(this.userService.user);
     this.router.navigate(['mobile_main']);
   }
   ngOnInit() {
