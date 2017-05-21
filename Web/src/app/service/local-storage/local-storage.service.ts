@@ -19,7 +19,10 @@ export class LocalStorageService {
   static loadUser(){
     let user = null;
     user = localStorage.getItem('adjTempUser');
-    user = JSON.parse(user);
+    if(user == '' || user == null || user == undefined)
+      return null;
+    else
+      user = JSON.parse(user);
     return user;
   }
 

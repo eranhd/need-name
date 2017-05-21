@@ -29,14 +29,13 @@ export class EndPatrolComponent implements OnInit {
 
 
   public endThisShift(filling: string) {
+    
     console.log(this.summaryT);
-
-
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.shiftService.shift.endShift.location = new Location(position.coords.longitude, position.coords.latitude);
-    }, (error) => {
-      console.log('position start shift error' + error.message);
-    });
+    // navigator.geolocation.getCurrentPosition((position) => {
+    //   this.shiftService.shift.endShift.location = new Location(position.coords.longitude, position.coords.latitude);
+    // }, (error) => {
+    //   console.log('position start shift error' + error.message);
+    // });
 
     navigator.geolocation.getCurrentPosition((position) => {
       this.shiftService.shift.initEndShift(filling, position);
