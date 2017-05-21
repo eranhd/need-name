@@ -1,22 +1,21 @@
 input{
     font-weight: normal;
-    text-align: right;
+   /* text-align: right;*/
+      display: block;
+    margin: auto;
 }
 
 .form-control{
-    width: 50%;
+    width: 100%;
     text-align: right;
 }
 
-.teamMembersName{
-    margin: 4px;
-    text-align: right; 
-    width: 64%;
-}
-
 #teamMembersName{
-   text-align: right; 
-   margin-left:57.5%;
+    margin-bottom: 20%;
+    text-align: right; 
+    width: 100%;
+    display: block;
+    margin: auto;
 }
 
 .ng-valid[required], .ng-valid.required  {
@@ -24,4 +23,40 @@ input{
 }
 .ng-invalid:not(form)  {
   border-right: 5px solid #a94442; /* red */
+}
+.btn-startPatrol{
+    width: 50%;
+    display: block;
+    margin: auto;
+    border-radius: 6px;
+    font-size: 20px;
+    color: white;
+    font-family: 'Arial';
+    background-color:  #42A948; /* green */
+}
+
+.container{
+    position: absolute;
+    width: 100%;
+}
+
+#teamNumber,#numOfVolunteers,#teamLeader,#teamMembersName{
+    margin-bottom: 3%;
+}
+
+#error,#error_msg{
+    text-align: center;
+    width: 100%;
+     display: block;
+    margin: auto;
+}
+
+#members{
+    font-size: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

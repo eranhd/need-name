@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
+import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
 
 @Component({
   selector: 'app-mobile-spot',
@@ -7,17 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MobileSpotComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router:Router) {
+    
+}
+
+  public buttonHotSpot(){
+    this.router.navigate(['report']);
+  }
+
+   public buttonColdSpot(){
+    
+  }
 
   ngOnInit() {
-  }
-
-  buttonHotSpot(){
-
-  }
-
-  buttonAddSpot(){
-    
   }
 
 }

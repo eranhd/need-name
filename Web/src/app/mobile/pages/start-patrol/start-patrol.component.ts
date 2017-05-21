@@ -25,7 +25,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
               public shiftService: ShiftService,
               public fireService: FirebaseService,
               public userService: UserService) {
-    this.numOfMembers=0;
+    this.numOfMembers=null;
     this.team = new Team();
     this.isValid = true;
     this.memberValid=false;
@@ -36,7 +36,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   };
 
 
-  private startPatrol() {
+  public startPatrol() {
     if(this.numOfMembers <= 0 || this.team.teamNum <= 0 || !this.team.teamNum || this.team.lead == null || !this.team.lead){
       this.isValid = false;
       console.log("is ins the if 1");
@@ -64,7 +64,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     console.log((<HTMLInputElement>document.getElementById('numOfVolunteers')).value);
-    this.numOfMembers = 0;
+    this.numOfMembers = null;
     this.team.members = [];
   }
 
