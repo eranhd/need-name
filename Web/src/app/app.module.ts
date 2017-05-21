@@ -50,6 +50,7 @@ import { LastShiftComponent } from './pages/home/last-shift/last-shift.component
 import { EndPatrolComponent } from './mobile/pages/end-patrol/end-patrol.component';
 import { TeamStatisticsComponent } from './mobile/pages/mobile-home/team-statistics/team-statistics.component';
 import { ImportantPhoneComponent } from './mobile/pages/important-phone/important-phone.component';
+import { LocalStorageService } from './service/local-storage/local-storage.service';
 
 
 export const firebaseConfig = {
@@ -121,7 +122,8 @@ const myFirebaseAuthConfig = {
     MapsService,
     RoleService,
     ReportService,
-    ShiftService
+    ShiftService,
+    LocalStorageService
   ],
   bootstrap: [AppComponent],
   entryComponents:[
