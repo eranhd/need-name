@@ -16,7 +16,7 @@ import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component'
 export class MobileLoginComponent implements OnInit {
   email: any;
   password: any;
-  
+  error: string;
   title:string = "כניסה";
 
 
@@ -25,6 +25,7 @@ export class MobileLoginComponent implements OnInit {
     public af:AngularFire,
     public userService:UserService,
     public firebaseService: FirebaseService) { 
+      this.error = '';
   }
 
   public signIn(){
@@ -37,6 +38,7 @@ export class MobileLoginComponent implements OnInit {
       this.firebaseService.initUser('mobile_main');
     }).catch((error)=>{
       console.log(error.message);
+      this.error = 'אנא נסה שנית';
     });
   
     
