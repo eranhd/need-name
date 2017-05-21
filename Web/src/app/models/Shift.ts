@@ -36,8 +36,8 @@ export class Shift {
         return true;
     }
 
-    public initEndShift(filling: string) {
-        this.endShift = new EndShift(filling);
+    public initEndShift(filling: string, position?: Position) {
+        this.endShift = new EndShift(filling, position);
     }
 }
 
@@ -64,17 +64,24 @@ class EndShift {
     filling: string;
     summary:string;
 
-    constructor(filling: string) {
+    constructor(filling: string, position?:Position) {
 
         this.filling = filling;
         this.summary='';
 
         this.date = new Date();
-        navigator.geolocation.getCurrentPosition((position) => {
+        if(position){
+            this.location = new Location(position.coords.longitude, position.coords.latitude);
+        }
+        else
+        {
+            navigator.geolocation.getCurrentPosition((position) => {
             this.location = new Location(position.coords.longitude, position.coords.latitude);
         }, (error) => {
             console.log('position start shift error' + error.message);
         });
+        }
+        
  
     }
 }
