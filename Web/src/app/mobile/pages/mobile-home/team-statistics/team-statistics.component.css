@@ -17,7 +17,7 @@
     width: 90%;
     margin-left: 5%;
     height: 90%;
-    background-color: palegreen;
+    background-color: cadetblue;
     padding: 10%;
     border: 1px solid darkkhaki;
 
@@ -30,7 +30,7 @@
 .label ,.description{
     direction: rtl;
     text-align: right; 
-    color: gray;
+    color: white;
     font-size: 150%;
     display: inline-block;
     

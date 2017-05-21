@@ -17,6 +17,12 @@ app-mobile-header{
     left: 0;
 }
 
+.error{
+    color: red;
+    display: inline-block;
+    width: 100%;
+
+}
 
 
 app-mobile-footer{
