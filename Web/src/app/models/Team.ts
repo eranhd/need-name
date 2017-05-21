@@ -7,7 +7,7 @@ export class Team{
 
     constructor(){
         this.members = [];
-        this.teamNum = 0;
+        this.teamNum = null;
         this.lead = '';
     };
 
@@ -18,7 +18,6 @@ export class Team{
             this.members[i] = new Member();
             this.members[i].index = i;
         }
-        console.log(this.members)
     }
 
     

@@ -11,9 +11,9 @@
   </div>
 
   <div id='input_details'>
-     <input type='text' class='form-control' id='teamNumber' required [(ngModel)]='team.teamNum' placeholder="מספר צוות">
+     <input placeholder="מספר צוות" type='text' class='form-control' id='teamNumber' required [(ngModel)]='team.teamNum' >
     
-     <input type="number" class='form-control' id='numOfVolunteers' required (focusout)='team.initMembersArray(numOfMembers)' [(ngModel)]="numOfMembers" placeholder="מספר המתנדבים" >
+     <input placeholder="מספר המתנדבים" type="number" class='form-control' id='numOfVolunteers' required (focusout)='team.initMembersArray(numOfMembers)' [(ngModel)]="numOfMembers"  >
     
      <input type='text' class='form-control' id='teamLeader' required placeholder="ראש צוות" [(ngModel)]='team.lead'>
     
