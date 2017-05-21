@@ -15,8 +15,8 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
   public leader:string;
   public numOfMembers:number;
-  public teamMember:string[]; 
   public isValid: boolean;
+  public memberValid: boolean;
   team: Team;
 
 
@@ -26,8 +26,8 @@ export class StartPatrolComponent implements OnInit, OnChanges {
               public userService: UserService) {
     this.numOfMembers=0;
     this.team = new Team();
-    this.isValid = false;
-
+    this.isValid = true;
+    this.memberValid=true;
   }
 
    deleteMember(){
@@ -39,15 +39,20 @@ export class StartPatrolComponent implements OnInit, OnChanges {
     if(this.numOfMembers <= 0 || this.team.teamNum <= 0 || !this.team.teamNum || this.team.lead == '' || !this.team.lead)
       this.isValid = false;
     else{
-      this.isValid = true;
-      this.router.navigate(['mobile_main']);
+        for(let i=0 ; i<this.team.members.length;i++){
+          if(this.team.members[i].name == ''){
+            this.isValid=false;
+            this.memberValid=false;
+            break;
+          }
+        }
     }
-    //let error:string = "<div class='alert alert-danger' role='alert'> <strong> .נא למלא את השדות</strong></div>";
-   // if( (<HTMLInputElement>document.getElementById('teamNumber')).value == "" || (<HTMLInputElement>document.getElementById('numOfVolunteers')).value == "" || (<HTMLInputElement>document.getElementById('teamLeader')).value == ""){
-    //document.getElementById("error").innerHTML = error;
-      //alert("ffff");
-      
-
+    if(this.memberValid){
+        this.isValid = true;
+        this.fireService.updateUser(this.userService.user);
+        this.router.navigate(['mobile_main']);
+      }
+    
   };
 
   ngOnInit() {
