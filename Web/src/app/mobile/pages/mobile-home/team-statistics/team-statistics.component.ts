@@ -15,6 +15,8 @@ export class TeamStatisticsComponent implements OnInit {
     
    }
 
+   
+
   ngOnInit() {
   }
 

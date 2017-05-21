@@ -2,8 +2,25 @@
   <div class='error_message' *ngIf='!shift.shift'>
     <span >עליך להתחיל משמרת כדי לראות את פרטי הצוות</span>
   </div>
-  <span>
-    <span>מספר הצוות</span>
-    <span>12</span>
-  </span>
+  <div class='details' *ngIf='shift.shift'>
+    <div class='row'>
+      <span class='description'>{{shift.shift.team.teamNum}}</span>
+      <span class='label'>מספר הצוות:</span>
+    </div>
+
+    <div class='row'>
+      <span class='description'>{{shift.shift.reports.lenght}}</span>
+      <span class='label'>מספר האירועים שדווחו עד כה:</span>
+    </div>
+
+    <div class='row'>
+      <span class='description'>{{shift.shift.stratShift.date | date:'HH:mm'}}</span>
+      <span class='label'>שעת תחילת המשמרת</span>
+    </div>
+
+    <div class='row'>
+      <span class='description'>{{shift.shift.team.lead}}</span>
+      <span class='label'>ראש הצוות</span>
+    </div>
+  </div>
 </div>
