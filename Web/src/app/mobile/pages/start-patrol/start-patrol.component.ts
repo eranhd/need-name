@@ -5,6 +5,7 @@ import { ShiftService } from '../../../service/shift/shift.service';
 import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { UserService } from '../../../service/user/user.service';
 import { Shift } from '../../../models/Shift';
+import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
 
 
 @Component({
@@ -58,6 +59,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
         this.shiftService.startShift(this.team);
         this.userService.user.addShift(this.shiftService.shift);
         this.fireService.updateUser(this.userService.user);
+        LocalStorageService.saveUser(this.userService.user);
         this.router.navigate(['mobile_main']);
       }
   };

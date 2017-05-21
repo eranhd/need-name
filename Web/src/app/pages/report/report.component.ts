@@ -8,6 +8,8 @@ import { UserService } from '../../service/user/user.service';
 import { FirebaseService } from '../../service/firebase/firebase.service';
 import { ShiftService } from '../../service/shift/shift.service';
 import { Team } from '../../models/Team'; 
+import { LocalStorageService } from '../../service/local-storage/local-storage.service';
+
 
 @Component({
   selector: 'app-report',
@@ -46,12 +48,12 @@ export class ReportComponent implements OnInit {
       this.shiftService.shift.addReport(report);
       this.userService.user.updateLastShift(this.shiftService.shift);
       this.firebaseService.updateUser(this.userService.user);
-      
+      LocalStorageService.saveUser(this.userService.user);
 
     }, (error)=>{
       alert("אנא הפעל מיקום");
     });
-          
+
     
     
     

@@ -6,6 +6,7 @@ import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { UserService } from '../../../service/user/user.service';
 import { Shift } from '../../../models/Shift';
 import { Location } from '../../../models/Location';
+import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-end-patrol',
@@ -43,6 +44,7 @@ export class EndPatrolComponent implements OnInit {
       this.shiftService.isShiftStart = false;
       this.userService.user.updateLastShift(this.shiftService.shift);
       this.fireService.updateUser(this.userService.user);
+      LocalStorageService.clearUser();      
       this.router.navigate(['mobile_main']);
     }, (error) => {
       alert('אנא הפעל מיקום');
