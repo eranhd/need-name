@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="end">
   
   <div id="endShif-btn-veryGood" (click)="filling = 'מצויין'"><img src="https://image.flaticon.com/icons/svg/75/75534.svg"> </div>
@@ -11,15 +10,5 @@
 <div id="filling">{{filling}}</div>
 <div *ngIf="filling == null" id="how-filling">?אז איך עבר הסיור</div>
 
-  <textarea cols="50" rows="4" id="summary" [(ngModel)]=this.shiftService.shift.endShift.summary placeholder="?רוצה לפרט קצת"></textarea>
+  <textarea cols="50" rows="4" id="summary" [(ngModel)]="this.summaryT" placeholder="?רוצה לפרט קצת"></textarea>
   <button class="btn" id="endShif-btn" (click)='endThisShift(this.filling)'>סיים</button>
-=======
-<!--<p>
-  <button clss="btn" id="endShif-btn" [(ngModel)] value="מצוין">הרגשה 1</button>
-  <button clss="btn" id="endShif-btn" value="סבבה">הרגשה 2</button>
-  <button clss="btn" id="endShif-btn" value="חרא">הרגשה 3</button>
-  <br>
-  <button clss="btn" id="endShif-btn" (click)='endThisShift(this.filling)'>סיים</button>
-</p>
--->
->>>>>>> 4ad92460d66359fe53a33095171a1dee61789e76
