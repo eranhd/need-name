@@ -9,6 +9,12 @@ popup-report{
     cursor: pointer;
 }
 
+span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .report-row{
     font-size: small;
     cursor: pointer;

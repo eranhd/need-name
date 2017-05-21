@@ -3,17 +3,21 @@
 
   <div class='col-md-4'>
     <h1>אירועים אחרונים</h1>
-    <span class='last-repor-head col-md-4 col-xs-4' *ngFor='let item of lastReport.getHead()'>
-      {{item}}
-    </span>
-
-    <last-shift *ngFor='let shift of firebseService.shifts'
-      [shift]='shift'>
-      <h1>kjhk</h1>
-    </last-shift>
+    <div class='row'>
+      <span class='last-repor-head col-md-4 col-xs-4' *ngFor='let item of lastReport.getHead()'>
+        {{item}}
+      </span>
+    </div>
 
 
-    <!--<div *ngFor='let shift of firebseService.shifts'>
+    <div *ngFor='let shift of firebseService.shifts'>
+      <last-shift *ngFor='let shift of firebseService.shifts' [shift]='shift' class='row'>
+      </last-shift>
+    </div>
+  </div>
+
+
+  <!--<div *ngFor='let shift of firebseService.shifts'>
       <app-last-report 
       *ngFor='let report of shift.reports' 
       [report]='report'>

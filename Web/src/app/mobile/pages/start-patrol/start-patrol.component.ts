@@ -34,9 +34,9 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
 
   private startPatrol() {
-    let error:string = "<div class='alert alert-danger' role='alert'> <strong> .נא למלא את השדות</strong></div>";
+    //let error:string = "<div class='alert alert-danger' role='alert'> <strong> .נא למלא את השדות</strong></div>";
    // if( (<HTMLInputElement>document.getElementById('teamNumber')).value == "" || (<HTMLInputElement>document.getElementById('numOfVolunteers')).value == "" || (<HTMLInputElement>document.getElementById('teamLeader')).value == ""){
-      document.getElementById("error").innerHTML = error;
+    //document.getElementById("error").innerHTML = error;
       //alert("ffff");
 
   };
