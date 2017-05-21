@@ -7,12 +7,14 @@ import { Report } from '../../models/Report';
 export class ShiftService {
 
   shift: Shift;
+  isShiftStart: boolean;
   constructor() {
-
+    this.isShiftStart = false;
    }
 
   startShift(team: Team){
     this.shift = new Shift(team);
+    this.isShiftStart = true;
   }
 
   addReport(report: Report){

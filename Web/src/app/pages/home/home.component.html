@@ -11,19 +11,10 @@
 
 
     <div *ngFor='let shift of firebseService.shifts'>
-      <last-shift *ngFor='let shift of firebseService.shifts' [shift]='shift' class='row'>
+      <last-shift [shift]='shift' class='row'>
       </last-shift>
     </div>
   </div>
-
-
-  <!--<div *ngFor='let shift of firebseService.shifts'>
-      <app-last-report 
-      *ngFor='let report of shift.reports' 
-      [report]='report'>
-      </app-last-report>
-    </div>
-  </div>-->
 
 
   <span class='col-md-4'>
