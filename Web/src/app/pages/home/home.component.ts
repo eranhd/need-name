@@ -34,8 +34,9 @@ export class HomeComponent implements OnInit {
     this.hotArea = new TableItem('hotArea', 2, ['איזור', 'מספר תקריות']);
     this.nowActive = new TableItem('nowActive', 2, ['איזור', 'דוח תחילת משמרת']);
     this.lastReport.getTypeRows();
-    if(!this.firebseService.shifts)
+    if(!this.firebseService.shifts || this.firebseService.shifts.length <= 0)
       this.firebseService.initShifts();
+    console.log(this.firebseService.shifts)
    };
 
    private lastReportSelected(index){
