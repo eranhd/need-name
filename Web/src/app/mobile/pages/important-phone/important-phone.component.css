@@ -10,6 +10,10 @@ main{
     padding-left: 5%;
 }
 
+.name{
+    font-size: 100%;
+    display: inline-block;
+}
 img{
     height: 100%;
 
