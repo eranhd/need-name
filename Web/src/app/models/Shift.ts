@@ -22,7 +22,7 @@ export class Shift{
         return true;
     }
 
-    public initEndShift(filling){
+    public initEndShift(filling:string){
         this.endShift = new EndShift(filling);
     }
 }
