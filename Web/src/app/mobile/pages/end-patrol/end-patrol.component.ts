@@ -22,15 +22,16 @@ export class EndPatrolComponent implements OnInit {
     public userService: UserService) {
 
     this.filling = null;
-    this.summaryT=null;
-    this.shiftService.shift.endShift.summary=this.summaryT;
+    this.summaryT='';
   }
 
 
   public endThisShift(filling: string) {
-    this.shiftService.shift.endShift.summary=this.summaryT;
+    console.log(this.summaryT);
     this.shiftService.shift.initEndShift(filling);
+    this.shiftService.shift.endShift.summary=this.summaryT;
     this.shiftService.isShiftStart = false;
+    console.log(this.shiftService.shift.stratShift.location);
     this.userService.user.updateLastShift(this.shiftService.shift);
     this.fireService.updateUser(this.userService.user);
     this.router.navigate(['mobile_main']);
