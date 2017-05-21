@@ -10,9 +10,9 @@ import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component'
 })
 export class MobileSpotComponent implements OnInit {
 
-  constructor(public router:Router) {
-    
-}
+ constructor(public router:Router,
+            public shiftService: ShiftService) { }
+
 
   public buttonHotSpot(){
     this.router.navigate(['report']);
