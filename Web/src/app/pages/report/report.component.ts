@@ -47,7 +47,7 @@ export class ReportComponent implements OnInit {
      navigator.geolocation.getCurrentPosition((position)=>{
       report = new Report(filds, this.summary, position);
       //*********************need to delete */
-      this.shiftService.startShift(new Team());
+      //this.shiftService.startShift(new Team());
       this.shiftService.shift.addReport(report);
       this.userService.user.updateLastShift(this.shiftService.shift);
       this.firebaseService.updateUser(this.userService.user);

@@ -1,8 +1,11 @@
 <!--<button type="button">התחל סיור</button>-->
 <main>
-  <div class='btn_moveTo' routerLink='../start_patrol'>התחל סיור</div>
-  <div class='btn_moveTo' routerLink='../mobile_spot'>הוסף נקודה</div>
-  <div class='btn_moveTo' routerLink='../report'>דווח על אירוע</div>
+  <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo' routerLink='../start_patrol'>התחל סיור</div>
+  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo_canceled' >התחל סיור</div>
+  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' routerLink='../mobile_spot'>הוסף נקודה</div>
+  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' routerLink='../report'>דיווח על אירוע</div>
+  <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo_canceled' >הוסף נקודה</div>
+  <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo_canceled' >דווח על אירוע</div>
 </main>
 <!--<button type="button">נקודה</button>
 
