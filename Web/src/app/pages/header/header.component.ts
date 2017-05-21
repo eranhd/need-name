@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../../service/report/report.service';
 import { UserService } from '../../service/user/user.service'
 import {Report } from '../../models/Report';
-
+import { FirebaseService } from '../../service/firebase/firebase.service';
 
 @Component({
   selector: 'app-header',
@@ -15,22 +15,37 @@ export class HeaderComponent implements OnInit {
   newsData:string[];
   curr:string;
   index:number;
+  shiftIndex: number;
 
 
   constructor(public userService:UserService, 
-              public reportService:ReportService) { 
+              public reportService:ReportService,
+              public firebaseService: FirebaseService) { 
     
     this.index = 0;
+    this.shiftIndex = 0;
     var that = this;
-    var currArr:Report[] = that.reportService.getLastReportArr();
+    let shiftArr = this.firebaseService.shifts;
+    var currArr = [];
+    
     var curr = '';
 
-    setInterval(function(){
+    setInterval(()=>{
+      
       if( that.reportService.getLastReportArr().length != 0 ){
-        currArr = that.reportService.getLastReportArr();
         
-        that.index++;
-        that.index %= currArr.length;
+        if(this.index == shiftArr[this.shiftIndex].reports.length){
+          this.index = 0;
+          this.shiftIndex++;
+          currArr = shiftArr[this.shiftIndex].reports;
+        }
+        if(this.shiftIndex == shiftArr.length){
+          this.shiftIndex = 0;
+        }
+
+        
+        
+        this.index %= currArr.length;
         
         if(currArr[that.index] != null)
           if(currArr[that.index].summary)
