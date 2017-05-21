@@ -1,6 +1,6 @@
 <div class='main'>
 
-  <app-mobile-header></app-mobile-header>
+  <app-mobile-header [showBack]='false'></app-mobile-header>
 
   <div class='div_login'>
     <input id="input_username" type='text' placeholder="שם משתמש" [class.notValid]='email == ""' [(ngModel)]='email' />

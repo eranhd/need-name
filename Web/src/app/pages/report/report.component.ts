@@ -51,7 +51,7 @@ export class ReportComponent implements OnInit {
     }, (error)=>{
       alert("אנא הפעל מיקום");
     });
-    
+          
     
     
     

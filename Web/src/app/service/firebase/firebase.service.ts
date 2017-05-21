@@ -78,12 +78,11 @@ export class FirebaseService {
    initUser(goto?:string)
    {
     
-    this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user=>{
+    this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe((user:User)=>{
       this.userService.user = user;
       this.userService.userLogin = true;
       if(goto){
         this.router.navigate([goto]);
-        console.log('goto')
       }
     });
     
