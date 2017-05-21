@@ -12,22 +12,22 @@ import { Shift } from '../../../models/Shift';
   styleUrls: ['./end-patrol.component.css']
 })
 export class EndPatrolComponent implements OnInit {
-  
-  filling:string;
 
-  constructor(public router:Router,
-              public shiftService: ShiftService,
-              public fireService: FirebaseService,
-              public userService: UserService) {
+  filling: string;
 
-this.filling='';
-}
+  constructor(public router: Router,
+    public shiftService: ShiftService,
+    public fireService: FirebaseService,
+    public userService: UserService) {
 
-public endThisShift(filing:string){
-  
-this.shiftService.shift.initEndShift(filing);
+    this.filling = '';
+  }
 
-}
+  public endThisShift(filing: string) {
+    this.shiftService.shift.initEndShift(filing);
+    this.shiftService.isShiftStart = false;
+
+  }
   ngOnInit() {
   }
 
