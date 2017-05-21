@@ -32,6 +32,8 @@
     font-family: 'Arial';
     font-size: 25px;
     text-align: center;
+    background-color: #a94442;
+    color: white;
 }
 
 ::-webkit-scrollbar{
