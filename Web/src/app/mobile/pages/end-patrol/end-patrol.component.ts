@@ -5,6 +5,7 @@ import { ShiftService } from '../../../service/shift/shift.service';
 import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { UserService } from '../../../service/user/user.service';
 import { Shift } from '../../../models/Shift';
+import { Location } from '../../../models/Location';
 
 @Component({
   selector: 'app-end-patrol',
@@ -31,7 +32,14 @@ export class EndPatrolComponent implements OnInit {
     this.shiftService.shift.initEndShift(filling);
     this.shiftService.shift.endShift.summary=this.summaryT;
     this.shiftService.isShiftStart = false;
-    console.log(this.shiftService.shift.stratShift.location);
+    
+     navigator.geolocation.getCurrentPosition((position) => {
+            this.shiftService.shift.endShift.location = new Location(position.coords.longitude, position.coords.latitude);
+        }, (error) => {
+            console.log('position start shift error' + error.message);
+        });
+
+        alert(this.shiftService.shift.endShift.location);
     this.userService.user.updateLastShift(this.shiftService.shift);
     this.fireService.updateUser(this.userService.user);
     this.router.navigate(['mobile_main']);

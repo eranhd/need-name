@@ -65,9 +65,10 @@ class EndShift {
     summary:string;
 
     constructor(filling: string) {
-        
+
         this.filling = filling;
         this.summary='';
+
         this.date = new Date();
         navigator.geolocation.getCurrentPosition((position) => {
             this.location = new Location(position.coords.longitude, position.coords.latitude);
