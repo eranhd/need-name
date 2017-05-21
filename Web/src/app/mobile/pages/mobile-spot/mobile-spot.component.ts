@@ -14,13 +14,11 @@ export class MobileSpotComponent implements OnInit {
     
 }
 
-  
-
   public buttonHotSpot(){
     this.router.navigate(['report']);
   }
 
-   public buttonAddSpot(){
+   public buttonColdSpot(){
     
   }
 
