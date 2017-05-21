@@ -1,8 +1,8 @@
 <main>
-  <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo' routerLink='../start_patrol'>התחל סיור</div>
-  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' routerLink='../end_patrol'>סיים סיור</div>
-  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' routerLink='../mobile_spot'>הוסף נקודה</div>
-  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' routerLink='../report'>דיווח על אירוע</div>
+  <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo' id="startPatrol" routerLink='../start_patrol'>התחל סיור</div>
+  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' id="endPatrol" routerLink='../end_patrol'>סיים סיור</div>
+  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' id="addSpot" routerLink='../mobile_spot'><img src="http://www.iconsdb.com/icons/preview/white/pin-8-xxl.png" id="img">   הוסף נקודה</div>
+  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' id="report" routerLink='../report'><img src="http://www.iconsdb.com/icons/preview/white/warning-xxl.png" id="img">   דיווח על אירוע</div>
   <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo_canceled' >הוסף נקודה</div>
   <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo_canceled' >דווח על אירוע</div>
   <div class='statistic'>

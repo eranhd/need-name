@@ -7,6 +7,7 @@
     color: white;
     font-size: large;
     margin: 1% 0;
+    border-radius: 8px; 
 }
 
 .btn_moveTo_canceled{
@@ -18,6 +19,7 @@
     color: white;
     font-size: large;
     margin: 1% 0;
+    border-radius: 8px; 
 }
 
 main{
@@ -32,3 +34,30 @@ main{
     width: 100%;
     height: 100%;
 }
+
+#img{
+    width: 32px;
+    height: 32px;
+}
+
+#startPatrol{
+background: #42A948;
+
+}
+
+#endPatrol{
+background-color: #a94442;
+
+}
+/*
+#report{
+    
+    background-color: #81D4FA;
+    
+}
+
+#addSpot{
+    background-color:#81D4FA;
+  
+}
+*/

@@ -15,7 +15,7 @@ import { Location } from '../../../models/Location';
 export class EndPatrolComponent implements OnInit {
 
   filling: string;
-  summaryT: string;
+  summaryT:string;
 
   constructor(public router: Router,
     public shiftService: ShiftService,
@@ -23,30 +23,19 @@ export class EndPatrolComponent implements OnInit {
     public userService: UserService) {
 
     this.filling = null;
-    this.summaryT = '';
+    this.summaryT='';
   }
 
 
   public endThisShift(filling: string) {
     console.log(this.summaryT);
-
-
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.shiftService.shift.endShift.location = new Location(position.coords.longitude, position.coords.latitude);
-    }, (error) => {
-      console.log('position start shift error' + error.message);
-    });
-
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.shiftService.shift.initEndShift(filling, position);
-      this.shiftService.shift.endShift.summary = this.summaryT;
-      this.shiftService.isShiftStart = false;
-      this.userService.user.updateLastShift(this.shiftService.shift);
-      this.fireService.updateUser(this.userService.user);
-      this.router.navigate(['mobile_main']);
-    }, (error) => {
-      alert('אנא הפעל מיקום');
-    });
+    this.shiftService.shift.initEndShift(filling);
+    this.shiftService.shift.endShift.summary=this.summaryT;
+    this.shiftService.isShiftStart = false;
+    
+    this.userService.user.updateLastShift(this.shiftService.shift);
+    this.fireService.updateUser(this.userService.user);
+    this.router.navigate(['mobile_main']);
   }
   ngOnInit() {
   }
