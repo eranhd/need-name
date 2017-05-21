@@ -23,7 +23,8 @@ export class MobileLoginComponent implements OnInit {
   constructor(private router:Router,
     public userServ:UserService,
     public af:AngularFire,
-    public userService:UserService,) { 
+    public userService:UserService,
+    public firebaseService: FirebaseService) { 
   }
 
   public signIn(){
@@ -33,7 +34,7 @@ export class MobileLoginComponent implements OnInit {
       email: this.email, 
       password:this.password
     }).then((succsess)=>{
-      this.router.navigate(['mobile_main']);
+      this.firebseService.initUser('mobile_main');
     }).catch((error)=>{
       console.log(error.message);
     });
