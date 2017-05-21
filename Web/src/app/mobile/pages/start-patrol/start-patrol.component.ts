@@ -4,6 +4,7 @@ import { Team } from '../../../models/Team';
 import { ShiftService } from '../../../service/shift/shift.service';
 import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { UserService } from '../../../service/user/user.service';
+import { Shift } from '../../../models/Shift';
 
 
 @Component({
@@ -49,10 +50,10 @@ export class StartPatrolComponent implements OnInit, OnChanges {
     }
     if(this.memberValid){
         this.isValid = true;
+        this.userService.user.addShift(new Shift(this.team));
         this.fireService.updateUser(this.userService.user);
         this.router.navigate(['mobile_main']);
       }
-    
   };
 
   ngOnInit() {
