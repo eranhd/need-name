@@ -1,7 +1,14 @@
-<p>
-  <button class="btn" id="endShif-btn" (click)="filling = 'מצויין'">הרגשה 1</button>
-  <button class="btn" id="endShif-btn" (click)="filling = 'סבבה'">הרגשה 2</button>
-  <button class="btn" id="endShif-btn" (click)="filling = 'חרא'">הרגשה 3</button>
+<div class="end">
+  
+  <div id="endShif-btn-veryGood" (click)="filling = 'מצויין'"><img src="https://image.flaticon.com/icons/svg/75/75534.svg"> </div>
+  <div id="endShif-btn-nice" (click)="filling = 'סבבה'" ><img src="https://image.flaticon.com/icons/svg/75/75482.svg"></div>
+  <div id="endShif-btn-humi" (click)="filling = 'לא משהו'"> <img src="https://image.flaticon.com/icons/svg/75/75966.svg"></div>
+  <div id="endShif-btn-ang" (click)="filling = 'גרוע'"><img src="https://image.flaticon.com/icons/svg/75/75495.svg"></div>
   <br>
+</div>
+
+<div id="filling">{{filling}}</div>
+<div *ngIf="filling == null" id="how-filling">?אז איך עבר הסיור</div>
+
+  <textarea cols="50" rows="4" id="summary" [(ngModel)]=this.shiftService.shift.endShift.summary placeholder="?רוצה לפרט קצת"></textarea>
   <button class="btn" id="endShif-btn" (click)='endThisShift(this.filling)'>סיים</button>
-</p>

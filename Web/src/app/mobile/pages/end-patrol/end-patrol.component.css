@@ -1,0 +1,39 @@
+#endShif-btn-veryGood,#endShif-btn-nice,#endShif-btn-humi,#endShif-btn-ang{
+    float: right;
+    width:20%; 
+    display: block;
+    margin: auto;
+    margin-right: 3%;
+    margin-top:7%; 
+}
+#filling,#how-filling{
+
+    clear:both;   
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-family: 'Arial';
+    margin-top: 30%;
+    font-size:40px; 
+
+}
+#summary{
+    text-align: right;
+}
+
+#endShif-btn{
+
+    clear:both;   
+    display: block;
+    margin: auto;
+    margin-top:50%;
+    width: 50%;
+    height: 8.5%;
+    font-family: 'Arial';
+    font-size: 25px;
+    text-align: center;
+}
+
+::-webkit-scrollbar{
+    visibility: hidden;
+}

@@ -48,6 +48,7 @@ class EndShift{
     date: Date;
     location: Location;
     filling: string;
+    summary:string;
 
     constructor(filling:string){
         this.date = new Date();
@@ -59,5 +60,6 @@ class EndShift{
         });
 
         this.filling = filling;
+        this.summary=null;
     }
 }
