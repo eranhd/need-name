@@ -28,7 +28,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
     this.numOfMembers=0;
     this.team = new Team();
     this.isValid = true;
-    this.memberValid=true;
+    this.memberValid=false;
   }
 
    deleteMember(){
@@ -37,20 +37,26 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
 
   private startPatrol() {
-    if(this.numOfMembers <= 0 || this.team.teamNum <= 0 || !this.team.teamNum || this.team.lead == '' || !this.team.lead)
+    if(this.numOfMembers <= 0 || this.team.teamNum <= 0 || !this.team.teamNum || this.team.lead == null || !this.team.lead){
       this.isValid = false;
+      console.log("is ins the if 1");
+    }
     else{
         for(let i=0 ; i<this.team.members.length;i++){
-          if(this.team.members[i].name == ''){
+          if(this.team.members[i].name == null){
             this.isValid=false;
             this.memberValid=false;
             break;
           }
+          else{
+            this.memberValid=true;
+          }
         }
     }
-    if(this.memberValid){
+    if(this.memberValid == true){
         this.isValid = true;
-        this.userService.user.addShift(new Shift(this.team));
+        this.shiftService.startShift(this.team);
+        this.userService.user.addShift(this.shiftService.shift);
         this.fireService.updateUser(this.userService.user);
         this.router.navigate(['mobile_main']);
       }
