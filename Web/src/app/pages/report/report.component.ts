@@ -29,29 +29,24 @@ export class ReportComponent implements OnInit {
     let report:Report;
 
     this.summary = (<HTMLInputElement>document.getElementById('summary')).value;
-    //console.log(summary);
-
-    //new Report(new Date() undefined, title, undefined);
-
     let filds: ReportField[] = [];
     var items = this.settingReportService.getInputs();
-    for(var i = 0; i < items.length; i++){
+    for(var i = 0; i < items.length; i++){//add all fileds to array
       if(items[i].id != 'summary')
         filds.push(new ReportField(items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value));
-        //report.addFiled(undefined, items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value);
     }
 
     
 
     
      navigator.geolocation.getCurrentPosition((position)=>{
-      report = new Report(filds, this.summary, position);
-      //*********************need to delete */
-      //this.shiftService.startShift(new Team());
+      report = new Report(filds, this.summary, position);//create new report
+      
+      //update user
       this.shiftService.shift.addReport(report);
       this.userService.user.updateLastShift(this.shiftService.shift);
       this.firebaseService.updateUser(this.userService.user);
-      //console.log(this.userService.user);
+      
 
     }, (error)=>{
       alert("אנא הפעל מיקום");
@@ -61,7 +56,7 @@ export class ReportComponent implements OnInit {
     
     
        if(window.innerWidth < 800){
-        this.router.navigate(['mobile_main']);
+          this.router.navigate(['mobile_main']);
       }
     
     
