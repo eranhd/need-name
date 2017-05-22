@@ -1,18 +1,20 @@
-<section class='last_shift'>
-  <h1>משמרות אחרונות</h1>
-  <div *ngFor='let shift of firebseService.shifts'>
-    <last-shift [shift]='shift' class='row'>
-    </last-shift>
-  </div>
-</section>
+<main>
+  <section class='last_shift'>
+    <h1>משמרות אחרונות</h1>
+    <div *ngFor='let shift of firebseService.shifts'>
+      <last-shift [shift]='shift' class='row'>
+      </last-shift>
+    </div>
+  </section>
 
 
-<section class='map'>
-  <h1>מפת אירועים</h1>
-  <app-maps></app-maps>
-</section>
+  <section class='map'>
+    <h1>מפת אירועים</h1>
+    <app-maps></app-maps>
+  </section>
 
 
-<section class='now_active'>
-  <h1>סיורים כרגע</h1>
-</section>
+  <section class='now_active'>
+    <h1>סיורים כרגע</h1>
+  </section>
+</main>

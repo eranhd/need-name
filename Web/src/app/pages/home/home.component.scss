@@ -14,7 +14,11 @@ h1{
     border-width: 0px 0px 1px 0px;
 }
 
-
+main{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 
 last-shift{
     width: 100%;
@@ -26,6 +30,6 @@ last-shift{
 section{
     width: 30%;
     margin: 0 1%;
-    display: inline-block;
+    display: inline-grid;
     height: 100%;
 }
