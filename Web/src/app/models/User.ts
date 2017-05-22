@@ -6,6 +6,7 @@ export class User {
 
     details: Details;
     shifts: Shift[];
+    location: Location[];
 
 
     constructor(user?: User) {
@@ -14,12 +15,18 @@ export class User {
             for(let shift of user.shifts)
                 this.shifts.push(new Shift(shift.team, shift));
 
+           /* this.location = [];
+            for(let shift of user.location)
+                this.location.push(new Location(location.team, location));   */
+
             this.details = new Details(user.details);
+            
         }
         else {
 
             this.details = new Details();
             this.shifts = [];
+            this.location = [];
         }
     }
 
