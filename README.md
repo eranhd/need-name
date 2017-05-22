@@ -9,30 +9,26 @@ The app comes ease the volunteers and the organization collecting the data and a
 this project developed at Azrieli College of Engineering for a social project.
 
 ## hosting
-https://anti-drugs-jerusalem.firebaseapp.com
+https://antidrugsjerusalem.firebaseapp.com
 
 ## Tools & Practices
-We're trying to use the best tools and practices in order to produce a quality enginneered product.
-(replace 'jce-il/project-template' with your 'username/repo' and register to the relevant services)
 
 |Category|Status|
 |---|---|
 | Version Control System| git & github |
-| Recommended IDE | [Android Studio](https://code.visualstudio.com) | [Visual Code](https://www.#.com)|
+| Recommended IDE | [Visual Code](https://www.#.com)|
 | Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Anti-Drug-Jerusalem/Lobby) |
 | Build Status (CI) |  [![Build Status](https://travis-ci.org/jce-il/project-template.svg?branch=master)](https://travis-ci.org/jce-il/project-template) |
 | Dependencies | [![David](https://img.shields.io/david/dev/idleberg/vscode-badges.svg?style=flat-square)](https://david-dm.org/jce-il/project-template?type=dev) |
 | License | [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/) |
-| Test Coverege | [![codecov.io](https://codecov.io/github/jce-il/project-template/coverage.svg?branch=master)](https://codecov.io/github/jce-il/project-template?branch=master) |
 | Code Quality | [![Code Climate](https://codeclimate.com/github/jce-il/project-template.svg)](https://codeclimate.com/github/jce-il/project-template) |
 | Code Style | [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/jce-il/project-template) |
 | Current Release | [![Current Version](https://img.shields.io/github/release/jce-il/project-template.svg?style=flat)](https://github.com/jce-il/project-template/releases) |
 | Issues | [![GitHub issues](https://img.shields.io/github/issues/jce-il/project-template.svg?style=flat)](https://github.com/eranhd/Anti-Drug-Jerusalem/issues) |
-| Project Management Board| [here](https://github.com/jce-il/project-template/projects/1) |
+| Project Management Board| [here](https://github.com/eranhd/Anti-Drug-Jerusalem/projects/1) |
 | Contributors | [![GitHub contributors](https://img.shields.io/github/contributors/jce-il/project-template.svg)](https://github.com/jce-il/project-template/graphs/contributors)|
 | Deployment | [![Heroku](http://heroku-badge.herokuapp.com/?app=my-app&style=flat&svg=1&root=index.html)] |
 | Security | [![Known Vulnerabilities](https://snyk.io/test/github/jce-il/project-template/badge.svg)](https://snyk.io/test/github/jce-il/project-template) |
-| Documnetation | [![Inline docs](http://inch-ci.org/github/jce-il/project-template.svg?branch=master)](http://inch-ci.org/github/jce-il/project-template) |
 | Project Course Status | ... |
 |mockup|[mockup flow](https://wireframepro.mockflow.com/view/D2231ba9b82f08d9041b6c49928bdc6e1)|
 
