@@ -15,7 +15,7 @@ export class MobileSpotComponent implements OnInit {
 
   }
 
-  public buttonHotSpot() {
+  public buttonHotSpot(){
     this.router.navigate(['report']);
   }
 
