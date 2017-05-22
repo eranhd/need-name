@@ -21,7 +21,12 @@ export class MobileSpotComponent implements OnInit {
   }
 
   public buttonColdSpot() {
-     this.router.navigate(['mobile_main']);
+    navigator.geolocation.getCurrentPosition((position) => {
+    }, (error) => {
+      alert('אנא הפעל מיקום');
+    });
+  
+    this.router.navigate(['mobile_main']);
   }
 
   getImage(event) {
