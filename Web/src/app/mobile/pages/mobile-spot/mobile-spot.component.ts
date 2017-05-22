@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
 import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
@@ -10,16 +10,29 @@ import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component'
 })
 export class MobileSpotComponent implements OnInit {
 
-  constructor(public router:Router) {
-    
-}
+  img;
+  constructor(public router: Router, private element: ElementRef) {
 
-  public buttonHotSpot(){
+  }
+
+  public buttonHotSpot() {
     this.router.navigate(['report']);
   }
 
-   public buttonColdSpot(){
-    
+  public buttonColdSpot() {
+
+  }
+
+  getImage(event) {
+    var reader = new FileReader();
+    var image = this.element.nativeElement.querySelector('.image');
+
+    reader.onload = function (event: ProgressEvent) {
+      var src = event.target;
+      image.src = src['result'];
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
   }
 
   ngOnInit() {
