@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
 import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
-import { Location } from './Location';
+import { Location } from 'app/models/Location';
 
 @Component({
   selector: 'app-mobile-spot',
@@ -24,7 +24,7 @@ export class MobileSpotComponent implements OnInit {
 
   public buttonColdSpot() {
     navigator.geolocation.getCurrentPosition((position) => {
-      this.location = new Location(position.coords.longitude, position.coords.latitude);
+    this.location = new Location(position.coords.longitude, position.coords.latitude);
     }, (error) => {
       alert('אנא הפעל מיקום');
     });
