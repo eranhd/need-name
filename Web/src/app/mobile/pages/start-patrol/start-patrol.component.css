@@ -53,6 +53,7 @@ input{
 
 #members{
     font-size: 20px;
+    text-align: right;
 }
 
 input[type=number]::-webkit-inner-spin-button,

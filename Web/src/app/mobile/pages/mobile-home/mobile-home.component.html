@@ -1,12 +1,11 @@
 <main>
-  <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo' id="startPatrol" routerLink='../start_patrol'>התחל סיור</div>
-  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' id="endPatrol" routerLink='../end_patrol'><img src='https://cdn2.iconfinder.com/data/icons/bitsies/128/FlagRed-128.png' id="img"/>  סיים סיור</div>
+  <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo' id="startPatrol" routerLink='../start_patrol'> התחל סיור</div>
+  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' id="endPatrol" routerLink='../end_patrol'>  סיים סיור</div>
   <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' id="addSpot" routerLink='../mobile_spot'><img src='https://cdn3.iconfinder.com/data/icons/web-ui-color/128/Marker_green-128.png  ' id="img"/>     הוסף נקודה</div>
-  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' id="report" routerLink='../report'><img src='http://findicons.com/files/icons/2580/android_icons/72/location.png' id="img"/>   דווח על אירוע</div>
+  <div *ngIf='shiftService.isShiftStart' class='btn_moveTo' id="report" routerLink='../report'><img src='https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Chat2-128.png' id="img"/>   דווח על אירוע</div>
   <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo_canceled' >הוסף נקודה</div>
   <div *ngIf='!shiftService.isShiftStart' class='btn_moveTo_canceled' >דווח על אירוע</div>
   <div class='statistic'>
     <router-outlet></router-outlet>
   </div>
 </main>
-
