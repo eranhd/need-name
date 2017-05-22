@@ -13,6 +13,7 @@ export class MobileHomeComponent implements OnInit {
             public shiftService: ShiftService) { }
 
   ngOnInit() {
+
   }
 
 }

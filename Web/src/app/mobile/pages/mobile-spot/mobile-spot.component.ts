@@ -30,7 +30,15 @@ export class MobileSpotComponent implements OnInit {
     reader.onload = function (event: ProgressEvent) {
       var src = event.target;
       image.src = src['result'];
+      firebase.storage().ref('spotImage/').putString(src['result'], 'data_url', {
+        contentType: 'image/jpeg'
+      }).then((snapshot) => {
+        console.log('image saved' + snapshot);
+      })
+
     };
+
+
 
     reader.readAsDataURL(event.target.files[0]);
   }
