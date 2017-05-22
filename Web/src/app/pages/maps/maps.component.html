@@ -2,9 +2,5 @@
   <span *ngFor='let item of firebseService.reports'>
     <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng"></sebm-google-map-marker>
   </span>
-  <!-- 
-   
- -->
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-  <sebm-google-map-marker [latitude]="lat2" [longitude]="lng2"></sebm-google-map-marker>
+
 </sebm-google-map>

@@ -17,6 +17,7 @@ import { RoleService } from '../../service/role/role.service';
 
 //var b:boolean;
 export class LoginComponent implements OnInit {
+  message: string = 'כדי להיכנס למערכת עליכם להיות רשומים, להרשמה דברו עם הרכז האזורי';
   error: string;
   title:string = "התחברות למערכת";
   email: string;
