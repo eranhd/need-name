@@ -6,7 +6,7 @@ export class User {
 
     details: Details;
     shifts: Shift[];
-    location: Location[];
+    locations: Location[];
 
 
     constructor(user?: User) {
@@ -15,18 +15,16 @@ export class User {
             for(let shift of user.shifts)
                 this.shifts.push(new Shift(shift.team, shift));
 
-           /* this.location = [];
-            for(let shift of user.location)
-                this.location.push(new Location(location.team, location));   */
+           // this.locations.push(new Location(location.));   
 
             this.details = new Details(user.details);
-            
+
         }
         else {
 
             this.details = new Details();
             this.shifts = [];
-            this.location = [];
+            this.locations = [];
         }
     }
 
@@ -37,6 +35,10 @@ export class User {
     updateLastShift(shift: Shift){
        // this.addShift(shift);//need to delete
         this.shifts[this.shifts.length -1] = shift;
+    }
+
+    addColdSpot(location: Location){
+        this.locations.push(location);
     }
 
 
