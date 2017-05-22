@@ -1,17 +1,18 @@
 <div *ngIf='shift' class='shift-title'>
-
-  <div *ngIf='shift.startShift'>
+  
+  <div class='shift_row' *ngIf='shift.stratShift'>
+    <!--<h3>startShift</h3>-->
     <span *ngIf='shift.team.lead'>{{shift.team.lead}}</span>
-    <span *ngIf='shift.startShift.date'>{{shift.stratShift.date}}</span>
-    <span *ngIf='shift.startShift.location'>{{shift.startShift.location}}</span>
+    <span *ngIf='shift.stratShift.date'>{{shift.stratShift.date | date:'dd.MM.yy'}}</span>
+    <span *ngIf='shift.stratShift.location'>{{shift.stratShift.location}}</span>
   </div>
 
-  <div *ngIf='shift.reports'>
+  <!--<div *ngIf='shift.reports'>
     <div *ngFor='let report of shift.reports'>
       <app-last-report *ngFor='let report of shift.reports' [report]='report'>
       </app-last-report>
     </div>
-  </div>
+  </div>-->
 
 
 </div>
