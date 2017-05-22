@@ -7,12 +7,10 @@ app-mobile-home{
 
 main{
     position: absolute;
-    overflow-y: scroll;
-    width: 100%;
+    width: 93%;
     height: 85%;
-    padding: 0 2%;
+    padding:2%;
     top: 11%;
-    left: 0;
 }
 
 ::-webkit-scrollbar{

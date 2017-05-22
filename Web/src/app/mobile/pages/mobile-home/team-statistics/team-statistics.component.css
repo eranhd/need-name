@@ -13,25 +13,29 @@
 }
 
 .details{
+    margin-top:20%; 
     font-weight: bold;
-    width: 90%;
-    margin-left: 5%;
-    height: 90%;
-    background-color: cadetblue;
-    padding: 10%;
-    border: 1px solid darkkhaki;
+    width: 93%;
+    margin-left: 3.5%;
+    margin-top: 5%;
 
+    background-color: white;
+    padding: 10%;
+    border: 2px solid #004381;
+    border-radius: 5px;
 
     padding-top: 10px;
     text-align: right;
     padding-right: 10px; 
+    font-family: 'Arial';
 }
 
 .label ,.description{
     direction: rtl;
     text-align: right; 
-    color: white;
-    font-size: 150%;
+    color: #004381;
+    font-size: 100%;
     display: inline-block;
-    
+    margin: 1%;
+    font-family: 'Arial';
 }

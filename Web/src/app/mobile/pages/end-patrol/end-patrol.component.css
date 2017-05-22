@@ -3,7 +3,8 @@
     width:20%; 
     display: block;
     margin: auto;
-    margin-right: 3%;
+    margin-left:2%;
+    margin-right:3%; 
     margin-top:7%; 
 }
 #filling,#how-filling{
@@ -19,6 +20,8 @@
 }
 #summary{
     text-align: right;
+    display: block;
+    margin: auto;
 }
 
 #endShif-btn{
@@ -36,6 +39,8 @@
     color: white;
 }
 
-::-webkit-scrollbar{
-    visibility: hidden;
+.end{
+
+    width: 93%;
+    margin-left: 2%;
 }
