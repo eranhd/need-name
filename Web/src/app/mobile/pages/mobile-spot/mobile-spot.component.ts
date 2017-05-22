@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
 import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
+import { Location } from 'app/models/Location';
 
 @Component({
   selector: 'app-mobile-spot',
@@ -9,6 +10,7 @@ import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component'
   styleUrls: ['./mobile-spot.component.css']
 })
 export class MobileSpotComponent implements OnInit {
+  public location: Location;
 
   img;
   constructor(public router: Router, private element: ElementRef) {
@@ -21,7 +23,13 @@ export class MobileSpotComponent implements OnInit {
   }
 
   public buttonColdSpot() {
-     this.router.navigate(['mobile_main']);
+    navigator.geolocation.getCurrentPosition((position) => {
+    this.location = new Location(position.coords.longitude, position.coords.latitude);
+    }, (error) => {
+      alert('אנא הפעל מיקום');
+    });
+  
+    this.router.navigate(['mobile_main']);
   }
 
   getImage(event) {
