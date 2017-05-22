@@ -21,7 +21,7 @@ export class MobileSpotComponent implements OnInit {
   }
 
   public buttonColdSpot() {
-
+     this.router.navigate(['mobile_main']);
   }
 
   getImage(event) {
