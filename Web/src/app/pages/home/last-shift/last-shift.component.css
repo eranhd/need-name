@@ -1,5 +1,7 @@
 .shift-title{
     background-color: lightcyan;
+    width: 100%;
+    color: black;
 }
 
 app-last-report{

@@ -1,5 +1,50 @@
 .div_login{
-    margin-top: 20%;
-    padding: 2%;
+    position: fixed;
+    top: 0;
+    right: 20%;
+    width: 400px;
+    height: 100%;
+    text-align: center;
+    background-color: whitesmoke;
+    border-left: 1px solid #004381;
+    border-right: 1px solid #004381;
+    direction: rtl;
+}
+
+.div_input{
+
+    width: 100%;
+    display: inline-block;
+    margin-top: 50%;
+}
+
+img{
+    width: 100%;
+}
+input{
+    display: inline-block; 
+    width: 80%;
+    padding: 5% 28px;
+    margin: 2% 0;
+    border-style: none;
+    border-bottom: 1px lightgray solid;
     
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.btn_login{
+    cursor: pointer;
+    width: 80%;
+    padding: 5% 28px;
+    background-color: #004381;
+    color: white;
+    display: inline-block;
+}
+
+.btn_login:hover{
+    color: #004381;
+    background-color: white;
 }

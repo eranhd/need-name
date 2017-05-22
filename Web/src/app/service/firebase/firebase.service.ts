@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Observable } from'rxjs/Observable';
 import { auth, database } from 'firebase';
 import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
 import { SettingReportService } from '../setting-report/setting-report.service';
 import { User } from '../../models/User';
-import { AngularFire, FirebaseObjectObservable, FirebaseListObservable,  } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable, FirebaseListObservable  } from 'angularfire2';
 import { Report } from '../../models/Report';
 import { Shift } from '../../models/Shift';
 import { ShiftService } from '../shift/shift.service';
@@ -16,6 +17,7 @@ export class FirebaseService {
   private userToSave: FirebaseListObservable<any>;//this user and all report saves in firebase
   private database;
   private auth;
+  shiftToShow: Observable<Array<Shift>>;
   shifts: Shift[];
 
   constructor(private af: AngularFire,
@@ -30,6 +32,9 @@ export class FirebaseService {
       this.shifts = [];
       this.userToSave = af.database.list('/users');
     
+
+    //this is try, maby need to delete
+    // this.shiftToShow = Observable.
    };
    public getDatabase(){return this.database;};
    public getAuth(){return this.auth;};

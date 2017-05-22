@@ -17,9 +17,10 @@ import { RoleService } from '../../service/role/role.service';
 
 //var b:boolean;
 export class LoginComponent implements OnInit {
-
+  error: string;
   title:string = "התחברות למערכת";
-
+  email: string;
+  pass: string;
 
   constructor(public router:Router, 
     public userServ:UserService,
@@ -32,8 +33,8 @@ export class LoginComponent implements OnInit {
       }
       //if()
     //this.signOut();
-    else
-      this.signIn();
+    // else
+      //this.signIn();
   }
 
   public signIn(){
@@ -42,13 +43,10 @@ export class LoginComponent implements OnInit {
       email:'eranm22@gmail.com',//email:email, 
       password:'111111'//password:password
     }).then((succsess)=>{
-      //var userSer:UserService = new UserService();
-      //console.log(succsess);
-      //this.userService.setUser(firebase.auth().currentUser.uid);
       this.firebseService.initUser('main');
-      //this.router.navigate(['main']);
     }).catch((error)=>{
       console.log(error.message);
+      this.error = 'אנא נסה שנית';
     });
     
   

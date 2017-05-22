@@ -1,32 +1,18 @@
-<div class='container center'>
-
-
-  <div class='col-md-4'>
-    <h1>אירועים אחרונים</h1>
-    <div class='row'>
-      <span class='last-repor-head col-md-4 col-xs-4' *ngFor='let item of lastReport.getHead()'>
-        {{item}}
-      </span>
-    </div>
-
-
-    <div *ngFor='let shift of firebseService.shifts'>
-      <last-shift [shift]='shift' class='row'>
-      </last-shift>
-    </div>
+<section class='last_shift'>
+  <h1>משמרות אחרונות</h1>
+  <div *ngFor='let shift of firebseService.shifts'>
+    <last-shift [shift]='shift' class='row'>
+    </last-shift>
   </div>
+</section>
 
 
-  <span class='col-md-4'>
-    <h1>מפת אירועים</h1>
-      <app-maps></app-maps>
-    </span>
+<section class='map'>
+  <h1>מפת אירועים</h1>
+  <app-maps></app-maps>
+</section>
 
 
-  <div class='col-md-4'>
-    <h1>סיורים כרגע</h1>
-    <span class='last-repor-head col-md-6 col-xs-6' *ngFor='let item of nowActive.getHead()'>{{item}}</span>
-
-
-  </div>
-</div>
+<section class='now_active'>
+  <h1>סיורים כרגע</h1>
+</section>
