@@ -38,12 +38,12 @@ export class EndPatrolComponent implements OnInit {
       this.shiftService.isShiftStart = false;
       this.userService.user.updateLastShift(this.shiftService.shift);
       this.fireService.updateUser(this.userService.user);
-      LocalStorageService.clearUser();      
+      LocalStorageService.clearUser(); 
       this.router.navigate(['mobile_main']);
     }, (error) => {
       alert('אנא הפעל מיקום');
     });
-
+    
   }
   ngOnInit() {
   }
