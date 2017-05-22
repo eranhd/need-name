@@ -15,6 +15,10 @@
 
 
   <section class='now_active'>
-    <h1>סיורים כרגע</h1>
+    <h1>אירועים אחרונים</h1>
+    <div *ngFor='let report of firebseService.reports'>
+      <app-last-report [report]='report'>
+      </app-last-report>
+    </div>
   </section>
 </main>

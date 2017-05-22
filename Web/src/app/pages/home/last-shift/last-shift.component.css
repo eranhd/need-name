@@ -1,13 +1,21 @@
 .shift-title{
-    background-color: lightcyan;
+    border-bottom: 1px solid lightgray;
     width: 100%;
     color: black;
 }
 
-.shift_row{
+span{
+    width: 33%;
     overflow: hidden;
     white-space: nowrap;
-    
+    display: inline-block;
+}
+
+.shift_row{
+    padding: 0 2%;
+    overflow: hidden;
+    white-space: nowrap;
+
 }
 
 app-last-report{

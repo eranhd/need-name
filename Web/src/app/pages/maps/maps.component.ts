@@ -4,6 +4,7 @@ import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral , SebmGoogleMapMarke
 import { UserService } from '../../service/user/user.service';
 import { ReportService } from '../../service/report/report.service';
 import { Report } from '../../models/Report';
+import { FirebaseService } from '../../service/firebase/firebase.service';
 
 @Component({
   selector: 'app-maps',
@@ -24,7 +25,8 @@ export class MapsComponent implements OnInit {
 
   constructor(maps:MapsService, 
               public userService:UserService,
-              public reportService:ReportService,) { 
+              public reportService:ReportService,
+              public firebseService: FirebaseService) { 
     
     this.reports = this.reportService.getLastReportArr();
     

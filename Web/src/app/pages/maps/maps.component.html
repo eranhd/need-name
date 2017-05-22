@@ -1,6 +1,6 @@
 <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
-  <span *ngFor='let item of reportService.getLastReportArr()'>
-    <sebm-google-map-marker *ngIf='item != null' [latitude]="item.loc.lat" [longitude]="item.loc.lng"></sebm-google-map-marker>
+  <span *ngFor='let item of firebseService.reports'>
+    <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng"></sebm-google-map-marker>
   </span>
   <!-- 
    
