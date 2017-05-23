@@ -26,9 +26,9 @@ export class MobileSpotComponent implements OnInit {
   }
 
   public buttonColdSpot() {
-    navigator.geolocation.getCurrentPosition((position) => {
-    this.location = new Location(position.coords.longitude, position.coords.latitude);
-    this.userService.user.addColdSpot(location);
+   navigator.geolocation.getCurrentPosition((position) => {
+   // this.location = new Location(position.coords.longitude, position.coords.latitude);
+    this.userService.user.addColdSpot(position);
     }, (error) => {
       alert('אנא הפעל מיקום');
     });

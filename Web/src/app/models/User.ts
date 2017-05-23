@@ -1,12 +1,13 @@
 import { Shift } from './Shift';
-
+import { Location } from './Location';
 
 //this models will describe user class.
 export class User {
 
     details: Details;
     shifts: Shift[];
-    locations: Location[];
+    coldSpot:Location;
+    locationArr: Location[];
 
 
     constructor(user?: User) {
@@ -24,7 +25,8 @@ export class User {
 
             this.details = new Details();
             this.shifts = [];
-            this.locations = [];
+            this.locationArr = [];
+            this.coldSpot=null;
         }
     }
 
@@ -37,8 +39,12 @@ export class User {
         this.shifts[this.shifts.length -1] = shift;
     }
 
-    addColdSpot(location: Location){
-        this.locations.push(location);
+    addColdSpot(position:Position){
+    
+    this.coldSpot = new Location(position.coords.longitude, position.coords.latitude);
+
+    this.locationArr.push(this.coldSpot);
+    console.log(this.coldSpot);
     }
 
 
