@@ -10,12 +10,10 @@ export class SettingReportComponent implements OnInit {
   label: string;
   placeHolder: string;            
   type: string;
-  types: string[];
   isValid: boolean;
 
   constructor(public settingReportService:SettingReportService,
             ) {
-              this.types = ['text', 'number'];
               this.isValid = false;
    };
 
