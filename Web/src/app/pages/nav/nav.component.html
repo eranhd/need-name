@@ -8,11 +8,12 @@
   [routerLink]=item.getUrl()
   (click)='item.selected = true'>
 
-    <span class='sidenav_text' *ngIf='open'> {{item.getTxt()}} </span>
-
     <md-icon *ngIf='item.getIcon() != ""'>
       {{item.getIcon()}}
     </md-icon> 
+    <span class='sidenav_text' *ngIf='open'> {{item.getTxt()}} </span>
+
+    
     
   </div>
 </div>

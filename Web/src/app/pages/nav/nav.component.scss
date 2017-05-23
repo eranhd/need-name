@@ -12,7 +12,7 @@
 }
 
 .sidenav_container:hover{
-    width: 10%;
+    width: 30%;
 }
 
 @media only screen and (max-width: 800px){
@@ -27,6 +27,7 @@
 }
 
 .btn_nav{
+    direction: rtl;
     margin-top: 2px;
     margin-bottom: 2px;
     background-color: #578CA9;
