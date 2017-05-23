@@ -36,6 +36,7 @@ export class MobileLoginComponent implements OnInit {
       email: this.email, 
       password:this.password
     }).then((succsess)=>{
+      localStorage.setItem('userAndPassword', JSON.stringify({email: this.email, password: this.password}));
       this.firebaseService.initUser('mobile_main');
     }).catch((error)=>{
       console.log(error.message);
@@ -46,8 +47,14 @@ export class MobileLoginComponent implements OnInit {
   };
 
   ngOnInit() {
+    if(localStorage.getItem('userAndPassword'))
+    {
+      let obj = JSON.parse(localStorage.getItem('userAndPassword'));
+      this.email = obj.email;
+      this.password = obj.password;
+    }
     if(LocalStorageService.loadUser()){//if not empty
-    
+      
     }
   }
 
