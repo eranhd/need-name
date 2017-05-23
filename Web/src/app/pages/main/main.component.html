@@ -1,4 +1,3 @@
-
 <!--<md-sidenav-container class="container div_sidenav" (mouseover)="sidenav.open()" (mouseout)='sidenav.close()'>
   <md-sidenav #sidenav class="sidenav md-sidenav-right">
     <app-nav></app-nav>
@@ -8,11 +7,9 @@
 
 <app-nav></app-nav>
 
-
-<div class='container header'>
-    <app-header></app-header>
-</div>  
-
-<main class='body' align='rtl'>
+<main align='rtl'>
+  <app-header></app-header>
+  <section class='show'>
   <router-outlet></router-outlet>
+  </section>
 </main>
