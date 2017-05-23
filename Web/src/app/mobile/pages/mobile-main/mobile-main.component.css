@@ -25,6 +25,9 @@ app-mobile-header{
     padding: 0 5%;
     top: 0;
     left: 0;
+    background-color: gainsboro;
+    margin-bottom: 2px;
+    border-bottom: 1px solid lightgray;
 }
 
 
