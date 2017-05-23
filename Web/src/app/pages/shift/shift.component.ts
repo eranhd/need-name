@@ -13,6 +13,7 @@ export class ShiftComponent implements OnInit {
   constructor(public firebseService: FirebaseService) { }
 
   ngOnInit() {
+    
   }
 
 }

@@ -21,6 +21,8 @@ import { MobileHomeComponent } from './mobile/pages/mobile-home/mobile-home.comp
 import { TeamStatisticsComponent } from './mobile/pages/mobile-home/team-statistics/team-statistics.component';
 import { ImportantPhoneComponent } from './mobile/pages/important-phone/important-phone.component';
 import { ShiftComponent } from './pages/shift/shift.component';
+import { ShowReportComponent } from './pages/show-report/show-report.component';
+import { ShowShiftComponent } from './pages/show-shift/show-shift.component';
 
 
 export const router: Routes = [
@@ -36,7 +38,9 @@ export const router: Routes = [
             { path: 'report', component: ReportComponent },
             { path: 'maps', component: MapsComponent },
             { path: 'graphs', component: GraphsComponent },
-            {path: 'shift', component:ShiftComponent}
+            {path: 'shift', component:ShiftComponent},
+            {path: 'show-shift/:id', component: ShowShiftComponent},
+            {path: 'show-report', component: ShowReportComponent}
         ]
     },
     { path: 'mobile_login', component: MobileLoginComponent },

@@ -1,10 +1,10 @@
 <header>
   <div>
   <span>{{shift.stratShift.date | date:'dd.MM.yyyy'}}</span>
-  <sapn>{{shift.stratShift.date | date:'hh:mm:ss'}}</sapn>
-  <sapn *ngIf='shift.stratShift.location'>
-    {{shift.stratShift.location.getLocationName()}}
-  </sapn>
+  <span>{{shift.stratShift.date | date:'hh:mm:ss'}}</span>
+  <span *ngIf='shift.stratShift.location'>
+    {{shift.stratShift.location.name}}
+  </span>
   </div>
 
   <div>
@@ -12,12 +12,29 @@
     <span>{{shift.team.lead}}</span>
     <span *ngFor='let member of shift.team.members'>{{member.nam}}</span>
   </div>
+
+  <div *ngIf='shift.endShift'>
+    <span>{{shift.endShift.date | date:'dd.MM.yyyy'}}</span>
+  <span>{{shift.endShift.date | date:'hh:mm:ss'}}</span>
+  <span *ngIf='shift.stratShift.location'>
+    {{shift.endShift.location.name}}
+  </span>
+  </div>
 </header>
 
-<section>
-
-</section>
-
 <main>
+  <section class='reports'>
+    <div *ngFor='let report of shift.reports'>
+      <div>
+        <span>{{report.date | date:'HH:mm'}}</span>
+        <span>{{report.summary}}</span>
+      </div>
+    </div>
+  </section>
 
+  <section>
+  <div *ngFor='let loc of shift.coldSpotArr'>
+    {{loc.name}}    
+  </div>
+  </section>
 </main>

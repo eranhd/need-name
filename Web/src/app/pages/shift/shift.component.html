@@ -28,7 +28,10 @@
       </th>
     </tr>
 
-    <tr class='table_body' *ngFor='let shift of firebseService.shifts'>
+    <tr 
+      class='table_body' 
+      *ngFor='let shift of firebseService.shifts'
+      [routerLink]='["../show-shift", firebseService.shifts.indexOf(shift)]'>
       <td>
         {{shift.stratShift.date | date:'dd.MM.yyyy'}}
       </td>
