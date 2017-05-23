@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingReportService } from '../../service/setting-report/setting-report.service';
-import { AppComponent } from '../../app.component';
 import { Report, ReportField } from '../../models/Report';
 import { Router } from '@angular/router';
 import { Location } from '../../models/Location';
@@ -20,7 +19,7 @@ export class ReportComponent implements OnInit {
 
   summary: string;
   constructor(public settingReportService:SettingReportService, 
-  public appComp:AppComponent,private router:Router,
+  private router:Router,
   public userService: UserService, 
   public firebaseService: FirebaseService,
   public shiftService: ShiftService) {
@@ -67,7 +66,6 @@ export class ReportComponent implements OnInit {
     
   };
   ngOnInit() {
-    this.appComp.showNav = false;
   }
 
 }
