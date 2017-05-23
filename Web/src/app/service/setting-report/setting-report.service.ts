@@ -14,7 +14,7 @@ export class SettingReportService {
   constructor(
     private af: AngularFire
   ) {
-    console.log(firebase.auth().currentUser.uid);
+    //console.log(firebase.auth().currentUser.uid);
     this.item = af.database.object('/report_fields');
     this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/reports');
 

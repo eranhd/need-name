@@ -1,0 +1,39 @@
+main{
+    direction: rtl;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    .setting{
+        padding-right: 5%;
+        direction: rtl;
+        text-align: right;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45%;
+        height: 100%;
+        .full-width{
+            width: 100%;
+            display: block;
+        }
+        input{
+            font-weight: normal;
+            text-align: right;
+            display: inline-block;
+        }
+    }
+    .report{
+        direction: rtl;
+        text-align: right;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 45%;
+        height: 100%;
+        overflow: scroll;
+    }
+}
+
+::-webkit-scrollbar{
+    visibility: hidden;
+}

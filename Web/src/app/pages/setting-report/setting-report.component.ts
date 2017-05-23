@@ -3,29 +3,42 @@ import { SettingReportService } from '../../service/setting-report/setting-repor
 @Component({
   selector: 'app-setting-report',
   templateUrl: './setting-report.component.html',
-  styleUrls: ['./setting-report.component.css']
+  styleUrls: ['./setting-report.component.scss']
 })
 export class SettingReportComponent implements OnInit {
 
-  constructor(public settingReportService:SettingReportService) {
+  label: string;
+  placeHolder: string;            
+  type: string;
+  types: string[];
+  isValid: boolean;
+
+  constructor(public settingReportService:SettingReportService,
+            ) {
+              this.types = ['text', 'number'];
+              this.isValid = false;
    };
 
    public addToInputItem(){
-    var label:string = (<HTMLInputElement>document.getElementById('fieldName')).value;
-    var placeHolder:string = (<HTMLInputElement>document.getElementById('fieldDescription')).value;
-    var id:string = (<HTMLInputElement>document.getElementById('fieldDescriptionInEnglish')).value;
-    var type:string = (<HTMLInputElement>document.getElementById('selectedType')).value;
-    this.settingReportService.addInputItem(id, type, label, placeHolder);
+     console.log(this.generateId() + ' ' +  this.type + ' ' + this.label + ' '+  this.placeHolder);
+     if( !this.label || !this.type || !this.placeHolder || this.label == '' || this.type == '' || this.placeHolder == '')
+      return;
+    this.settingReportService.addInputItem(this.generateId(), this.type, this.label, this.placeHolder);
     this.cleanInput();
-
-
    };
 
+   generateId(): string{
+    let str = '';
+    let d = new Date();
+    str = d.getTime + '-' + this.label + '_' + this.type;
+    return str;
+   }
+
    public cleanInput(){
-    (<HTMLInputElement>document.getElementById('fieldName')).value = "";
-    (<HTMLInputElement>document.getElementById('fieldDescription')).value = "";
-    (<HTMLInputElement>document.getElementById('fieldDescriptionInEnglish')).value = "";
-    (<HTMLInputElement>document.getElementById('selectedType')).value = "text";
+    this.label = '';
+    this.placeHolder = '';
+    this.type = '';
+
    };
   ngOnInit() {
   }

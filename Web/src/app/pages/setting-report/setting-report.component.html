@@ -1,4 +1,33 @@
-<div class='container'>
+<main>
+  <section class='setting'>
+    <div class='title'>
+      <h1>הגדרת טפסים</h1>
+      <h2>הוספת שדה לטופס קיים</h2>
+    </div>
+    <div class='div_inputs'>
+      <md-input-container class='full-width'>
+        <input mdInput placeholder='שם השדה' [(ngModel)]='label' />
+      </md-input-container>
+      <md-input-container class='full-width'>
+        <input mdInput placeholder='תיאור' [(ngModel)]='placeHolder'/>
+      </md-input-container>
+      <label>סוג הערך שיוכנס
+        <select [(ngModel)]='type'>
+          <option (select)='type = "text"' value="text">טקסט</option>
+          <option (select)='type = "number"' value="number">מספר</option>
+        </select>
+        <button  class='btn btn-success full-width' (click)='addToInputItem()'>שמירה</button>
+      </label>
+    </div>
+  </section>
+  <section class='report'>
+    <app-report>
+
+    </app-report>
+  </section>
+</main>
+
+<!--<div class='container'>
 
   <div class="row">
     <div class='col-md-6'>
@@ -22,6 +51,4 @@
   </div>
 
 <hr>
-</div>
-
-<app-report></app-report>
+</div>-->
