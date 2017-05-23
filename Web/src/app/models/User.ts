@@ -6,13 +6,15 @@ export class User {
 
     details: Details;
     shifts: Shift[];
-    coldSpot:Location;
-    locationArr: Location[];
+   // thisShift:Shift;
+   // coldSpot:Location;
+    //coldSpotArr: Location[];
 
 
     constructor(user?: User) {
         if (user) {//copy constructor
             this.shifts = [];
+           
             for(let shift of user.shifts)
                 this.shifts.push(new Shift(shift.team, shift));
 
@@ -25,8 +27,8 @@ export class User {
 
             this.details = new Details();
             this.shifts = [];
-            this.locationArr = [];
-            this.coldSpot=null;
+           // this.coldSpotArr = [];
+           // this.coldSpot=null;
         }
     }
 
@@ -37,21 +39,19 @@ export class User {
     updateLastShift(shift: Shift){
        // this.addShift(shift);//need to delete
         this.shifts[this.shifts.length -1] = shift;
+        //this.thisShift=shift;
     }
 
-    addColdSpot(position:Position){
-    
-    this.coldSpot = new Location(position.coords.longitude, position.coords.latitude);
-
-    this.locationArr.push(this.coldSpot);
-    console.log(this.coldSpot);
+    addColdSpot(coldSpot:Location){
+   // navigator.geolocation.getCurrentPosition((position) => {
+   // this.coldSpot = new Location(position.coords.longitude, position.coords.latitude);
+   // this.coldSpotArr.push(coldSpot);
+    // }, (error) => {
+    //  alert('אנא הפעל מיקום');
+   // });
     }
-
-
-
-};
-
-
+}
+ 
 
 export class Details {
     name: string;

@@ -6,16 +6,32 @@ export class Shift {
 
     team: Team;
     reports: Report[];
+    coldSpotArr: Location[];
+    hotSpotArr:Report[];
     stratShift: StartShift;
     endShift: EndShift;
+    isHotSpot:boolean;
 
     constructor(team: Team, shift?: Shift) {
         if (shift) {
             this.team = team;
-            if(shift.reports)
-                this.reports = shift.reports;
+            if(shift.reports){
+                this.reports = shift.reports; 
+            }
+            else{
+                this.reports = [];  
+            }
+            if(shift.coldSpotArr){
+                 this.coldSpotArr=shift.coldSpotArr;
+            }
+            else{
+                this.coldSpotArr =[];
+            }
+            if(shift.hotSpotArr)
+            { this.hotSpotArr=shift.hotSpotArr;}
             else
-                this.reports = [];
+            { this.hotSpotArr =[];}
+
             this.stratShift = new StartShift(shift.stratShift);
             if(this.endShift)
                 this.endShift = shift.endShift;
@@ -26,19 +42,37 @@ export class Shift {
 
             this.team = team;
             this.reports = [];
+            this.hotSpotArr =[];
+            this.coldSpotArr =[];
             this.stratShift = new StartShift();
             this.endShift = null;
+
         }
     }
 
     public addReport(report: Report) {
-        this.reports.push(report);
-        return true;
+        if(this.isHotSpot){
+            this.hotSpotArr.push(report);
+            this.isHotSpot=false;
+            return true
+        }
+        else{
+            this.reports.push(report);
+            return true
+        }
     }
 
     public initEndShift(filling: string, position?: Position) {
         this.endShift = new EndShift(filling, position);
     }
+
+     addColdSpot(coldSpot:Location){
+        this.coldSpotArr.push(coldSpot);
+     }
+
+     addHotSpot(hotSpot:boolean){
+            this.isHotSpot=hotSpot;
+     }
 }
 
 class StartShift {

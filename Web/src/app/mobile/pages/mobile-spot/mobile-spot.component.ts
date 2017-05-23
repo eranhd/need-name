@@ -4,7 +4,9 @@ import { MobileHeaderComponent } from '../mobile-header/mobile-header.component'
 import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
 import { Location } from 'app/models/Location';
 import { UserService } from '../../../service/user/user.service';
-
+import { ShiftService } from '../../../service/shift/shift.service';
+import { FirebaseService } from '../../../service/firebase/firebase.service';
+import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
 @Component({
   selector: 'app-mobile-spot',
   templateUrl: './mobile-spot.component.html',
@@ -12,27 +14,37 @@ import { UserService } from '../../../service/user/user.service';
 })
 export class MobileSpotComponent implements OnInit {
   public location: Location;
-
+  public isHotSpot:boolean;
   img;
   constructor(public router: Router,
               private element: ElementRef,
-              public userService: UserService) {
+              public userService: UserService,
+              public firebaseService: FirebaseService,
+               public shiftService: ShiftService) {
 
+        //this.isHotSpot=false;
   }
 
   public buttonHotSpot(){
+    //this.isHotSpot=true;
+    let shifrLenght=this.userService.user.shifts.length;
+    this.userService.user.shifts[shifrLenght-1].addHotSpot(true);
+    
     this.router.navigate(['mobile_main/report']);
     
   }
 
   public buttonColdSpot() {
    navigator.geolocation.getCurrentPosition((position) => {
-   // this.location = new Location(position.coords.longitude, position.coords.latitude);
-    this.userService.user.addColdSpot(position);
+   this.location = new Location(position.coords.longitude, position.coords.latitude);
+    let shifrLenght=this.userService.user.shifts.length;
+  this.userService.user.shifts[shifrLenght-1].addColdSpot(this.location);
     }, (error) => {
       alert('אנא הפעל מיקום');
     });
-  
+    this.userService.user.updateLastShift(this.shiftService.shift);
+    this.firebaseService.updateUser(this.userService.user);
+    LocalStorageService.saveUser(this.userService.user);
     this.router.navigate(['mobile_main']);
   }
 
