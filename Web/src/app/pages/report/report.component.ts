@@ -57,7 +57,7 @@ export class ReportComponent implements OnInit {
     
     
     
-       if(window.innerWidth < 800){
+       if(window.innerWidth < 900){
           this.router.navigate(['mobile_main']);
       }
     
