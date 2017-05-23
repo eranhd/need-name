@@ -70,5 +70,6 @@ input:-webkit-autofill {
 
 .btn_login:hover{
     color: #004381;
-    background-color: white;
+    background-color: gainsboro;
+    border: 1px solid gray;
 }
