@@ -1,0 +1,45 @@
+.logo{
+    position: relative;
+    height: 70%;
+    width: 100%;
+    img{
+        position: absolute;
+        height: 100%;
+        top: 0;
+        right: 0;
+    }
+}
+
+.div_change_news{
+    border-style: solid;
+    border-color: black;
+    display: inline-block;
+    border-width: 1px 0px 1px 0px;
+    width: 100%;
+    height: 20%;
+    position: relative;
+    .title{
+        position: absolute;
+        text-align: right;
+        padding-right: 1%;
+        top: 0;
+        right: 5%;
+        background-color: #004381;
+        font-weight: bold;
+        color: white;
+        height: 100%;
+        width: 15%;
+        border-style: solid;
+        border-color: black;
+        border-width: 0px 0px 0px 1px; 
+    }
+    .news_data{
+        position: absolute;
+        top: 0;
+        right: 20%;
+
+    }
+}
+
+
+
