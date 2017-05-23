@@ -9,7 +9,7 @@ import { Shift } from '../../models/Shift';
 })
 export class ShiftComponent implements OnInit {
 
-  @Input() shift;
+  @Input() shift: Shift;
   constructor() { }
 
   ngOnInit() {
