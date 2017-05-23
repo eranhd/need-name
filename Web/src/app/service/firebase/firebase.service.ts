@@ -67,9 +67,7 @@ export class FirebaseService {
 
   public getReportFields() {
     this.itemToSave = this.af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
-    firebase.database().ref('report-fields').once('value').then(function (snapshot) {
-      // var settServ:SettingReportService = new SettingReportService(this);
-      //settServ.inputs =  snapshot.val();      
+    firebase.database().ref('report-fields').once('value').then(function (snapshot) {    
     });
   }
 
@@ -77,8 +75,7 @@ export class FirebaseService {
     this.userToSave.update(firebase.auth().currentUser.uid, user).catch(error=>{
       console.log(error.message);
     });
-    //  this.itemToSave.update('details', user);
-    //this.userToSave.
+
     console.log(user);
   }
 

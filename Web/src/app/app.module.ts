@@ -51,6 +51,7 @@ import { EndPatrolComponent } from './mobile/pages/end-patrol/end-patrol.compone
 import { TeamStatisticsComponent } from './mobile/pages/mobile-home/team-statistics/team-statistics.component';
 import { ImportantPhoneComponent } from './mobile/pages/important-phone/important-phone.component';
 import { LocalStorageService } from './service/local-storage/local-storage.service';
+import { ShiftComponent } from './pages/shift/shift.component';
 
 
 export const firebaseConfig = {
@@ -97,7 +98,8 @@ const myFirebaseAuthConfig = {
     LastShiftComponent,
     EndPatrolComponent,
     TeamStatisticsComponent,
-    ImportantPhoneComponent
+    ImportantPhoneComponent,
+    ShiftComponent
     
   ],
   imports: [
