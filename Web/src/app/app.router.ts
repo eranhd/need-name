@@ -20,6 +20,8 @@ import { MobileSpotComponent } from './mobile/pages/mobile-spot/mobile-spot.comp
 import { MobileHomeComponent } from './mobile/pages/mobile-home/mobile-home.component';
 import { TeamStatisticsComponent } from './mobile/pages/mobile-home/team-statistics/team-statistics.component';
 import { ImportantPhoneComponent } from './mobile/pages/important-phone/important-phone.component';
+import { ShiftComponent } from './pages/shift/shift.component';
+
 
 export const router: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,7 +35,8 @@ export const router: Routes = [
             { path: 'addNewUser', component: AddNewUserComponent },
             { path: 'report', component: ReportComponent },
             { path: 'maps', component: MapsComponent },
-            { path: 'graphs', component: GraphsComponent }
+            { path: 'graphs', component: GraphsComponent },
+            {path: 'shift', component:ShiftComponent}
         ]
     },
     { path: 'mobile_login', component: MobileLoginComponent },
