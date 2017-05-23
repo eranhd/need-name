@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Shift } from '../../models/Shift';
 import { FirebaseService } from '../../service/firebase/firebase.service';
 
 
@@ -10,7 +9,7 @@ import { FirebaseService } from '../../service/firebase/firebase.service';
 })
 export class ShiftComponent implements OnInit {
 
-  @Input() shift: Shift;
+  
   constructor(public firebseService: FirebaseService) { }
 
   ngOnInit() {

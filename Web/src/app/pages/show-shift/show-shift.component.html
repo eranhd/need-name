@@ -1,0 +1,23 @@
+<header>
+  <div>
+  <span>{{shift.stratShift.date | date:'dd.MM.yyyy'}}</span>
+  <sapn>{{shift.stratShift.date | date:'hh:mm:ss'}}</sapn>
+  <sapn *ngIf='shift.stratShift.location'>
+    {{shift.stratShift.location.getLocationName()}}
+  </sapn>
+  </div>
+
+  <div>
+    <span>{{shift.team.teamNum}}</span>
+    <span>{{shift.team.lead}}</span>
+    <span *ngFor='let member of shift.team.members'>{{member.nam}}</span>
+  </div>
+</header>
+
+<section>
+
+</section>
+
+<main>
+
+</main>
