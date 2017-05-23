@@ -6,7 +6,7 @@ import { BodyComponent } from './body/body.component';
 @Component({
   selector: 'popup-report',
   templateUrl: './popup-report.component.html',
-  styleUrls: ['./popup-report.component.css']
+  styleUrls: ['./popup-report.component.scss']
 })
 export class PopupReportComponent implements OnInit {
 

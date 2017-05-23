@@ -4,7 +4,7 @@
     <div class='div_last_shifts'>
       <div class='last_shift' *ngFor='let shift of firebseService.shifts'>
         <last-shift [shift]='shift'>
-      </last-shift>
+        </last-shift>
       </div>
     </div>
   </section>
@@ -18,11 +18,13 @@
   </section>
 
 
-  <section class='now_active'>
+  <section>
     <h1>אירועים אחרונים</h1>
-    <div *ngFor='let report of firebseService.reports'>
-      <app-last-report [report]='report'>
-      </app-last-report>
+    <div class='div_last_report'>
+      <div class='last_report' *ngFor='let report of firebseService.reports'>
+        <app-last-report [report]='report'>
+        </app-last-report>
+      </div>
     </div>
   </section>
 </main>

@@ -6,7 +6,7 @@ import { MdDialogModule } from '@angular/material';
 @Component({
   selector: 'app-last-report',
   templateUrl: './last-report.component.html',
-  styleUrls: ['./last-report.component.css']
+  styleUrls: ['./last-report.component.scss']
 })
 export class LastReportComponent implements OnInit {
 

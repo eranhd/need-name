@@ -1,4 +1,35 @@
-popup-report{
+span{
+    width: 33%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.report-row{
+    padding: 0 2%;
+    white-space: nowrap;
+    position: relative;
+    ::hover{
+        font-weight: bold;
+    }
+
+    popup-report{
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        width: 300px;
+        height: 200px;
+        z-index: 99999;    
+        box-shadow: 1px 1px 1px;
+        overflow: scroll;
+    }
+}
+
+::-webkit-scrollbar{
+    visibility: hidden;
+}
+
+/*popup-report{
     z-index: 99999;
     right: 0%;
     top : 0%;
@@ -34,3 +65,4 @@ span{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+*/
