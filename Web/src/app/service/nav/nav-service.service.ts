@@ -8,7 +8,6 @@ export class NavServiceService {
   
   constructor() {
     this.arrItems = [
-     // new NavItem('הצגת דיווחים', 'report', 'report'),
       new NavItem('ראשי', 'home', 'home', 'home'),
       new NavItem('משמרות', 'shift', 'shift', 'report'),
       new NavItem('הגדרת טפסים', 'settingReport', 'settingReport', 'settings'),

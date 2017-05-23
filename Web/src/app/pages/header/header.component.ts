@@ -32,24 +32,25 @@ export class HeaderComponent implements OnInit {
 
     setInterval(()=>{
       
-      if( that.reportService.getLastReportArr().length != 0 ){
+      if(firebaseService.reports.length != 0 ){
         
-        if(this.index == shiftArr[this.shiftIndex].reports.length){
-          this.index = 0;
-          this.shiftIndex++;
-          currArr = shiftArr[this.shiftIndex].reports;
-        }
-        if(this.shiftIndex == shiftArr.length){
-          this.shiftIndex = 0;
-        }
+        // if(this.index == shiftArr[this.shiftIndex].reports.length){
+        //   this.index = 0;
+        //   this.shiftIndex++;
+        //   currArr = shiftArr[this.shiftIndex].reports;
+        // }
+        // if(this.shiftIndex == shiftArr.length){
+        //   this.shiftIndex = 0;
+        // }
 
         
         
-        this.index %= currArr.length;
+        this.index %= this.firebaseService.reports.length;
         
-        if(currArr[that.index] != null)
-          if(currArr[that.index].summary)
-            that.curr = currArr[that.index].summary;
+        if(this.firebaseService.reports[that.index] != null)
+          if(this.firebaseService.reports[that.index].summary)
+            that.curr = this.firebaseService.reports[that.index].summary;
+        this.index++;
       }
     },3000)
   }

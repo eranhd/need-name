@@ -1,3 +1,58 @@
-<p>
-  shift works!
-</p>
+<header>
+  <!--here come all search setting-->
+</header>
+
+<main>
+  <table>
+    <tr class='table_head'>
+      <th>
+        תאריך
+      </th>
+      <th>
+        שעת התחלה
+      </th>
+      <th>
+        שעת סיום
+      </th>
+      <th>
+        ראש צוות
+      </th>
+      <th>
+        מספר אנשי צוות
+      </th>
+      <th>
+        מספר אירועים
+      </th>
+      <th>
+        מספר נקודות קרות
+      </th>
+    </tr>
+
+    <tr class='table_body' *ngFor='let shift of firebseService.shifts'>
+      <td>
+        {{shift.stratShift.date | date:'dd.MM.yyyy'}}
+      </td>
+      <td>
+        {{shift.stratShift.date | date:'hh:mm:ss'}}
+      </td>
+      <td>
+        <span *ngIf='shift.endShift'>{{shift.endShift.date | date:'hh:mm:ss'}}</span>
+        <span *ngIf='!shift.endShift'>דוח סיום לא הוזן</span>
+      </td>
+      <td>
+        {{shift.team.lead}}
+      </td>
+      <td>
+        {{shift.team.members.length}}
+      </td>
+      <td>
+        {{shift.reports.length}}
+      </td>
+      <td>
+        {{shift.coldSpotArr.length}}
+      </td>
+    </tr>
+    
+  </table>
+</main>
+
