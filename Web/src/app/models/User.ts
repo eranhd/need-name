@@ -34,6 +34,7 @@ export class User {
 
     addShift(shift: Shift){
         this.shifts.push(shift);
+        this.details.lastShift = new Date();
     }
 
     updateLastShift(shift: Shift){

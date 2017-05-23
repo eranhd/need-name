@@ -31,7 +31,7 @@ export class EndPatrolComponent implements OnInit {
   public endThisShift(filling: string) {
     
     console.log(this.summaryT);
-
+    LocalStorageService.clearUser();
     navigator.geolocation.getCurrentPosition((position) => {
       this.shiftService.shift.initEndShift(filling, position);
       this.shiftService.shift.endShift.summary = this.summaryT;

@@ -74,7 +74,9 @@ export class FirebaseService {
   }
 
   updateUser(user) {
-    this.userToSave.update(firebase.auth().currentUser.uid, user);
+    this.userToSave.update(firebase.auth().currentUser.uid, user).catch(error=>{
+      console.log(error.message);
+    });
     //  this.itemToSave.update('details', user);
     //this.userToSave.
     console.log(user);

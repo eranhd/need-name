@@ -21,8 +21,13 @@ export class LocalStorageService {
     user = localStorage.getItem('adjTempUser');
     if(user == '' || user == null || user == undefined)
       return null;
-    else
+    else{
       user = JSON.parse(user);
+      user = new User(user);
+      let d = new Date();
+      
+    }
+
     return user;
   }
 
