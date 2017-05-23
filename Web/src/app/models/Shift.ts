@@ -46,6 +46,7 @@ export class Shift {
             this.coldSpotArr =[];
             this.stratShift = new StartShift();
             this.endShift = null;
+            this.isHotSpot=false;
 
         }
     }

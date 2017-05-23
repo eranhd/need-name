@@ -46,6 +46,7 @@ export class ReportComponent implements OnInit {
       
       //update user
       this.shiftService.shift.addReport(report);
+      console.log("fffff");
       this.userService.user.updateLastShift(this.shiftService.shift);
       this.firebaseService.updateUser(this.userService.user);
       LocalStorageService.saveUser(this.userService.user);
@@ -58,6 +59,7 @@ export class ReportComponent implements OnInit {
     
     
        if(window.innerWidth < 900){
+         console.log("heyyyy");
           this.router.navigate(['mobile_main']);
       }
     
