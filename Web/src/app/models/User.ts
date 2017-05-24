@@ -6,19 +6,20 @@ export class User {
 
     details: Details;
     shifts: Shift[];
-   // thisShift:Shift;
-   // coldSpot:Location;
+    // thisShift:Shift;
+    // coldSpot:Location;
     //coldSpotArr: Location[];
 
 
     constructor(user?: User) {
         if (user) {//copy constructor
             this.shifts = [];
-           
-            for(let shift of user.shifts)
-                this.shifts.push(new Shift(shift.team, shift));
 
-           // this.locations.push(new Location(location.));   
+            if (user.shifts) {
+                for (let shift of user.shifts)
+                    this.shifts.push(new Shift(shift.team, shift));
+            }
+            // this.locations.push(new Location(location.));   
 
             this.details = new Details(user.details);
 
@@ -27,32 +28,32 @@ export class User {
 
             this.details = new Details();
             this.shifts = [];
-           // this.coldSpotArr = [];
-           // this.coldSpot=null;
+            // this.coldSpotArr = [];
+            // this.coldSpot=null;
         }
     }
 
-    addShift(shift: Shift){
+    addShift(shift: Shift) {
         this.shifts.push(shift);
         this.details.lastShift = new Date();
     }
 
-    updateLastShift(shift: Shift){
-       // this.addShift(shift);//need to delete
-        this.shifts[this.shifts.length -1] = shift;
+    updateLastShift(shift: Shift) {
+        // this.addShift(shift);//need to delete
+        this.shifts[this.shifts.length - 1] = shift;
         //this.thisShift=shift;
     }
 
-    addColdSpot(coldSpot:Location){
-   // navigator.geolocation.getCurrentPosition((position) => {
-   // this.coldSpot = new Location(position.coords.longitude, position.coords.latitude);
-   // this.coldSpotArr.push(coldSpot);
-    // }, (error) => {
-    //  alert('אנא הפעל מיקום');
-   // });
+    addColdSpot(coldSpot: Location) {
+        // navigator.geolocation.getCurrentPosition((position) => {
+        // this.coldSpot = new Location(position.coords.longitude, position.coords.latitude);
+        // this.coldSpotArr.push(coldSpot);
+        // }, (error) => {
+        //  alert('אנא הפעל מיקום');
+        // });
     }
 }
- 
+
 
 export class Details {
     name: string;
@@ -62,28 +63,27 @@ export class Details {
     numOfReport: number;
     lastShift: Date;
 
-    constructor(detail?: Details){
-        if(detail){
+    constructor(detail?: Details) {
+        if (detail) {
             this.name = detail.name;
             this.role = new Role(detail.role.type, detail.role.name);
             this.area = detail.area;
-            if(this._sons)
+            if (this._sons)
                 this._sons = detail._sons;
             else
                 this._sons = null;
             this.numOfReport = detail.numOfReport;
             this.lastShift = detail.lastShift;
         }
-        else
-        {
-            this.name= '';
+        else {
+            this.name = '';
             this.role = new Role(1, 'admin');
             this.area = 'jerusalem';
             this._sons = [];
             this.numOfReport = 0;
             this.lastShift = new Date();
         }
-        
+
     }
     public addSon(son: string) {
         this._sons.push(son);

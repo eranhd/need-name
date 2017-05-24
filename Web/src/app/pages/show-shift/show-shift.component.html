@@ -1,7 +1,7 @@
 <header>
   <div>
   <span>{{shift.stratShift.date | date:'dd.MM.yyyy'}}</span>
-  <span>{{shift.stratShift.date | date:'hh:mm:ss'}}</span>
+  <span>{{shift.stratShift.date | date:'HH:mm:ss'}}</span>
   <span *ngIf='shift.stratShift.location'>
     {{shift.stratShift.location.name}}
   </span>
@@ -24,11 +24,10 @@
 
 <main>
   <section class='reports'>
-    <div *ngFor='let report of shift.reports'>
-      <div>
+    <div *ngFor='let report of shift.reports'
+    (click)='reportChoose = report'>
         <span>{{report.date | date:'HH:mm'}}</span>
         <span>{{report.summary}}</span>
-      </div>
     </div>
   </section>
 
@@ -37,4 +36,10 @@
     {{loc.name}}    
   </div>
   </section>
+
+  <aside class='report_choose'>
+    <app-show-report [report]='reportChoose'>
+
+    </app-show-report>
+  </aside>
 </main>

@@ -39,8 +39,11 @@ export const router: Routes = [
             { path: 'maps', component: MapsComponent },
             { path: 'graphs', component: GraphsComponent },
             {path: 'shift', component:ShiftComponent},
-            {path: 'show-shift/:id', component: ShowShiftComponent},
-            {path: 'show-report', component: ShowReportComponent}
+            {path: 'show-shift/:id', component: ShowShiftComponent,
+                children: [
+                    {path: 'show-report/:id', component: ShowReportComponent}        
+                ]},
+            {path: 'show-report/:id', component: ShowReportComponent}
         ]
     },
     { path: 'mobile_login', component: MobileLoginComponent },
