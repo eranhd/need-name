@@ -12,14 +12,14 @@ export class ManageUserService {
   ) { }
 
   public signUp(email, password){
-    firebase.auth().createUserWithEmailAndPassword(email, password).then((user)=>{
-      console.log(user);
-      //let us = new User(user.)
-      this.userService.addSon(user.uid);
-    }).catch(function(error) {
-    var errorCode = error;
-    var errorMessage = error.message;
-  });
+  //   firebase.auth().createUserWithEmailAndPassword(email, password).then((user)=>{
+  //     console.log(user);
+  //     //let us = new User(user.)
+  //     this.userService.addSon(user.uid);
+  //   }).catch(function(error) {
+  //   var errorCode = error;
+  //   var errorMessage = error.message;
+  // });
   };
   
   public getAllUsers(){

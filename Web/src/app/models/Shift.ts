@@ -51,10 +51,9 @@ export class Shift {
         }
     }
 
-    public addReport(report: Report) {
-        if(this.isHotSpot){
+    public addReport(report: Report, id: number) {
+        if(id === 2){
             this.hotSpotArr.push(report);
-            this.isHotSpot=false;
             return true
         }
         else{
@@ -72,7 +71,7 @@ export class Shift {
      }
 
      addHotSpot(hotSpot:boolean){
-            this.isHotSpot=hotSpot;
+            this.isHotSpot = hotSpot;
      }
 }
 

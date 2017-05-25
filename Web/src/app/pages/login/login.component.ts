@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
   public signIn(){
     //var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
     this.af.auth.login({
-      email:'eranm22@gmail.com',//email:email, 
-      password:'111111'//password:password
+      email:this.email,//email:email, 
+      password:this.pass//password:password
     }).then((succsess)=>{
       this.firebseService.initUser('main');
     }).catch((error)=>{

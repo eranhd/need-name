@@ -24,7 +24,7 @@ export class ShiftService {
     this.isShiftStart = true;
   }
 
-  addReport(report: Report){
-    this.shift.addReport(report);
+  addReport(report: Report, id:number){
+    this.shift.addReport(report, id);
   }
 }

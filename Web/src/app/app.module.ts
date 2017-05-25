@@ -29,7 +29,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MapsComponent } from './pages/maps/maps.component';
-import { MaterialModule, MdDialog } from '@angular/material';
+import { MaterialModule, MdDialog, MdSelectModule } from '@angular/material';
 import { MobileMainComponent } from './mobile/pages/mobile-main/mobile-main.component';
 //import { StartShiftComponent } from './pages/report/start-shift/start-shift.component';
 import { ShiftService } from './service/shift/shift.service';
@@ -110,6 +110,7 @@ const myFirebaseAuthConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    MdSelectModule,
     routes,
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
     AgmCoreModule.forRoot({

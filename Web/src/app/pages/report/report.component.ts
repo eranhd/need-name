@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingReportService } from '../../service/setting-report/setting-report.service';
 import { Report, ReportField } from '../../models/Report';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '../../models/Location';
 import { UserService } from '../../service/user/user.service';
 import { FirebaseService } from '../../service/firebase/firebase.service';
@@ -17,12 +17,19 @@ import { LocalStorageService } from '../../service/local-storage/local-storage.s
 })
 export class ReportComponent implements OnInit {
 
+  sub: any;
+  id: number;
   summary: string;
   constructor(public settingReportService:SettingReportService, 
   private router:Router,
+  public activedRouter: ActivatedRoute,
   public userService: UserService, 
   public firebaseService: FirebaseService,
   public shiftService: ShiftService) {
+
+    this.sub = this.activedRouter.params.subscribe(params => {     
+      this.id = params['id'];
+    });
    }
 
   public submit(){
@@ -44,7 +51,7 @@ export class ReportComponent implements OnInit {
       report = new Report(filds, this.summary, position);//create new report
       
       //update user
-      this.shiftService.shift.addReport(report);
+      this.shiftService.shift.addReport(report, this.id);
       this.userService.user.updateLastShift(this.shiftService.shift);
       this.firebaseService.updateUser(this.userService.user);
       LocalStorageService.saveUser(this.userService.user);

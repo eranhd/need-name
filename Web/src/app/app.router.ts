@@ -51,7 +51,7 @@ export const router: Routes = [
         path: 'mobile_main', component: MobileMainComponent,
         children: [
             { path: '', redirectTo: 'mobile_home', pathMatch: 'full', },
-            { path: 'report', component: ReportComponent },
+            { path: 'report/:id', component: ReportComponent },
             { path: 'start_patrol', component: StartPatrolComponent },
             { path: 'mobile_spot', component: MobileSpotComponent },
             {
