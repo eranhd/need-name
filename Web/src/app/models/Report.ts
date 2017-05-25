@@ -5,9 +5,10 @@ export class Report {
     public location: Location;
     public summary: string;
     public fields: ReportField[];
+    photoUrl: string;
 
 
-    constructor(fields: ReportField[], summary: string, position: Position) {
+    constructor(fields: ReportField[], summary: string, position: Position, photoUrl?:string) {
         this.date = new Date();
 
         if (summary)
@@ -20,6 +21,10 @@ export class Report {
         else
             this.fields = [];
         this.location = new Location(position.coords.longitude, position.coords.latitude);
+        if(photoUrl)
+            this.photoUrl = photoUrl;
+        else
+            this.photoUrl = '';
     };
 
     public addFiled(name: string, data: string) {

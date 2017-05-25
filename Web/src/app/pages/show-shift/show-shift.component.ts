@@ -12,6 +12,7 @@ import { Report } from '../../models/Report';
 })
 export class ShowShiftComponent implements OnInit, OnDestroy  {
 
+  isChoose: boolean;
   sub: any;
   shift: Shift;
   id: number;
@@ -21,6 +22,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy  {
       this.shift =  firebaseService.shifts[params['id']];
       this.id = params['id'];
     });
+    this.isChoose = false;
   }
 
   ngOnInit() {

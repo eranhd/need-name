@@ -25,7 +25,7 @@
 <main>
   <section class='reports'>
     <div *ngFor='let report of shift.reports'
-    (click)='reportChoose = report'>
+    (click)='reportChoose = report; isChoose = true'>
         <span>{{report.date | date:'HH:mm'}}</span>
         <span>{{report.summary}}</span>
     </div>
@@ -38,7 +38,7 @@
   </section>
 
   <aside class='report_choose'>
-    <app-show-report [report]='reportChoose'>
+    <app-show-report *ngIf='isChoose' [report]='reportChoose'>
 
     </app-show-report>
   </aside>

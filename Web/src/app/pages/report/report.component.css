@@ -22,7 +22,45 @@ main{
 
 
 .btn_submmit{
+    position: relative;
     width: 100%;
     padding: 5px 0;
+    margin-bottom: 10%;
     text-align: center;
+}
+
+input[type='file']{
+    opacity: 0;
+    top: 20%;
+    left: 20%;
+    height: 50%;
+    width: 58%;
+    position: absolute;
+}
+
+
+i{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+
+.btn_camera{
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+    background-color: floralwhite;
+    border: 1px solid gray; 
+    text-align: center;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#img{
+    width: 32px;
+    height: 32px;
 }

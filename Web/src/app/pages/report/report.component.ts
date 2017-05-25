@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { SettingReportService } from '../../service/setting-report/setting-report.service';
 import { Report, ReportField } from '../../models/Report';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -20,12 +20,14 @@ export class ReportComponent implements OnInit {
   sub: any;
   id: number;
   summary: string;
+  photoUrl: string;
   constructor(public settingReportService:SettingReportService, 
   private router:Router,
   public activedRouter: ActivatedRoute,
   public userService: UserService, 
   public firebaseService: FirebaseService,
-  public shiftService: ShiftService) {
+  public shiftService: ShiftService,
+  private element: ElementRef) {
 
     this.sub = this.activedRouter.params.subscribe(params => {     
       this.id = params['id'];
@@ -48,7 +50,7 @@ export class ReportComponent implements OnInit {
 
     
      navigator.geolocation.getCurrentPosition((position)=>{
-      report = new Report(filds, this.summary, position);//create new report
+      report = new Report(filds, this.summary, position, this.photoUrl);//create new report
       
       //update user
       this.shiftService.shift.addReport(report, this.id);
@@ -62,6 +64,27 @@ export class ReportComponent implements OnInit {
     });   
     
   };
+
+  getImage(event) {
+    var reader = new FileReader();
+    reader.onload =  (event: ProgressEvent)=> {
+      let d = new Date();
+      let idImage = d.getDate() + '_' + d.getMonth() + '_' + d.getFullYear() + '__' + d.getHours() + '_' + d.getMinutes() + '_' + d.getSeconds() + '_' + d.getMilliseconds();
+      var src = event.target;
+      
+      firebase.storage().ref('spotImage/' + idImage).putString(src['result'], 'data_url', {
+        contentType: 'image/jpeg'
+      }).then((snapshot) => {
+        this.photoUrl = 'spotImage/' + idImage;
+        console.log(snapshot.downloadURL);
+      })
+
+    };
+
+
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
   ngOnInit() {
   }
 
