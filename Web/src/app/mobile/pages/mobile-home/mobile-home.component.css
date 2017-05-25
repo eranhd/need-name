@@ -1,5 +1,5 @@
 .btn_moveTo{
-    width: 100%;
+    width: 96%;
     height: 10%;
     background-color: #004381;
     text-align: center;
@@ -11,7 +11,7 @@
 }
 
 .btn_moveTo_canceled{
-    width: 100%;
+    width: 96%;
     height: 10%;
     background-color: lightgray;
     text-align: center;
@@ -31,7 +31,7 @@ main{
 }
 
 .statistic{
-    width: 100%;
+    width: 96%;
     height: 60%;
 }
 

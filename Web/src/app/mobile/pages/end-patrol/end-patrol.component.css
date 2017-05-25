@@ -2,8 +2,7 @@
     float: right;
     width:20%; 
     display: block;
-    margin: auto;
-    margin-left:2%;
+    margin: auto; 
     margin-right:3%; 
     margin-top:7%; 
 }
@@ -15,13 +14,15 @@
     text-align: center;
     font-family: 'Arial';
     margin-top: 30%;
-    font-size:40px; 
+    font-size:30px; 
 
 }
 #summary{
     text-align: right;
     display: block;
     margin: auto;
+    width: 90%;
+    height: 30%;
 }
 
 #endShif-btn{
@@ -30,7 +31,7 @@
     display: block;
     margin: auto;
     margin-top:25%;
-    width: 50%;
+    width: 35%;
     height: 8.5%;
     font-family: 'Arial';
     font-size: 25px;
