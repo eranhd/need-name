@@ -1,6 +1,8 @@
 main{
     height: 100%;
     width: 100%;
+    margin: auto;
+    margin-left: 4%;
 }
 
 .icon{
@@ -35,10 +37,11 @@ main{
     font-size: large;
     font-weight: bold;
     display: inline-block;
+    text-align: right;
 }
 img{
     height: 100%;
-
+    
 }
 a.row{
     margin-top: 2%;
@@ -48,5 +51,6 @@ a.row{
     width: 100%;
     text-decoration: none;
     border: 1px solid blanchedalmond;
+    text-align: right;
 
 }
