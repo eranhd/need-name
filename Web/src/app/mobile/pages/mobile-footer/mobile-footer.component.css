@@ -4,4 +4,13 @@
     height: 100%;
     bottom: 2%;
     text-align: center;
+    color: #004381;
+    background: white;
+    padding-top: 2%;
+    position: absolute;
+    border-top: 3px solid #004381;
+    border-radius: 7px 7px 0px 0px;;
+
+    display: block;
 }
+

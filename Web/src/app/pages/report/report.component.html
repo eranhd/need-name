@@ -1,4 +1,4 @@
-<main>
+<div class="r">
   <form class="form-horizontal">
     <div class="form-group" *ngFor='let item of settingReportService.getInputs()'>
 
@@ -6,6 +6,8 @@
         <input mdInput [placeholder]=item.placeHolder [id]=item.id>
       </md-input-container>
     </div>
+     </form>
+  
     <div class="form-group">
       <div class='btn_submmit'>
         <div class='btn_camera'>
@@ -17,5 +19,5 @@
       </div>
     </div>
 
-  </form>
-</main>
+ 
+</div>

@@ -20,6 +20,7 @@ main{
 
 app-mobile-header{
     position: absolute;
+    display: block;
     height: 10%;
     width: 100%;
     padding: 0 5%;
@@ -30,7 +31,9 @@ app-mobile-header{
     border-bottom: 1px solid lightgray;
 }
 
-
+.router-outlet{
+    width: 100%;
+}
 
 app-mobile-footer{
     font-size: small;
@@ -38,6 +41,7 @@ app-mobile-footer{
     height: 5%;
     left: 0;
     position: fixed;
-    bottom: 1%;
+    bottom:0%;
     text-align: center;
+    position: absolute;
 }
