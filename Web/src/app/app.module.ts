@@ -56,6 +56,9 @@ import { ShowReportComponent } from './pages/show-report/show-report.component';
 import { ShowShiftComponent } from './pages/show-shift/show-shift.component';
 
 
+
+import { LocationName } from './pipe/locationName.pipe';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
     authDomain: "antidrugsjerusalem.firebaseapp.com",
@@ -103,8 +106,8 @@ const myFirebaseAuthConfig = {
     ImportantPhoneComponent,
     ShiftComponent,
     ShowReportComponent,
-    ShowShiftComponent
-    
+    ShowShiftComponent,
+    LocationName
   ],
   imports: [
     BrowserModule,

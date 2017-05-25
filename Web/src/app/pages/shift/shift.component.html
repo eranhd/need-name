@@ -39,7 +39,8 @@
         {{shift.stratShift.date | date:'hh:mm:ss'}}
       </td>
       <td>
-        <span *ngIf='shift.endShift'>{{shift.endShift.date | date:'hh:mm:ss'}}</span>
+        <!--<span>{{shift.endShift.date | date:'hh:mm:ss'}}</span>-->
+        <span *ngIf='shift.endShift != null'>{{shift.endShift.date | date:'hh:mm:ss'}}</span>
         <span *ngIf='!shift.endShift'>דוח סיום לא הוזן</span>
       </td>
       <td>

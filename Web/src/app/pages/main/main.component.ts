@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../service/user/user.service';
 
 @Component({
   selector: 'app-main',
@@ -8,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(public router: Router) { 
-    if(!firebase.auth().currentUser)
+  constructor(public router: Router, public userService: UserService) { 
+    if(!firebase.auth().currentUser || !this.userService._user)
       this.router.navigate['login'];
   }
 
