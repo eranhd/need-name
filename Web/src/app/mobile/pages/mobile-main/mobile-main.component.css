@@ -2,6 +2,7 @@ app-mobile-home{
     width: 100%;
     height: 100%;
     text-align: center;
+   padding-bottom: 5%;
 }
 
 
@@ -20,6 +21,7 @@ main{
 
 app-mobile-header{
     position: absolute;
+    display: inline-block;
     display: block;
     height: 10%;
     width: 100%;
@@ -39,9 +41,9 @@ app-mobile-footer{
     font-size: small;
     width: 100%;
     height: 5%;
-    left: 0;
     position: fixed;
-    bottom:0%;
+    bottom:-0.5%;
     text-align: center;
-    position: absolute;
+    
+    display: inline-block;
 }

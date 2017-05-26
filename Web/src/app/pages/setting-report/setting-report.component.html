@@ -5,18 +5,30 @@
       <h2>הוספת שדה לטופס קיים</h2>
     </div>
     <div class='div_inputs'>
-      <md-input-container class='full-width'>
-        <input mdInput placeholder='שם השדה' [(ngModel)]='label' />
-      </md-input-container>
-      <md-input-container class='full-width'>
-        <input mdInput placeholder='תיאור' [(ngModel)]='placeHolder'/>
-      </md-input-container>
+      <div class='full-width'>
+        <input  placeholder='שם השדה' [(ngModel)]='label' />
+      </div>
+      <div class='full-width'>
+        <input  placeholder='תיאור' [(ngModel)]='placeHolder'/>
+      </div>
       <label>סוג הערך שיוכנס
         <select [(ngModel)]='type'>
           <option (select)='type = "text"' value="text">טקסט</option>
           <option (select)='type = "number"' value="number">מספר</option>
         </select>
         <button  class='btn btn-success full-width' (click)='addToInputItem()'>שמירה</button>
+        <!---->
+        <br>
+        <div class="delet field">
+            <div>מחיקת שדה</div>
+            <br>
+             <select class="deleteField" [(ngModel)]="this.placeHolderId">
+               <option *ngFor='let item of this.settingReportService.getInputs()' value="{{item.placeHolder}}" >{{item.placeHolder}}</option>
+               </select>
+               <br>
+            <button  class='btn btn-success full-width' (click)='deleteField()'>מחק</button>
+        </div>
+        <!---->
       </label>
     </div>
   </section>

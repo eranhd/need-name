@@ -11,10 +11,12 @@ export class SettingReportComponent implements OnInit {
   placeHolder: string;            
   type: string;
   isValid: boolean;
+  placeHolderId:string; //this is what you want delet
 
   constructor(public settingReportService:SettingReportService,
             ) {
               this.isValid = false;
+              this.placeHolderId='';
    };
 
    public addToInputItem(){
@@ -38,6 +40,12 @@ export class SettingReportComponent implements OnInit {
     this.type = '';
 
    };
+
+   public deleteField(){
+     console.log(this.placeHolderId);
+     this.settingReportService.deleteField(this.placeHolderId);
+   }
+
   ngOnInit() {
   }
 

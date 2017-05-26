@@ -1,9 +1,9 @@
 export class InputItem{
-
+    
     constructor(public id:string,
     private type:string,
     public label:string,
-    private placeHolder:string,
+    public placeHolder:string,
     private valuse?:string[]){
         if(!valuse)
             this.valuse = null;

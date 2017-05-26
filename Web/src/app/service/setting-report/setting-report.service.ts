@@ -16,8 +16,9 @@ export class SettingReportService {
   ) {
     //console.log(firebase.auth().currentUser.uid);
     this.item = af.database.object('/report_fields');
+    if(firebase.auth().currentUser.uid != null){
     this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/reports');
-
+    }
     this.inputs = [];
     this.item = af.database.object('/report_fields', { preserveSnapshot: true });
 
@@ -46,6 +47,23 @@ export class SettingReportService {
   public getInputs() {
     return this.inputs;
   };
+
+  public deleteField(placeHolderId:string){
+    if(placeHolderId== ''){
+      return;
+    }
+    else{
+     let size= this.inputs.length;
+     for(let i=0;i<size;i++){
+        if(this.inputs[i].placeHolder == placeHolderId){
+        this.inputs.splice(i,1);
+        this.item.set({ 'report_fields': this.inputs });
+        break;
+       }
+     }
+    }
+  }
+
 
   public save(obj) {
     this.itemToSave.push(obj);
