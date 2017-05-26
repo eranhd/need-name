@@ -37,3 +37,21 @@ main{
 ::-webkit-scrollbar{
     visibility: hidden;
 }
+
+.btn-deleteField{
+    clear:both;   
+    display: block;
+    margin-top:10%;
+    width: 50%;
+    height: 10%;
+    font-family: 'Arial';
+    font-size: 15px;
+    background-color: #a94442;
+    color: white;
+    border-radius:5px; 
+
+}
+
+.deleteField{
+    text-align: right;
+}

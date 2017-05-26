@@ -22,11 +22,12 @@
         <div class="delet field">
             <div>מחיקת שדה</div>
             <br>
-             <select class="deleteField" [(ngModel)]="this.placeHolderId">
+             <select class="deleteField" [(ngModel)]="this.placeHolderId" >
+               <option value="" disabled selected>בחר שדה למחיקה</option>
                <option *ngFor='let item of this.settingReportService.getInputs()' value="{{item.placeHolder}}" >{{item.placeHolder}}</option>
                </select>
                <br>
-            <button  class='btn btn-success full-width' (click)='deleteField()'>מחק</button>
+            <button  class='btn-deleteField' (click)='deleteField()'>מחק שדה</button>
         </div>
         <!---->
       </label>
