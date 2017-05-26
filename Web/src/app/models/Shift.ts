@@ -107,11 +107,15 @@ class EndShift {
     location: Location;
     filling: string;
     summary:string;
+    unusualEvents:string;
+    dilemmas:string;
 
     constructor(filling: string, position?:Position) {
 
         this.filling = filling;
         this.summary='';
+        this.dilemmas='';
+        this.unusualEvents='';
 
         this.date = new Date();
         if(position){

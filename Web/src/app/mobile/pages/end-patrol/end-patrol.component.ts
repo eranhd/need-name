@@ -17,6 +17,8 @@ export class EndPatrolComponent implements OnInit {
 
   filling: string;
   summaryT:string;
+  unusualEvents:string;
+  dilemmas:string;
 
   constructor(public router: Router,
     public shiftService: ShiftService,
@@ -25,16 +27,19 @@ export class EndPatrolComponent implements OnInit {
 
     this.filling = null;
     this.summaryT='';
+    this.dilemmas="";
+    this.unusualEvents;
   }
 
 
   public endThisShift(filling: string) {
     
-    console.log(this.summaryT);
     LocalStorageService.clearUser();
     navigator.geolocation.getCurrentPosition((position) => {
       this.shiftService.shift.initEndShift(filling, position);
       this.shiftService.shift.endShift.summary = this.summaryT;
+      this.shiftService.shift.endShift.dilemmas=this.dilemmas;
+      this.shiftService.shift.endShift.unusualEvents=this.unusualEvents;
       this.shiftService.isShiftStart = false;
       this.userService.user.updateLastShift(this.shiftService.shift);
       this.fireService.updateUser(this.userService.user);
