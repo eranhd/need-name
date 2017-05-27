@@ -22,6 +22,8 @@ button{
     border-radius: 8px; 
 }
 
+
+
 i{
     position: absolute;
     top: 20%;
@@ -31,19 +33,6 @@ i{
 .image{
     height: 70%;
     width: 80%;
-}
-.btn_camera{
-    cursor: pointer;
-    height: 28px;
-    width: 28px;
-    border-radius: 100%;
-    background-color: floralwhite;
-    border: 1px solid gray; 
-    text-align: center;
-    padding: 20px;
-    position: absolute;
-    bottom: 10%;
-    left: 48%;
 }
 
 #img{
