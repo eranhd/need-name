@@ -40,12 +40,11 @@ export class SettingReportComponent implements OnInit {
     this.type = '';
 
    };
-
+/*
    public deleteField(){
-     console.log(this.placeHolderId);
      this.settingReportService.deleteField(this.placeHolderId);
    }
-
+*/
   ngOnInit() {
   }
 

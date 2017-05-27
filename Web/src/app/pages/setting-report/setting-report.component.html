@@ -27,7 +27,7 @@
                <option *ngFor='let item of this.settingReportService.getInputs()' value="{{item.placeHolder}}" >{{item.placeHolder}}</option>
                </select>
                <br>
-            <button  class='btn-deleteField' (click)='deleteField()'>מחק שדה</button>
+            <button  class='btn-deleteField' (click)='this.settingReportService.deleteField(this.placeHolderId)'>מחק שדה</button>
         </div>
         <!---->
       </label>

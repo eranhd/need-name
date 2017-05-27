@@ -12,7 +12,10 @@ input{
     font-weight: normal;
     text-align: right;
     width: 96%;
-    
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid gray;
 }
 
 .btn_submmit{

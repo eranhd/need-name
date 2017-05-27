@@ -2,9 +2,9 @@
   <form class="inputs">
     <div class="form-group" *ngFor='let item of settingReportService.getInputs()'>
 
-     <!-- <div class='full-width'>-->
+     <div class='full-width'>
         <input [placeholder]=item.placeHolder [id]=item.id>
-      <!--</div>-->
+    </div>
     </div>
      </form>
   
