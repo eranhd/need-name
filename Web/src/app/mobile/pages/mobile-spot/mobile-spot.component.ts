@@ -22,15 +22,13 @@ export class MobileSpotComponent implements OnInit {
               public firebaseService: FirebaseService,
                public shiftService: ShiftService) {
 
-        //this.isHotSpot=false;
   }
 
   public buttonHotSpot(){
-    //this.isHotSpot=true;
     let shifrLenght=this.userService.user.shifts.length;
     this.userService.user.shifts[shifrLenght-1].addHotSpot(true);
     
-    this.router.navigate(['mobile_main/report']);
+   // this.router.navigate(['mobile_main/report']);
     
   }
 
@@ -45,7 +43,7 @@ export class MobileSpotComponent implements OnInit {
     this.userService.user.updateLastShift(this.shiftService.shift);
     this.firebaseService.updateUser(this.userService.user);
     LocalStorageService.saveUser(this.userService.user);
-    this.router.navigate(['mobile_main']);
+    //this.router.navigate(['mobile_main']);
   }
 
   getImage(event) {
