@@ -24,13 +24,13 @@ export class MobileSpotComponent implements OnInit {
 
   }
 
-  public buttonHotSpot(){
+  /*public buttonHotSpot(){
     let shifrLenght=this.userService.user.shifts.length;
     this.userService.user.shifts[shifrLenght-1].addHotSpot(true);
     
    // this.router.navigate(['mobile_main/report']);
     
-  }
+  }*/
 
   public buttonColdSpot() {
    navigator.geolocation.getCurrentPosition((position) => {
@@ -43,7 +43,7 @@ export class MobileSpotComponent implements OnInit {
     this.userService.user.updateLastShift(this.shiftService.shift);
     this.firebaseService.updateUser(this.userService.user);
     LocalStorageService.saveUser(this.userService.user);
-    //this.router.navigate(['mobile_main']);
+    this.router.navigate(['mobile_main']);
   }
 
   getImage(event) {
