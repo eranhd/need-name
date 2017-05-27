@@ -1,0 +1,49 @@
+app-mobile-home{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+   padding-bottom: 5%;
+}
+
+
+main{
+    position: absolute;
+    width: 100%;
+    height: 85%;
+    padding:2%;
+    top: 11%;
+}
+
+::-webkit-scrollbar{
+    visibility: hidden;
+}
+
+
+app-mobile-header{
+    position: absolute;
+    display: inline-block;
+    display: block;
+    height: 10%;
+    width: 100%;
+    padding: 0 5%;
+    top: 0;
+    left: 0;
+    background-color: gainsboro;
+    margin-bottom: 2px;
+    border-bottom: 1px solid lightgray;
+}
+
+.router-outlet{
+    width: 100%;
+}
+
+app-mobile-footer{
+    font-size: small;
+    width: 100%;
+    height: 5%;
+    position: fixed;
+    bottom:-0.5%;
+    text-align: center;
+    
+    display: inline-block;
+}
