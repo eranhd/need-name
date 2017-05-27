@@ -37,7 +37,8 @@ export class ReportComponent implements OnInit {
   public submit(){
 
     let report:Report;
-
+     
+    // ערן מה עשית פה????? :)
     if((<HTMLInputElement>document.getElementById('summary')) != null) {
     this.summary = (<HTMLInputElement>document.getElementById('summary')).value;
     }
