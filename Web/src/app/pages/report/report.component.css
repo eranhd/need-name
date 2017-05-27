@@ -11,11 +11,15 @@ width: 100%;
 input{
     font-weight: normal;
     text-align: right;
+    padding-right:5px; 
     width: 96%;
     border: 0;
     outline: 0;
     background: transparent;
     border-bottom: 1px solid gray;
+   /* border-left: 1px solid gray;*/
+    border-radius:8px;
+    border-right: 0;   
 }
 
 .btn_submmit{
@@ -24,6 +28,11 @@ input{
     padding: 5px 0;
     margin-bottom: 10%;
     text-align: center;
+}
+.button
+{
+    
+    padding-right: 5%;
 }
 
 input[type='file']{
@@ -55,6 +64,7 @@ i{
     position: absolute;
     bottom: 0;
     left: 0;
+    margin-left: 5%;
 }
 
 #img{
