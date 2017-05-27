@@ -11,8 +11,18 @@ input[type='file']{
 /*  background-image: url(http://www.nbiclearance.com/wp-content/uploads/2016/01/Where-to-apply-NBI-Clearance-Complete-List-of-NBI-Clearance-Outlets-in-the-Philippines.jpg);
 */
 button{
- margin: 1% 0;
+  width: 96%;
+    height: 10%;
+    background-color: #004381;
+    text-align: center;
+    padding: 2% 0;
+    color: white;
+    font-size: large;
+    margin: 1% 0;
+    border-radius: 8px; 
 }
+
+
 
 i{
     position: absolute;
@@ -29,19 +39,6 @@ height: 100%; /*or your image's height*/
 .image{
     height: 70%;
     width: 80%;
-}
-.btn_camera{
-    cursor: pointer;
-    height: 28px;
-    width: 28px;
-    border-radius: 100%;
-    background-color: floralwhite;
-    border: 1px solid gray; 
-    text-align: center;
-    padding: 20px;
-    position: absolute;
-    bottom: 10%;
-    left: 48%;
 }
 
 #img{
