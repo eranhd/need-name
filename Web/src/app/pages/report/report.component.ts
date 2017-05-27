@@ -37,15 +37,18 @@ export class ReportComponent implements OnInit {
   public submit(){
 
     let report:Report;
-
+     
+    // ערן מה עשית פה????? :)
+    if((<HTMLInputElement>document.getElementById('summary')) != null) {
     this.summary = (<HTMLInputElement>document.getElementById('summary')).value;
+    }
     let filds: ReportField[] = [];
     var items = this.settingReportService.getInputs();
     for(var i = 0; i < items.length; i++){//add all fileds to array
       if(items[i].id != 'summary')
         filds.push(new ReportField(items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value));
     }
-
+  
     
 
     

@@ -22,17 +22,15 @@ export class MobileSpotComponent implements OnInit {
               public firebaseService: FirebaseService,
                public shiftService: ShiftService) {
 
-        //this.isHotSpot=false;
   }
 
-  public buttonHotSpot(){
-    //this.isHotSpot=true;
+  /*public buttonHotSpot(){
     let shifrLenght=this.userService.user.shifts.length;
     this.userService.user.shifts[shifrLenght-1].addHotSpot(true);
     
-    this.router.navigate(['mobile_main/report']);
+   // this.router.navigate(['mobile_main/report']);
     
-  }
+  }*/
 
   public buttonColdSpot() {
    navigator.geolocation.getCurrentPosition((position) => {
