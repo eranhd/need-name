@@ -14,7 +14,9 @@
           <i class="material-icons">camera_alt</i>
           <input type="file" name="image" accept="image/*" (change)='getImage($event)' capture="user">
         </div>
-        <button type="submit" class="btn btn-default" (click)=submit()>שלח דוח</button>
+        <div class="button">
+        <button type="submit" class="btn btn-default btn-success" (click)=submit()>שלח דוח</button>
+        </div>
         <!--<a href="intent://send/0523531258#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">Open WhatsApp chat window</a>  -->
       </div>
     </div>
