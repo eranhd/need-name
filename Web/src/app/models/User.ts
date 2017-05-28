@@ -87,8 +87,7 @@ export class Details {
     }
 
     set_role (type: number, name: string){
-        this.role.type = type;
-        this.role.name = name;
+        this.role = new Role(type, name);
     }
 
     public addSon(son: string) {
@@ -123,6 +122,8 @@ export class Role {
     }
     
     public canDirect(path) {
-        
+      /*  if (path == 1 && ){
+
+        }*/
     }
 };
