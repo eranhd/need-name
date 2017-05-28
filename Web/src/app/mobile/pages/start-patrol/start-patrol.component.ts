@@ -6,6 +6,7 @@ import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { UserService } from '../../../service/user/user.service';
 import { Shift } from '../../../models/Shift';
 import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
+import { Location } from '../../../models/Location';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   public isValid: boolean;
   public memberValid: boolean;
   team: Team;
+  location: Location;
 
 
   constructor(public router:Router,
@@ -30,6 +32,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
     this.team = new Team();
     this.isValid = true;
     this.memberValid=false;
+    this.location=null;
   }
 
    deleteMember(){
@@ -55,8 +58,14 @@ export class StartPatrolComponent implements OnInit, OnChanges {
         }
     }
     if(this.memberValid == true){
+        navigator.geolocation.getCurrentPosition((position) => {
+        this.location = new Location(position.coords.longitude, position.coords.latitude);
+
+        }, (error) => {
+            console.log('position start shift error' + error.message);
+        });
         this.isValid = true;
-        this.shiftService.startShift(this.team);
+        this.shiftService.startShift(this.location, this.team);
         this.fireService.saveShift();
         this.router.navigate(['mobile_main']);
       }

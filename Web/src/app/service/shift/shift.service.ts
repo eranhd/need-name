@@ -3,6 +3,7 @@ import { Shift } from '../../models/Shift';
 import { Team } from '../../models/Team';
 import { Report } from '../../models/Report';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { Location } from '../../models/Location';
 
 @Injectable()
 export class ShiftService {
@@ -18,8 +19,9 @@ export class ShiftService {
     }
    }
 
-  startShift(team: Team){
+  startShift(location:Location, team: Team){
     this.shift = new Shift(team);
+    this.shift.stratShift.location=location;
     this.isShiftStart = true;
   }
 

@@ -15,7 +15,7 @@ export class Shift {
     hotSpotId: string[];
 
 
-    constructor(team: Team, shift?: Shift) {
+    constructor( team: Team, shift?: Shift) {
         if (shift) {
             this.team = team;
             if(shift.reports){
@@ -97,7 +97,7 @@ class StartShift {
     date: Date;
     location: Location;
 
-    constructor(shift?: StartShift) {
+    constructor( shift?: StartShift) {
         if(shift){
             this.date = shift.date;
             if(shift.location)
@@ -108,12 +108,13 @@ class StartShift {
         else{
             
         this.date = new Date();
-        navigator.geolocation.getCurrentPosition((position) => {
+        
+/*        navigator.geolocation.getCurrentPosition((position) => {
             this.location = new Location(position.coords.longitude, position.coords.latitude);
 
         }, (error) => {
             console.log('position start shift error' + error.message);
-        });
+        });*/
         }
     }
 
