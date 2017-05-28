@@ -8,8 +8,8 @@
 </div>
 
 <div id="filling">{{filling}}</div>
-<div *ngIf="filling == null" id="how-filling">?אז איך עבר הסיור</div>
+<div *ngIf="filling == ''" id="how-filling">?אז איך עבר הסיור</div>
 <textarea cols="25" rows="2" id="unusualEvents" [(ngModel)]="unusualEvents" placeholder="? אירועים חריגים ודרכי הטיפול"></textarea>
 <textarea cols="25" rows="2" id="dilemmas" [(ngModel)]="dilemmas" placeholder="? דילמות שעלו במהלך הסיור"></textarea>
 <textarea cols="25" rows="4" id="summary" [(ngModel)]="summaryT" placeholder="? רוצה לפרט קצת על תחושות הצוות"></textarea>
-<button class="btn" id="endShif-btn" (click)='endThisShift(filling)'>סיים</button>
+<button class="btn" id="endShif-btn" (click)='endThisShift(filling,summaryT,dilemmas,unusualEvents)'>סיים</button>

@@ -25,21 +25,21 @@ export class EndPatrolComponent implements OnInit {
     public fireService: FirebaseService,
     public userService: UserService) {
 
-    this.filling = null;
+    this.filling = '';
     this.summaryT='';
-    this.dilemmas="";
+    this.dilemmas='';
     this.unusualEvents = '';
   }
 
 
-  public endThisShift(filling: string) {
+  public endThisShift(filling: string,summaryT:string,dilemmas:string,unusualEvents:string) {
     
     LocalStorageService.clearUser();
     navigator.geolocation.getCurrentPosition((position) => {
-      this.shiftService.shift.initEndShift(filling, position);
-      this.shiftService.shift.endShift.summary = this.summaryT;
-      this.shiftService.shift.endShift.dilemmas=this.dilemmas;
-      this.shiftService.shift.endShift.unusualEvents = this.unusualEvents;
+      this.shiftService.shift.initEndShift(filling,summaryT,dilemmas,unusualEvents, position);
+      //this.shiftService.shift.endShift.summary = this.summaryT;
+      //this.shiftService.shift.endShift.dilemmas=this.dilemmas;
+      //this.shiftService.shift.endShift.unusualEvents = this.unusualEvents;
       this.shiftService.isShiftStart = false;
       LocalStorageService.clearUser(); 
       this.fireService.updateShift();

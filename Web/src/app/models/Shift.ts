@@ -69,8 +69,8 @@ export class Shift {
         // }        
     }
 
-    public initEndShift(filling: string, position?: Position) {
-        this.endShift = new EndShift(filling, position);
+    public initEndShift(filling: string,summaryT:string,dilemmas:string,unusualEvents:string, position?: Position) {
+        this.endShift = new EndShift(filling,summaryT,dilemmas,unusualEvents,position);
     }
 
      addColdSpot(coldSpot:Location){
@@ -117,12 +117,12 @@ class EndShift {
     unusualEvents:string;
     dilemmas:string;
 
-    constructor(filling: string, position?:Position) {
+    constructor(filling: string,summaryT:string,dilemmas:string,unusualEvents:string, position?: Position) {
 
         this.filling = filling;
-        this.summary='';
-        this.dilemmas='';
-        this.unusualEvents='';
+        this.summary=summaryT;
+        this.dilemmas=dilemmas;
+        this.unusualEvents=unusualEvents;
 
         this.date = new Date();
         if(position){
