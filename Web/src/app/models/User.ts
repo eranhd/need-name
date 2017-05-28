@@ -6,6 +6,7 @@ export class User {
 
     details: Details;
     shiftsId: string[];
+    
     shifts: Shift[];
     // thisShift:Shift;
     // coldSpot:Location;
@@ -21,14 +22,13 @@ export class User {
                     this.shifts.push(new Shift(shift.team, shift));
             }
             // this.locations.push(new Location(location.));   
-            if(user.shiftsId)
-            {
+            if (user.shiftsId) {
                 this.shiftsId = user.shiftsId;
             }
-            else
-            {
+            else {
                 this.shiftsId = [];
             }
+            
             this.details = new Details(user.details);
 
         }
@@ -37,31 +37,20 @@ export class User {
             this.details = new Details();
             this.shifts = [];
             this.shiftsId = [];
-            // this.coldSpotArr = [];
-            // this.coldSpot=null;
+            
         }
     }
 
     addShift(shift: Shift, shiftId?: string) {
-        if(shiftId)
+        if (shiftId)
             this.shiftsId.unshift(shiftId);
-        // this.shifts.push(shift);
         this.details.lastShift = new Date();
     }
 
     updateLastShift(shift: Shift) {
-        // this.addShift(shift);//need to delete
+        
         this.shifts[this.shifts.length - 1] = shift;
-        //this.thisShift=shift;
-    }
-
-    addColdSpot(coldSpot: Location) {
-        // navigator.geolocation.getCurrentPosition((position) => {
-        // this.coldSpot = new Location(position.coords.longitude, position.coords.latitude);
-        // this.coldSpotArr.push(coldSpot);
-        // }, (error) => {
-        //  alert('אנא הפעל מיקום');
-        // });
+        
     }
 }
 

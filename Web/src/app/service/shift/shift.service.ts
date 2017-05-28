@@ -26,7 +26,15 @@ export class ShiftService {
   }
 
   addReport(report: Report, id:string){
-    // this.shift.reportsId.unshift(id)
     this.shift.addReport(report, 1,id);
+  }
+
+
+  addColdSpot(id: string){
+    this.shift.addColdSpot(id);
+  }
+
+  addHotSpot(id: string){
+    this.shift.addHotSpot(id);
   }
 }

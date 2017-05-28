@@ -12,6 +12,9 @@ export class Shift {
     stratShift: StartShift;
     endShift: EndShift;
     isHotSpot:boolean;
+    coldSpotId: string[];
+    hotSpotId: string[];
+
 
     constructor(team: Team, shift?: Shift) {
         if (shift) {
@@ -42,6 +45,14 @@ export class Shift {
                 this.reportsId = shift.reportsId;
             else
                 this.reportsId = [];
+            if (shift.coldSpotId)
+                this.coldSpotId = shift.coldSpotId;
+            else
+                this.coldSpotId = [];
+            if (shift.hotSpotId)
+                this.hotSpotId = shift.hotSpotId;
+            else
+                this.hotSpotId = [];
         }
         else {
 
@@ -53,33 +64,35 @@ export class Shift {
             this.endShift = null;
             this.isHotSpot=false;
             this.reportsId = [];
+            this.coldSpotId = [];
+            this.hotSpotId = [];
         }
     }
 
     public addReport(report: Report, id: number, reportId?:string) {
         if(reportId)
-            this.reportsId.unshift(reportId);
-        // if(id === 2){
-        //     this.hotSpotArr.push(report);
-        //     return true
-        // }
-        // else{
-        //     this.reports.push(report);
-        //     return true
-        // }        
+            this.reportsId.unshift(reportId);      
+    }
+
+    addColdSpot(id: string) {
+        this.coldSpotId.unshift(id);
+    }
+    
+    addHotSpot(id: string) {
+        this.hotSpotId.unshift(id);
     }
 
     public initEndShift(filling: string, position?: Position) {
         this.endShift = new EndShift(filling, position);
     }
 
-     addColdSpot(coldSpot:Location){
-        this.coldSpotArr.push(coldSpot);
-     }
+    //  addColdSpot(coldSpot:Location){
+    //     this.coldSpotArr.push(coldSpot);
+    //  }
 
-     addHotSpot(hotSpot:boolean){
-            this.isHotSpot = hotSpot;
-     }
+    //  addHotSpot(hotSpot:boolean){
+    //         this.isHotSpot = hotSpot;
+    //  }
 }
 
 class StartShift {
