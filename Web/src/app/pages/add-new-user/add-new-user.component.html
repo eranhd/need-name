@@ -1,37 +1,26 @@
 <header>
 </header>
-
 <main>
   <section class='add_new_user'>
     <md-card>
-      <md-select placeholder="בחר את סוג המשתמש">
-        <md-option *ngFor="let type of types" [value]="types.value">
-          {{ type.viewValue }}
-        </md-option>
-      </md-select>
-      <!--<md-input-container>
-      <md-select required placeholder="בחר סוג משתמש">
-        <md-option value="areaManager">
-          מנהל אזור
-        </md-option>
-        <md-option value="patrol">
-          צוות סיור
-        </md-option>
-      </md-select>
-    </md-input-container>-->
+      <select required placeholder="בחר סוג משתמש">
+        <option *ngFor='let item of types' [value]='item.value' (changed)='role = $event.target.value'>
+          {{item.valueToShow}}
+        </option>
+      </select>
+      <select *ngIf='userService.user.details.type == 4' (changed)='type = $event.target.value'>
+        <option value='parentPatrol'>
+          סיירת הורים
+        </option>
+        <option value='dtPatrol'>
+          ניומן אורי
+        </option>
+      </select>
+      <input id="input_username" type='email' class='form-control' [(ngModel)]='email' placeholder="שם משתמש" required>
+      <input id="input_password" type='password' class='form-control' [(ngModel)]='password' placeholder="" required>
+      <input type='text' class='form-control' [(ngModel)]='name' placeholder="שם" required>
+      <button type="submit" class='btn btn-default' (click)='signup()'>הוספה</button>
+      <button class='btn btn-default' (click)='clear()'>נקה</button>
     </md-card>
   </section>
 </main>
-
-
-
-<label>שם משתמש
-        <input id="input_username" type='text' class='form-control' 
-        placeholder="שם משתמש"
-        >
-        </label><br>
-<label>סיסמה
-          <input id="input_password" type='password'  class='form-control' placeholder="">
-        </label><br>
-<button type="submit" class='btn btn-default' (click)='signup()'>הוספה</button>
-<button class='btn btn-default' (click)='clear()'>נקה</button>

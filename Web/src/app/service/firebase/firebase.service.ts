@@ -66,12 +66,26 @@ export class FirebaseService {
     });
   }
 
-  updateUser(user) {
-    this.userToSave.update(firebase.auth().currentUser.uid, user).catch(error => {
-      console.log(error.message);
-    });
+  updateUser(user, id?:string) {
+    if(id){
+      this.userToSave.update(id, user).catch(error=>{console.log(error.message)})
+    }
+    else
+      this.userToSave.update(firebase.auth().currentUser.uid, user).catch(error => {
+        console.log(error.message);
+      });
 
     console.log(user);
+  }
+
+
+  createNewUser(email: string, password: string, user: User){
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot=>{
+      this.userService._user.details.addSon(snapshot.uid);
+      this.updateUser(user, snapshot.id);
+    }).catch(error=>{
+      console.log(error.message);
+    })
   }
 
 

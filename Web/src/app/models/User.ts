@@ -33,7 +33,6 @@ export class User {
 
         }
         else {
-
             this.details = new Details();
             this.shifts = [];
             this.shiftsId = [];
@@ -92,6 +91,8 @@ export class Details {
     }
 
     public addSon(son: string) {
+        if(!this._sons)
+            this._sons = [];
         this._sons.push(son);
     }
 
