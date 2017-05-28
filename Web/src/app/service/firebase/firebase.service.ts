@@ -155,8 +155,7 @@ export class FirebaseService {
       this.userService.addShift(resolve.path.o[1]);
       this.shiftService.id = resolve.path.o[1];
       this.updateUser(this.userService.user);
-      console.log(this.userService.user);
-      this.updateUser(this.userService.user);
+      this.updateShift();
     }).catch(error => {
 
     });

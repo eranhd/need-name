@@ -21,7 +21,6 @@ export class ShiftService {
 
   startShift(location:Location, team: Team){
     this.shift = new Shift(location,team);
-  //  this.shift.stratShift.location=location;
     this.isShiftStart = true;
   }
 
