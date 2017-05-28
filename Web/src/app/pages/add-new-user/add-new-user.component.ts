@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ManageUserService } from '../../service/manage-users/manage-user.service';
 import { User } from '../../models/User';
+import { UserService } from '../../service/user/user.service';
+import { FirebaseService } from '../../service/firebase/firebase.service';
 
 @Component({
   selector: 'app-add-new-user',
@@ -9,21 +11,40 @@ import { User } from '../../models/User';
 })
 export class AddNewUserComponent implements OnInit {
 
-  types = [
-    {value: 'אחר', viewValue: 'other'},
-    {value: 'סיור הורים', viewValue: 'patrol'},
-    {value: 'מנהל איזור', viewValue: 'manager'}
-  ];
-
+  types: any[];
   newUser: User;
-  constructor(public manageUsers:ManageUserService
+  email: string;
+  password: string;
+  name: string;
+  role: string;
+  type: string;
+
+  constructor(public userService: UserService,
+              public firebaseService: FirebaseService
               ) {
-      
-   }
+                this.types = [{value: 1 ,valueToShow: 'צוות סיור' }, 
+                {value: 2 ,valueToShow: 'רכז אזור' },
+                {value: 3 ,valueToShow: 'מנהל כללי' }];//need to remove
+  //    for(let str of this.userService._user.details.role.getRolesName())
+          // this.types.push({value: str, valueToShow: str});
+          this.name = '';
+          this.type = '';
+  }
 
    public signup(){
-     var email:string = (<HTMLInputElement>document.getElementById('input_username')).value, password:string = (<HTMLInputElement>document.getElementById('input_password')).value;
-     this.manageUsers.signUp(email, password);
+     if( !(this.email == '' || !this.email || this.password == '' || !this.password)){
+        this.newUser = new User();
+        this.newUser.details.name = this.name;
+         this.newUser.details.set_role(parseInt(this.role), this.userService.user.details.name);
+         if(this.type != '')
+        {
+          this.newUser.details.set_role(parseInt(this.role), this.type);
+        }
+        this.firebaseService.createNewUser(this.email, this.password, this.newUser);
+     }
+     else{
+       console.log('error in create user')
+     }
    };
 
    clear(){

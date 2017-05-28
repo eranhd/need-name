@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingReportService } from '../../service/setting-report/setting-report.service';
+import { Router } from '@angular/router';
+import { UserService } from '../../service/user/user.service';
+
 @Component({
   selector: 'app-setting-report',
   templateUrl: './setting-report.component.html',
@@ -14,9 +17,15 @@ export class SettingReportComponent implements OnInit {
   placeHolderId:string; //this is what you want delet
 
   constructor(public settingReportService:SettingReportService,
-            ) {
+              public userService: UserService, public router: Router) {
+
               this.isValid = false;
-              this.placeHolderId='';
+              this.placeHolderId = '';
+
+              // if there is no permission, return to the main page:
+               if(!userService.user.details.role.canDirect('SettingReportComponent')) {
+                    this.router.navigate['main'];
+               }     
    };
 
    public addToInputItem(){
