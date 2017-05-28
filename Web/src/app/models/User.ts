@@ -98,7 +98,7 @@ export class Role {
 
     type: number;
     name: string;
-
+    
 
     constructor(type: number, name: string) {
         this.type = type;
