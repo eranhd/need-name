@@ -27,13 +27,14 @@ export class MobileSpotComponent implements OnInit {
    navigator.geolocation.getCurrentPosition((position) => {
    this.location = new Location(position.coords.longitude, position.coords.latitude);
    this.firebaseService.saveColdSpot(this.location);
+   this.router.navigate(['mobile_main']);
     }, (error) => {
       alert('אנא הפעל מיקום');
     });
-    this.userService.user.updateLastShift(this.shiftService.shift);
+   /* this.userService.user.updateLastShift(this.shiftService.shift);
     this.firebaseService.updateUser(this.userService.user);
-    LocalStorageService.saveUser(this.userService.user);
-    this.router.navigate(['mobile_main']);
+    LocalStorageService.saveUser(this.userService.user);*/
+   
   }
 
 

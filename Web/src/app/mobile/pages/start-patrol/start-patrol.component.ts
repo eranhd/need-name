@@ -60,13 +60,13 @@ export class StartPatrolComponent implements OnInit, OnChanges {
     if(this.memberValid == true){
         navigator.geolocation.getCurrentPosition((position) => {
         this.location = new Location(position.coords.longitude, position.coords.latitude);
-
+        this.shiftService.startShift(this.location, this.team);
+        this.fireService.saveShift();
         }, (error) => {
             console.log('position start shift error' + error.message);
         });
+        
         this.isValid = true;
-        this.shiftService.startShift(this.location, this.team);
-        this.fireService.saveShift();
         this.router.navigate(['mobile_main']);
       }
   };

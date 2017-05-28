@@ -50,9 +50,12 @@ export class ReportComponent implements OnInit {
     }
   
      navigator.geolocation.getCurrentPosition((position)=>{
+     
       report = new Report(filds, this.summary, position, this.photoUrl);//create new report
+   
       this.firebaseService.saveReport(report, this.id + '');
       LocalStorageService.saveUser(this.userService.user);
+
       this.router.navigate(['mobile_main']);
     }, 
     (error)=>{

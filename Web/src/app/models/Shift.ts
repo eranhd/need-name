@@ -34,7 +34,7 @@ export class Shift {
             { this.hotSpotArr=shift.hotSpotArr;}
             else
             { this.hotSpotArr =[];}
-
+            console.log("in if")
             this.stratShift = new StartShift(shift.stratShift.location,shift.stratShift);
             if(this.endShift){
                 this.endShift = shift.endShift;
@@ -62,12 +62,13 @@ export class Shift {
             }
         }
         else {
-
+           
             this.team = team;
             this.reports = [];
             this.hotSpotArr =[];
             this.coldSpotArr =[];
             this.stratShift = new StartShift(location);
+            
             this.endShift = null;
             this.reportsId = [];
             this.coldSpotId = [];
@@ -108,21 +109,16 @@ class StartShift {
     constructor(location:Location, shift?: StartShift) {
         if(shift){
             this.date = shift.date;
-            //if(shift.location)
-                this.location = location;
-            //else
+           if(shift.location)
+                this.location = shift.location;
+            // else
                // this.location = null;
         }
         else{
-            
+          
         this.date = new Date();
-        
-/*        navigator.geolocation.getCurrentPosition((position) => {
-            this.location = new Location(position.coords.longitude, position.coords.latitude);
 
-        }, (error) => {
-            console.log('position start shift error' + error.message);
-        });*/
+        this.location=location;
         }
     }
 
