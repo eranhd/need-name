@@ -71,7 +71,7 @@ export class Details {
             if (this._sons)
                 this._sons = detail._sons;
             else
-                this._sons = null;
+                this._sons = [];
             this.numOfReport = detail.numOfReport;
             this.lastShift = detail.lastShift;
         }
@@ -123,6 +123,6 @@ export class Role {
     }
     
     public canDirect(path) {
-
+        
     }
 };
