@@ -58,8 +58,6 @@ export class StartPatrolComponent implements OnInit, OnChanges {
         this.isValid = true;
         this.shiftService.startShift(this.team);
         this.fireService.saveShift();
-        // this.fireService.updateUser(this.userService.user);
-        // LocalStorageService.saveUser(this.userService.user);
         this.router.navigate(['mobile_main']);
       }
   };

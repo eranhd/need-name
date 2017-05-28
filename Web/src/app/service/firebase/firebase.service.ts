@@ -24,7 +24,7 @@ export class FirebaseService {
   private auth;
   shiftToShow: Observable<Array<Shift>>;
   shifts: Shift[];
-  reports: Report[];
+  reports: any;
 
   constructor(private af: AngularFire,
     public shiftService: ShiftService,
@@ -102,22 +102,46 @@ export class FirebaseService {
 
 
   initShifts() {
-    if (this.userService.user.shifts)
-      this.shifts = this.userService.user.shifts;
-    this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user => {
-      this.shifts = this.userService.user.shifts;
-      this.reports = [];
-      for (let s of this.userService.user.shifts)
-        for (let r of s.reports)
-          this.reports.push(r);
-      console.log('report add');
-    });
-    if (this.userService.user.details._sons)
-      for (let sons of this.userService.user.details._sons)
-        this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user => {
-          for (let item of user.shifts)
-            this.shifts.push(item);
-        });
+    let shiftsId : string[] = [];
+    this.reports = [];
+    for(let id of this.userService._user.shiftsId){//need to add sons
+      shiftsId.unshift(id);
+    }
+
+    for(let id of shiftsId){
+      firebase.database().ref('/shifts/' + id).once('value').then( snapshot=>{
+        this.shifts.push(snapshot.val());
+        for(let report of snapshot.val().reportsId)
+          firebase.database().ref('/reports/' + report).once('value').then(snapshot=>{
+            this.reports.push(snapshot.val());
+            console.log(this.reports);
+          }).catch(error=>{
+            console.log(error.message);
+          })
+      }).catch(error=>{
+        console.log(error.message);
+      })
+    }
+
+    
+    
+
+    // if (this.userService.user.shifts)
+    //   this.shifts = this.userService.user.shifts;
+    // this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user => {
+    //   this.shifts = this.userService.user.shifts;
+    //   this.reports = [];
+    //   for (let s of this.userService.user.shifts)
+    //     for (let r of s.reports)
+    //       this.reports.push(r);
+    //   console.log('report add');
+    // });
+    // if (this.userService.user.details._sons)
+    //   for (let sons of this.userService.user.details._sons)
+    //     this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user => {
+    //       for (let item of user.shifts)
+    //         this.shifts.push(item);
+    //     });
 
 
   }

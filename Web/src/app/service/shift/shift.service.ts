@@ -15,8 +15,6 @@ export class ShiftService {
       this.isShiftStart = false;
     else{
       this.isShiftStart = true;
-      // console.log(LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1])
-      // this.shift = new Shift(LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1].team,LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1]);
     }
    }
 

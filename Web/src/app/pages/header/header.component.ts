@@ -30,29 +30,29 @@ export class HeaderComponent implements OnInit {
     
     var curr = '';
 
-    setInterval(()=>{
+    // setInterval(()=>{
       
-      if(firebaseService.reports.length != 0 ){
+    //   if(firebaseService.reports.length != 0 ){
         
-        // if(this.index == shiftArr[this.shiftIndex].reports.length){
-        //   this.index = 0;
-        //   this.shiftIndex++;
-        //   currArr = shiftArr[this.shiftIndex].reports;
-        // }
-        // if(this.shiftIndex == shiftArr.length){
-        //   this.shiftIndex = 0;
-        // }
+    //     // if(this.index == shiftArr[this.shiftIndex].reports.length){
+    //     //   this.index = 0;
+    //     //   this.shiftIndex++;
+    //     //   currArr = shiftArr[this.shiftIndex].reports;
+    //     // }
+    //     // if(this.shiftIndex == shiftArr.length){
+    //     //   this.shiftIndex = 0;
+    //     // }
 
         
         
-        this.index %= this.firebaseService.reports.length;
+    //     this.index %= this.firebaseService.reports.length;
         
-        if(this.firebaseService.reports[that.index] != null)
-          if(this.firebaseService.reports[that.index].summary)
-            that.curr = this.firebaseService.reports[that.index].summary;
-        this.index++;
-      }
-    },3000)
+    //     if(this.firebaseService.reports[that.index] != null)
+    //       if(this.firebaseService.reports[that.index].summary)
+    //         that.curr = this.firebaseService.reports[that.index].summary;
+    //     this.index++;
+    //   }
+    // },3000)
   }
 
   ngOnInit() {
