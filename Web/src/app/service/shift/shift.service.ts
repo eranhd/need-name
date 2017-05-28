@@ -15,8 +15,6 @@ export class ShiftService {
       this.isShiftStart = false;
     else{
       this.isShiftStart = true;
-      // console.log(LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1])
-      // this.shift = new Shift(LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1].team,LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1]);
     }
    }
 
@@ -26,7 +24,15 @@ export class ShiftService {
   }
 
   addReport(report: Report, id:string){
-    // this.shift.reportsId.unshift(id)
     this.shift.addReport(report, 1,id);
+  }
+
+
+  addColdSpot(id: string){
+    this.shift.addColdSpot(id);
+  }
+
+  addHotSpot(id: string){
+    this.shift.addHotSpot(id);
   }
 }
