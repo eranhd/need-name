@@ -15,7 +15,7 @@ export class Shift {
     hotSpotId: string[];
 
 
-    constructor( team: Team, shift?: Shift) {
+    constructor(location:Location, team: Team, shift?: Shift) {
         if (shift) {
             this.team = team;
             if(shift.reports){
@@ -35,23 +35,31 @@ export class Shift {
             else
             { this.hotSpotArr =[];}
 
-            this.stratShift = new StartShift(shift.stratShift);
-            if(this.endShift)
+            this.stratShift = new StartShift(shift.stratShift.location,shift.stratShift);
+            if(this.endShift){
                 this.endShift = shift.endShift;
-            else
+            }
+            else{
                 this.endShift = null;
-            if(shift.reportsId)
+            }
+            if(shift.reportsId){
                 this.reportsId = shift.reportsId;
-            else
+            }
+            else{
                 this.reportsId = [];
-            if (shift.coldSpotId)
+            }
+            if (shift.coldSpotId){
                 this.coldSpotId = shift.coldSpotId;
-            else
+            }
+            else{
                 this.coldSpotId = [];
-            if (shift.hotSpotId)
+            }
+            if (shift.hotSpotId){
                 this.hotSpotId = shift.hotSpotId;
-            else
+            }
+            else{
                 this.hotSpotId = [];
+            }
         }
         else {
 
@@ -59,7 +67,7 @@ export class Shift {
             this.reports = [];
             this.hotSpotArr =[];
             this.coldSpotArr =[];
-            this.stratShift = new StartShift();
+            this.stratShift = new StartShift(location);
             this.endShift = null;
             this.reportsId = [];
             this.coldSpotId = [];
@@ -97,13 +105,13 @@ class StartShift {
     date: Date;
     location: Location;
 
-    constructor( shift?: StartShift) {
+    constructor(location:Location, shift?: StartShift) {
         if(shift){
             this.date = shift.date;
-            if(shift.location)
-                this.location = shift.location;
-            else
-                this.location = null;
+            //if(shift.location)
+                this.location = location;
+            //else
+               // this.location = null;
         }
         else{
             
