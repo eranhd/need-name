@@ -129,7 +129,7 @@ export class Role {
         }
 
         // 2 doesnt have settingReport page Permission:
-        if(this.type == 2 && path == 'main/settingReport') {
+        if(this.type == 2 && path == 'settingReport') {
             return false;
         }
 
