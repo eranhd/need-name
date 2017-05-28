@@ -115,7 +115,7 @@ export class Role {
             this.name = name;
         }    
     }
-
+    
     public canDirect(path) {
 
     }
