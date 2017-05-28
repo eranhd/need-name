@@ -19,7 +19,7 @@ export class User {
 
             if (user.shifts) {
                 for (let shift of user.shifts)
-                    this.shifts.push(new Shift(shift.team, shift));
+                    this.shifts.push(new Shift(shift.stratShift.location,shift.team, shift));
             }
             // this.locations.push(new Location(location.));   
             if (user.shiftsId) {
@@ -98,7 +98,7 @@ export class Role {
 
     type: number;
     name: string;
-
+    
 
     constructor(type: number, name: string) {
         if(type != 1 && type != 2 && type != 3 && type != 4) {
