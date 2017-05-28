@@ -101,9 +101,22 @@ export class Role {
 
 
     constructor(type: number, name: string) {
-        this.type = type;
-        this.name = name;
+        if(type != 1 && type != 2 && type != 3 && type != 4) {
+                alert("אנא הכנס סוג תפקיד קיים");
+        }
+        else{
+             this.type = type;
+        }
+
+        if(name != 'parentPatrol' && name != 'dtPatrol') {
+                alert("אנא הכנס שם תפקיד קיים");
+        }
+        else {
+            this.name = name;
+        }    
     }
+
+    
 
     public canDirect(path) {
 
