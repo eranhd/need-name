@@ -17,10 +17,10 @@ export class User {
         if (user) {//copy constructor
             this.shifts = [];
 
-            if (user.shifts) {
-                for (let shift of user.shifts)
-                    this.shifts.push(new Shift(shift.stratShift.location,shift.team, shift));
-            }
+            // if (user.shifts) {
+            //     for (let shift of user.shifts)
+            //         this.shifts.push(new Shift(shift.stratShift.location, shift.team, shift));
+            // }
             // this.locations.push(new Location(location.));   
             if (user.shiftsId) {
                 this.shiftsId = user.shiftsId;
