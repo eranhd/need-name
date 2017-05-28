@@ -77,7 +77,7 @@ export class Details {
         }
         else {
             this.name = '';
-            this.role = new Role(1, 'admin');
+            // this.role = new Role(1, 'admin');
             this.area = 'jerusalem';
             this._sons = [];
             this.numOfReport = 0;
@@ -85,6 +85,12 @@ export class Details {
         }
 
     }
+
+    set_role (type: number, name: string){
+        this.role.type = type;
+        this.role.name = name;
+    }
+
     public addSon(son: string) {
         this._sons.push(son);
     }
