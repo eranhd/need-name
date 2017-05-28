@@ -123,8 +123,17 @@ export class Role {
     }
     
     public canDirect(path) {
-      /*  if (path == 1 && ){
+        // 1 doesnt have any website page Permission:
+        if (this.type == 1 && path == 'main'){
+            return false;
+        }
 
-        }*/
+        // 2 doesnt have settingReport page Permission:
+        if(this.type == 2 && path == 'main/settingReport') {
+            return false;
+        }
+
+        // 3 and 4 have all page Permissions:
+        return true;
     }
 };
