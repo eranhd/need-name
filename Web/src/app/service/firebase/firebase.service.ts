@@ -70,22 +70,34 @@ export class FirebaseService {
     if(id){
       this.userToSave.update(id, user).catch(error=>{console.log(error.message)})
     }
-    else
+    else{
       this.userToSave.update(firebase.auth().currentUser.uid, user).catch(error => {
         console.log(error.message);
       });
 
     console.log(user);
+    }
   }
 
 
   createNewUser(email: string, password: string, user: User){
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot=>{
-      this.userService._user.details.addSon(snapshot.uid);
-      this.updateUser(user, snapshot.id);
+    let newId = '';
+    this.af.auth.createUser({
+      email: email,
+      password: password
+    }).then(snapshot=>{
+      this.userService._user.details._sons.unshift(snapshot.uid);
+      this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
+      this.updateUser(user, snapshot.uid);
+      newId = snapshot.uid;
     }).catch(error=>{
-      console.log(error.message);
-    })
+      console.log('errrrror');
+    });
+    // firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot=>{
+      
+    // }).catch(error=>{
+    //   console.log(error.message);
+    // })
   }
 
 
@@ -136,26 +148,6 @@ export class FirebaseService {
         console.log(error.message);
       })
     }
-
-    
-    
-
-    // if (this.userService.user.shifts)
-    //   this.shifts = this.userService.user.shifts;
-    // this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user => {
-    //   this.shifts = this.userService.user.shifts;
-    //   this.reports = [];
-    //   for (let s of this.userService.user.shifts)
-    //     for (let r of s.reports)
-    //       this.reports.push(r);
-    //   console.log('report add');
-    // });
-    // if (this.userService.user.details._sons)
-    //   for (let sons of this.userService.user.details._sons)
-    //     this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe(user => {
-    //       for (let item of user.shifts)
-    //         this.shifts.push(item);
-    //     });
 
 
   }

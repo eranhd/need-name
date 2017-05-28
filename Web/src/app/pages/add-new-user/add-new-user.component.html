@@ -3,12 +3,12 @@
 <main>
   <section class='add_new_user'>
     <md-card>
-      <select required placeholder="בחר סוג משתמש">
-        <option *ngFor='let item of types' [value]='item.value' (changed)='role = $event.target.value'>
+      <select required placeholder="בחר סוג משתמש" (change)='role = $event.target.value'>
+        <option *ngFor='let item of types' [value]='item.value' >
           {{item.valueToShow}}
         </option>
       </select>
-      <select *ngIf='userService.user.details.type == 4' (changed)='type = $event.target.value'>
+      <select *ngIf='userService.user.details.role.type == 4' (change)='type = $event.target.value'>
         <option value='parentPatrol'>
           סיירת הורים
         </option>

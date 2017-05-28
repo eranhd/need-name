@@ -28,18 +28,21 @@ export class AddNewUserComponent implements OnInit {
   //    for(let str of this.userService._user.details.role.getRolesName())
           // this.types.push({value: str, valueToShow: str});
           this.name = '';
-          this.type = '';
+          this.role = this.types[0].value;
+          this.type = 'parentPatrol';
   }
 
    public signup(){
      if( !(this.email == '' || !this.email || this.password == '' || !this.password)){
         this.newUser = new User();
         this.newUser.details.name = this.name;
-         this.newUser.details.set_role(parseInt(this.role), this.userService.user.details.name);
-         if(this.type != '')
+        // console.log(this.type + ' , ' + this.role);
+         if(this.userService.user.details.role.type == 4)
         {
           this.newUser.details.set_role(parseInt(this.role), this.type);
         }
+        else
+          this.newUser.details.set_role(parseInt(this.role) - 1, this.userService.user.details.name);
         this.firebaseService.createNewUser(this.email, this.password, this.newUser);
      }
      else{

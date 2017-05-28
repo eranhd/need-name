@@ -30,9 +30,7 @@ export class LoginComponent implements OnInit {
     if (window.innerWidth < 800) {
       this.router.navigate(['mobile_login']);
     }
-    console.log(firebase.storage().ref().child('spotImage').getDownloadURL().then(url=>{
-      console.log(url);
-    }))
+    
 
   }
 
