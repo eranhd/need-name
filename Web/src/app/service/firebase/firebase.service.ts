@@ -5,7 +5,8 @@ import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
 import { SettingReportService } from '../setting-report/setting-report.service';
 import { User } from '../../models/User';
-import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 import { Report } from '../../models/Report';
 import { Shift } from '../../models/Shift';
 import { ShiftService } from '../shift/shift.service';
@@ -15,6 +16,8 @@ export class FirebaseService {
 
   private itemToSave: FirebaseListObservable<any>;
   private userToSave: FirebaseListObservable<any>;//this user and all report saves in firebase
+  private shiftsToSave: FirebaseListObservable<any>;
+  private reportsToSave: FirebaseListObservable<any>;
   private database;
   private auth;
   shiftToShow: Observable<Array<Shift>>;
@@ -24,18 +27,14 @@ export class FirebaseService {
   constructor(private af: AngularFire,
     public shiftService: ShiftService,
     public userService: UserService,
+    public afDb: AngularFireDatabase,
     public router: Router
   ) {
-    /*this.initFirebase();
-    this.database = firebase.database();
-    this.auth = firebase.auth();*/
-    //this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
+    
     this.shifts = [];
     this.userToSave = af.database.list('/users');
+    this.shiftsToSave = this.afDb.list('/shifts');// refernce  to shifts
 
-
-    //this is try, maby need to delete
-    // this.shiftToShow = Observable.
   };
   public getDatabase() { return this.database; };
   public getAuth() { return this.auth; };
@@ -51,12 +50,6 @@ export class FirebaseService {
 
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        //user login
-        //var userSer:UserService;
-        //userSer = new UserService();
-        //userSer.setUserLogin(true);
-        //console.log('login');
-
       }
       else {
         console.log('field');
@@ -82,13 +75,26 @@ export class FirebaseService {
 
   initUser(goto?: string) {
 
-    this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe((user: User) => {
-      this.userService._user = user;
-      this.userService.userLogin = true;
-      if (goto) {
+    firebase.database().ref('users/').once('value', snapshot=>{//check if user exist in db
+      if (snapshot.hasChild(firebase.auth().currentUser.uid)) {
+        this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe((user: User) => {
+        this.userService._user = user;
+        this.userService.userLogin = true;
+        if (goto) {
+          this.router.navigate([goto]);
+        }
+      });
+      }
+      else{//if not so init user
+        let user = new User();
+        this.updateUser(user);
+        this.userService._user = user;
         this.router.navigate([goto]);
       }
-    });
+    }).catch(error=>{
+      console.log(error.message);
+    })
+    
 
   }
 
@@ -111,10 +117,46 @@ export class FirebaseService {
             this.shifts.push(item);
         });
 
-    //return shifts;
+    
   }
 
 
+  saveShift()
+  {
+    
+    this.afDb.list('/shifts').push(this.shiftService.shift).then(resolve=>{
+    
+      console.log(resolve.path.o[1]);
+      this.userService.addShift(resolve.path.o[1]);
+      this.shiftService.id = resolve.path.o[1];
+      this.updateUser(this.userService.user);
+      console.log(this.userService.user);
+      this.updateUser(this.userService.user);
+    }).catch(error=>{
+
+    });
+    
+  }
+
+  updateShift(){//this will call after add report to shift 
+    // console.log('in update shift ' + this.shiftService.id);
+    this.shiftsToSave.update(this.shiftService.id, this.shiftService.shift).then(resolve=>{
+      console.log('shift update');
+    }).catch(error=>{
+      console.log(error.message);
+    });
+  }
+
+  saveReport(report: Report){//when want to save new report, then i save the report in new id and add the id to reportsid 
+    this.afDb.list('/reports').push(report).then(resolve=>{
+      let id = resolve.path.o[1];
+      console.log(resolve.path.o[1]);
+      this.shiftService.addReport(report, id);
+      this.updateShift();
+    }).catch(error=>{
+      console.log(error.message);
+    });
+  }
 
   uploadReport(report: Report) {
 

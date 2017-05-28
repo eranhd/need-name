@@ -8,14 +8,15 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 export class ShiftService {
 
   shift: Shift;
+  id: string;
   isShiftStart: boolean;
   constructor() {
     if(!LocalStorageService.loadUser())
       this.isShiftStart = false;
     else{
       this.isShiftStart = true;
-      console.log(LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1])
-      this.shift = new Shift(LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1].team,LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1]);
+      // console.log(LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1])
+      // this.shift = new Shift(LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1].team,LocalStorageService.loadUser().shifts[LocalStorageService.loadUser().shifts.length-1]);
     }
    }
 
@@ -24,7 +25,8 @@ export class ShiftService {
     this.isShiftStart = true;
   }
 
-  addReport(report: Report, id:number){
-    this.shift.addReport(report, id);
+  addReport(report: Report, id:string){
+    // this.shift.reportsId.unshift(id)
+    this.shift.addReport(report, 1,id);
   }
 }

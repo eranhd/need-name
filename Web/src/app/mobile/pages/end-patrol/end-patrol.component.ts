@@ -28,7 +28,7 @@ export class EndPatrolComponent implements OnInit {
     this.filling = null;
     this.summaryT='';
     this.dilemmas="";
-    this.unusualEvents;
+    this.unusualEvents = '';
   }
 
 
@@ -39,11 +39,10 @@ export class EndPatrolComponent implements OnInit {
       this.shiftService.shift.initEndShift(filling, position);
       this.shiftService.shift.endShift.summary = this.summaryT;
       this.shiftService.shift.endShift.dilemmas=this.dilemmas;
-      this.shiftService.shift.endShift.unusualEvents=this.unusualEvents;
+      this.shiftService.shift.endShift.unusualEvents = this.unusualEvents;
       this.shiftService.isShiftStart = false;
-      this.userService.user.updateLastShift(this.shiftService.shift);
-      this.fireService.updateUser(this.userService.user);
       LocalStorageService.clearUser(); 
+      this.fireService.updateShift();
       this.router.navigate(['mobile_main']);
     }, (error) => {
       alert('אנא הפעל מיקום');

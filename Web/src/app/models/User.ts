@@ -5,6 +5,7 @@ import { Location } from './Location';
 export class User {
 
     details: Details;
+    shiftsId: string[];
     shifts: Shift[];
     // thisShift:Shift;
     // coldSpot:Location;
@@ -20,7 +21,14 @@ export class User {
                     this.shifts.push(new Shift(shift.team, shift));
             }
             // this.locations.push(new Location(location.));   
-
+            if(user.shiftsId)
+            {
+                this.shiftsId = user.shiftsId;
+            }
+            else
+            {
+                this.shiftsId = [];
+            }
             this.details = new Details(user.details);
 
         }
@@ -28,13 +36,16 @@ export class User {
 
             this.details = new Details();
             this.shifts = [];
+            this.shiftsId = [];
             // this.coldSpotArr = [];
             // this.coldSpot=null;
         }
     }
 
-    addShift(shift: Shift) {
-        this.shifts.push(shift);
+    addShift(shift: Shift, shiftId?: string) {
+        if(shiftId)
+            this.shiftsId.unshift(shiftId);
+        // this.shifts.push(shift);
         this.details.lastShift = new Date();
     }
 

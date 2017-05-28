@@ -56,9 +56,11 @@ export class ReportComponent implements OnInit {
       report = new Report(filds, this.summary, position, this.photoUrl);//create new report
       
       //update user
-      this.shiftService.shift.addReport(report, this.id);
-      this.userService.user.updateLastShift(this.shiftService.shift);
-      this.firebaseService.updateUser(this.userService.user);
+      // this.shiftService.shift.addReport(report, this.id);
+      
+      // this.userService.user.updateLastShift(this.shiftService.shift);
+      // this.firebaseService.updateUser(this.userService.user);
+      this.firebaseService.saveReport(report);
       LocalStorageService.saveUser(this.userService.user);
       this.router.navigate(['mobile_main']);
     }, 

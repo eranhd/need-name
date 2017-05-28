@@ -6,6 +6,7 @@ export class Shift {
 
     team: Team;
     reports: Report[];
+    reportsId: string[];
     coldSpotArr: Location[];
     hotSpotArr:Report[];
     stratShift: StartShift;
@@ -37,6 +38,10 @@ export class Shift {
                 this.endShift = shift.endShift;
             else
                 this.endShift = null;
+            if(shift.reportsId)
+                this.reportsId = shift.reportsId;
+            else
+                this.reportsId = [];
         }
         else {
 
@@ -47,19 +52,21 @@ export class Shift {
             this.stratShift = new StartShift();
             this.endShift = null;
             this.isHotSpot=false;
-
+            this.reportsId = [];
         }
     }
 
-    public addReport(report: Report, id: number) {
-        if(id === 2){
-            this.hotSpotArr.push(report);
-            return true
-        }
-        else{
-            this.reports.push(report);
-            return true
-        }
+    public addReport(report: Report, id: number, reportId?:string) {
+        if(reportId)
+            this.reportsId.unshift(reportId);
+        // if(id === 2){
+        //     this.hotSpotArr.push(report);
+        //     return true
+        // }
+        // else{
+        //     this.reports.push(report);
+        //     return true
+        // }        
     }
 
     public initEndShift(filling: string, position?: Position) {

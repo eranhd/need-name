@@ -52,6 +52,9 @@ export class UserService{
     */
   }
 
+  addShift(id: string){
+    this.user.shiftsId.unshift(id);//need to replace to add shift in user
+  }
   updateUser(){
     /*console.log(this.user);
     this.item.update(this.user);//new to get the user from firebase

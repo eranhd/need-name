@@ -20,7 +20,8 @@ import { HeaderComponent } from './pages/header/header.component';
 import { MainComponent } from './pages/main/main.component';
 import { SettingReportComponent } from './pages/setting-report/setting-report.component';
 import { FirebaseService } from './service/firebase/firebase.service';
-import { AngularFireModule, AuthProviders, AuthMethods,  FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+
+// import { AngularFireModule, AuthProviders, AuthMethods,  FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 import { AddNewUserComponent } from './pages/add-new-user/add-new-user.component';
 import { ReportComponent } from './pages/report/report.component';
 import { ChartsModule } from 'ng2-charts';
@@ -59,18 +60,35 @@ import { ShowShiftComponent } from './pages/show-shift/show-shift.component';
 
 import { LocationName } from './pipe/locationName.pipe';
 
-export const firebaseConfig = {
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth} from 'angularfire2/auth';
+
+
+export const environment = {
+  production: false,
+  firebase: {
   apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
     authDomain: "antidrugsjerusalem.firebaseapp.com",
     databaseURL: "https://antidrugsjerusalem.firebaseio.com",
     storageBucket: "antidrugsjerusalem.appspot.com",
     messagingSenderId: "767801084656"
+  }
 };
 
-const myFirebaseAuthConfig = {
-  provider: AuthProviders.Password,
-  method: AuthMethods.Password
-};
+// export const firebaseConfig = {
+//   apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
+//     authDomain: "antidrugsjerusalem.firebaseapp.com",
+//     databaseURL: "https://antidrugsjerusalem.firebaseio.com",
+//     storageBucket: "antidrugsjerusalem.appspot.com",
+//     messagingSenderId: "767801084656"
+// };
+
+// const myFirebaseAuthConfig = {
+//   provider: AuthProviders.Password,
+//   method: AuthMethods.Password
+// };
 
 @NgModule({
   declarations: [
@@ -115,7 +133,8 @@ const myFirebaseAuthConfig = {
     HttpModule,
     MdSelectModule,
     routes,
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+    // AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE'
     }),
@@ -143,13 +162,13 @@ const myFirebaseAuthConfig = {
 export class AppModule {
   constructor(){
     var str = {
-      apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
-      authDomain: "anti-drugs-jerusalem.firebaseapp.com",
-      databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
-      storageBucket: "anti-drugs-jerusalem.appspot.com",
-      messagingSenderId: "944977183444" 
+      apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
+    authDomain: "antidrugsjerusalem.firebaseapp.com",
+    databaseURL: "https://antidrugsjerusalem.firebaseio.com",
+    storageBucket: "antidrugsjerusalem.appspot.com",
+    messagingSenderId: "767801084656"
     };
-    firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(str);
   }
   
  }
