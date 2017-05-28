@@ -11,7 +11,6 @@ export class Shift {
     hotSpotArr:Report[];
     stratShift: StartShift;
     endShift: EndShift;
-    isHotSpot:boolean;
     coldSpotId: string[];
     hotSpotId: string[];
 
@@ -62,7 +61,6 @@ export class Shift {
             this.coldSpotArr =[];
             this.stratShift = new StartShift();
             this.endShift = null;
-            this.isHotSpot=false;
             this.reportsId = [];
             this.coldSpotId = [];
             this.hotSpotId = [];

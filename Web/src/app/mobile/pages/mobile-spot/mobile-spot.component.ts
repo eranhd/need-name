@@ -14,7 +14,6 @@ import { LocalStorageService } from '../../../service/local-storage/local-storag
 })
 export class MobileSpotComponent implements OnInit {
   public location: Location;
-  public isHotSpot:boolean;
   constructor(public router: Router,
               private element: ElementRef,
               public userService: UserService,
