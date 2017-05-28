@@ -102,21 +102,19 @@ export class Role {
 
     constructor(type: number, name: string) {
         if(type != 1 && type != 2 && type != 3 && type != 4) {
-                alert("אנא הכנס סוג תפקיד קיים");
+                alert("סוג תפקיד לא קיים");
         }
         else{
              this.type = type;
         }
 
         if(name != 'parentPatrol' && name != 'dtPatrol') {
-                alert("אנא הכנס שם תפקיד קיים");
+                alert("שם תפקיד לא קיים");
         }
         else {
             this.name = name;
         }    
     }
-
-    
 
     public canDirect(path) {
 
