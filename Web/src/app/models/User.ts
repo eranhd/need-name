@@ -17,18 +17,7 @@ export class User {
         if (user) {//copy constructor
             this.shifts = [];
 
-<<<<<<< HEAD
-         /*   if (user.shifts) {
-                for (let shift of user.shifts)
-                    this.shifts.push(new Shift(shift.stratShift.location,shift.team, shift));
-            }*/
-=======
-            // if (user.shifts) {
-            //     for (let shift of user.shifts)
-            //         this.shifts.push(new Shift(shift.stratShift.location, shift.team, shift));
-            // }
->>>>>>> efcbb57e0eda91a65c63e9db8f1db38afae13082
-            // this.locations.push(new Location(location.));   
+  
             if (user.shiftsId) {
                 this.shiftsId = user.shiftsId;
             }
