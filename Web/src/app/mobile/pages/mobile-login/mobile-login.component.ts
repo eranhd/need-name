@@ -28,16 +28,22 @@ export class MobileLoginComponent implements OnInit {
   }
 
   public signIn(){
-    if(this.email == '' || this.password == '')
+    if(this.email == '' || this.password == ''){
       return;
-    firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user=>{
+    }
+   navigator.geolocation.getCurrentPosition((position) => {
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user=>{
       console.log('login succsess');
       localStorage.setItem('userAndPassword', JSON.stringify({email: this.email, password: this.password}));
       this.firebaseService.initUser('mobile_main');
-    }).catch(error=>{
+       }).catch(error=>{
         console.log(error.message);
       this.error = 'אנא נסה שנית';
-    });    
+    });  
+    }, (error) => {
+      alert('אנא הפעל מיקום');
+    });
+  
   };
 
   ngOnInit() {
