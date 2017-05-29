@@ -66,35 +66,35 @@ export class FirebaseService {
     });
   }
 
-  updateUser(user, id?:string) {
-    if(id){
-      this.userToSave.update(id, user).catch(error=>{console.log(error.message)})
+  updateUser(user, id?: string) {
+    if (id) {
+      this.userToSave.update(id, user).catch(error => { console.log(error.message) })
     }
-    else{
+    else {
       this.userToSave.update(firebase.auth().currentUser.uid, user).catch(error => {
         console.log(error.message);
       });
 
-    console.log(user);
+      console.log(user);
     }
   }
 
 
-  createNewUser(email: string, password: string, user: User){
+  createNewUser(email: string, password: string, user: User) {
     let newId = '';
     this.af.auth.createUser({
       email: email,
       password: password
-    }).then(snapshot=>{
+    }).then(snapshot => {
       this.userService._user.details._sons.unshift(snapshot.uid);
       this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
       this.updateUser(user, snapshot.uid);
       newId = snapshot.uid;
-    }).catch(error=>{
+    }).catch(error => {
       console.log('errrrror');
     });
     // firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot=>{
-      
+
     // }).catch(error=>{
     //   console.log(error.message);
     // })
@@ -102,49 +102,36 @@ export class FirebaseService {
 
 
   initUser(goto?: string) {
-
-    firebase.database().ref('users/').once('value', snapshot => {//check if user exist in db
-      if (snapshot.hasChild(firebase.auth().currentUser.uid)) {
-        this.af.database.object('users/' + firebase.auth().currentUser.uid).subscribe((user: User) => {
-          this.userService._user = user;
-          this.userService.userLogin = true;
-          if (goto) {
-            this.router.navigate([goto]);
-          }
-        });
-      }
-      else {//if not so init user
-        let user = new User();
-        this.updateUser(user);
-        this.userService._user = user;
+    firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(snapshot => {
+      console.log(snapshot.val());
+      this.userService._user = snapshot.val();
+      console.log(this.userService._user);
+      if (goto) {
         this.router.navigate([goto]);
       }
-    }).catch(error => {
-      console.log(error.message);
-    })
-
+    }).catch(error => { console.log(error.message) })
 
   }
 
 
   initShifts() {
-    let shiftsId : string[] = [];
+    let shiftsId: string[] = [];
     this.reports = [];
-    for(let id of this.userService._user.shiftsId){//need to add sons
+    for (let id of this.userService._user.shiftsId) {//need to add sons
       shiftsId.unshift(id);
     }
 
-    for(let id of shiftsId){
-      firebase.database().ref('/shifts/' + id).once('value').then( snapshot=>{
+    for (let id of shiftsId) {
+      firebase.database().ref('/shifts/' + id).once('value').then(snapshot => {
         this.shifts.push(snapshot.val());
-        for(let report of snapshot.val().reportsId)
-          firebase.database().ref('/reports/' + report).once('value').then(snapshot=>{
+        for (let report of snapshot.val().reportsId)
+          firebase.database().ref('/reports/' + report).once('value').then(snapshot => {
             this.reports.push(snapshot.val());
             console.log(this.reports);
-          }).catch(error=>{
+          }).catch(error => {
             console.log(error.message);
           })
-      }).catch(error=>{
+      }).catch(error => {
         console.log(error.message);
       })
     }
@@ -178,18 +165,18 @@ export class FirebaseService {
   }
 
   saveReport(report: Report, id: string) {//when want to save new report, then i save the report in new id and add the id to reportsid 
-    if(id == '2'){//save hot spot
+    if (id == '2') {//save hot spot
       this.saveHotSpot(report);
     }
-    else if(id == '1'){//save just report
-    this.afDb.list('/reports').push(report).then(resolve => {
-      let id = resolve.path.o[1];
-      console.log(resolve.path.o[1]);
-      this.shiftService.addReport(report, id);
-      this.updateShift();
-    }).catch(error => {
-      console.log(error.message);
-    });
+    else if (id == '1') {//save just report
+      this.afDb.list('/reports').push(report).then(resolve => {
+        let id = resolve.path.o[1];
+        console.log(resolve.path.o[1]);
+        this.shiftService.addReport(report, id);
+        this.updateShift();
+      }).catch(error => {
+        console.log(error.message);
+      });
     }
   }
 

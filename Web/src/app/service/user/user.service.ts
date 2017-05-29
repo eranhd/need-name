@@ -14,8 +14,8 @@ export class UserService{
   constructor() {   
     //need delete
     this.user = new User();
-    if(LocalStorageService.loadUser())
-      this.user = new User(LocalStorageService.loadUser());
+    // if(LocalStorageService.loadUser())
+    //   this.user = new User(LocalStorageService.loadUser());
   };
 
   set _user(user:User){

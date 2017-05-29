@@ -63,7 +63,7 @@ export class Details {
             this.name = detail.name;
             this.role = new Role(detail.role.type, detail.role.name);
             this.area = detail.area;
-            if (this._sons)
+            if (detail._sons)
                 this._sons = detail._sons;
             else
                 this._sons = [];
@@ -72,7 +72,7 @@ export class Details {
         }
         else {
             this.name = '';
-            // this.role = new Role(1, 'admin');
+            this.role = new Role(1, 'parentPatrol');
             this.area = 'jerusalem';
             this._sons = [];
             this.numOfReport = 0;
@@ -104,14 +104,14 @@ export class Role {
 
     constructor(type: number, name: string) {
         if(type != 1 && type != 2 && type != 3 && type != 4) {
-                alert("סוג תפקיד לא קיים");
+                // alert("סוג תפקיד לא קיים");
         }
         else{
              this.type = type;
         }
 
         if(name != 'parentPatrol' && name != 'dtPatrol') {
-                alert("שם תפקיד לא קיים");
+                // alert("שם תפקיד לא קיים");
         }
         else {
             this.name = name;

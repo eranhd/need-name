@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { auth, initializeApp } from 'firebase';
-import { UserService } from '../../service/user/user.service';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../../service/firebase/firebase.service';
 
@@ -23,10 +22,10 @@ export class LoginComponent implements OnInit {
   pass: string;
   
   constructor(public router: Router,
-    public userServ: UserService,
+    
     public firebaseService: FirebaseService,
-    public role: RoleService,
-    public userService: UserService) {
+    public role: RoleService
+    ) {
     if (window.innerWidth < 800) {
       this.router.navigate(['mobile_login']);
     }
@@ -39,7 +38,7 @@ export class LoginComponent implements OnInit {
       return;
     firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(user=>{
       console.log('login succsess');
-      localStorage.setItem('userAndPassword', JSON.stringify({email: this.email, password: this.pass}));
+      // localStorage.setItem('userAndPassword', JSON.stringify({email: this.email, password: this.pass}));
       this.firebaseService.initUser('main');
     }).catch(error=>{
         console.log(error.message);
