@@ -7,7 +7,7 @@ import { UserService } from '../../../service/user/user.service';
 import { Shift } from '../../../models/Shift';
 import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
 import { Location } from '../../../models/Location';
-
+import { SaveLocationBetaComponent } from '../save-location-beta/save-location-beta.component';
 
 @Component({
   selector: 'app-start-patrol',

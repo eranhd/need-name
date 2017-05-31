@@ -64,6 +64,7 @@ import { LocationName } from './pipe/locationName.pipe';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth} from 'angularfire2/auth';
+import { SaveLocationBetaComponent } from './mobile/pages/save-location-beta/save-location-beta.component';
 
 
 export const environment = {
@@ -125,7 +126,8 @@ export const environment = {
     ShiftComponent,
     ShowReportComponent,
     ShowShiftComponent,
-    LocationName
+    LocationName,
+    SaveLocationBetaComponent
   ],
   imports: [
     BrowserModule,

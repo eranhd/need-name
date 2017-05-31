@@ -206,6 +206,16 @@ export class FirebaseService {
 
   }
 
+
+  saveLoacation(loc: Location){//this function save the location and name as insert by user in start patrol or spot
+    this.afDb.list('/locations').push(loc).then(resolve=>{
+      console.log('location save');
+    }).catch(error=>{
+      console.log(error.message);
+    })
+  }
+
+
   public initFirebase() {
     var config = {
       apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",

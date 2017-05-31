@@ -7,6 +7,7 @@ import { UserService } from '../../../service/user/user.service';
 import { ShiftService } from '../../../service/shift/shift.service';
 import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
+import { SaveLocationBetaComponent } from '../save-location-beta/save-location-beta.component';
 
 @Component({
   selector: 'app-mobile-spot',

@@ -3,8 +3,8 @@ export class Location {
     name: string;
     date:String;
     constructor(public lng, public lat) {
-        this.name = "ירושלים";
-        this.date=new Date().toJSON();
+        
+        
     }
 
     public getLocationName(): string {
