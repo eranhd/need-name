@@ -101,7 +101,7 @@ export class SettingReportService {
         for(let i=0;i<size;i++){
         if(this.inputsParentPatrol[i].placeHolder == placeHolderId){
         this.inputsParentPatrol.splice(i,1);
-        this.item.set({ 'parentPatrol_report_fields': this.inputsParentPatrol });
+        this.item.update({ 'parentPatrol_report_fields': this.inputsParentPatrol });
         break;
        }
      }
@@ -111,7 +111,7 @@ export class SettingReportService {
         for(let i=0;i<size;i++){
         if(this.inputsDtPatrol[i].placeHolder == placeHolderId){
         this.inputsDtPatrol.splice(i,1);
-        this.item.set({ 'DtPatrol_report_fields': this.inputsDtPatrol });
+        this.item.update({ 'DtPatrol_report_fields': this.inputsDtPatrol });
         break;
        }
      }
