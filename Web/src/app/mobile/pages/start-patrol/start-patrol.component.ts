@@ -22,6 +22,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   public memberValid: boolean;
   team: Team;
   location: Location;
+  isSubmit = false;
 
 
   constructor(public router:Router,
@@ -41,14 +42,18 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
 
   public startPatrol() {
+    this.isSubmit = true;
     if(this.numOfMembers <= 0 || this.team.teamNum <= 0 || !this.team.teamNum || this.team.lead == null || !this.team.lead){
       this.isValid = false;
+
+      this.isSubmit = false;
     }
     else{
         for(let i=0 ; i<this.team.members.length;i++){
           if(this.team.members[i].name == null){
             this.isValid=false;
             this.memberValid=false;
+            this.isSubmit = false;
             break;
           }
           else{
@@ -61,7 +66,8 @@ export class StartPatrolComponent implements OnInit, OnChanges {
         this.location = new Location(position.coords.longitude, position.coords.latitude);
         this.shiftService.startShift(this.location, this.team);
         this.fireService.saveShift();
-        }, (error) => {
+      }, (error) => {
+          this.isSubmit = false;
             console.log('position start shift error' + error.message);
         });
         
