@@ -80,3 +80,77 @@ input:-webkit-autofill {
 .notValid{
     border-bottom: 2px darkred solid;
 }
+
+
+.spinningCircle {
+  
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0);
+    border-top: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    animation: spinner 1500ms infinite cubic-bezier(0.45, 0.75, 0.27, 0.48);
+}
+
+.dark_gray{
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0);
+    border-top: 3px solid darkgray;
+    border-right: 3px solid darkgray;
+    animation: spinner 1000ms infinite cubic-bezier(0.45, 0.75, 0.27, 0.48);
+}
+
+.overlay{
+    z-index: 999;
+    position: absolute;
+    height: 100px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  /*background-color: black;
+  opacity: .7;*/
+}
+
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+
+  }
+}
+
+footer img{
+    height: 100%;
+    
+}
+
+footer{
+    direction: rtl;
+    height: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: blue;
+    font-size: 10px;
+}

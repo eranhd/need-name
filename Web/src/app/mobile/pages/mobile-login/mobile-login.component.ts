@@ -18,6 +18,8 @@ export class MobileLoginComponent implements OnInit {
   password: any;
   error: string;
   title:string = "כניסה";
+  isLogin: boolean = false;
+  dev_statment: string = 'פותח בשיתוף בפעולה עם עזריאלי המכללה להנדסה ירושלים';
 
 
   constructor(private router:Router,
@@ -31,6 +33,8 @@ export class MobileLoginComponent implements OnInit {
     if(this.email == '' || this.password == ''){
       return;
     }
+
+    this.isLogin = true;
    navigator.geolocation.getCurrentPosition((position) => {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user=>{
       console.log('login succsess');
@@ -39,9 +43,11 @@ export class MobileLoginComponent implements OnInit {
        }).catch(error=>{
         console.log(error.message);
       this.error = 'אנא נסה שנית';
+      this.isLogin = false;
     });  
     }, (error) => {
       alert('אנא הפעל מיקום');
+      this.isLogin = false;
     });
   
   };

@@ -165,6 +165,7 @@ export class FirebaseService {
   }
 
   saveReport(report: Report, id: string) {//when want to save new report, then i save the report in new id and add the id to reportsid 
+    console.log(report);
     if (id == '2') {//save hot spot
       this.saveHotSpot(report);
     }

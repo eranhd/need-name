@@ -1,3 +1,8 @@
+<div *ngIf='isLogin' class="overlay">
+  <div class="spinningCircle"></div>
+  <div class="dark_gray"></div>
+</div>
+
 <div class='main'>
 
   <app-mobile-header [showBack]='false'></app-mobile-header>
@@ -8,6 +13,11 @@
     <button type="submit" class='btn_login' (click)='signIn()'>כניסה</button>
     <span class='error'>{{error}}</span>
   </div>
- <!-- <app-mobile-footer></app-mobile-footer>-->
+  <!-- <app-mobile-footer></app-mobile-footer>-->
 
 </div>
+
+<footer>
+  <img src='https://d30y9cdsu7xlg0.cloudfront.net/png/224964-200.png'>
+  {{dev_statment}}
+</footer>

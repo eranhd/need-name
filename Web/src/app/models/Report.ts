@@ -9,7 +9,8 @@ export class Report {
 
 
     constructor(fields: ReportField[], summary: string, position: Position,photoUrl?:string) {
-    this.date=new Date().toJSON();
+    
+    this.date = JSON.stringify(new Date());
  
     console.log(this.date);
         if (summary)
