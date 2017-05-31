@@ -12,8 +12,10 @@ export class LastReportComponent implements OnInit {
 
   @Input() report:Report;
   private showPopup:boolean;
+
   constructor(public dialog:MdDialogModule) { 
     this.showPopup = false;
+   
   }
 
   private setPopup(){

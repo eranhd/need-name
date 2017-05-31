@@ -19,6 +19,7 @@ export class ReportComponent implements OnInit {
 
   sub: any;
   id: number;
+ // date:Date;
   summary: string;
   photoUrl: string;
   constructor(public settingReportService:SettingReportService, 
@@ -50,7 +51,7 @@ export class ReportComponent implements OnInit {
     }
   
      navigator.geolocation.getCurrentPosition((position)=>{
-     
+   
       report = new Report(filds, this.summary, position, this.photoUrl);//create new report
    
       this.firebaseService.saveReport(report, this.id + '');
@@ -84,6 +85,7 @@ export class ReportComponent implements OnInit {
 
     reader.readAsDataURL(event.target.files[0]);
   }
+
   ngOnInit() {
   }
 

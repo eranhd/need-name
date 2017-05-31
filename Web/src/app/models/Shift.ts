@@ -34,7 +34,6 @@ export class Shift {
             { this.hotSpotArr=shift.hotSpotArr;}
             else
             { this.hotSpotArr =[];}
-            console.log("in if")
             this.stratShift = new StartShift(shift.stratShift.location,shift.stratShift);
             if(this.endShift){
                 this.endShift = shift.endShift;

@@ -1,16 +1,17 @@
 import { Location } from './Location';
 
 export class Report {
-    public date: Date;
+    public date:String;
     public location: Location;
     public summary: string;
     public fields: ReportField[];
     photoUrl: string;
 
 
-    constructor(fields: ReportField[], summary: string, position: Position, photoUrl?:string) {
-        this.date = new Date();
-
+    constructor(fields: ReportField[], summary: string, position: Position,photoUrl?:string) {
+    this.date=new Date().toJSON();
+ 
+    console.log(this.date);
         if (summary)
             this.summary = summary;
         else
@@ -45,7 +46,4 @@ export class ReportField {
         return this.name + ': ' + this.data;
     }
 }
-
-
-
 

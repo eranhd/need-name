@@ -43,7 +43,6 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   public startPatrol() {
     if(this.numOfMembers <= 0 || this.team.teamNum <= 0 || !this.team.teamNum || this.team.lead == null || !this.team.lead){
       this.isValid = false;
-      console.log("is ins the if 1");
     }
     else{
         for(let i=0 ; i<this.team.members.length;i++){

@@ -1,5 +1,5 @@
 export class InputItem{
-    
+
     constructor(public id:string,
     private type:string,
     public label:string,

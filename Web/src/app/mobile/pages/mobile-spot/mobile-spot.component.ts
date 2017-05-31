@@ -7,6 +7,7 @@ import { UserService } from '../../../service/user/user.service';
 import { ShiftService } from '../../../service/shift/shift.service';
 import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
+
 @Component({
   selector: 'app-mobile-spot',
   templateUrl: './mobile-spot.component.html',
@@ -14,6 +15,7 @@ import { LocalStorageService } from '../../../service/local-storage/local-storag
 })
 export class MobileSpotComponent implements OnInit {
   public location: Location;
+
   constructor(public router: Router,
               private element: ElementRef,
               public userService: UserService,
