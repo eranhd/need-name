@@ -16,12 +16,12 @@ export class SettingReportService {
     private af: AngularFire,
     public userService:UserService
   ) {
-     if(this.userService.user.details.role.name == 'parentPatrol'){
-
-       // this.item = af.database.object('/report_fields/parentPatrol_report_fields');
-        if(firebase.auth().currentUser.uid != null){
+      if(firebase.auth().currentUser.uid != null){
           this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/reports');
-        }
+      }
+
+      if(this.userService.user.details.role.name == 'parentPatrol'){
+
         this.inputsParentPatrol = [];
         this.item = af.database.object('/report_fields', { preserveSnapshot: true });
 
@@ -38,10 +38,7 @@ export class SettingReportService {
      }
 
      else{
-          //this.item = af.database.object('/report_fields/DtPatrol_report_fields');
-        if(firebase.auth().currentUser.uid != null){
-          this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/reports');
-        }
+
         this.inputsDtPatrol = [];
         this.item = af.database.object('/report_fields', { preserveSnapshot: true });
 
@@ -63,22 +60,16 @@ export class SettingReportService {
   };
 
   public addInputItem(id: string, type: string, label: string, placeHolder: string) {
+      var obj = new InputItem(id, type, label, placeHolder);
+    
    if(this.userService.user.details.role.name == 'parentPatrol'){
 
-       var obj = new InputItem(id, type, label, placeHolder);
-       this.inputsParentPatrol.push(obj);
-       console.log(this.inputsParentPatrol);
-      
+      this.inputsParentPatrol.push(obj);
       this.item.update({ 'parentPatrol_report_fields': this.inputsParentPatrol});
-
      }
      else{
-       var obj = new InputItem(id, type, label, placeHolder);
        this.inputsDtPatrol.push(obj);
-       console.log(this.inputsDtPatrol);
-    
-      this.item.update({ 'DtPatrol_report_fields': this.inputsDtPatrol });
-
+       this.item.update({ 'DtPatrol_report_fields': this.inputsDtPatrol });
      }
   };
 
