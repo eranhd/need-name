@@ -1,4 +1,4 @@
-import { Component, OnInit,HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { auth, initializeApp } from 'firebase';
 import { UserService } from '../../../service/user/user.service';
 import { Router } from '@angular/router';
@@ -17,51 +17,49 @@ export class MobileLoginComponent implements OnInit {
   email: any;
   password: any;
   error: string;
-  title:string = "כניסה";
+  title: string = "כניסה";
   isLogin: boolean = false;
   dev_statment: string = 'פותח בשיתוף בפעולה עם עזריאלי המכללה להנדסה ירושלים';
 
 
-  constructor(private router:Router,
-    public userServ:UserService,
-    public userService:UserService,
-    public firebaseService: FirebaseService) { 
-      this.error = '';
+  constructor(private router: Router,
+    public userServ: UserService,
+    public userService: UserService,
+    public firebaseService: FirebaseService) {
+    this.error = '';
   }
 
-  public signIn(){
-    if(this.email == '' || this.password == ''){
+  public signIn() {
+    if (this.email == '' || this.password == '') {
       return;
     }
 
     this.isLogin = true;
-   navigator.geolocation.getCurrentPosition((position) => {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user=>{
-      console.log('login succsess');
-      localStorage.setItem('userAndPassword', JSON.stringify({email: this.email, password: this.password}));
-      this.firebaseService.initUser('mobile_main');
-       }).catch(error=>{
+    navigator.geolocation.getCurrentPosition((position) => {
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user => {
+        console.log('login succsess');
+        localStorage.setItem('userAndPassword', JSON.stringify({ email: this.email, password: this.password }));
+        this.firebaseService.initUser('mobile_main');
+      }).catch(error => {
         console.log(error.message);
-      this.error = 'אנא נסה שנית';
-      this.isLogin = false;
-    });  
+        this.error = 'אנא נסה שנית';
+        this.isLogin = false;
+      });
     }, (error) => {
+      this.error = 'אנא הפעל מיקום ופתח מחדש את האפליקציה'
       alert('אנא הפעל מיקום');
       this.isLogin = false;
     });
-  
+
   };
 
   ngOnInit() {
-    if(localStorage.getItem('userAndPassword'))
-    {
+    if (localStorage.getItem('userAndPassword')) {
       let obj = JSON.parse(localStorage.getItem('userAndPassword'));
       this.email = obj.email;
       this.password = obj.password;
     }
-    if(LocalStorageService.loadUser()){//if not empty
-      
-    }
+    
   }
 
 }

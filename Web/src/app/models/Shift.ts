@@ -66,13 +66,23 @@ export class Shift {
             this.reports = [];
             this.hotSpotArr =[];
             this.coldSpotArr =[];
-            this.stratShift = new StartShift(location);
+            if(location)
+                this.stratShift = new StartShift(location);
             
             this.endShift = null;
             this.reportsId = [];
             this.coldSpotId = [];
             this.hotSpotId = [];
         }
+    }
+
+    public clone(shift:Shift){
+        this.stratShift = shift.stratShift;
+        this.coldSpotId = shift.coldSpotId;
+        this.hotSpotId = shift.hotSpotId;
+        this.reportsId = shift.reportsId;
+        this.team = shift.team;
+        this.endShift = shift.endShift;
     }
 
     public addReport(report: Report, id: number, reportId?:string) {

@@ -12,9 +12,14 @@ export class ShiftService {
   id: string;
   isShiftStart: boolean;
   constructor() {
-    if(!LocalStorageService.loadUser())
-      this.isShiftStart = false;
-    else{
+    // if(!LocalStorageService.loadUser())
+    //   this.isShiftStart = false;
+    // else{
+    //   this.isShiftStart = true;
+    // }
+    if(LocalStorageService.loadShift()){
+      this.shift = LocalStorageService.loadShift();
+      this.id = LocalStorageService.getId();
       this.isShiftStart = true;
     }
    }
@@ -26,14 +31,17 @@ export class ShiftService {
 
   addReport(report: Report, id:string){
     this.shift.addReport(report, 1,id);
+    LocalStorageService.saveShift(this.shift, this.id);
   }
 
 
   addColdSpot(id: string){
     this.shift.addColdSpot(id);
+    LocalStorageService.saveShift(this.shift, this.id);
   }
 
   addHotSpot(id: string){
     this.shift.addHotSpot(id);
+    LocalStorageService.saveShift(this.shift, this.id);
   }
 }

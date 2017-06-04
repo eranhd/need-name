@@ -37,12 +37,11 @@ export class EndPatrolComponent implements OnInit {
     LocalStorageService.clearUser();
     navigator.geolocation.getCurrentPosition((position) => {
       this.shiftService.shift.initEndShift(filling,summaryT,dilemmas,unusualEvents, position);
-      //this.shiftService.shift.endShift.summary = this.summaryT;
-      //this.shiftService.shift.endShift.dilemmas=this.dilemmas;
-      //this.shiftService.shift.endShift.unusualEvents = this.unusualEvents;
       this.shiftService.isShiftStart = false;
       LocalStorageService.clearUser(); 
       this.fireService.updateShift();
+      LocalStorageService.clearShift();
+      
       this.router.navigate(['mobile_main']);
     }, (error) => {
       alert('אנא הפעל מיקום');
