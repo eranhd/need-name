@@ -22,9 +22,19 @@ export class FirebaseService {
   private reportsToSave: FirebaseListObservable<any>;
   private database;
   private auth;
+
+  private shiftsId: string[];
+  private reportsId: string[];
+  private coldSpotId: string[];
+  private hotSpotId: string[];
+  private locationsId: string[];
+
   shiftToShow: Observable<Array<Shift>>;
   shifts: Shift[];
-  reports: any;
+  reports: Report[];
+  hotSpots: Report[];
+  coldSpots: Location[];
+  locations: Location[];
 
   constructor(private af: AngularFire,
     public shiftService: ShiftService,
@@ -36,7 +46,7 @@ export class FirebaseService {
     this.shifts = [];
     this.userToSave = af.database.list('/users');
     this.shiftsToSave = this.afDb.list('/shifts');// refernce  to shifts
-
+    this.initLocations();
   };
   public getDatabase() { return this.database; };
   public getAuth() { return this.auth; };
@@ -93,11 +103,7 @@ export class FirebaseService {
     }).catch(error => {
       console.log('errrrror');
     });
-    // firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot=>{
 
-    // }).catch(error=>{
-    //   console.log(error.message);
-    // })
   }
 
 
@@ -114,23 +120,106 @@ export class FirebaseService {
   }
 
 
+  initReports() {
+
+    for (let id of this.reportsId) {
+      firebase.database().ref('/reports/' + id).once('value').then(report => {
+        let r = new Report(null, null, null);
+        r.clone(report);
+        this.reports.push(r);
+      }).catch(error => {
+        console.log(error.message);
+      })
+    }
+  }
+
+  initHotSpot() {
+    for (let id of this.hotSpotId) {
+      firebase.database().ref('/hotSpots/' + id).once('value').then(report => {
+        let r = new Report(null, null, null);
+        r.clone(report);
+        this.hotSpots.push(r);
+      }).catch(error => {
+        console.log(error.message);
+      })
+    }
+  }
+
+  initColdSpot() { 
+    for (let id of this.coldSpotId) {
+      firebase.database().ref('/coldSpots/' + id).once('value').then(location => {
+        let loc = new Location(location.lng , location.lat);
+        this.coldSpots.push(loc);
+      }).catch(error => {
+        console.log(error.message);
+      })
+    }
+  }
+
+  initLocations(){
+    firebase.database().ref('/locations/' ).once('value', ids=>{
+      for(let key in ids){
+        if(!this.locationsId)
+          this.locationsId = [];
+        this.locationsId.push(key)
+      }
+      for(let id of this.locationsId){
+        firebase.database().ref('/locations/' + id).once('value').then(loc=>{
+          if(!this.locations)
+            this.locations = [];
+          this.locations.push(loc);
+        }).catch(error=>{console.log(error.message)})
+      }
+    })
+  }
+
+
   initShifts() {
-    let shiftsId: string[] = [];
+    if (this.shifts.length != 0)
+      return;
+    if (!this.shiftsId)
+      this.shiftsId = [];
     this.reports = [];
     for (let id of this.userService._user.shiftsId) {//need to add sons
-      shiftsId.unshift(id);
+      this.shiftsId.unshift(id);
     }
 
-    for (let id of shiftsId) {
-      firebase.database().ref('/shifts/' + id).once('value').then(snapshot => {
-        this.shifts.push(snapshot.val());
-        for (let report of snapshot.val().reportsId)
-          firebase.database().ref('/reports/' + report).once('value').then(snapshot => {
-            this.reports.push(snapshot.val());
-            console.log(this.reports);
-          }).catch(error => {
-            console.log(error.message);
-          })
+    for (let id of this.shiftsId) {
+
+      firebase.database().ref('/shifts/' + id).once('value').then(shift => {
+
+        this.shifts.push(shift.val());
+
+        if (shift.val().reportsId) {
+
+          for (let report of shift.val().reportsId) {
+            if (!this.reportsId)
+              this.reportsId = [];
+            this.reportsId.push(report);
+          }
+
+          for (let hotSpotId of shift.val().hotSpotId) {
+            if (!this.hotSpotId)
+              this.hotSpotId = [];
+            this.hotSpotId.push(hotSpotId);
+          }
+
+          for (let coldSpotId of shift.val().coldSpotId) {
+            if (!this.coldSpotId)
+              this.hotSpotId = [];
+            this.coldSpotId.push(coldSpotId);
+          }
+
+          //maby need interval?
+          this.initReports();
+          this.initHotSpot();
+          this.initColdSpot();
+        }
+
+
+
+
+
       }).catch(error => {
         console.log(error.message);
       })
@@ -208,10 +297,10 @@ export class FirebaseService {
   }
 
 
-  saveLoacation(loc: Location){//this function save the location and name as insert by user in start patrol or spot
-    this.afDb.list('/locations').push(loc).then(resolve=>{
+  saveLoacation(loc: Location) {//this function save the location and name as insert by user in start patrol or spot
+    this.afDb.list('/locations').push(loc).then(resolve => {
       console.log('location save');
-    }).catch(error=>{
+    }).catch(error => {
       console.log(error.message);
     })
   }

@@ -3,9 +3,9 @@
   (click)='showPopup = true; setPopup()' 
   (mouseleave)='showPopup = flase'
   class='report-row'>
-  <span *ngIf='report.date'>{{report.date | date:'shortDate'}}</span>
-  <span *ngIf='report.date'>{{report.date | date:'HH:mm'}}</span>
-  <span *ngIf='report.location'>{{report.location.name}}</span>
+  <span *ngIf='report.date'>{{report.getDate() | date:'shortDate'}}</span>
+  <span *ngIf='report.date'>{{report.getDate() | date:'HH:mm'}}</span>
+  <span *ngIf='report.location'>{{report.location | locationName}}</span>
   <popup-report [report]='report' *ngIf='showPopup'>
   </popup-report>
 </div>
