@@ -47,3 +47,15 @@ app-mobile-footer{
     
     display: inline-block;
 }
+
+
+@media only screen and (max-height: 400px){
+    app-mobile-header{
+        visibility: hidden;
+        height: 0;
+    }
+    app-mobile-footer{
+        visibility: hidden;
+        height: 0;
+    }
+}

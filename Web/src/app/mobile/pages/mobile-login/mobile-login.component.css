@@ -170,3 +170,18 @@ footer{
     color: blue;
     font-size: 10px;
 }
+
+
+@media only screen and (max-height: 500px){
+    .div_login{
+        top: 0;
+    }
+    app-mobile-header{
+        visibility: hidden;
+        height: 0;
+    }
+    app-mobile-footer, footer{
+        visibility: hidden;
+        height: 0;
+    }
+}

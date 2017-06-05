@@ -353,7 +353,31 @@ export class FirebaseService {
       if (!this.reportsId || this.reportsId.length == 0)
         return false;
       for (let i of this.reportsId)
-        if (i == id.$key) {
+        if (i == id.$key || i == id) {
+          return true;
+        }
+    }
+    return false;
+  }
+
+  checkIfHotBelong(id: any) {
+    if (id) {
+      if (!this.hotSpotId || this.hotSpotId.length == 0)
+        return false;
+      for (let i of this.hotSpotId)
+        if (i == id.$key || i == id) {
+          return true;
+        }
+    }
+    return false;
+  }
+
+  checkIfColdBelong(id: any) {
+    if (id) {
+      if (!this.coldSpotId || this.coldSpotId.length == 0)
+        return false;
+      for (let i of this.coldSpotId)
+        if (i == id.$key || i == id) {
           return true;
         }
     }
