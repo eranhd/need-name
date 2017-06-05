@@ -1,10 +1,13 @@
-
- 
 <div class='dev'>{{message}}</div>
 <div class='back'></div>
 <div class='div_login'>
   <img src='http://i.imgur.com/IVLC4tC.png' />
   <div class='div_input'>
+    <div *ngIf='isLogin' class="overlay">
+      <div class="spinningCircle"></div>
+      <div class="dark_gray"></div>
+      <div class="blackspinner"></div>
+    </div>
     <span class='error'>{{error}}</span>
     <input type="email" placeholder='שם משתמש' [(ngModel)]='email'>
     <input type="password" placeholder='סיסמה' [(ngModel)]='pass'>

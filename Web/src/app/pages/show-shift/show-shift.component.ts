@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy  } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Shift } from '../../models/Shift';
 import { ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../../service/firebase/firebase.service';
@@ -10,23 +10,27 @@ import { Report } from '../../models/Report';
   templateUrl: './show-shift.component.html',
   styleUrls: ['./show-shift.component.scss']
 })
-export class ShowShiftComponent implements OnInit, OnDestroy  {
+export class ShowShiftComponent implements OnInit, OnDestroy {
 
   isChoose: boolean;
   sub: any;
   shift: Shift;
   id: number;
   reportChoose: Report;
-  constructor(public route: ActivatedRoute, public firebaseService:FirebaseService) { 
-    this.sub = this.route.params.subscribe(params => {     
-      this.shift =  firebaseService.shifts[params['id']];
+
+
+  constructor(public route: ActivatedRoute, public firebaseService: FirebaseService) {
+
+    this.sub = this.route.params.subscribe(params => {
+      this.shift = this.firebaseService.getShift(params['id']);
+      console.log(this.shift)
       this.id = params['id'];
     });
     this.isChoose = false;
   }
 
   ngOnInit() {
-    
+
   }
 
   ngOnDestroy() {

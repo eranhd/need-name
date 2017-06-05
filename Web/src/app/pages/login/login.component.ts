@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
   title: string = "התחברות למערכת";
   email: string;
   pass: string;
-  
+  isLogin: boolean = false;
+
   constructor(public router: Router,
     
     public firebaseService: FirebaseService,
@@ -34,14 +35,17 @@ export class LoginComponent implements OnInit {
   }
 
   public signIn() {
-    if(this.email == '' || this.pass == '')
+    this.isLogin = true;
+    if(this.email == '' || this.pass == ''){
+      this.isLogin = false;
       return;
+    }
     firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(user=>{
       console.log('login succsess');
-      // localStorage.setItem('userAndPassword', JSON.stringify({email: this.email, password: this.pass}));
       this.firebaseService.initUser('main');
     }).catch(error=>{
         console.log(error.message);
+        this.isLogin = false;
       this.error = 'אנא נסה שנית';
     });    
     

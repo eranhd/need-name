@@ -2,8 +2,8 @@
   <section>
     <h1>משמרות אחרונות</h1>
     <div class='div_last_shifts'>
-      <div class='last_shift' *ngFor='let shift of firebseService.shifts'>
-        <last-shift [shift]='shift'>
+      <div class='last_shift' *ngFor='let shift of firebseService.shiftObsarvable | async'>
+        <last-shift *ngIf='firebseService.checkIfShiftBelong(shift)' [shift]='shift'>
         </last-shift>
       </div>
     </div>
@@ -13,7 +13,7 @@
   <section class='map'>
     <h1>מפת אירועים</h1>
     <div class='map_div'>
-      <app-maps [reports]='firebseService.reports'></app-maps>
+      <app-maps [reports]='firebseService.reportObsarvable | async'></app-maps>
     </div>
   </section>
 
@@ -21,8 +21,8 @@
   <section>
     <h1>אירועים אחרונים</h1>
     <div class='div_last_report'>
-      <div class='last_report' *ngFor='let report of firebseService.reports'>
-        <app-last-report [report]='report'>
+      <div class='last_report' *ngFor='let report of firebseService.reportObsarvable | async'>
+        <app-last-report *ngIf='firebseService.checkIfReportBelong(report)' [report]='report'>
         </app-last-report>
       </div>
     </div>

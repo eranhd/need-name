@@ -23,13 +23,20 @@ export class FirebaseService {
   private database;
   private auth;
 
+  private reObsarvable: FirebaseListObservable<any>;
   private shiftsId: string[];
   private reportsId: string[];
   private coldSpotId: string[];
   private hotSpotId: string[];
   private locationsId: string[];
 
-  shiftToShow: Observable<Array<Shift>>;
+  shiftObsarvable: Observable<Array<Shift>>;
+  reportObsarvable: Observable<Array<Shift>>;
+  hotObsarvable: Observable<Array<Shift>>;
+  coldObsarvable: Observable<Array<Shift>>;
+  locationObsarvable: Observable<Array<Shift>>;
+
+
   shifts: Shift[];
   reports: Report[];
   hotSpots: Report[];
@@ -47,7 +54,16 @@ export class FirebaseService {
     this.userToSave = af.database.list('/users');
     this.shiftsToSave = this.afDb.list('/shifts');// refernce  to shifts
     this.initLocations();
+
+
+    this.shiftObsarvable = af.database.list('shifts');
+    this.reportObsarvable = af.database.list('reports');
+    this.hotObsarvable = af.database.list('hotSpots');
+    this.coldObsarvable = af.database.list('coldSpots');
+
+
   };
+
   public getDatabase() { return this.database; };
   public getAuth() { return this.auth; };
 
@@ -108,124 +124,67 @@ export class FirebaseService {
 
 
   initUser(goto?: string) {
+
     firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(snapshot => {
       console.log(snapshot.val());
       this.userService._user = snapshot.val();
-      console.log(this.userService._user);
+
+
+
+
+      this.shiftObsarvable.subscribe(val => {
+        //clear all array when shift chnage and load from firebase again
+        this.shifts = [];
+        this.reportsId = [];
+        this.coldSpotId = [];
+        this.hotSpotId = [];
+
+        for (let item of val) {
+          if (this.checkIfShiftBelong(item['key'])) {
+            console.log(this.reportsId);
+            this.shifts.push(item);
+            if (item.reportsId)
+              for (let report of item.reportsId) {
+                this.reportsId.push(report);
+              }
+            if (item.coldSpotId)
+              for (let id of item.coldSpotId) {
+                this.coldSpotId.push(id);
+              }
+            if (item.hotSpotId)
+              for (let id of item.hotSpotId) {
+                this.hotSpotId.push(id);
+              }
+          }
+          
+
+        }
+        // }
+      });
+
+
+
       if (goto) {
         this.router.navigate([goto]);
       }
     }).catch(error => { console.log(error.message) })
 
   }
-
-
-  initReports() {
-
-    for (let id of this.reportsId) {
-      firebase.database().ref('/reports/' + id).once('value').then(report => {
-        let r = new Report(null, null, null);
-        r.clone(report);
-        this.reports.push(r);
-      }).catch(error => {
-        console.log(error.message);
-      })
-    }
-  }
-
-  initHotSpot() {
-    for (let id of this.hotSpotId) {
-      firebase.database().ref('/hotSpots/' + id).once('value').then(report => {
-        let r = new Report(null, null, null);
-        r.clone(report);
-        this.hotSpots.push(r);
-      }).catch(error => {
-        console.log(error.message);
-      })
-    }
-  }
-
-  initColdSpot() { 
-    for (let id of this.coldSpotId) {
-      firebase.database().ref('/coldSpots/' + id).once('value').then(location => {
-        let loc = new Location(location.lng , location.lat);
-        this.coldSpots.push(loc);
-      }).catch(error => {
-        console.log(error.message);
-      })
-    }
-  }
-
-  initLocations(){
-    firebase.database().ref('/locations/' ).once('value', ids=>{
-      for(let key in ids){
-        if(!this.locationsId)
+  initLocations() {
+    firebase.database().ref('/locations/').once('value', ids => {
+      for (let key in ids) {
+        if (!this.locationsId)
           this.locationsId = [];
         this.locationsId.push(key)
       }
-      for(let id of this.locationsId){
-        firebase.database().ref('/locations/' + id).once('value').then(loc=>{
-          if(!this.locations)
+      for (let id of this.locationsId) {
+        firebase.database().ref('/locations/' + id).once('value').then(loc => {
+          if (!this.locations)
             this.locations = [];
           this.locations.push(loc);
-        }).catch(error=>{console.log(error.message)})
+        }).catch(error => { console.log(error.message) })
       }
     })
-  }
-
-
-  initShifts() {
-    if (this.shifts.length != 0)
-      return;
-    if (!this.shiftsId)
-      this.shiftsId = [];
-    this.reports = [];
-    for (let id of this.userService._user.shiftsId) {//need to add sons
-      this.shiftsId.unshift(id);
-    }
-
-    for (let id of this.shiftsId) {
-
-      firebase.database().ref('/shifts/' + id).once('value').then(shift => {
-
-        this.shifts.push(shift.val());
-
-        if (shift.val().reportsId) {
-
-          for (let report of shift.val().reportsId) {
-            if (!this.reportsId)
-              this.reportsId = [];
-            this.reportsId.push(report);
-          }
-
-          for (let hotSpotId of shift.val().hotSpotId) {
-            if (!this.hotSpotId)
-              this.hotSpotId = [];
-            this.hotSpotId.push(hotSpotId);
-          }
-
-          for (let coldSpotId of shift.val().coldSpotId) {
-            if (!this.coldSpotId)
-              this.hotSpotId = [];
-            this.coldSpotId.push(coldSpotId);
-          }
-
-          //maby need interval?
-          this.initReports();
-          this.initHotSpot();
-          this.initColdSpot();
-        }
-
-
-
-
-
-      }).catch(error => {
-        console.log(error.message);
-      })
-    }
-
-
   }
 
 
@@ -303,6 +262,41 @@ export class FirebaseService {
     }).catch(error => {
       console.log(error.message);
     })
+  }
+
+
+  checkIfShiftBelong(id: any) {
+    if (id) {
+      if (!this.userService._user.shiftsId || this.userService._user.shiftsId.length == 0)
+        return false;
+      for (let i of this.userService._user.shiftsId)
+        if (i == id.$key) {
+          return true;
+        }
+    }
+    return false;
+  }
+
+   checkIfReportBelong(id: any) {
+    if (id) {
+      if (!this.reportsId || this.reportsId.length == 0)
+        return false;
+      for (let i of this.reportsId)
+        if (i == id.$key) {
+          return true;
+        }
+    }
+    return false;
+  }
+
+  getShift(id: string) {
+    this.shiftObsarvable.map(val=>{
+      for(let shift of val)
+        if (shift['key'] == id) {
+        return shift;
+      }
+    })      
+    return null
   }
 
 

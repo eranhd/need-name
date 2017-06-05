@@ -18,6 +18,10 @@ export class MapsComponent implements OnInit {
   lat: number;
   lng: number;
 
+  hotLable: string = 'נקודות חמות';
+  coldLable: string = 'נקודות קרות';
+  reportLable: string = 'דוחות';
+
   constructor(maps:MapsService, 
               public userService:UserService,
               public reportService:ReportService,
