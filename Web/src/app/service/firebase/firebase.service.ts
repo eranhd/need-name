@@ -36,12 +36,16 @@ export class FirebaseService {
   coldObsarvable: Observable<Array<Shift>>;
   locationObsarvable: Observable<Array<Shift>>;
 
+  sonsObsarvable: FirebaseListObservable<any>[];
+
 
   shifts: Shift[];
   reports: Report[];
   hotSpots: Report[];
   coldSpots: Location[];
   locations: Location[];
+
+  private listenSons: string[];
 
   constructor(private af: AngularFire,
     public shiftService: ShiftService,
@@ -106,6 +110,49 @@ export class FirebaseService {
   }
 
 
+  private getAllDataFromDb() {
+    this.shiftObsarvable.subscribe(val => {
+      //clear all array when shift chnage and load from firebase again
+      this.shifts = [];
+      this.reportsId = [];
+      this.coldSpotId = [];
+      this.hotSpotId = [];
+      console.log(this.shiftsId);
+      
+      val.forEach(item=>{
+        console.log(item['$key'])
+          if (this.checkIfShiftBelong(item['$key'])) {
+            
+            this.shifts.push(item);
+
+            console.log(item)
+            if (item.reportsId){
+              
+              for (let report of item.reportsId) {
+                this.reportsId.push(report);
+              }
+            }
+            if (item.coldSpotId)
+              for (let id of item.coldSpotId) {
+                this.coldSpotId.push(id);
+              }
+            if (item.hotSpotId)
+              for (let id of item.hotSpotId) {
+                this.hotSpotId.push(id);
+              }
+        }
+        console.log(this.reportsId);
+      })
+    });
+
+
+
+  }
+
+
+
+
+
   createNewUser(email: string, password: string, user: User) {
     let newId = '';
     this.af.auth.createUser({
@@ -122,48 +169,72 @@ export class FirebaseService {
 
   }
 
+  searchInSons(id) {
+    for (let i of this.listenSons)
+      if (i == id)
+        return true;
+    return false;
+  }
+
+  searchInShiftId(id) {
+    if (!this.shiftsId) {
+      this.shiftsId = [];
+      return false;
+    }
+    for (let i of this.shiftsId)
+      if (i == id)
+        return true;
+    return false;
+  }
+
+  listenToSon(id: string) {
+    if (!this.listenSons)
+      this.listenSons = [];
+    if (!this.searchInSons(id))
+      this.listenSons.push(id);
+    else
+      return; // stop
+    //console.log(this.listenSons);
+    let listen: FirebaseListObservable<any> = this.af.database.list('users/' + id);
+    listen.subscribe(val => {
+      //console.log(val)
+      if (val[0]._sons) {
+        for (let id of val[0]._sons)
+          this.listenToSon(id);
+      }
+      if (val.length > 1)
+        for (let shift of val[1]) {
+          if (!this.searchInShiftId(shift))
+            this.shiftsId.push(shift);
+        }
+        //console.log(this.shiftsId)
+      // this.getAllDataFromDb();
+    },
+      error => {
+        console.log(error.message);
+      });
+  }
+
 
   initUser(goto?: string) {
 
     firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(snapshot => {
       console.log(snapshot.val());
       this.userService._user = snapshot.val();
-
-
-
-
-      this.shiftObsarvable.subscribe(val => {
-        //clear all array when shift chnage and load from firebase again
-        this.shifts = [];
-        this.reportsId = [];
-        this.coldSpotId = [];
-        this.hotSpotId = [];
-
-        for (let item of val) {
-          if (this.checkIfShiftBelong(item['key'])) {
-            console.log(this.reportsId);
-            this.shifts.push(item);
-            if (item.reportsId)
-              for (let report of item.reportsId) {
-                this.reportsId.push(report);
-              }
-            if (item.coldSpotId)
-              for (let id of item.coldSpotId) {
-                this.coldSpotId.push(id);
-              }
-            if (item.hotSpotId)
-              for (let id of item.hotSpotId) {
-                this.hotSpotId.push(id);
-              }
-          }
-          
-
+      if(this.userService._user.shiftsId)
+      {
+        for(let id of this.userService._user.shiftsId){
+          console.log(this.userService._user.shiftsId)
+          if(!this.shiftsId)
+            this.shiftsId = [];
+          this.shiftsId.push(id)
         }
-        
-      });
+      }
+      // this.sonsObsarvable = new Array(this.userService._user.details._sons.length);
 
-
-
+      for (let id of this.userService._user.details._sons)
+        this.listenToSon(id);
+      this.getAllDataFromDb();
       if (goto) {
         this.router.navigate([goto]);
       }
@@ -267,17 +338,17 @@ export class FirebaseService {
 
   checkIfShiftBelong(id: any) {
     if (id) {
-      if (!this.userService._user.shiftsId || this.userService._user.shiftsId.length == 0)
+      if (!this.shiftsId || this.shiftsId.length == 0)
         return false;
-      for (let i of this.userService._user.shiftsId)
-        if (i == id.$key) {
+      for (let i of this.shiftsId)
+        if (i == id) {
           return true;
         }
     }
     return false;
   }
 
-   checkIfReportBelong(id: any) {
+  checkIfReportBelong(id: any) {
     if (id) {
       if (!this.reportsId || this.reportsId.length == 0)
         return false;
@@ -290,12 +361,12 @@ export class FirebaseService {
   }
 
   getShift(id: string) {
-    this.shiftObsarvable.map(val=>{
-      for(let shift of val)
+    this.shiftObsarvable.map(val => {
+      for (let shift of val)
         if (shift['key'] == id) {
-        return shift;
-      }
-    })      
+          return shift;
+        }
+    })
     return null
   }
 

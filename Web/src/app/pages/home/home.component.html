@@ -3,7 +3,7 @@
     <h1>משמרות אחרונות</h1>
     <div class='div_last_shifts'>
       <div class='last_shift' *ngFor='let shift of firebseService.shiftObsarvable | async'>
-        <last-shift *ngIf='firebseService.checkIfShiftBelong(shift)' [shift]='shift'>
+        <last-shift *ngIf='firebseService.checkIfShiftBelong(shift["$key"])' [shift]='shift'>
         </last-shift>
       </div>
     </div>
