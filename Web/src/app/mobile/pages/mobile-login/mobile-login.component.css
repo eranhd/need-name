@@ -64,6 +64,7 @@ input{
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
+    box-shadow: 0 0 0 30px white inset;
 }
 
 .btn_login{
@@ -93,7 +94,6 @@ input:-webkit-autofill {
     bottom: 0;
     right: 0;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0);
     border-top: 3px solid #ddd;
     border-right: 3px solid #ddd;
     animation: spinner 1500ms infinite cubic-bezier(0.45, 0.75, 0.27, 0.48);
@@ -109,7 +109,6 @@ input:-webkit-autofill {
     bottom: 0;
     right: 0;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0);
     border-top: 3px solid darkgray;
     border-right: 3px solid darkgray;
     animation: spinner 1000ms infinite cubic-bezier(0.45, 0.75, 0.27, 0.48);
