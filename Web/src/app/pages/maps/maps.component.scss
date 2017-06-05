@@ -1,0 +1,36 @@
+nav{
+  text-align: center;
+  direction: rtl;
+  .btn_select{
+    border-style: none;
+    font-size: 16px;
+     background-color: #004381;
+     color: white; 
+     border: 1px solid white;
+  }
+  .btn_select:hover{
+      background-color: white;
+      color: #004381;
+      border: 1px solid #004381;
+    }
+  
+}
+
+
+.sebm-google-map-container {
+  height: 100%;
+  width: 100%;
+}
+
+.tab-group{
+  direction: rtl;
+}
+.map_div{
+  width: 100%;
+  height: 100%;
+}
+
+main{
+  width: 100%;
+  height: 100%;
+}

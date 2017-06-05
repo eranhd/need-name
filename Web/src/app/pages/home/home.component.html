@@ -13,7 +13,9 @@
   <section class='map'>
     <h1>מפת אירועים</h1>
     <div class='map_div'>
-      <app-maps [reports]='firebseService.reportObsarvable | async'></app-maps>
+      <app-maps [reports]='firebseService.reportObsarvable | async'
+                [cold]='firebseService.coldObsarvable | async'
+                [hot]='firebseService.hotObsarvable | async'></app-maps>
     </div>
   </section>
 

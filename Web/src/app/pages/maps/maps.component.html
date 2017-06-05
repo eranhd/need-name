@@ -1,13 +1,64 @@
 <main>
-  <button>
-    {{reportLable}}
-  </button>
+  <nav>
+    <button class='btn_select' (click)='select(1)'>
+      {{reportLable}}
+    </button>
+    <button class='btn_select' (click)='select(2)'>
+      {{hotLable}}
+    </button>
+    <button class='btn_select' (click)='select(3)'>
+      {{coldLable}}
+    </button>
+  </nav>
   <div class='map_div'>
-    <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
+    
+    
+    <sebm-google-map *ngIf='reportFlag' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
       <div *ngIf='reports'>
         <span *ngFor='let item of reports'>
-      <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng"></sebm-google-map-marker>
-    </span>
+          <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng">
+
+          </sebm-google-map-marker>
+        </span>
+      </div>
+      <div *ngIf='!reports'>
+        <span *ngFor='let item of firebseService.reportObsarvable | async'>
+          <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng">
+
+          </sebm-google-map-marker>
+        </span>
+      </div>
+    </sebm-google-map>
+
+    <sebm-google-map *ngIf='hotFlag' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
+      <div *ngIf='hot'>
+        <span *ngFor='let item of hot'>
+          <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng">
+          </sebm-google-map-marker>
+        </span>
+      </div>
+      <div *ngIf='!hot'>
+        <span *ngFor='let item of firebseService.hotObsarvable | async'>
+          <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng">
+          </sebm-google-map-marker>
+        </span>
+      </div>
+    </sebm-google-map>
+
+    <sebm-google-map *ngIf='coldFlag' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
+      <div *ngIf='cold'>
+        <span *ngFor='let item of cold'>
+          <sebm-google-map-marker *ngIf='item != null' [latitude]="item.lat" [longitude]="item.lng">
+            
+          </sebm-google-map-marker>
+        </span>
+      </div>
+      <div *ngIf='!cold'>
+        <span *ngFor='let item of firebseService.coldObsarvable | async'>
+          <sebm-google-map-marker *ngIf='item != null' [latitude]="item.lat" [longitude]="item.lng">
+            
+          </sebm-google-map-marker>
+        </span>
       </div>
     </sebm-google-map>
   </div>

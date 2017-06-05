@@ -5,16 +5,21 @@ import { UserService } from '../../service/user/user.service';
 import { ReportService } from '../../service/report/report.service';
 import { Report } from '../../models/Report';
 import { FirebaseService } from '../../service/firebase/firebase.service';
+import { Location } from '../../models/Location';
+
 
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.css']
+  styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
   zoom: number = 13;
-  @Input() reports: Report[];
-  // reports:Report[];
+  @Input() reports: Report[] = null;
+  @Input() hot: Report[] = null;
+  @Input() cold: Location[] = null;
+
+
   lat: number;
   lng: number;
 
@@ -22,24 +27,42 @@ export class MapsComponent implements OnInit {
   coldLable: string = 'נקודות קרות';
   reportLable: string = 'דוחות';
 
+  hotFlag: boolean = false;
+  coldFlag: boolean= false;
+  reportFlag: boolean = true;
+
   constructor(maps:MapsService, 
               public userService:UserService,
               public reportService:ReportService,
-              public firebseService: FirebaseService) { 
-    
-    // this.reports = this.reportService.getLastReportArr();
-    
-    var that = this;
-    
+              public firebseService: FirebaseService) {     
     navigator.geolocation.getCurrentPosition((position)=>{
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
       
     });
+  }
 
-    
-  
-    
+  select(index: number){
+    this.resetFlags();
+    switch(index){
+      case 1:
+        this.reportFlag = true;
+        break;
+      case 2:
+        this.hotFlag = true;
+        break;
+      case 3:
+        this.coldFlag = true;
+        break;
+      default:
+        this.reportFlag = true;
+    }
+  }
+
+  resetFlags(){
+    this.coldFlag = false;
+    this.hotFlag = false;
+    this.reportFlag = false;
   }
 
   ngOnInit() {
