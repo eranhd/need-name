@@ -5,8 +5,9 @@ import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
 import { SettingReportService } from '../setting-report/setting-report.service';
 import { User } from '../../models/User';
-import { AngularFire } from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Report } from '../../models/Report';
 import { Shift } from '../../models/Shift';
 import { ShiftService } from '../shift/shift.service';
@@ -47,23 +48,24 @@ export class FirebaseService {
 
   private listenSons: string[];
 
-  constructor(private af: AngularFire,
+  constructor(private af: AngularFireModule,
     public shiftService: ShiftService,
     public userService: UserService,
     public afDb: AngularFireDatabase,
-    public router: Router
+    public router: Router,
+    public afAuth: AngularFireAuth
   ) {
 
     this.shifts = [];
-    this.userToSave = af.database.list('/users');
+    this.userToSave = afDb.list('/users');
     this.shiftsToSave = this.afDb.list('/shifts');// refernce  to shifts
     this.initLocations();
 
 
-    this.shiftObsarvable = af.database.list('shifts');
-    this.reportObsarvable = af.database.list('reports');
-    this.hotObsarvable = af.database.list('hotSpots');
-    this.coldObsarvable = af.database.list('coldSpots');
+    this.shiftObsarvable = afDb.list('shifts');
+    this.reportObsarvable = afDb.list('reports');
+    this.hotObsarvable = afDb.list('hotSpots');
+    this.coldObsarvable = afDb.list('coldSpots');
 
 
   };
@@ -91,7 +93,7 @@ export class FirebaseService {
   };
 
   public getReportFields() {
-    this.itemToSave = this.af.database.list('/users/' + firebase.auth().currentUser.uid + '/details');
+    this.itemToSave = this.afDb.list('/users/' + firebase.auth().currentUser.uid + '/details');
     firebase.database().ref('report-fields').once('value').then(function (snapshot) {
     });
   }
@@ -155,16 +157,13 @@ export class FirebaseService {
 
   createNewUser(email: string, password: string, user: User) {
     let newId = '';
-    this.af.auth.createUser({
-      email: email,
-      password: password
-    }).then(snapshot => {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot => {
       this.userService._user.details._sons.unshift(snapshot.uid);
       this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
       this.updateUser(user, snapshot.uid);
       newId = snapshot.uid;
     }).catch(error => {
-      console.log('errrrror');
+      console.log('error create user');
     });
 
   }
@@ -195,7 +194,7 @@ export class FirebaseService {
     else
       return; // stop
     //console.log(this.listenSons);
-    let listen: FirebaseListObservable<any> = this.af.database.list('users/' + id);
+    let listen: FirebaseListObservable<any> = this.afDb.list('users/' + id);
     listen.subscribe(val => {
       //console.log(val)
       if (val[0]._sons) {
