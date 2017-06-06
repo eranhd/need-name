@@ -7,9 +7,9 @@
     <div fxFlex>
       <input fxFlex type='text' placeholder="שם ראש הצוות" [(ngModel)]='leadName'/>
     </div>
-    <div fxFlex>
+    <!--<div fxFlex>
       <input fxFlex type='text' placeholder="מיקום" [(ngModel)]='locationName'/>
-    </div>
+    </div>-->
     <div fxFlex class='container' fxLayout="row">
 
       <label fxFlex >
@@ -87,7 +87,7 @@
     </div>
   </div>
   <div class='container' fxLayout="row" fxLayoutAlign="end start">
-    <button (click)='search()'>חפש</button>
+    <button (click)='search(originalData)'>חפש</button>
   </div>
   
 </header>
@@ -121,7 +121,7 @@
       </th>
     </tr>
 
-    <tr class='table_body' *ngFor='let shift of firebseService.shiftObsarvable | async' [routerLink]='["../show-shift", shift.$key]'>
+    <tr class='table_body' *ngFor='let shift of data' [routerLink]='["../show-shift", shift.$key]'>
       <td>
         {{shift.stratShift.date | date:'dd.MM.yyyy'}}
       </td>
