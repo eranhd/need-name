@@ -66,6 +66,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth} from 'angularfire2/auth';
 import { SaveLocationBetaComponent } from './mobile/pages/save-location-beta/save-location-beta.component';
 
+import { FlexLayoutModule } from "@angular/flex-layout";
+
 
 export const environment = {
   production: false,
@@ -141,7 +143,8 @@ export const environment = {
       apiKey: 'AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE'
     }),
     MaterialModule,
-    ChartsModule
+    ChartsModule,
+    FlexLayoutModule
   ],
   
   providers: [
