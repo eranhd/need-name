@@ -1,3 +1,19 @@
+header{
+    width: 100%;
+    padding-right: 50px;
+    direction: rtl;
+    text-align: right;
+    border-bottom: 2px solid gray;
+    padding-bottom: 15px;
+
+    .search_row{
+        margin: 5px 0;
+        width: 100%;
+    }
+    input{
+        margin: 0 5px;
+    }
+}
 main{
     width: 100%;
     direction: rtl;

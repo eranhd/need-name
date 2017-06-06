@@ -1,4 +1,94 @@
-<header>
+<header class='container' fxLayout="column" fxLayoutAlign="space-between start">
+  <div class='container' fxLayout="row" fxLayoutAlign="start start">
+    <h1>חפש משמרת:</h1>
+  </div>
+
+  <div class='container search_row' fxLayout="row" fxLayoutAlign="space-between start">
+    <div fxFlex>
+      <input fxFlex type='text' placeholder="שם ראש הצוות" [(ngModel)]='leadName'/>
+    </div>
+    <div fxFlex>
+      <input fxFlex type='text' placeholder="מיקום" [(ngModel)]='locationName'/>
+    </div>
+    <div fxFlex class='container' fxLayout="row">
+
+      <label fxFlex >
+        מתאריך
+        <input type="date" [(ngModel)]='fromDate'/>
+      </label>
+
+      <label fxFlex >
+        עד תאריך
+        <input type="date" [(ngModel)]='toDate'/>
+      </label>
+      
+    </div>
+
+    
+  </div>
+  <div class='container search_row' fxLayout="row" fxLayoutAlign="space-between start">
+    <div fxFlex class='container' fxLayout="row">
+      <select fxFlex [(ngModel)]='fromReportNum'>
+        <option  [ngValue]='"0"'>
+          ממספר אירועים
+        </option>
+        <option *ngFor='let index of numData' [ngValue]='index'>
+          {{index}}
+        </option>
+      </select>
+
+      <select fxFlex [(ngModel)]='toReportNum'>
+        <option  [ngValue]='"0"'>
+          עד מספר אירועים
+        </option>
+        <option *ngFor='let index of numData' [ngValue]='index'>
+          {{index}}
+        </option>
+      </select>
+    </div>
+    <div fxFlex class='container' fxLayout="row">
+      <select fxFlex [(ngModel)]='fromColdNum'>
+        <option  [ngValue]='"0"'>
+          ממספר נקודות קרות
+        </option>
+        <option *ngFor='let index of numData' [ngValue]='index'>
+          {{index}}
+        </option>
+      </select>
+
+      <select fxFlex [(ngModel)]='toColdNum'>
+        <option  [ngValue]='"0"'>
+          עד מספר נקודות קרות
+        </option>
+        <option *ngFor='let index of numData' [ngValue]='index'>
+          {{index}}
+        </option>
+      </select>
+    </div>
+
+    <div fxFlex class='container' fxLayout="row">
+      <select fxFlex [(ngModel)]='fromHotNum'>
+        <option  [ngValue]='"0"'>
+          ממספר נקודות חמות
+        </option>
+        <option *ngFor='let index of numData' [ngValue]='index'>
+          {{index}}
+        </option>
+      </select>
+
+      <select fxFlex [(ngModel)]='toHotNum'>
+        <option  [ngValue]='"0"'>
+          עד מספר נקודות חמות
+        </option>
+        <option *ngFor='let index of numData' [ngValue]='index'>
+          {{index}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class='container' fxLayout="row" fxLayoutAlign="end start">
+    <button (click)='search()'>חפש</button>
+  </div>
   
 </header>
 
@@ -31,10 +121,7 @@
       </th>
     </tr>
 
-    <tr 
-      class='table_body' 
-      *ngFor='let shift of firebseService.shiftObsarvable | async'
-      [routerLink]='["../show-shift", shift.$key]'>
+    <tr class='table_body' *ngFor='let shift of firebseService.shiftObsarvable | async' [routerLink]='["../show-shift", shift.$key]'>
       <td>
         {{shift.stratShift.date | date:'dd.MM.yyyy'}}
       </td>
@@ -62,7 +149,6 @@
         {{shift.hotSpotId?.length}}
       </td>
     </tr>
-    
+
   </table>
 </main>
-
