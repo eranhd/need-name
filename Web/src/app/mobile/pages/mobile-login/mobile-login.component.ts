@@ -6,6 +6,7 @@ import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
 import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
 import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
+import { PushNotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-mobile-login',
@@ -25,8 +26,9 @@ export class MobileLoginComponent implements OnInit {
   constructor(private router: Router,
     public userServ: UserService,
     public userService: UserService,
-    public firebaseService: FirebaseService) {
+    public firebaseService: FirebaseService, private _pushNotifications : PushNotificationsService) {
     this.error = '';
+        this._pushNotifications.requestPermission();
   }
 
   public signIn() {

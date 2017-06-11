@@ -67,7 +67,7 @@ import { AngularFireAuth} from 'angularfire2/auth';
 import { SaveLocationBetaComponent } from './mobile/pages/save-location-beta/save-location-beta.component';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
-
+import { PushNotificationsModule } from 'angular2-notifications';
 
 export const environment = {
   production: false,
@@ -144,7 +144,8 @@ export const environment = {
     }),
     MaterialModule,
     ChartsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    PushNotificationsModule
   ],
   
   providers: [
