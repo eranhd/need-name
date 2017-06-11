@@ -26,7 +26,7 @@ export class FirebaseService {
 
   private reObsarvable: FirebaseListObservable<any>;
   private shiftsId: string[];
-   reportsId: string[];
+  reportsId: string[];
   private coldSpotId: string[];
   private hotSpotId: string[];
   private locationsId: string[];
@@ -120,32 +120,32 @@ export class FirebaseService {
       this.coldSpotId = [];
       this.hotSpotId = [];
       // console.log(this.shiftsId);
-      
-      val.forEach(item=>{
-        // console.log(item['$key'])
-          if (this.checkIfShiftBelong(item['$key'])) {
-            
-            this.shifts.push(item);
 
-            // console.log(item)
-            if (item.reportsId){
-              
-              for (let report of item.reportsId) {
-                this.reportsId.push(report);
-              }
+      val.forEach(item => {
+        // console.log(item['$key'])
+        if (this.checkIfShiftBelong(item['$key'])) {
+
+          this.shifts.push(item);
+
+          // console.log(item)
+          if (item.reportsId) {
+
+            for (let report of item.reportsId) {
+              this.reportsId.push(report);
             }
-            if (item.coldSpotId)
-              for (let id of item.coldSpotId) {
-                this.coldSpotId.push(id);
-              }
-            if (item.hotSpotId)
-              for (let id of item.hotSpotId) {
-                this.hotSpotId.push(id);
-              }
+          }
+          if (item.coldSpotId)
+            for (let id of item.coldSpotId) {
+              this.coldSpotId.push(id);
+            }
+          if (item.hotSpotId)
+            for (let id of item.hotSpotId) {
+              this.hotSpotId.push(id);
+            }
         }
         // console.log(this.reportsId);
-        
-        
+
+
       })
     });
 
@@ -208,7 +208,7 @@ export class FirebaseService {
           if (!this.searchInShiftId(shift))
             this.shiftsId.push(shift);
         }
-        //console.log(this.shiftsId)
+      //console.log(this.shiftsId)
       this.getAllDataFromDb();
     },
       error => {
@@ -222,11 +222,10 @@ export class FirebaseService {
     firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(snapshot => {
       console.log(snapshot.val());
       this.userService._user = snapshot.val();
-      if(this.userService._user.shiftsId)
-      {
-        for(let id of this.userService._user.shiftsId){
+      if (this.userService._user.shiftsId) {
+        for (let id of this.userService._user.shiftsId) {
           console.log(this.userService._user.shiftsId)
-          if(!this.shiftsId)
+          if (!this.shiftsId)
             this.shiftsId = [];
           this.shiftsId.push(id)
         }
@@ -386,15 +385,49 @@ export class FirebaseService {
   }
 
   getShift(id: string) {
-    this.shiftObsarvable.map(val => {
+    return this.shiftObsarvable.map(val => {
       for (let shift of val)
         if (shift['key'] == id) {
           return shift;
         }
     })
-    return null
+
   }
 
+  public removeData(type: string, id: string) {
+
+    let s = null;
+
+    if (type == 'shifts') {
+      s = this.afDb.list('shifts/' + id);
+      s.subscribe(val => {
+        console.log(val);
+        for (let item of val) {
+          if (item.$key == 'coldSpotId')
+            for (let c of item)
+              this.removeData('coldSpots', c);
+          if (val.$key == 'hotSpotId')
+            for (let h of item)
+              this.removeData('hotSpots', h);
+
+          if (val.$key == 'reportsId')
+            for (let r of item)
+              this.removeData('reports', r);
+
+        }
+        firebase.database().ref('/' + type + '/' + id).remove().then(res => { 
+          console.log(res) }).catch(err => 
+          { console.log(err.message) });
+        return;
+      })
+    }
+    else if (type == 'reports' || type == 'hotSpots' || type == 'coldSpots') {
+      firebase.database().ref('/' + type + '/' + id).remove().then(
+        res => { console.log(res) }).catch(
+        err => { console.log(err.message) });
+      return;
+    }
+  }
 
   public initFirebase() {
     var config = {
@@ -406,5 +439,7 @@ export class FirebaseService {
     };
     firebase.initializeApp(config);
   };
+
+
 
 }

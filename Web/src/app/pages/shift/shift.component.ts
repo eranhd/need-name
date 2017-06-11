@@ -48,6 +48,9 @@ export class ShiftComponent implements OnInit {
     // console.log( (new Date(this.fromDate)) + ', ' + ( new Date(this.toDate)) + ', =>'  + ((new Date(this.fromDate)) > ( new Date(this.toDate))) ); 
     let shifts = [];
     for (let shift of val) {
+      // console.log(val)
+      if(!this.firebseService.checkIfShiftBelong(shift['$key']))
+        continue;
       if (this.leadName && this.leadName != '') {
         if (shift.team.lead.replace(/ /g, '') != this.leadName.replace(/ /g, ''))
           continue;
