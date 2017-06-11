@@ -1,8 +1,4 @@
 <header class='container' fxLayout="column" fxLayoutAlign="space-between start">
-  <div class='container' fxLayout="row" fxLayoutAlign="start start">
-    <h1>חפש משמרת:</h1>
-  </div>
-
   <div class='container search_row' fxLayout="row" fxLayoutAlign="space-between start">
     <div fxFlex>
       <input fxFlex type='text' placeholder="שם ראש הצוות" [(ngModel)]='leadName'/>
@@ -87,8 +83,8 @@
     </div>
   </div>
   <div class='container' fxLayout="row" fxLayoutAlign="end start">
-    <button (click)='search(originalData)'>חפש</button>
-    <button (click)='generateCvs()'>הורד לאקסל</button>
+    <button id='btn_search' (click)='search(originalData)'><md-icon>search</md-icon></button>
+    <button id='btn_download'  (click)='generateCvs()'><md-icon>file_download</md-icon></button>
   </div>
   
 </header>
@@ -127,8 +123,8 @@
 
     <tr class='table_body' *ngFor='let shift of data' >
       <td>
-        <button (click)='firebseService.removeData("shifts", shift.$key)'>X</button>
-        <button [routerLink]='["../show-shift", shift.$key]'>הראה</button>
+        <button id='btn_delete' (click)='firebseService.removeData("shifts", shift.$key)'><md-icon>delete</md-icon></button>
+        <button id='btn_show' [routerLink]='["../show-shift", shift.$key]'><md-icon>zoom_in</md-icon></button>
       </td>
       <td>
         {{shift.stratShift.date | date:'dd.MM.yyyy'}}
@@ -157,6 +153,9 @@
         {{shift.hotSpotId?.length}}
       </td>
     </tr>
-
   </table>
+  <section class='arrow_btn'>
+    <button (click)='showPrev()'><md-icon>arrow_forward</md-icon></button>
+    <button (click)='showNext()'><md-icon>arrow_back</md-icon></button> 
+  </section>
 </main>

@@ -11,6 +11,9 @@ import { Shift } from '../../models/Shift';
 })
 export class ShiftComponent implements OnInit {
 
+  numToShow: number = 10;
+  indexToShow: number = 0;
+
   data: Array<Shift>;
   originalData: Array<Shift>;
 
@@ -39,18 +42,19 @@ export class ShiftComponent implements OnInit {
     for (let i = 1; i < 20; i++)
       this.numData.push(i + '');
     this.firebseService.shiftObsarvable.subscribe(val => {
-      this.originalData = val;
-      this.data = this.search(val);
+      let arr = [];
+      for (let item of val)
+        if (this.firebseService.checkIfShiftBelong(item['$key'])) {
+          arr.push(item);
+        }
+        this.originalData = arr;
+        this.data = this.search(arr);
     });
   }
 
   search(val: Array<Shift>) {
-    // console.log( (new Date(this.fromDate)) + ', ' + ( new Date(this.toDate)) + ', =>'  + ((new Date(this.fromDate)) > ( new Date(this.toDate))) ); 
     let shifts = [];
     for (let shift of val) {
-      // console.log(val)
-      if(!this.firebseService.checkIfShiftBelong(shift['$key']))
-        continue;
       if (this.leadName && this.leadName != '') {
         if (shift.team.lead.replace(/ /g, '') != this.leadName.replace(/ /g, ''))
           continue;
@@ -86,8 +90,8 @@ export class ShiftComponent implements OnInit {
 
       shifts.push(shift);
     }
-    this.data = shifts;
-    return shifts;
+    this.data = shifts.slice(this.indexToShow, this.indexToShow + this.numToShow);
+    return shifts.slice(this.indexToShow, this.indexToShow + this.numToShow);
 
   }
 
@@ -95,21 +99,20 @@ export class ShiftComponent implements OnInit {
     // console.log(this.data);
     let d = this.data;
     let cv = [[]]
-    cv.push(["תאריך","שעת התחלה","שעת סיום","ראש צוות","מספר אנשי צוות","מספר אירועים","מספר נקודות קרות","מספר נקודות חמות"])
-    for(let shift of d){
+    cv.push(["תאריך", "שעת התחלה", "שעת סיום", "ראש צוות", "מספר אנשי צוות", "מספר אירועים", "מספר נקודות קרות", "מספר נקודות חמות"])
+    for (let shift of d) {
       let a = [];
-      if(shift.stratShift){
+      if (shift.stratShift) {
         let d = new Date(shift.stratShift.date)
         a.push(d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear());
         // d = new Date(shift.stratShift.date)
         a.push(d.getHours() + ':' + d.getMinutes());
       }
-      else{
+      else {
         a.push("תאריך לא ידוע");
         a.push("שעה לא ידועה");
       }
-      if(shift.endShift)
-      {
+      if (shift.endShift) {
         let d = new Date(shift.endShift.date)
         a.push(d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear());
       }
@@ -118,15 +121,15 @@ export class ShiftComponent implements OnInit {
       // a.push(shift.stratShift == null? "תאריך לא ידוע" : );
       // a.push(shift.stratShift == null? "שעה לא יועה" : shift.stratShift.date.toLocaleTimeString);
       // a.push(shift.endShift == null? "תאריך לא ידוע" : shift.endShift.date.toLocaleTimeString);
-      a.push(shift.team == null? "לא ידוע" : shift.team.lead);
-      a.push(shift.team == null? "לא ידוע" : shift.team.members.length);
-      a.push(shift.reportsId == null? "0" : shift.reportsId.length);
-      a.push(shift.coldSpotId == null? "0" : shift.coldSpotId.length);
-      a.push(shift.hotSpotId == null? "0" : shift.hotSpotId.length);
+      a.push(shift.team == null ? "לא ידוע" : shift.team.lead);
+      a.push(shift.team == null ? "לא ידוע" : shift.team.members.length);
+      a.push(shift.reportsId == null ? "0" : shift.reportsId.length);
+      a.push(shift.coldSpotId == null ? "0" : shift.coldSpotId.length);
+      a.push(shift.hotSpotId == null ? "0" : shift.hotSpotId.length);
       cv.push(a);
     }
-    
-    
+
+
     var csvContent = "data:text/csv;charset=utf-8,\uFEFF";
     cv.forEach(function (infoArray, index) {
 
@@ -136,12 +139,28 @@ export class ShiftComponent implements OnInit {
     console.log(csvContent);
     var encodedUri = encodeURI(csvContent);
     var link = document.createElement("a");
-    link.setAttribute("href",encodedUri);
+    link.setAttribute("href", encodedUri);
     link.setAttribute("download", "my_data.csv");
     link.setAttribute('style', 'display:block;width:200px;height:200px;font-size:50px;')
     document.body.appendChild(link); // Required for FF
 
     link.click(); // This will download the data file named "my_data.csv".
+  }
+
+  showNext() {
+    // console.log(this.indexToShow)
+    if (this.indexToShow >= this.originalData.length)
+      return;
+    this.indexToShow += this.numToShow;
+    this.search(this.originalData);
+    
+  }
+  showPrev() {
+    // console.log(this.indexToShow);
+    if (this.indexToShow <= 0)
+      return;
+    this.indexToShow -= this.numToShow
+    this.search(this.originalData);
   }
   ngOnInit() {
 

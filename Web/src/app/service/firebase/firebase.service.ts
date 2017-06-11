@@ -220,11 +220,11 @@ export class FirebaseService {
   initUser(goto?: string) {
 
     firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(snapshot => {
-      console.log(snapshot.val());
+      // console.log(snapshot.val());
       this.userService._user = snapshot.val();
       if (this.userService._user.shiftsId) {
         for (let id of this.userService._user.shiftsId) {
-          console.log(this.userService._user.shiftsId)
+          // console.log(this.userService._user.shiftsId)
           if (!this.shiftsId)
             this.shiftsId = [];
           this.shiftsId.push(id)
