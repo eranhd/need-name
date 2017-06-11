@@ -38,3 +38,146 @@
     cursor: pointer;
     padding: 2px 2px 2px 0px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+$radius: 15em;
+.circle {
+  position: absolute;
+  top: -$radius;
+  left: -$radius;
+  top: 0;
+  left: 0;
+  width: $radius;
+  height: $radius;
+  transition: width 0.3s, height 0.3s, transform 0.3s;
+  transform-origin: top left;
+  border-bottom-right-radius: 100%;
+  /*transition: top 0.3s, left 0.3s;
+  &:hover {
+    top: -1em;
+    left: -1em;
+  }
+  .link {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .link::before {
+    position: absolute;
+    display: block;
+    color: white;
+    font-family: 'FontAwesome';
+    font-size: 1.5em;
+    top: 1em;
+    right: 1em;
+  }
+}
+.wrapcircles.closed{
+  .circle {
+    transform: rotate(90deg);
+    width: $radius / 3;
+    height: $radius / 3;
+    transition-delay: 0s;
+  }
+  #click {
+    transform: none;
+    transition: all 0.3s;
+    span {
+      top: (18em / 16);
+      right: 2em;
+      &::after {
+        transform: rotate(90deg);
+      }
+      &::before {
+        transform: none;
+      }
+    }
+  }
+}
+#click {
+  cursor: pointer;
+}
+#click span {
+  transition: bottom 0.3s, left 0.3s;
+  display: block;
+  width: 30px;
+  height: 30px;
+  top: 1em;
+  right: 1em;
+  position: absolute;
+  &::before, &::after{
+    display: block;
+    position: absolute;
+    font-family: inherit;
+    content: '';
+    width: 30px;
+    height: 8px;
+    transition: transform 0.3s;
+    top: 11px;
+    border-radius: 3px;
+    background: white;
+  }
+  &::before {
+    transform: rotate(-45deg);
+  }
+  &::after{
+    transform: rotate(45deg);
+  }
+}
+.c-1 {
+  background: #43A047;
+  transition-delay: 0.1s, 0.1s, 0.1s;
+  transform: rotate((90deg/5) * 1);
+  .link::before {
+    transform: rotate((90deg/5) * -1);
+    content: '\f0f3';
+  }
+}
+.c-2 {
+  background: #388E3C;
+  transition-delay: 0.2s, 0.2s, 0.2s;
+  transform: rotate((90deg/5) * 2);
+  .link::before {
+    transform: rotate((90deg/5) * -2);
+    content: '\f013';
+  }
+}
+.c-3 {
+  transition-delay: 0.3s,0.3s, 0.3s;
+  background: #2E7D32;
+  transform: rotate((90deg/5) * 3);
+  .link::before {
+    transform: rotate((90deg/5) * -3);
+    content: '\f1cb';
+  }
+}
+.c-4 {
+  transition-delay: 0.4s, 0.4s, 0.4s;
+  background: #1B5E20;
+  transform: rotate((90deg/5) * 4);
+  .link::before {
+    transform: rotate((90deg/5) * -4);
+    content: '\f099';
+  }
+}
+.c-5 {
+  background: #4CAF50;
+  z-index: -1;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}*/

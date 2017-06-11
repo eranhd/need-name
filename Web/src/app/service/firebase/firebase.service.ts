@@ -26,7 +26,7 @@ export class FirebaseService {
 
   private reObsarvable: FirebaseListObservable<any>;
   private shiftsId: string[];
-  private reportsId: string[];
+   reportsId: string[];
   private coldSpotId: string[];
   private hotSpotId: string[];
   private locationsId: string[];
@@ -119,15 +119,15 @@ export class FirebaseService {
       this.reportsId = [];
       this.coldSpotId = [];
       this.hotSpotId = [];
-      console.log(this.shiftsId);
+      // console.log(this.shiftsId);
       
       val.forEach(item=>{
-        console.log(item['$key'])
+        // console.log(item['$key'])
           if (this.checkIfShiftBelong(item['$key'])) {
             
             this.shifts.push(item);
 
-            console.log(item)
+            // console.log(item)
             if (item.reportsId){
               
               for (let report of item.reportsId) {
@@ -143,11 +143,13 @@ export class FirebaseService {
                 this.hotSpotId.push(id);
               }
         }
-        console.log(this.reportsId);
+        // console.log(this.reportsId);
+        
+        
       })
     });
 
-
+    // console.log(this.shiftsId)
 
   }
 
@@ -207,7 +209,7 @@ export class FirebaseService {
             this.shiftsId.push(shift);
         }
         //console.log(this.shiftsId)
-      // this.getAllDataFromDb();
+      this.getAllDataFromDb();
     },
       error => {
         console.log(error.message);
