@@ -65,7 +65,7 @@ export class ShiftComponent implements OnInit {
         if (!shift.reportsId || parseInt(this.fromReportNum) > shift.reportsId.length)
           continue;
       if (this.toHotNum != '0')
-        if (!shift.reportsId ||  parseInt(this.toReportNum) < shift.reportsId.length)
+        if (!shift.reportsId || parseInt(this.toReportNum) < shift.reportsId.length)
           continue;
       if (this.fromHotNum != '0')
         if (!shift.hotSpotId || parseInt(this.fromHotNum) > shift.hotSpotId.length)
@@ -86,6 +86,59 @@ export class ShiftComponent implements OnInit {
     this.data = shifts;
     return shifts;
 
+  }
+
+  generateCvs() {
+    // console.log(this.data);
+    let d = this.data;
+    let cv = [[]]
+    cv.push(["תאריך","שעת התחלה","שעת סיום","ראש צוות","מספר אנשי צוות","מספר אירועים","מספר נקודות קרות","מספר נקודות חמות"])
+    for(let shift of d){
+      let a = [];
+      if(shift.stratShift){
+        let d = new Date(shift.stratShift.date)
+        a.push(d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear());
+        // d = new Date(shift.stratShift.date)
+        a.push(d.getHours() + ':' + d.getMinutes());
+      }
+      else{
+        a.push("תאריך לא ידוע");
+        a.push("שעה לא ידועה");
+      }
+      if(shift.endShift)
+      {
+        let d = new Date(shift.endShift.date)
+        a.push(d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear());
+      }
+      else
+        a.push("שעה לא ידועה")
+      // a.push(shift.stratShift == null? "תאריך לא ידוע" : );
+      // a.push(shift.stratShift == null? "שעה לא יועה" : shift.stratShift.date.toLocaleTimeString);
+      // a.push(shift.endShift == null? "תאריך לא ידוע" : shift.endShift.date.toLocaleTimeString);
+      a.push(shift.team == null? "לא ידוע" : shift.team.lead);
+      a.push(shift.team == null? "לא ידוע" : shift.team.members.length);
+      a.push(shift.reportsId == null? "0" : shift.reportsId.length);
+      a.push(shift.coldSpotId == null? "0" : shift.coldSpotId.length);
+      a.push(shift.hotSpotId == null? "0" : shift.hotSpotId.length);
+      cv.push(a);
+    }
+    
+    
+    var csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+    cv.forEach(function (infoArray, index) {
+
+      let dataString = infoArray.join(",");
+      csvContent += index < cv.length ? dataString + "\n" : dataString;
+    });
+    console.log(csvContent);
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href",encodedUri);
+    link.setAttribute("download", "my_data.csv");
+    link.setAttribute('style', 'display:block;width:200px;height:200px;font-size:50px;')
+    document.body.appendChild(link); // Required for FF
+
+    link.click(); // This will download the data file named "my_data.csv".
   }
   ngOnInit() {
 

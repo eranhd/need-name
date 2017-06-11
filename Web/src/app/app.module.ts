@@ -157,7 +157,9 @@ export const environment = {
     RoleService,
     ReportService,
     ShiftService,
-    LocalStorageService
+    LocalStorageService,
+    AngularFireAuth,
+    AngularFireDatabase
   ],
   bootstrap: [AppComponent],
   entryComponents:[
