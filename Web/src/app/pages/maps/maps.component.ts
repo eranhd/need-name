@@ -26,10 +26,12 @@ export class MapsComponent implements OnInit {
   hotLable: string = 'נקודות חמות';
   coldLable: string = 'נקודות קרות';
   reportLable: string = 'דוחות';
+  showAllLabel: string = 'הצג הכל';
 
   hotFlag: boolean = false;
   coldFlag: boolean= false;
   reportFlag: boolean = true;
+  showAll: boolean = false;
 
   constructor(maps:MapsService, 
               public userService:UserService,
@@ -54,6 +56,9 @@ export class MapsComponent implements OnInit {
       case 3:
         this.coldFlag = true;
         break;
+      case 4:
+        this.showAll = true;
+        break;
       default:
         this.reportFlag = true;
     }
@@ -63,6 +68,7 @@ export class MapsComponent implements OnInit {
     this.coldFlag = false;
     this.hotFlag = false;
     this.reportFlag = false;
+    this.showAll = false;
   }
 
   ngOnInit() {
