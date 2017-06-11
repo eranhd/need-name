@@ -20,7 +20,7 @@ export class MobileLoginComponent implements OnInit {
   error: string;
   title: string = "כניסה";
   isLogin: boolean = false;
-  dev_statment: string = 'פותח בשיתוף בפעולה עם עזריאלי המכללה להנדסה ירושלים';
+  dev_statment: string = 'פותח בעזריאלי המכללה להנדסה ירושלים';
 
 
   constructor(private router: Router,

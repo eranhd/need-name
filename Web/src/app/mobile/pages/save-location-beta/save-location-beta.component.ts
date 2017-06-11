@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { Location } from '../../../models/Location';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'save-location-beta',
@@ -13,27 +14,53 @@ export class SaveLocationBetaComponent implements OnInit {
   @Input() fixed: number = 0;
   name: string = '';
   title: string = 'שדה זה מופיע רק בגירסה ביטא';
-  constructor(public firebaseService: FirebaseService) {
-    
-   }
+  isSave: Observable<boolean>;
+  isProcess: Observable<boolean>;
 
-  saveLocation(){
-    navigator.geolocation.getCurrentPosition(position=>{
+  constructor(public firebaseService: FirebaseService) {
+    this.isSave = new Observable(observe => {
+      observe.next(false);
+      observe.complete()
+    })
+    this.isProcess = new Observable(observe => {
+      observe.next(false);
+      observe.complete()
+    })
+  }
+
+  saveLocation() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.isProcess = new Observable(observe => {
+        observe.next(true);
+        observe.complete()
+      })
       let location = new Location(position.coords.longitude, position.coords.latitude);
-      
-      if(this.fixed != 0){
+
+      if (this.fixed != 0) {
         let fix: string = location.lat + '';
-        location.lat =  parseFloat(fix.slice(0, this.fixed));
+        location.lat = parseFloat(fix.slice(0, this.fixed));
         fix = location.lng + '';
-        location.lng =  parseFloat(fix.slice(0, this.fixed));
-      }      
-      
+        location.lng = parseFloat(fix.slice(0, this.fixed));
+      }
+
       location.name = this.name;
-      console.log(location);
+      // console.log(location);
       this.firebaseService.saveLoacation(location);
-      
-    }, error=>{
+      this.isProcess = new Observable(observe => {
+        observe.next(false);
+        observe.complete()
+      })
+      this.isSave = new Observable(observe => {
+        observe.next(true);
+        observe.complete()
+      })
+
+    }, error => {
       alert('אנא הפעל מיקום');
+      this.isProcess = new Observable(observe => {
+        observe.next(false);
+        observe.complete()
+      })
     });
   }
 
