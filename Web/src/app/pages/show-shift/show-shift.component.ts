@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../../service/firebase/firebase.service';
 import { ShowReportComponent } from '../show-report/show-report.component';
 import { Report } from '../../models/Report';
+import {MapsComponent } from '../maps/maps.component';
+import { Location } from '../../models/Location';
+
 
 @Component({
   selector: 'app-show-shift',
@@ -17,7 +20,10 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
   shift: any;
   id: number;
   reportChoose: Report;
-
+  reports: Report[];//need to lead from firebase
+  colds: Location[];
+  hots: Report[];
+  choosen: any = null;//init when report or spot choos
 
   constructor(public route: ActivatedRoute, public firebaseService: FirebaseService) {
     this.shift = {
