@@ -1,5 +1,5 @@
 <main>
-  <nav>
+  <nav *ngIf='!showSpesific'>
     <button class='btn_select' (click)='select(1)'>
       {{reportLable}}
     </button>
@@ -13,7 +13,15 @@
       {{showAllLabel}}
     </button>
   </nav>
-  <div class='map_div'>
+  <div class='map_div' *ngIf='showSpesific'>
+    <sebm-google-map [latitude]="showSpesific.lat" [longitude]="showSpesific.lng" [zoom]='zoom'>
+          <sebm-google-map-marker [latitude]="showSpesific.lat" [longitude]="showSpesific.lng">        
+          </sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
+
+  
+  <div class='map_div' *ngIf='!showSpesific'>
     
     <sebm-google-map *ngIf='showAll' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
       <div *ngIf='reports'>
