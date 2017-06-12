@@ -2,11 +2,13 @@
     position: relative;
     height: 70%;
     width: 100%;
+    
     img{
         position: absolute;
         height: 100%;
         top: 0;
         right: 0;
+        padding-right:3.5%; 
     }
 }
 
@@ -16,21 +18,26 @@
     display: inline-block;
     border-width: 1px 0px 1px 0px;
     width: 100%;
-    height: 20%;
+    height: 25%;
     position: relative;
     .title{
         position: absolute;
-        text-align: right;
-        padding-right: 1%;
+      
+        padding-right: 2%;
         top: 0;
-        right: 5%;
+        right: 3%;
         background-color: #004381;
         font-weight: bold;
+        display: inline-flex;
+        align-items: center;
         color: white;
         height: 100%;
-        width: 15%;
+        width: 10%;
         border-style: solid;
         border-color: black;
+        
+        border-top-left-radius:10px; 
+        border-bottom-left-radius:10px; 
         border-width: 0px 0px 0px 1px; 
     }
     .news_data{
@@ -40,6 +47,4 @@
 
     }
 }
-
-
 

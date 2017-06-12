@@ -18,7 +18,6 @@ export class MapsComponent implements OnInit {
   @Input() reports: Report[] = null;
   @Input() hot: Report[] = null;
   @Input() cold: Location[] = null;
-  @Input() showSpesific: Location = null;
 
 
   lat: number;
