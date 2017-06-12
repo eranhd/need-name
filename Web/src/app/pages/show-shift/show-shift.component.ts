@@ -21,42 +21,46 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
 
   constructor(public route: ActivatedRoute, public firebaseService: FirebaseService) {
     this.shift = {
-      "endShift" : {
-        "date" : "2017-06-01T20:24:58.320Z",
-        "dilemmas" : "",
-        "filling" : "",
-        "location" : {
-          "lat" : 31.7699977,
-          "lng" : 35.1909203
-        },
-        "summary" : "",
-        "unusualEvents" : ""
-      },
-      "stratShift" : {
-        "date" : "2017-06-01T20:04:35.939Z",
-        "location" : {
-          "lat" : 31.776003,
-          "lng" : 35.1861585
-        }
-      },
-      "team" : {
-        "lead" : "אורן ",
-        "members" : [ {
-          "index" : 0,
-          "name" : "2"
-        }, {
-          "index" : 1,
-          "name" : "1"
-        }, {
-          "index" : 2,
-          "name" : "4"
-        }, {
-          "index" : 3,
-          "name" : "45"
-        } ],
-        "teamNum" : "5"
-      }
+  "coldSpotId" : [ "-KmDl2J3mpstECgPdqtm", "-KmDl2H3K25NmKIyRsMF", "-KmDhiNTwLsO4_7JGvHl", "-KmDes3KvxfN-2j7lBUJ", "-KmDensBBcfSBwSE4027" ],
+  "endShift" : {
+    "date" : "2017-06-09T21:37:30.723Z",
+    "dilemmas" : "",
+    "filling" : "סבבה",
+    "location" : {
+      "lat" : 31.7238925,
+      "lng" : 35.2205135
+    },
+    "summary" : "",
+    "unusualEvents" : ""
+  },
+  "hotSpotId" : [ "-KmDU3cUhH2WNtXwG99Y" ],
+  "reportsId" : [ "-KmDeydV5qBAJjOsHfHf" ],
+  "stratShift" : {
+    "date" : "2017-06-09T20:11:29.346Z",
+    "location" : {
+      "lat" : 31.7243562,
+      "lng" : 35.2205931
     }
+  },
+  "team" : {
+    "lead" : "עידן",
+    "members" : [ {
+      "index" : 0,
+      "name" : "עידן"
+    }, {
+      "index" : 1,
+      "name" : "רותי"
+    }, {
+      "index" : 2,
+      "name" : "עופר"
+    }, {
+      "index" : 3,
+      "name" : "מתן"
+    } ],
+    "teamNum" : "2"
+  }
+}
+
     // this.sub = this.route.params.subscribe(params => {
     //   this.shift = this.firebaseService.getShift(params['id']);
     //   console.log(this.shift)

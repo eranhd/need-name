@@ -1,25 +1,42 @@
 <header>
   <div>
+  <span class="label">תאריך משמרת:</span>
   <span>{{shift.stratShift.date | date:'dd.MM.yyyy'}}</span>
+  <br>
+  <span class="label">שעת התחלה:</span>
   <span>{{shift.stratShift.date | date:'HH:mm:ss'}}</span>
+  <br>
   <span *ngIf='shift.stratShift.location'>
-    {{shift.stratShift.location.name}}
+    <span class="label">מיקום התחלה:</span>
+    {{shift.stratShift.location | locationName}}
   </span>
   </div>
 
-  <div>
-    <span>{{shift.team.teamNum}}</span>
-    <span>{{shift.team.lead}}</span>
-    <span *ngFor='let member of shift.team.members'>{{member.nam}}</span>
-  </div>
-
-  <div *ngIf='shift.endShift'>
-    <span>{{shift.endShift.date | date:'dd.MM.yyyy'}}</span>
+<div *ngIf='shift.endShift'>
+    <span class="label">שעת סיום משמרת:</span>
   <span>{{shift.endShift.date | date:'hh:mm:ss'}}</span>
+  <br>
   <span *ngIf='shift.stratShift.location'>
-    {{shift.endShift.location.name}}
+      <span class="label">מיקום סיום:</span>
+    {{shift.endShift.location | locationName}}
   </span>
   </div>
+  <br>
+  <div>
+    <span class="label">מספר צוות:</span>
+    <span>{{shift.team.teamNum}}</span>
+    <br>
+    <span class="label">ראש צוות:</span>
+    <span>{{shift.team.lead}}</span>
+    <br>
+    <span class="label">שמות המתנדבים בסיור:</span>
+    <span *ngFor='let member of shift.team.members'>{{member.name}} , </span>
+    <br>
+    <span>תחושת הצוות:</span>
+    <span>{{shift.endShift.filling}}</span>
+  </div>
+  
+  
 </header>
 
 <main>
