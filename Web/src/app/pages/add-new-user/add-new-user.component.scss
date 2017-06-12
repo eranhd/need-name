@@ -1,46 +1,7 @@
 main{
-    width: 100%;
-    height: 100%;
-    section{
-        height: 100%;
-    }
-    select, button, input{
-        direction: rtl;
-        text-align: right;
-    }
-
-    button{
-        margin: 10px 10px;
-    }
-    select, input{
-        margin: 0 10px;
-        line-height: normal;
-        border: none;
-        text-align: right;
-        border-bottom: 1px solid gray;
-    }
-    .error_message{
-        color: red;
-        text-align: right;
-        direction: rtl;
-        font-weight: bold;
-    }
-
-    button{
-        border-radius: 10%;
-        padding: 10px;
-        border: none;
-        color: white;
-        margin: 2px 5px;
-        border: 1px solid darkgray;
-        font-weight: bold;    
-    }
-    button:hover{
-        opacity: 0.7;
-    }
-
-    .btn_save, .btn_clear{
-        background-color: rgba(0, 67, 129, 0.63);    
-    }
     
+    .add_new_user{
+        height: 30%;
+        width: 30%;
+    }
 }

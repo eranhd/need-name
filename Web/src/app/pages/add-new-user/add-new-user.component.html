@@ -1,39 +1,26 @@
-<main class='container' fxLayout=row fxLayoutAlign='end start'>
-  <section class='add_new_user container' fxLayout=column fxLayoutAlign='center center' fxFlex=45>
-    <div class='contariner' fxLayout=column fxFlex fxLayoutAlign='space-between space-between'>
-      <div fxFlex class='container' fxLayout=row fxLayoutAlign='start start'>
-        <select fxFlex required placeholder="בחר סוג משתמש" (change)='role = $event.target.value'>
-          <option *ngFor='let item of types' [value]='item.value' >
-            {{item.valueToShow}}
-          </option>
-        </select>
-        <select fxFlex *ngIf='userService.user.details.role.type == 4' (change)='type = $event.target.value'>
-          <option value='parentPatrol'>
-            סיירת הורים
-          </option>
-          <option value='dtPatrol'>
-            מיכאל
-          </option>
-        </select>
-      </div>
-      
-      <div fxFlex class='container' fxLayout=row fxLauoutAlign='start start'>
-        <input fxFlex id="input_username" type='email' [(ngModel)]='email' placeholder="אימייל" required>
-        <input fxFlex type='text' [(ngModel)]='name' placeholder="שם" required>
-      </div>
-      <div fxFlex class='container' fxLayout=row fxLauoutAlign='start start'>
-        <input fxFlex id="input_password" type='password' [(ngModel)]='password' placeholder="password" required>
-        <input fxFlex type='password' [(ngModel)]='vlidation_password' placeholder="password again" required>
-      </div>
-      
-      <div fxFlex class='container' fxLayout=row fxLauoutAlign='end end'>
-        <span>
-          <button type="submit" class='btn_save' (click)='signup()'>הוספה</button>
-          <button class='btn_clear' (click)='clear()'>נקה</button>
-        </span>
-      </div>
-      <span class='error_message' fxFlex>{{error}}</span>
-    </div>
+<header>
+</header>
+<main>
+  <section class='add_new_user'>
+    <md-card>
+      <select required placeholder="בחר סוג משתמש" (change)='role = $event.target.value'>
+        <option *ngFor='let item of types' [value]='item.value' >
+          {{item.valueToShow}}
+        </option>
+      </select>
+      <select *ngIf='userService.user.details.role.type == 4' (change)='type = $event.target.value'>
+        <option value='parentPatrol'>
+          סיירת הורים
+        </option>
+        <option value='dtPatrol'>
+          מיכאל
+        </option>
+      </select>
+      <input id="input_username" type='email' class='form-control' [(ngModel)]='email' placeholder="שם משתמש" required>
+      <input id="input_password" type='password' class='form-control' [(ngModel)]='password' placeholder="" required>
+      <input type='text' class='form-control' [(ngModel)]='name' placeholder="שם" required>
+      <button type="submit" class='btn btn-default' (click)='signup()'>הוספה</button>
+      <button class='btn btn-default' (click)='clear()'>נקה</button>
+    </md-card>
   </section>
-  
 </main>

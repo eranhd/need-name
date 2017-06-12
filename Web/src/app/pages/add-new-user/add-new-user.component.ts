@@ -15,11 +15,9 @@ export class AddNewUserComponent implements OnInit {
   newUser: User;
   email: string;
   password: string;
-  _vlidation_password: string;
   name: string;
   role: string;
   type: string;
-  error: string;
 
   constructor(public userService: UserService,
               public firebaseService: FirebaseService
@@ -27,28 +25,14 @@ export class AddNewUserComponent implements OnInit {
                 this.types = [{value: 1 ,valueToShow: 'צוות סיור' }, 
                 {value: 2 ,valueToShow: 'רכז אזור' },
                 {value: 3 ,valueToShow: 'מנהל כללי' }];//need to remove
+  //    for(let str of this.userService._user.details.role.getRolesName())
+          // this.types.push({value: str, valueToShow: str});
           this.name = '';
           this.role = this.types[0].value;
           this.type = 'parentPatrol';
-          this.userService._user.details.son
-  }
-
-  get vlidation_password(){
-    return this._vlidation_password;
-  }
-
-  set vlidation_password(password: string){
-    if(this.password != password)
-      this.error = "הסיסמאות אינם תואמות";
-    else
-      this.error = '';
-    this._vlidation_password = password;
   }
 
    public signup(){
-     if(this.password != this.vlidation_password){
-        return;     
-     }
      if( !(this.email == '' || !this.email || this.password == '' || !this.password)){
         this.newUser = new User();
         this.newUser.details.name = this.name;
@@ -66,12 +50,9 @@ export class AddNewUserComponent implements OnInit {
      }
    };
 
-    clear(){
-      this.password = '';
-      this._vlidation_password = '';
-      this.email = '';
-      this.name = '';
-    }
+   clear(){
+     
+   }
   ngOnInit() {
   }
 

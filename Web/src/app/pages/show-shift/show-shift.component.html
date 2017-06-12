@@ -1,53 +1,62 @@
-<main class='container' fxLayout=row> 
-  <aside class='shift_details' fxFlex=45>
-    <div>
-      <span class="label">תאריך משמרת:</span>
-      <span>{{shift.stratShift.date | date:'dd.MM.yyyy'}}</span>
-      <br>
-      <span class="label">שעת התחלה:</span>
-      <span>{{shift.stratShift.date | date:'HH:mm:ss'}}</span>
-      <br>
-      <span *ngIf='shift.stratShift.location'>
-    <span class="label">מיקום התחלה:</span> {{shift.stratShift.location | locationName}}
-      </span>
-    </div>
+<header>
+  <div>
+  <span class="label">תאריך משמרת:</span>
+  <span>{{shift.stratShift.date | date:'dd.MM.yyyy'}}</span>
+  <br>
+  <span class="label">שעת התחלה:</span>
+  <span>{{shift.stratShift.date | date:'HH:mm:ss'}}</span>
+  <br>
+  <span *ngIf='shift.stratShift.location'>
+    <span class="label">מיקום התחלה:</span>
+    {{shift.stratShift.location | locationName}}
+  </span>
+  </div>
 
-    <div *ngIf='shift.endShift'>
-      <span class="label">שעת סיום משמרת:</span>
-      <span>{{shift.endShift.date | date:'hh:mm:ss'}}</span>
-      <br>
-      <span *ngIf='shift.stratShift.location'>
-      <span class="label">מיקום סיום:</span> {{shift.endShift.location | locationName}}
-      </span>
-    </div>
+<div *ngIf='shift.endShift'>
+    <span class="label">שעת סיום משמרת:</span>
+  <span>{{shift.endShift.date | date:'hh:mm:ss'}}</span>
+  <br>
+  <span *ngIf='shift.stratShift.location'>
+      <span class="label">מיקום סיום:</span>
+    {{shift.endShift.location | locationName}}
+  </span>
+  </div>
+  <br>
+  <div>
+    <span class="label">מספר צוות:</span>
+    <span>{{shift.team.teamNum}}</span>
     <br>
-    <div>
-      <span class="label">מספר צוות:</span>
-      <span>{{shift.team.teamNum}}</span>
-      <br>
-      <span class="label">ראש צוות:</span>
-      <span>{{shift.team.lead}}</span>
-      <br>
-      <span class="label">שמות המתנדבים בסיור:</span>
-      <span *ngFor='let member of shift.team.members'>{{member.name}} , </span>
-      <br>
-      <span>תחושת הצוות:</span>
-      <span>{{shift.endShift.filling}}</span>
+    <span class="label">ראש צוות:</span>
+    <span>{{shift.team.lead}}</span>
+    <br>
+    <span class="label">שמות המתנדבים בסיור:</span>
+    <span *ngFor='let member of shift.team.members'>{{member.name}} , </span>
+    <br>
+    <span>תחושת הצוות:</span>
+    <span>{{shift.endShift.filling}}</span>
+  </div>
+  
+  
+</header>
+
+<main>
+  <section class='reports'>
+    <div *ngFor='let report of shift.reports'
+    (click)='reportChoose = report; isChoose = true'>
+        <span>{{report.date | date:'HH:mm'}}</span>
+        <span>{{report.summary}}</span>
     </div>
+  </section>
 
+  <section>
+  <div *ngFor='let loc of shift.coldSpotArr'>
+    {{loc.name}}    
+  </div>
+  </section>
 
-  </aside>
+  <aside class='report_choose'>
+    <app-show-report *ngIf='isChoose' [report]='reportChoose'>
 
-  <aside class='container details' fxLayout=column fxFlex=45>
-    <section class='choose_details' fxFlex>
-
-    </section>
-    <section class='maps' fxFlex>
-      <app-maps [reports]='reports'
-                [cold]='colds'
-                [hot]='hots'
-                [showSpesific]='choosen'>
-      </app-maps>
-    </section>
+    </app-show-report>
   </aside>
 </main>
