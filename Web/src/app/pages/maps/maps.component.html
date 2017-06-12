@@ -1,11 +1,10 @@
 <main>
-<<<<<<< HEAD
-  <nav>
-    <button class='btn_select' id='reportLable' (click)='select(1)'>
-=======
+
+
+
+
   <nav *ngIf='!showSpesific'>
-    <button class='btn_select' (click)='select(1)'>
->>>>>>> ca06d75f3a3bfb3aecdd49562845c54ea167e4c2
+      <button class='btn_select' id='reportLable' (click)='select(1)'>
       {{reportLable}}
     </button>
     <button class='btn_select' id='hotLable' (click)='select(2)'>
@@ -31,15 +30,15 @@
     <sebm-google-map *ngIf='showAll' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
       <div *ngIf='reports'>
         <span *ngFor='let item of reports'>
-          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng">
-
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng"
+            [iconUrl]="' https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fyellow_location.png?alt=media&token=9a78881f-3305-41cf-9a13-e39cf977a55b'">
           </sebm-google-map-marker>
         </span>
       </div>
       <div *ngIf='!reports'>
         <span *ngFor='let item of firebseService.reportObsarvable | async'>
-          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng">
-
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng"
+            [iconUrl]="' https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fyellow_location.png?alt=media&token=9a78881f-3305-41cf-9a13-e39cf977a55b'">
           </sebm-google-map-marker>
         </span>
       </div>
@@ -85,8 +84,8 @@
       </div>
       <div *ngIf='!reports'>
         <span *ngFor='let item of firebseService.reportObsarvable | async'>
-          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng">
-
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng"
+            [iconUrl]="' https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fyellow_location.png?alt=media&token=9a78881f-3305-41cf-9a13-e39cf977a55b'">
           </sebm-google-map-marker>
         </span>
       </div>
