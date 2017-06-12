@@ -49,7 +49,7 @@ export class MobileLoginComponent implements OnInit {
       });
     }, (error) => {
       this.error = 'אנא הפעל מיקום ופתח מחדש את האפליקציה'
-      alert('אנא הפעל מיקום');
+      // alert('אנא הפעל מיקום');
       this.isLogin = false;
     });
 

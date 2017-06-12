@@ -39,6 +39,7 @@ export class FirebaseService {
 
   sonsObsarvable: FirebaseListObservable<any>[];
 
+  isUserInit: boolean  = false;
 
   shifts: Shift[];
   reports: Report[];
@@ -220,21 +221,22 @@ export class FirebaseService {
   initUser(goto?: string) {
 
     firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(snapshot => {
-      // console.log(snapshot.val());
+      
       this.userService._user = snapshot.val();
       if (this.userService._user.shiftsId) {
         for (let id of this.userService._user.shiftsId) {
-          // console.log(this.userService._user.shiftsId)
+      
           if (!this.shiftsId)
             this.shiftsId = [];
           this.shiftsId.push(id)
         }
       }
-      // this.sonsObsarvable = new Array(this.userService._user.details._sons.length);
+      
 
       for (let id of this.userService._user.details._sons)
         this.listenToSon(id);
       this.getAllDataFromDb();
+      this.isUserInit = true;
       if (goto) {
         this.router.navigate([goto]);
       }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
 import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
 import { PushNotificationsService } from 'angular2-notifications';
+import { FirebaseService } from '../../../service/firebase/firebase.service';
 
 
 @Component({
@@ -12,18 +13,9 @@ import { PushNotificationsService } from 'angular2-notifications';
 })
 export class MobileMainComponent implements OnInit {
 
-  constructor(public router: Router, private _pushNotifications: PushNotificationsService) {
-
-
-    // if ('Notification' in window) {
-    //   Notification.requestPermission();
-    //   Notification.
-    // }
-
-    // this._pushNotifications.create('Test', {body: 'something'}).subscribe(
-    //         res => console.log(res),
-    //         err => console.log(err)
-    //     )
+  constructor(public router: Router, private _pushNotifications: PushNotificationsService, public firebaseService: FirebaseService) {
+    if(!this.firebaseService.isUserInit)
+      this.router.navigate(['mobile_login']);
 
   }
 
