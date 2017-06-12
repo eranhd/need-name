@@ -65,6 +65,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
     } ],
     "teamNum" : "2"
   }
+
 }
 
     // this.sub = this.route.params.subscribe(params => {
@@ -73,7 +74,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
     //   this.id = params['id'];
     // });
     // this.isChoose = false;
-  }
+}
 
   ngOnInit() {
 

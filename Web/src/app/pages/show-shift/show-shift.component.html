@@ -35,6 +35,31 @@
       <span>{{shift.endShift.filling}}</span>
     </div>
 
+    <table>
+    <tr class='table_head'>
+      <th>
+        נקודות קרות
+      </th>
+      <th>
+        נקודות חמות
+      </th>
+      <th>
+        דיווחים
+      </th>
+    </tr>
+
+    <tr class='table_body' *ngFor='let shift of data' >
+      <td>
+          {{shift.coldSpotArr}}
+      </td>
+      <td>
+          {{shift.hotSpotArr}}
+      </td>
+      <td>
+          {{shift.reports}}
+      </td>
+    </tr>  
+</table>   
 
   </aside>
 
@@ -50,4 +75,21 @@
       </app-maps>
     </section>
   </aside>
+
+  
+
+<!--<aside>
+  <section>
+   <table>
+      <tr ng-repeat="shift in $data">
+          <td title="'cold spots'">
+              {{shift.coldSpotArr}}</td>
+          <td title="'hot spots'" >
+              {{shift.hotSpotArr}}</td>
+         <td title="'reports'">
+             {{shift.reports}}</td>    
+     </tr>
+    </table>
+   </section> 
+</aside>-->
 </main>
