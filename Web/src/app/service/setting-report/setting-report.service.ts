@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InputItem } from '../../models/input-item';
 import { database } from 'firebase';
-import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase ,FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import {UserService} from '../user/user.service';
 @Injectable()
 export class SettingReportService {
@@ -13,17 +13,17 @@ export class SettingReportService {
 
 
   constructor(
-    private af: AngularFire,
+    private af: AngularFireDatabase,
     public userService:UserService
   ) {
       if(firebase.auth().currentUser.uid != null){
-          this.itemToSave = af.database.list('/users/' + firebase.auth().currentUser.uid + '/reports');
+          this.itemToSave = af.list('/users/' + firebase.auth().currentUser.uid + '/reports');
       }
 
       if(this.userService.user.details.role.name == 'parentPatrol'){
 
         this.inputsParentPatrol = [];
-        this.item = af.database.object('/report_fields', { preserveSnapshot: true });
+        this.item = af.object('/report_fields', { preserveSnapshot: true });
 
         this.item.subscribe(snapshot => {
 
@@ -40,7 +40,7 @@ export class SettingReportService {
      else{
 
         this.inputsDtPatrol = [];
-        this.item = af.database.object('/report_fields', { preserveSnapshot: true });
+        this.item = af.object('/report_fields', { preserveSnapshot: true });
 
         this.item.subscribe(snapshot => {
 

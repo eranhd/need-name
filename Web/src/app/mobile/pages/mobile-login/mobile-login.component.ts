@@ -6,6 +6,7 @@ import { FirebaseService } from '../../../service/firebase/firebase.service';
 import { MobileHeaderComponent } from '../mobile-header/mobile-header.component';
 import { MobileFooterComponent } from '../mobile-footer/mobile-footer.component';
 import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
+import { PushNotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-mobile-login',
@@ -19,14 +20,15 @@ export class MobileLoginComponent implements OnInit {
   error: string;
   title: string = "כניסה";
   isLogin: boolean = false;
-  dev_statment: string = 'פותח בשיתוף בפעולה עם עזריאלי המכללה להנדסה ירושלים';
+  dev_statment: string = 'פותח בעזריאלי המכללה להנדסה ירושלים';
 
 
   constructor(private router: Router,
     public userServ: UserService,
     public userService: UserService,
-    public firebaseService: FirebaseService) {
+    public firebaseService: FirebaseService, private _pushNotifications : PushNotificationsService) {
     this.error = '';
+        this._pushNotifications.requestPermission();
   }
 
   public signIn() {
@@ -47,7 +49,7 @@ export class MobileLoginComponent implements OnInit {
       });
     }, (error) => {
       this.error = 'אנא הפעל מיקום ופתח מחדש את האפליקציה'
-      alert('אנא הפעל מיקום');
+      // alert('אנא הפעל מיקום');
       this.isLogin = false;
     });
 

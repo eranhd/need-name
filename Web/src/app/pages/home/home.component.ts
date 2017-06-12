@@ -5,6 +5,7 @@ import { TableItem } from '../../models/Table';
 import { ReportService } from '../../service/report/report.service';
 import { FirebaseService } from '../../service/firebase/firebase.service';
 import { RoleService } from '../../service/role/role.service';
+import { Shift } from '../../models/Shift';
 
 
 import { LastReportComponent } from './last-report/last-report.component';
@@ -22,6 +23,10 @@ export class HomeComponent implements OnInit {
   public selectedTitle:string;
   public selectedBody:string;
 
+  shifts: Array<Shift>;
+  reports: Array<any>;
+  shiftShow: number = 0;
+
   constructor(public userService:UserService, 
               public reportService:ReportService,
               public firebseService: FirebaseService,
@@ -33,8 +38,25 @@ export class HomeComponent implements OnInit {
     this.hotArea = new TableItem('hotArea', 2, ['איזור', 'מספר תקריות']);
     this.nowActive = new TableItem('nowActive', 2, ['איזור', 'דוח תחילת משמרת']);
     this.lastReport.getTypeRows();
+    // console.log(this.firebseService.reportsId);
+    this.firebseService.shiftObsarvable.subscribe(val => {
+      let s = [];
+      for(let item of val)
+        if(this.firebseService.checkIfShiftBelong(item['$key']))
+          s.push(item);
+      this.shifts = s.slice(0, 10);
+      console.log(this.shifts);
+    });
     
-    
+
+    this.firebseService.reportObsarvable.subscribe(val => {
+      let r = [];
+      for(let item of val)
+        if(this.firebseService.checkIfReportBelong(item['$key']))
+          r.push(item);
+      this.reports = r.slice(0, 10);
+      
+    });
    };
 
    private lastReportSelected(index){
@@ -45,6 +67,15 @@ export class HomeComponent implements OnInit {
 
    }
 
+   showMore(id: string): boolean{
+     if(!this.firebseService.checkIfShiftBelong(id))
+     return false;
+     if(this.shiftShow == 3)
+      return false;
+    this.shiftShow++;
+    return true;
+
+   }
 
   ngOnInit() {
   };

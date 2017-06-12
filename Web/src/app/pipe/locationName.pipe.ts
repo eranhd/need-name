@@ -39,6 +39,7 @@ export class LocationName implements PipeTransform {
 
         //generali..
         let data = {
+
             "-KlZjRuvRaNK8X9sS1Nc": {
                 "lat": 31.6618,
                 "lng": 35.1395,
@@ -113,10 +114,32 @@ export class LocationName implements PipeTransform {
                 "lat": 31.7745749,
                 "lng": 35.1860014,
                 "name": "גן הנזיר ברחוב משה קול"
+            },
+            "-Km5gecQtYjEggHJ7keh": {
+                "lat": 32.9049,
+                "lng": 35.5091,
+                "name": "טיול צפון"
+            },
+            "-KmDhhtTqogSNkIwvOm0": {
+                "lat": 31.7196879,
+                "lng": 35.2258773,
+                "name": "רחוב דולגין"
+            },
+            "-KmDl2H1tHPmyZtuNaT8": {
+                "lat": 31.7289177,
+                "lng": 35.2174227,
+                "name": "פארק זאלץ"
+            },
+            "-KmDl2IuO-zJsWmctg0W": {
+                "lat": 31.7289177,
+                "lng": 35.2174227,
+                "name": "פארק זאלץ"
             }
         }
-        for(let loc in data){//loc is the key
-            if (this.isArea(data[loc].lat, data[loc].lng, location, (data[loc].lng + '').length - 3 ))
+
+
+        for (let loc in data) {//loc is the key
+            if (this.isArea(data[loc].lat, data[loc].lng, location, (data[loc].lng + '').length - 3))
                 name = data[loc].name;
         }
 

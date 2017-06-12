@@ -9,9 +9,58 @@
     <button class='btn_select' (click)='select(3)'>
       {{coldLable}}
     </button>
+    <button class='btn_select' (click)='select(4)'>
+      {{showAllLabel}}
+    </button>
   </nav>
   <div class='map_div'>
     
+    <sebm-google-map *ngIf='showAll' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
+      <div *ngIf='reports'>
+        <span *ngFor='let item of reports'>
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng">
+
+          </sebm-google-map-marker>
+        </span>
+      </div>
+      <div *ngIf='!reports'>
+        <span *ngFor='let item of firebseService.reportObsarvable | async'>
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng">
+
+          </sebm-google-map-marker>
+        </span>
+      </div>
+       <div *ngIf='hot'>
+        <span *ngFor='let item of hot'>
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfHotBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng"
+          [iconUrl]='"https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fred_location.png?alt=media&token=ffa7ae56-da3f-49d0-a15a-cee669960c28"'>
+          </sebm-google-map-marker>
+        </span>
+      </div>
+      <div *ngIf='!hot'>
+        <span *ngFor='let item of firebseService.hotObsarvable | async'>
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfHotBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng" 
+          [iconUrl]='"https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fred_location.png?alt=media&token=ffa7ae56-da3f-49d0-a15a-cee669960c28"'>
+          </sebm-google-map-marker>
+        </span>
+      </div>
+      <div *ngIf='cold'>
+        <span *ngFor='let item of cold'>
+          <sebm-google-map-marker *ngIf='item != null && firebseService.checkIfColdBelong(item)' [latitude]="item.lat" [longitude]="item.lng" 
+          [iconUrl]="'https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fblue-location-icon-26%20(1).png?alt=media&token=09267fb7-c078-49a6-bc57-9c1259e1beff'">
+            
+          </sebm-google-map-marker>
+        </span>
+      </div>
+      <div *ngIf='!cold'>
+        <span *ngFor='let item of firebseService.coldObsarvable | async'>
+          <sebm-google-map-marker *ngIf='item != null && firebseService.checkIfColdBelong(item)' [latitude]="item.lat" [longitude]="item.lng"
+          [iconUrl]="'https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fblue-location-icon-26%20(1).png?alt=media&token=09267fb7-c078-49a6-bc57-9c1259e1beff'">
+            
+          </sebm-google-map-marker>
+        </span>
+      </div>
+    </sebm-google-map>
     
     <sebm-google-map *ngIf='reportFlag' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
       <div *ngIf='reports'>
@@ -33,13 +82,15 @@
     <sebm-google-map *ngIf='hotFlag' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
       <div *ngIf='hot'>
         <span *ngFor='let item of hot'>
-          <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng">
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfHotBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng"
+          [iconUrl]='"https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fred_location.png?alt=media&token=ffa7ae56-da3f-49d0-a15a-cee669960c28"'>
           </sebm-google-map-marker>
         </span>
       </div>
       <div *ngIf='!hot'>
         <span *ngFor='let item of firebseService.hotObsarvable | async'>
-          <sebm-google-map-marker *ngIf='item.location != null' [latitude]="item.location.lat" [longitude]="item.location.lng">
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfHotBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng" 
+          [iconUrl]='"https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fred_location.png?alt=media&token=ffa7ae56-da3f-49d0-a15a-cee669960c28"'>
           </sebm-google-map-marker>
         </span>
       </div>
@@ -48,14 +99,16 @@
     <sebm-google-map *ngIf='coldFlag' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
       <div *ngIf='cold'>
         <span *ngFor='let item of cold'>
-          <sebm-google-map-marker *ngIf='item != null' [latitude]="item.lat" [longitude]="item.lng">
+          <sebm-google-map-marker *ngIf='item != null && firebseService.checkIfColdBelong(item)' [latitude]="item.lat" [longitude]="item.lng" 
+          [iconUrl]="'https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fblue-location-icon-26%20(1).png?alt=media&token=09267fb7-c078-49a6-bc57-9c1259e1beff'">
             
           </sebm-google-map-marker>
         </span>
       </div>
       <div *ngIf='!cold'>
         <span *ngFor='let item of firebseService.coldObsarvable | async'>
-          <sebm-google-map-marker *ngIf='item != null' [latitude]="item.lat" [longitude]="item.lng">
+          <sebm-google-map-marker *ngIf='item != null && firebseService.checkIfColdBelong(item)' [latitude]="item.lat" [longitude]="item.lng"
+          [iconUrl]="'https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fblue-location-icon-26%20(1).png?alt=media&token=09267fb7-c078-49a6-bc57-9c1259e1beff'">
             
           </sebm-google-map-marker>
         </span>

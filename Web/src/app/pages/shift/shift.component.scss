@@ -16,7 +16,9 @@ header{
 }
 main{
     width: 100%;
+    height: 80%;
     direction: rtl;
+    position: relative;
     table{
         margin: 0 5%;
         width: 100%;
@@ -32,5 +34,67 @@ main{
             border-bottom: 2px solid gray;
         }
 
+    }
+}
+
+
+input.ng-pristine.ng-valid.ng-touched {
+    background-color: whitesmoke;
+}
+input, select {
+    line-height: normal;
+    border: none;
+    height: 30px;
+    text-align: right;
+    border-bottom: 1px solid gray;
+}
+
+
+button{
+    border-radius: 100%;
+    padding: 10px;
+    border: none;
+    color: white;
+    margin: 2px 5px;
+    border: 1px solid darkgray;
+}
+button:hover{
+    opacity: 0.7;
+}
+
+#btn_search, #btn_show{
+    background-color: rgba(0, 67, 129, 0.63);    
+}
+
+#btn_download{
+    background-color: rgba(3, 206, 0, 0.56);
+}
+
+#btn_delete{
+    background-color: rgba(200, 50, 20, 0.56);
+}
+
+button#btn_show, button#btn_delete{
+    border-radius: 10%;
+    padding: 2px;
+    border: none;
+    color: white;
+    margin: 2px 5px;
+    border: 1px solid darkgray;
+}
+
+.arrow_btn{
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    button{
+        border-radius: 10%;
+        padding: 0 10px;
+        border: none;
+        color: white;
+        margin: 2px 5px;
+        background-color: rgba(0, 67, 129, 0.63);    
+        border: 1px solid darkgray;
     }
 }
