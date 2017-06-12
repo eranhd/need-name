@@ -3,17 +3,31 @@ nav{
   direction: rtl;
   .btn_select{
     border-style: none;
+    border-radius:7px; 
     font-size: 16px;
      background-color: #004381;
      color: white; 
      border: 1px solid white;
+    
   }
   .btn_select:hover{
       background-color: white;
       color: #004381;
-      border: 1px solid #004381;
+      
     }
-  
+  #hotLable:hover{
+      background :#9b0000;
+      color:white;
+    }
+    #coldLable:hover{
+    background: #007eff;
+    color:white;
+    }
+    #reportLable:hover{
+      background: #fbbc05;
+      color:white;
+    }
+
 }
 
 

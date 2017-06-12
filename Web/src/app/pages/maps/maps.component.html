@@ -1,12 +1,12 @@
 <main>
   <nav>
-    <button class='btn_select' (click)='select(1)'>
+    <button class='btn_select' id='reportLable' (click)='select(1)'>
       {{reportLable}}
     </button>
-    <button class='btn_select' (click)='select(2)'>
+    <button class='btn_select' id='hotLable' (click)='select(2)'>
       {{hotLable}}
     </button>
-    <button class='btn_select' (click)='select(3)'>
+    <button class='btn_select' id='coldLable' (click)='select(3)'>
       {{coldLable}}
     </button>
     <button class='btn_select' (click)='select(4)'>
@@ -65,8 +65,8 @@
     <sebm-google-map *ngIf='reportFlag' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
       <div *ngIf='reports'>
         <span *ngFor='let item of reports'>
-          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng">
-
+          <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng"
+          [iconUrl]="' https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fyellow_location.png?alt=media&token=9a78881f-3305-41cf-9a13-e39cf977a55b'">
           </sebm-google-map-marker>
         </span>
       </div>
