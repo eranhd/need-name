@@ -2,8 +2,8 @@
     cursor: context-menu;
     position: absolute;
     right: 0%;
-    width: 3%;
-    background-color:#4F84C4;
+    width: 4%;
+    background-color:#429962;
     transition: width 0.3s;
     white-space: nowrap;
     overflow: hidden;
@@ -26,18 +26,21 @@
     }   
 }
 
+.btn_nav:hover{
+      background-color: #00638e;
+    }
 .btn_nav{
     direction: rtl;
-    margin: 5px;
-    background-color: #578CA9;
-    
+    margin: 3px 3px;
+    cursor: pointer;
+    padding: 15px;
+    background-color: #429962;
+    cursor: pointer;
+    padding: 7px 14px 7px 10px;
     
     .sidenav_text{
         color: white;
-    }  
-
-    cursor: pointer;
-    padding: 2px 2px 2px 0px;
+    } 
 }
 
 
