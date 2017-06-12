@@ -35,6 +35,26 @@
       <span>{{shift.endShift.filling}}</span>
     </div>
 
+    <div>
+       <table>
+          <tr class='table_head'>
+            <th>
+              נקוודות קרות
+            </th>
+            <th>
+                נקודות חמות
+            </th>
+            <th>
+              דיווחים
+            </th>
+        
+
+          <tr class='table_body' *ngFor='let shift of data' >
+            <td>
+               {{shift.team.lead}}
+            </td>
+        </table>
+    </div>  
 
   </aside>
 

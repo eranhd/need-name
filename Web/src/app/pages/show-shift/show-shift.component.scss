@@ -2,6 +2,23 @@ main{
     width: 100%;
     height: 100%;
     margin-right: 5%;
+    direction: rtl;
+
+    table{
+        margin: 5% 5%;
+        width: 100%;
+    
+        tr{
+            direction: rtl;
+            text-align: right;
+            th{
+            text-align: right;
+            }
+        }
+        .table_head{
+          border-bottom: 2px solid gray;
+        }
+    }
 }
 
 
@@ -12,11 +29,11 @@ aside.shift_details{
 
 }
 
-main{
+/*main{
     direction: rtl;
     margin-right: 5%;
     width: 100%;
-}
+}*/
 
 .label{
     color:#004381;
