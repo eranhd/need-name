@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         view.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 //        view.setScrollbarFadingEnabled(false);
         view.getSettings().setAllowFileAccess(true);
+
         view.setWebChromeClient(new WebChromeClient() {
 
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
