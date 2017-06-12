@@ -1,6 +1,11 @@
 <main>
+<<<<<<< HEAD
   <nav>
     <button class='btn_select' id='reportLable' (click)='select(1)'>
+=======
+  <nav *ngIf='!showSpesific'>
+    <button class='btn_select' (click)='select(1)'>
+>>>>>>> ca06d75f3a3bfb3aecdd49562845c54ea167e4c2
       {{reportLable}}
     </button>
     <button class='btn_select' id='hotLable' (click)='select(2)'>
@@ -13,7 +18,15 @@
       {{showAllLabel}}
     </button>
   </nav>
-  <div class='map_div'>
+  <div class='map_div' *ngIf='showSpesific'>
+    <sebm-google-map [latitude]="showSpesific.lat" [longitude]="showSpesific.lng" [zoom]='zoom'>
+          <sebm-google-map-marker [latitude]="showSpesific.lat" [longitude]="showSpesific.lng">        
+          </sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
+
+  
+  <div class='map_div' *ngIf='!showSpesific'>
     
     <sebm-google-map *ngIf='showAll' [latitude]="lat" [longitude]="lng" [zoom]='zoom'>
       <div *ngIf='reports'>

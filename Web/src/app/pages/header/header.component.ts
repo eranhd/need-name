@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../../service/report/report.service';
 import { UserService } from '../../service/user/user.service'
-import {Report } from '../../models/Report';
+import { Report } from '../../models/Report';
+import { Shift } from '../../models/Shift';
 import { FirebaseService } from '../../service/firebase/firebase.service';
 
 @Component({
@@ -24,35 +25,49 @@ export class HeaderComponent implements OnInit {
     
     this.index = 0;
     this.shiftIndex = 0;
-    var that = this;
-    let shiftArr = this.firebaseService.shifts;
-    var currArr = [];
+    let event = [];
+    this.firebaseService.shiftObsarvable.subscribe(val=>{
+      for(let s of val)
+        if(this.firebaseService.checkIfShiftBelong(s['$key']))
+          event.push(s);
+    })
+    this.firebaseService.reportObsarvable.subscribe(val=>{
+      for(let s of val)
+        if(this.firebaseService.checkIfReportBelong(s['$key']))
+          event.push(s);
+    })
+    this.firebaseService.hotObsarvable.subscribe(val=>{
+      for(let s of val)
+        if(this.firebaseService.checkIfHotBelong(s['$key']))
+          event.push(s);
+    })
     
     var curr = '';
 
-    // setInterval(()=>{
-      
-    //   if(firebaseService.reports.length != 0 ){
-        
-    //     // if(this.index == shiftArr[this.shiftIndex].reports.length){
-    //     //   this.index = 0;
-    //     //   this.shiftIndex++;
-    //     //   currArr = shiftArr[this.shiftIndex].reports;
-    //     // }
-    //     // if(this.shiftIndex == shiftArr.length){
-    //     //   this.shiftIndex = 0;
-    //     // }
 
+    setInterval(()=>{
+      
+      if(event.length != 0){
+
+        this.index %= event.length;
         
-        
-    //     this.index %= this.firebaseService.reports.length;
-        
-    //     if(this.firebaseService.reports[that.index] != null)
-    //       if(this.firebaseService.reports[that.index].summary)
-    //         that.curr = this.firebaseService.reports[that.index].summary;
-    //     this.index++;
-    //   }
-    // },3000)
+        if(event[this.index] != null){
+          if(event[this.index] instanceof Shift)
+          {
+            let d = new Date(event[this.index].startShift.date);
+            this.curr = "בתאריך " + d.toLocaleDateString +" בשעה " + d.toLocaleTimeString + "התחילה משמרת";
+          }
+          else if(event[this.index] instanceof Report)
+          {
+
+          }
+          // if(event[this.index].date)
+          // let d = new Date()
+          // this.curr = this.firebaseService.reports[that.index].summary;
+        }
+        this.index++;
+      }
+    },3000)
   }
 
   ngOnInit() {
