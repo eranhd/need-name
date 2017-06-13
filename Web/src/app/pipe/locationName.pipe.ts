@@ -4,6 +4,7 @@ import { Location } from '../models/Location';
 @Pipe({ name: 'locationName' })
 
 export class LocationName implements PipeTransform {
+    min : number = -1;
     transform(location: Location): string {
         let name = 'מיקום לא ידוע';
 
@@ -39,7 +40,11 @@ export class LocationName implements PipeTransform {
 
         //generali..
         let data = {
-
+             "-aa": {
+                "lat": 31.7566,
+                "lng": 35.1955,
+                "name": "צומת פת"
+            },
             "-KlZjRuvRaNK8X9sS1Nc": {
                 "lat": 31.6618,
                 "lng": 35.1395,
@@ -139,11 +144,23 @@ export class LocationName implements PipeTransform {
 
 
         for (let loc in data) {//loc is the key
-            if (this.isArea(data[loc].lat, data[loc].lng, location, (data[loc].lng + '').length - 3))
+
+            let num = this.checkDistance(data[loc].lat, location.lat, data[loc].lng, location.lng);
+            if(this.min == -1 || this.min > num)
+            {
+                this.min = num;
                 name = data[loc].name;
+            }
+
+            // if (this.isArea(data[loc].lat, data[loc].lng, location, (data[loc].lng + '').length - 3))
+            //     name = data[loc].name;
         }
 
         return name;
+    }
+
+    checkDistance(x1: number, x2: number, y1: number, y2: number){
+        return Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
     }
 
     isArea(lat: number, lng: number, location, fix: number): boolean {

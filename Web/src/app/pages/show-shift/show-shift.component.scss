@@ -1,28 +1,33 @@
+
 main{
     width: 100%;
     height: 100%;
     margin-right: 5%;
     direction: rtl;
-
     table{
-        margin: 5% 5%;
+        margin: 0 5%;
         width: 100%;
     
         tr{
             direction: rtl;
             text-align: right;
             th{
-            text-align: right;
+                text-align: right;
             }
         }
         .table_head{
-          border-bottom: 2px solid gray;
+            border-bottom: 2px solid gray;
         }
+
     }
+
 }
 
 
-aside.shift_details{
+
+
+header{
+
     direction: rtl;
     margin-right: 5%;
     width: 100%;
