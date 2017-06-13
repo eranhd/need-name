@@ -8,8 +8,8 @@ import { Team } from '../../../../../models/Team';
 })
 export class TeamComponent implements OnInit {
 
-  @Input() team:Team;
-  private teamMember:string;
+  @Input() team: Team;
+  private teamMember: string;
   constructor() { }
 
   ngOnInit() {

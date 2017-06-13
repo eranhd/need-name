@@ -11,26 +11,26 @@ import { UserService } from '../../service/user/user.service';
 export class SettingReportComponent implements OnInit {
 
   label: string;
-  placeHolder: string;            
+  placeHolder: string;
   type: string;
   isValid: boolean;
-  placeHolderId:string; //this is what you want delet
+  placeHolderId: string; //this is what you want delet
 
-  constructor(public settingReportService:SettingReportService,
+  constructor(public settingReportService: SettingReportService,
               public userService: UserService, public router: Router) {
 
               this.isValid = false;
               this.placeHolderId = '';
 
               // if there is no permission, return to the main page:
-               if(!userService.user.details.role.canDirect('SettingReportComponent')) {
+               if (!userService.user.details.role.canDirect('SettingReportComponent')) {
                     this.router.navigate['main'];
-               }     
+               }
    };
 
    public addToInputItem(){
-     console.log(this.generateId() + ' ' +  this.type + ' ' + this.label + ' '+  this.placeHolder);
-     if( !this.label || !this.type || !this.placeHolder || this.label == '' || this.type == '' || this.placeHolder == '')
+     console.log(this.generateId() + ' ' +  this.type + ' ' + this.label + ' ' +  this.placeHolder);
+     if ( !this.label || !this.type || !this.placeHolder || this.label == '' || this.type == '' || this.placeHolder == '')
       return;
     this.settingReportService.addInputItem(this.generateId(), this.type, this.label, this.placeHolder);
     this.cleanInput();
@@ -38,7 +38,7 @@ export class SettingReportComponent implements OnInit {
 
    generateId(): string{
     let str = '';
-    let d = new Date();
+    const d = new Date();
     str = d.getTime + '-' + this.label + '_' + this.type;
     return str;
    }

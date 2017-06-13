@@ -9,7 +9,7 @@ import { ShiftService } from '../../../service/shift/shift.service';
 })
 export class MobileHomeComponent implements OnInit {
 
-  constructor(public router:Router,
+  constructor(public router: Router,
             public shiftService: ShiftService) { }
 
   ngOnInit() {

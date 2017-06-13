@@ -37,7 +37,7 @@ export class MobileSpotComponent implements OnInit {
    /* this.userService.user.updateLastShift(this.shiftService.shift);
     this.firebaseService.updateUser(this.userService.user);
     LocalStorageService.saveUser(this.userService.user);*/
-   
+
   }
 
 

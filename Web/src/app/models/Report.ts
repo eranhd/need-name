@@ -23,7 +23,7 @@ export class Report {
             this.fields = fields;
         else
             this.fields = [];
-        if(position)
+        if (position)
             this.location = new Location(position.coords.longitude, position.coords.latitude);
         if (photoUrl)
             this.photoUrl = photoUrl;

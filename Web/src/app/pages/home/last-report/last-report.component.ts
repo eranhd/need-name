@@ -10,16 +10,16 @@ import { MdDialogModule } from '@angular/material';
 })
 export class LastReportComponent implements OnInit {
 
-  @Input() report:Report;
-  private showPopup:boolean;
+  @Input() report: Report;
+  private showPopup: boolean;
 
-  constructor(public dialog:MdDialogModule) { 
+  constructor(public dialog: MdDialogModule) {
     this.showPopup = false;
-   
+
   }
 
   private setPopup(){
-    
+
   /*  console.log(Report);
     this.showPopup = !this.showPopup;*/
     /*this.dialog.open(DialogLastReport,{
@@ -30,7 +30,7 @@ export class LastReportComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
 }

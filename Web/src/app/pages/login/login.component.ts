@@ -15,40 +15,40 @@ import { RoleService } from '../../service/role/role.service';
 
 //var b:boolean;
 export class LoginComponent implements OnInit {
-  message: string = 'כדי להיכנס למערכת עליכם להיות רשומים, להרשמה דברו עם הרכז האזורי';
+  message = 'כדי להיכנס למערכת עליכם להיות רשומים, להרשמה דברו עם הרכז האזורי';
   error: string;
-  title: string = "התחברות למערכת";
+  title = 'התחברות למערכת';
   email: string;
   pass: string;
-  isLogin: boolean = false;
+  isLogin = false;
 
   constructor(public router: Router,
-    
+
     public firebaseService: FirebaseService,
     public role: RoleService
     ) {
     if (window.innerWidth < 800) {
       this.router.navigate(['mobile_login']);
     }
-    
+
 
   }
 
   public signIn() {
     this.isLogin = true;
-    if(this.email == '' || this.pass == ''){
+    if (this.email == '' || this.pass == ''){
       this.isLogin = false;
       return;
     }
-    firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(user=>{
+    firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(user => {
       console.log('login succsess');
       this.firebaseService.initUser('main');
-    }).catch(error=>{
+    }).catch(error => {
         console.log(error.message);
         this.isLogin = false;
       this.error = 'אנא נסה שנית';
-    });    
-    
+    });
+
 
 
 

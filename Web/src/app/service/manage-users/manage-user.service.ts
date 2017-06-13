@@ -13,7 +13,7 @@ export class ManageUserService {
   public signUp(email, password){
 
   };
-  
+
   public getAllUsers(){
 
   };

@@ -17,20 +17,20 @@ export class ShiftService {
     // else{
     //   this.isShiftStart = true;
     // }
-    if(LocalStorageService.loadShift()){
+    if (LocalStorageService.loadShift()){
       this.shift = LocalStorageService.loadShift();
       this.id = LocalStorageService.getId();
       this.isShiftStart = true;
     }
    }
 
-  startShift(location:Location, team: Team){
-    this.shift = new Shift(location,team);
+  startShift(location: Location, team: Team){
+    this.shift = new Shift(location, team);
     this.isShiftStart = true;
   }
 
-  addReport(report: Report, id:string){
-    this.shift.addReport(report, 1,id);
+  addReport(report: Report, id: string){
+    this.shift.addReport(report, 1, id);
     LocalStorageService.saveShift(this.shift, this.id);
   }
 

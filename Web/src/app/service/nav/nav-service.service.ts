@@ -4,8 +4,8 @@ import {NavItem} from '../../models/nav';
 @Injectable()
 export class NavServiceService {
 
-  private arrItems:NavItem[];
-  
+  private arrItems: NavItem[];
+
   constructor() {
     this.arrItems = [
       new NavItem('ראשי', 'home', 'home', 'home'),
@@ -15,12 +15,12 @@ export class NavServiceService {
       // new NavItem('דוחות', 'report', 'report', 'report'),
       new NavItem('מפה', 'maps', 'maps', 'map')
       // new NavItem('סטטיסטיקות', 'graphs', 'graphs', 'insert_chart')
-      
-      
+
+
     ];
    };
 
-   
+
 
    public getArrItems(){
      return this.arrItems;

@@ -10,9 +10,9 @@ import { UserService } from '../../service/user/user.service'
 })
 export class NavComponent implements OnInit {
 
-  public navSer:NavServiceService;
-  public open:boolean;
-  constructor(public userService:UserService) { 
+  public navSer: NavServiceService;
+  public open: boolean;
+  constructor(public userService: UserService) {
     this.navSer = new NavServiceService();
     this.open = false;
   }

@@ -10,9 +10,9 @@ import { DateComponent } from './date/date.component';
 })
 export class TitleComponent implements OnInit {
 
-  @Input() date:string;
-  @Input() time:string;
-  @Input() team:Team;
+  @Input() date: string;
+  @Input() time: string;
+  @Input() team: Team;
 
   constructor() { }
 

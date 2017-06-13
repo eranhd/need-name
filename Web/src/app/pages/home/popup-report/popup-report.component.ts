@@ -11,7 +11,7 @@ import { BodyComponent } from './body/body.component';
 export class PopupReportComponent implements OnInit {
 
 
-  @Input() report:Report;
+  @Input() report: Report;
   constructor() { }
 
   ngOnInit() {

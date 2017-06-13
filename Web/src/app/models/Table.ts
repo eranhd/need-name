@@ -1,10 +1,10 @@
 export class TableItem{
-    private type:string;
-    private col:number;
-    private head:string[];
-    private rows:string[][];
+    private type: string;
+    private col: number;
+    private head: string[];
+    private rows: string[][];
 
-    constructor(type:string, col:number, head:string[]){
+    constructor(type: string, col: number, head: string[]){
         this.type = type;
         this.col = col;
         this.head = head;
@@ -14,7 +14,7 @@ export class TableItem{
     public getTypeRows(){
     };
 
-    public addRow(row:string[]){
+    public addRow(row: string[]){
         this.rows.push(row);
     };
 

@@ -11,7 +11,7 @@ export class ReportService {
   private lastReport: FirebaseObjectObservable<any>;
   public lastReportArr: Report[];
 
-  constructor(private af: AngularFireDatabase, public userService:UserService) {
+  constructor(private af: AngularFireDatabase, public userService: UserService) {
     this.lastReportArr = [];
 
   };
@@ -27,9 +27,9 @@ export class ReportService {
 
     this.lastReport.subscribe(snapshot => {
       this.lastReportArr = [];
-      var i = 0;
+      let i = 0;
       console.log(snapshot);
-      for (var key in snapshot) {
+      for (let key in snapshot) {
         this.lastReportArr.push(snapshot[key]);
         i++;
       }

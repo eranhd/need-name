@@ -10,7 +10,7 @@ import { FirebaseService } from './service/firebase/firebase.service';
 export class AppComponent {
   title = 'app works!';
 
-  showNav:boolean;
+  showNav: boolean;
   constructor(){
     this.showNav = true;
   };

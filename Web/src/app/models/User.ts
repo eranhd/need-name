@@ -6,7 +6,7 @@ export class User {
 
     details: Details;
     shiftsId: string[];
-    
+
     shifts: Shift[];
     // thisShift:Shift;
     // coldSpot:Location;
@@ -17,14 +17,14 @@ export class User {
         if (user) {//copy constructor
             this.shifts = [];
 
-  
+
             if (user.shiftsId) {
                 this.shiftsId = user.shiftsId;
             }
             else {
                 this.shiftsId = [];
             }
-            
+
             this.details = new Details(user.details);
 
         }
@@ -32,7 +32,7 @@ export class User {
             this.details = new Details();
             this.shifts = [];
             this.shiftsId = [];
-            
+
         }
     }
 
@@ -43,9 +43,9 @@ export class User {
     }
 
     updateLastShift(shift: Shift) {
-        
+
         this.shifts[this.shifts.length - 1] = shift;
-        
+
     }
 }
 
@@ -86,7 +86,7 @@ export class Details {
     }
 
     public addSon(son: string) {
-        if(!this._sons)
+        if (!this._sons)
             this._sons = [];
         this._sons.push(son);
     }
@@ -100,24 +100,24 @@ export class Role {
 
     type: number;
     name: string;
-    
+
 
     constructor(type: number, name: string) {
-        if(type != 1 && type != 2 && type != 3 && type != 4) {
+        if (type != 1 && type != 2 && type != 3 && type != 4) {
                 // alert("סוג תפקיד לא קיים");
         }
         else{
              this.type = type;
         }
 
-        if(name != 'parentPatrol' && name != 'dtPatrol') {
+        if (name != 'parentPatrol' && name != 'dtPatrol') {
                 // alert("שם תפקיד לא קיים");
         }
         else {
             this.name = name;
-        }    
+        }
     }
-    
+
     public canDirect(path) {
         // 1 doesnt have any web page Permission:
         if (this.type == 1 && path == 'main'){
@@ -125,7 +125,7 @@ export class Role {
         }
 
         // 2 doesnt have settingReport web page Permission:
-        if(this.type == 2 && path == 'settingReport') {
+        if (this.type == 2 && path == 'settingReport') {
             return false;
         }
 

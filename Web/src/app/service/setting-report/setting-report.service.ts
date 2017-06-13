@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InputItem } from '../../models/input-item';
 import { database } from 'firebase';
-import { AngularFireDatabase ,FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase , FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import {UserService} from '../user/user.service';
 @Injectable()
 export class SettingReportService {
@@ -14,13 +14,13 @@ export class SettingReportService {
 
   constructor(
     private af: AngularFireDatabase,
-    public userService:UserService
+    public userService: UserService
   ) {
-      if(firebase.auth().currentUser.uid != null){
+      if (firebase.auth().currentUser.uid != null){
           this.itemToSave = af.list('/users/' + firebase.auth().currentUser.uid + '/reports');
       }
 
-      if(this.userService.user.details.role.name == 'parentPatrol'){
+      if (this.userService.user.details.role.name == 'parentPatrol'){
 
         this.inputsParentPatrol = [];
         this.item = af.object('/report_fields', { preserveSnapshot: true });
@@ -54,15 +54,15 @@ export class SettingReportService {
           this.inputsDtPatrol.unshift(new InputItem('summary', 'text', 'תמצית של האירוע', 'תמצית של האירוע'));
         });
 
-   
+
      }
 
   };
 
   public addInputItem(id: string, type: string, label: string, placeHolder: string) {
-      var obj = new InputItem(id, type, label, placeHolder);
-    
-   if(this.userService.user.details.role.name == 'parentPatrol'){
+      const obj = new InputItem(id, type, label, placeHolder);
+
+   if (this.userService.user.details.role.name == 'parentPatrol'){
 
       this.inputsParentPatrol.push(obj);
       this.item.update({ 'parentPatrol_report_fields': this.inputsParentPatrol});
@@ -74,7 +74,7 @@ export class SettingReportService {
   };
 
   public getInputs() {
-     if(this.userService.user.details.role.name == 'parentPatrol'){
+     if (this.userService.user.details.role.name == 'parentPatrol'){
         return this.inputsParentPatrol;
      }
      else{
@@ -82,26 +82,26 @@ export class SettingReportService {
      }
   };
 
-  public deleteField(placeHolderId:string){
-    if(placeHolderId== ''){
+  public deleteField(placeHolderId: string){
+    if (placeHolderId == ''){
       return;
     }
     else{
-      if(this.userService.user.details.role.name == 'parentPatrol'){
-        let size= this.inputsParentPatrol.length;
-        for(let i=0;i<size;i++){
-        if(this.inputsParentPatrol[i].placeHolder == placeHolderId){
-        this.inputsParentPatrol.splice(i,1);
+      if (this.userService.user.details.role.name == 'parentPatrol'){
+        const size = this.inputsParentPatrol.length;
+        for (let i = 0; i < size; i++){
+        if (this.inputsParentPatrol[i].placeHolder == placeHolderId){
+        this.inputsParentPatrol.splice(i, 1);
         this.item.update({ 'parentPatrol_report_fields': this.inputsParentPatrol });
         break;
        }
      }
       }
     else{
-        let size= this.inputsDtPatrol.length;
-        for(let i=0;i<size;i++){
-        if(this.inputsDtPatrol[i].placeHolder == placeHolderId){
-        this.inputsDtPatrol.splice(i,1);
+        const size = this.inputsDtPatrol.length;
+        for (let i = 0; i < size; i++){
+        if (this.inputsDtPatrol[i].placeHolder == placeHolderId){
+        this.inputsDtPatrol.splice(i, 1);
         this.item.update({ 'DtPatrol_report_fields': this.inputsDtPatrol });
         break;
        }

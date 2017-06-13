@@ -14,7 +14,7 @@ import { FirebaseService } from '../../../service/firebase/firebase.service';
 export class MobileMainComponent implements OnInit {
 
   constructor(public router: Router, private _pushNotifications: PushNotificationsService, public firebaseService: FirebaseService) {
-    if(!this.firebaseService.isUserInit)
+    if (!this.firebaseService.isUserInit)
       this.router.navigate(['mobile_login']);
 
   }

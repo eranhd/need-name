@@ -1,8 +1,8 @@
 export class Team{
 
-    lead:string;
-    members:Member[];
-    teamNum:number;
+    lead: string;
+    members: Member[];
+    teamNum: number;
 
 
     constructor(){
@@ -14,13 +14,13 @@ export class Team{
 
     initMembersArray(num){
         this.members = new Array(num);
-        for(let i = 0; i < this.members.length; i++){
+        for (let i = 0; i < this.members.length; i++){
             this.members[i] = new Member();
             this.members[i].index = i;
         }
     }
 
-    
+
 }
 
 export class Member{

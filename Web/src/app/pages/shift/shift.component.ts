@@ -11,8 +11,8 @@ import { Shift } from '../../models/Shift';
 })
 export class ShiftComponent implements OnInit {
 
-  numToShow: number = 10;
-  indexToShow: number = 0;
+  numToShow = 10;
+  indexToShow = 0;
 
   data: Array<Shift>;
   originalData: Array<Shift>;
@@ -25,14 +25,14 @@ export class ShiftComponent implements OnInit {
   fromDate: Date;
   toDate: Date;
 
-  fromReportNum: string = "0";
-  toReportNum: string = "0";
+  fromReportNum = '0';
+  toReportNum = '0';
 
-  fromHotNum: string = "0";
-  toHotNum: string = "0";
+  fromHotNum = '0';
+  toHotNum = '0';
 
-  fromColdNum: string = "0";
-  toColdNum: string = "0";
+  fromColdNum = '0';
+  toColdNum = '0';
 
   constructor(public firebseService: FirebaseService,
     // private locPipe: LocationName
@@ -42,8 +42,8 @@ export class ShiftComponent implements OnInit {
     for (let i = 1; i < 20; i++)
       this.numData.push(i + '');
     this.firebseService.shiftObsarvable.subscribe(val => {
-      let arr = [];
-      for (let item of val)
+      const arr = [];
+      for (const item of val)
         if (this.firebseService.checkIfShiftBelong(item['$key'])) {
           arr.push(item);
         }
@@ -53,8 +53,8 @@ export class ShiftComponent implements OnInit {
   }
 
   search(val: Array<Shift>) {
-    let shifts = [];
-    for (let shift of val) {
+    const shifts = [];
+    for (const shift of val) {
       if (this.leadName && this.leadName != '') {
         if (shift.team.lead.replace(/ /g, '') != this.leadName.replace(/ /g, ''))
           continue;
@@ -97,50 +97,50 @@ export class ShiftComponent implements OnInit {
 
   generateCvs() {
     // console.log(this.data);
-    let d = this.data;
-    let cv = [[]]
-    cv.push(["תאריך", "שעת התחלה", "שעת סיום", "ראש צוות", "מספר אנשי צוות", "מספר אירועים", "מספר נקודות קרות", "מספר נקודות חמות"])
-    for (let shift of d) {
-      let a = [];
+    const d = this.data;
+    const cv = [[]]
+    cv.push(['תאריך', 'שעת התחלה', 'שעת סיום', 'ראש צוות', 'מספר אנשי צוות', 'מספר אירועים', 'מספר נקודות קרות', 'מספר נקודות חמות'])
+    for (const shift of d) {
+      const a = [];
       if (shift.stratShift) {
-        let d = new Date(shift.stratShift.date)
+        const d = new Date(shift.stratShift.date)
         a.push(d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear());
         // d = new Date(shift.stratShift.date)
         a.push(d.getHours() + ':' + d.getMinutes());
       }
       else {
-        a.push("תאריך לא ידוע");
-        a.push("שעה לא ידועה");
+        a.push('תאריך לא ידוע');
+        a.push('שעה לא ידועה');
       }
       if (shift.endShift) {
-        let d = new Date(shift.endShift.date)
+        const d = new Date(shift.endShift.date)
         a.push(d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear());
       }
       else
-        a.push("שעה לא ידועה")
+        a.push('שעה לא ידועה')
       // a.push(shift.stratShift == null? "תאריך לא ידוע" : );
       // a.push(shift.stratShift == null? "שעה לא יועה" : shift.stratShift.date.toLocaleTimeString);
       // a.push(shift.endShift == null? "תאריך לא ידוע" : shift.endShift.date.toLocaleTimeString);
-      a.push(shift.team == null ? "לא ידוע" : shift.team.lead);
-      a.push(shift.team == null ? "לא ידוע" : shift.team.members.length);
-      a.push(shift.reportsId == null ? "0" : shift.reportsId.length);
-      a.push(shift.coldSpotId == null ? "0" : shift.coldSpotId.length);
-      a.push(shift.hotSpotId == null ? "0" : shift.hotSpotId.length);
+      a.push(shift.team == null ? 'לא ידוע' : shift.team.lead);
+      a.push(shift.team == null ? 'לא ידוע' : shift.team.members.length);
+      a.push(shift.reportsId == null ? '0' : shift.reportsId.length);
+      a.push(shift.coldSpotId == null ? '0' : shift.coldSpotId.length);
+      a.push(shift.hotSpotId == null ? '0' : shift.hotSpotId.length);
       cv.push(a);
     }
 
 
-    var csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+    let csvContent = 'data:text/csv;charset=utf-8,\uFEFF';
     cv.forEach(function (infoArray, index) {
 
-      let dataString = infoArray.join(",");
-      csvContent += index < cv.length ? dataString + "\n" : dataString;
+      const dataString = infoArray.join(',');
+      csvContent += index < cv.length ? dataString + '\n' : dataString;
     });
     console.log(csvContent);
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "my_data.csv");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'my_data.csv');
     link.setAttribute('style', 'display:block;width:200px;height:200px;font-size:50px;')
     document.body.appendChild(link); // Required for FF
 
@@ -153,7 +153,7 @@ export class ShiftComponent implements OnInit {
       return;
     this.indexToShow += this.numToShow;
     this.search(this.originalData);
-    
+
   }
   showPrev() {
     // console.log(this.indexToShow);

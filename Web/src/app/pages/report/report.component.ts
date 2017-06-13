@@ -22,7 +22,7 @@ export class ReportComponent implements OnInit {
   // date:Date;
   summary: string;
   photoUrl: string;
-  isSubmit: boolean = false;
+  isSubmit = false;
   constructor(public settingReportService: SettingReportService,
     private router: Router,
     public activedRouter: ActivatedRoute,
@@ -45,16 +45,16 @@ export class ReportComponent implements OnInit {
     if ((<HTMLInputElement>document.getElementById('summary')) != null) {
       this.summary = (<HTMLInputElement>document.getElementById('summary')).value;
     }
-    let filds: ReportField[] = [];
-    var items = this.settingReportService.getInputs();
-    for (var i = 0; i < items.length; i++) {//add all fileds to array
+    const filds: ReportField[] = [];
+    const items = this.settingReportService.getInputs();
+    for (let i = 0; i < items.length; i++) {//add all fileds to array
       if (items[i].id != 'summary')
         filds.push(new ReportField(items[i].label, (<HTMLInputElement>document.getElementById(items[i].id)).value));
     }
 
     navigator.geolocation.getCurrentPosition((position) => {
 
-      report = new Report(filds, this.summary, position, this.photoUrl);//create new report
+      report = new Report(filds, this.summary, position, this.photoUrl); //create new report
 
       this.firebaseService.saveReport(report, this.id + '');
       LocalStorageService.saveUser(this.userService.user);
@@ -63,17 +63,17 @@ export class ReportComponent implements OnInit {
     },
       (error) => {
         this.isSubmit = false;
-        alert("אנא הפעל מיקום");
+        alert('אנא הפעל מיקום');
       });
 
   };
 
   getImage(event) {
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = (event: ProgressEvent) => {
-      let d = new Date();
-      let idImage = d.getDate() + '_' + d.getMonth() + '_' + d.getFullYear() + '__' + d.getHours() + '_' + d.getMinutes() + '_' + d.getSeconds() + '_' + d.getMilliseconds();
-      var src = event.target;
+      const d = new Date();
+      const idImage = d.getDate() + '_' + d.getMonth() + '_' + d.getFullYear() + '__' + d.getHours() + '_' + d.getMinutes() + '_' + d.getSeconds() + '_' + d.getMilliseconds();
+      const src = event.target;
 
       firebase.storage().ref('spotImage/' + idImage).putString(src['result'], 'data_url', {
         contentType: 'image/jpeg'

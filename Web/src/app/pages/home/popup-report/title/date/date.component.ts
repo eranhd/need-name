@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DateComponent implements OnInit {
 
-  @Input() date:string;
-  @Input() time:string;
+  @Input() date: string;
+  @Input() time: string;
   constructor() { }
 
   ngOnInit() {

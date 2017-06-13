@@ -16,9 +16,9 @@ import { LocalStorageService } from '../../../service/local-storage/local-storag
 export class EndPatrolComponent implements OnInit {
 
   filling: string;
-  summaryT:string;
-  unusualEvents:string;
-  dilemmas:string;
+  summaryT: string;
+  unusualEvents: string;
+  dilemmas: string;
 
   constructor(public router: Router,
     public shiftService: ShiftService,
@@ -26,27 +26,27 @@ export class EndPatrolComponent implements OnInit {
     public userService: UserService) {
 
     this.filling = '';
-    this.summaryT='';
-    this.dilemmas='';
+    this.summaryT = '';
+    this.dilemmas = '';
     this.unusualEvents = '';
   }
 
 
-  public endThisShift(filling: string,summaryT:string,dilemmas:string,unusualEvents:string) {
-    
+  public endThisShift(filling: string, summaryT: string, dilemmas: string, unusualEvents: string) {
+
     LocalStorageService.clearUser();
     navigator.geolocation.getCurrentPosition((position) => {
-      this.shiftService.shift.initEndShift(filling,summaryT,dilemmas,unusualEvents, position);
+      this.shiftService.shift.initEndShift(filling, summaryT, dilemmas, unusualEvents, position);
       this.shiftService.isShiftStart = false;
-      LocalStorageService.clearUser(); 
+      LocalStorageService.clearUser();
       this.fireService.updateShift();
       LocalStorageService.clearShift();
-      
+
       this.router.navigate(['mobile_main']);
     }, (error) => {
       alert('אנא הפעל מיקום');
     });
-    
+
   }
   ngOnInit() {
   }

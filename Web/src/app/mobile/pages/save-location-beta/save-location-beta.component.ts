@@ -10,10 +10,10 @@ import { Observable } from 'rxjs';
 })
 export class SaveLocationBetaComponent implements OnInit {
 
-  @Input() message: string = '';
-  @Input() fixed: number = 0;
-  name: string = '';
-  title: string = 'שדה זה מופיע רק בגירסה ביטא';
+  @Input() message = '';
+  @Input() fixed = 0;
+  name = '';
+  title = 'שדה זה מופיע רק בגירסה ביטא';
   isSave: Observable<boolean>;
   isProcess: Observable<boolean>;
 
@@ -34,7 +34,7 @@ export class SaveLocationBetaComponent implements OnInit {
         observe.next(true);
         observe.complete()
       })
-      let location = new Location(position.coords.longitude, position.coords.latitude);
+      const location = new Location(position.coords.longitude, position.coords.latitude);
 
       if (this.fixed != 0) {
         let fix: string = location.lat + '';

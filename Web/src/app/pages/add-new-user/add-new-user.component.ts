@@ -22,9 +22,9 @@ export class AddNewUserComponent implements OnInit {
   constructor(public userService: UserService,
               public firebaseService: FirebaseService
               ) {
-                this.types = [{value: 1 ,valueToShow: 'צוות סיור' }, 
-                {value: 2 ,valueToShow: 'רכז אזור' },
-                {value: 3 ,valueToShow: 'מנהל כללי' }];//need to remove
+                this.types = [{value: 1 , valueToShow: 'צוות סיור' },
+                {value: 2 , valueToShow: 'רכז אזור' },
+                {value: 3 , valueToShow: 'מנהל כללי' }]; //need to remove
   //    for(let str of this.userService._user.details.role.getRolesName())
           // this.types.push({value: str, valueToShow: str});
           this.name = '';
@@ -33,11 +33,11 @@ export class AddNewUserComponent implements OnInit {
   }
 
    public signup(){
-     if( !(this.email == '' || !this.email || this.password == '' || !this.password)){
+     if ( !(this.email == '' || !this.email || this.password == '' || !this.password)){
         this.newUser = new User();
         this.newUser.details.name = this.name;
         // console.log(this.type + ' , ' + this.role);
-         if(this.userService.user.details.role.type == 4)
+         if (this.userService.user.details.role.type == 4)
         {
           this.newUser.details.set_role(parseInt(this.role), this.type);
         }
@@ -51,7 +51,7 @@ export class AddNewUserComponent implements OnInit {
    };
 
    clear(){
-     
+
    }
   ngOnInit() {
   }

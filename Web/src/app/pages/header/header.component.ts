@@ -13,51 +13,51 @@ import { FirebaseService } from '../../service/firebase/firebase.service';
 export class HeaderComponent implements OnInit {
 
 
-  newsData:string[];
-  curr:string;
-  index:number;
+  newsData: string[];
+  curr: string;
+  index: number;
   shiftIndex: number;
 
 
-  constructor(public userService:UserService, 
-              public reportService:ReportService,
-              public firebaseService: FirebaseService) { 
-    
+  constructor(public userService: UserService,
+              public reportService: ReportService,
+              public firebaseService: FirebaseService) {
+
     this.index = 0;
     this.shiftIndex = 0;
-    let event = [];
-    this.firebaseService.shiftObsarvable.subscribe(val=>{
-      for(let s of val)
-        if(this.firebaseService.checkIfShiftBelong(s['$key']))
+    const event = [];
+    this.firebaseService.shiftObsarvable.subscribe(val => {
+      for (const s of val)
+        if (this.firebaseService.checkIfShiftBelong(s['$key']))
           event.push(s);
     })
-    this.firebaseService.reportObsarvable.subscribe(val=>{
-      for(let s of val)
-        if(this.firebaseService.checkIfReportBelong(s['$key']))
+    this.firebaseService.reportObsarvable.subscribe(val => {
+      for (const s of val)
+        if (this.firebaseService.checkIfReportBelong(s['$key']))
           event.push(s);
     })
-    this.firebaseService.hotObsarvable.subscribe(val=>{
-      for(let s of val)
-        if(this.firebaseService.checkIfHotBelong(s['$key']))
+    this.firebaseService.hotObsarvable.subscribe(val => {
+      for (const s of val)
+        if (this.firebaseService.checkIfHotBelong(s['$key']))
           event.push(s);
     })
-    
-    var curr = '';
+
+    const curr = '';
 
 
-    setInterval(()=>{
-      
-      if(event.length != 0){
+    setInterval(() => {
+
+      if (event.length != 0){
 
         this.index %= event.length;
-        
-        if(event[this.index] != null){
-          if(event[this.index] instanceof Shift)
+
+        if (event[this.index] != null){
+          if (event[this.index] instanceof Shift)
           {
-            let d = new Date(event[this.index].startShift.date);
-            this.curr = "בתאריך " + d.toLocaleDateString +" בשעה " + d.toLocaleTimeString + "התחילה משמרת";
+            const d = new Date(event[this.index].startShift.date);
+            this.curr = 'בתאריך ' + d.toLocaleDateString + ' בשעה ' + d.toLocaleTimeString + 'התחילה משמרת';
           }
-          else if(event[this.index] instanceof Report)
+          else if (event[this.index] instanceof Report)
           {
 
           }
@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
         }
         this.index++;
       }
-    },3000)
+    }, 3000)
   }
 
   ngOnInit() {

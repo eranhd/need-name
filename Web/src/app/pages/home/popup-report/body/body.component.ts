@@ -8,7 +8,7 @@ import { ReportField } from '../../../../models/Report';
 })
 export class BodyComponent implements OnInit {
 
-  @Input() fields:ReportField[];
+  @Input() fields: ReportField[];
 
   constructor() {
     console.log(this.fields);

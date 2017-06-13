@@ -18,7 +18,7 @@ import { Location } from '../../models/Location';
 export class FirebaseService {
 
   private itemToSave: FirebaseListObservable<any>;
-  private userToSave: FirebaseListObservable<any>;//this user and all report saves in firebase
+  private userToSave: FirebaseListObservable<any>; //this user and all report saves in firebase
   private shiftsToSave: FirebaseListObservable<any>;
   private reportsToSave: FirebaseListObservable<any>;
   private database;
@@ -39,7 +39,7 @@ export class FirebaseService {
 
   sonsObsarvable: FirebaseListObservable<any>[];
 
-  isUserInit: boolean  = false;
+  isUserInit  = false;
 
   shifts: Shift[];
   reports: Report[];
@@ -59,7 +59,7 @@ export class FirebaseService {
 
     this.shifts = [];
     this.userToSave = afDb.list('/users');
-    this.shiftsToSave = this.afDb.list('/shifts');// refernce  to shifts
+    this.shiftsToSave = this.afDb.list('/shifts'); // refernce  to shifts
     this.initLocations();
 
 
@@ -131,16 +131,16 @@ export class FirebaseService {
           // console.log(item)
           if (item.reportsId) {
 
-            for (let report of item.reportsId) {
+            for (const report of item.reportsId) {
               this.reportsId.push(report);
             }
           }
           if (item.coldSpotId)
-            for (let id of item.coldSpotId) {
+            for (const id of item.coldSpotId) {
               this.coldSpotId.push(id);
             }
           if (item.hotSpotId)
-            for (let id of item.hotSpotId) {
+            for (const id of item.hotSpotId) {
               this.hotSpotId.push(id);
             }
         }
@@ -172,7 +172,7 @@ export class FirebaseService {
   }
 
   searchInSons(id) {
-    for (let i of this.listenSons)
+    for (const i of this.listenSons)
       if (i == id)
         return true;
     return false;
@@ -183,7 +183,7 @@ export class FirebaseService {
       this.shiftsId = [];
       return false;
     }
-    for (let i of this.shiftsId)
+    for (const i of this.shiftsId)
       if (i == id)
         return true;
     return false;
@@ -197,15 +197,15 @@ export class FirebaseService {
     else
       return; // stop
     //console.log(this.listenSons);
-    let listen: FirebaseListObservable<any> = this.afDb.list('users/' + id);
+    const listen: FirebaseListObservable<any> = this.afDb.list('users/' + id);
     listen.subscribe(val => {
       //console.log(val)
       if (val[0]._sons) {
-        for (let id of val[0]._sons)
+        for (const id of val[0]._sons)
           this.listenToSon(id);
       }
       if (val.length > 1)
-        for (let shift of val[1]) {
+        for (const shift of val[1]) {
           if (!this.searchInShiftId(shift))
             this.shiftsId.push(shift);
         }
@@ -221,19 +221,19 @@ export class FirebaseService {
   initUser(goto?: string) {
 
     firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(snapshot => {
-      
+
       this.userService._user = snapshot.val();
       if (this.userService._user.shiftsId) {
-        for (let id of this.userService._user.shiftsId) {
-      
+        for (const id of this.userService._user.shiftsId) {
+
           if (!this.shiftsId)
             this.shiftsId = [];
           this.shiftsId.push(id)
         }
       }
-      
 
-      for (let id of this.userService._user.details._sons)
+
+      for (const id of this.userService._user.details._sons)
         this.listenToSon(id);
       this.getAllDataFromDb();
       this.isUserInit = true;
@@ -244,20 +244,25 @@ export class FirebaseService {
 
   }
   initLocations() {
-    firebase.database().ref('/locations/').once('value', ids => {
-      for (let key in ids) {
-        if (!this.locationsId)
-          this.locationsId = [];
-        this.locationsId.push(key)
-      }
-      for (let id of this.locationsId) {
-        firebase.database().ref('/locations/' + id).once('value').then(loc => {
-          if (!this.locations)
-            this.locations = [];
-          this.locations.push(loc);
-        }).catch(error => { console.log(error.message) })
-      }
-    })
+    this.afDb.list('locations').subscribe(val => {
+      console.log(val);
+      this.locations = val;
+    });
+    // firebase.database().ref('/locations/').once('value', ids => {
+    //   for (let key in ids) {
+    //     if (!this.locationsId)
+    //       this.locationsId = [];
+    //     this.locationsId.push(key)
+    //   }
+    //   for (let id of this.locationsId) {
+    //     firebase.database().ref('/locations/' + id).once('value').then(loc => {
+    //       if (!this.locations)
+    //         this.locations = [];
+    //       this.locations.push(loc);
+    //     }).catch(error => { console.log(error.message) })
+    //   }
+    //   console.log(this.locations);
+    // })
   }
 
 
@@ -276,7 +281,7 @@ export class FirebaseService {
 
   }
 
-  updateShift() {//this will call after add report to shift 
+  updateShift() {//this will call after add report to shift
     // console.log('in update shift ' + this.shiftService.id);
     this.shiftsToSave.update(this.shiftService.id, this.shiftService.shift).then(resolve => {
       console.log('shift update');
@@ -285,14 +290,14 @@ export class FirebaseService {
     });
   }
 
-  saveReport(report: Report, id: string) {//when want to save new report, then i save the report in new id and add the id to reportsid 
+  saveReport(report: Report, id: string) {//when want to save new report, then i save the report in new id and add the id to reportsid
     console.log(report);
     if (id == '2') {//save hot spot
       this.saveHotSpot(report);
     }
     else if (id == '1') {//save just report
       this.afDb.list('/reports').push(report).then(resolve => {
-        let id = resolve.path.o[1];
+        const id = resolve.path.o[1];
         console.log(resolve.path.o[1]);
         this.shiftService.addReport(report, id);
         this.updateShift();
@@ -304,7 +309,7 @@ export class FirebaseService {
 
   saveHotSpot(report: Report) {
     this.afDb.list('/hotSpots').push(report).then(resolve => {
-      let id = resolve.path.o[1];
+      const id = resolve.path.o[1];
       console.log(resolve.path.o[1]);
       this.shiftService.addHotSpot(id);
       this.updateShift();
@@ -315,7 +320,7 @@ export class FirebaseService {
 
   saveColdSpot(location: Location) {
     this.afDb.list('/coldSpots').push(location).then(resolve => {
-      let id = resolve.path.o[1];
+      const id = resolve.path.o[1];
       console.log(resolve.path.o[1]);
       this.shiftService.addColdSpot(id);
       this.updateShift();
@@ -342,7 +347,7 @@ export class FirebaseService {
     if (id) {
       if (!this.shiftsId || this.shiftsId.length == 0)
         return false;
-      for (let i of this.shiftsId)
+      for (const i of this.shiftsId)
         if (i == id) {
           return true;
         }
@@ -354,7 +359,7 @@ export class FirebaseService {
     if (id) {
       if (!this.reportsId || this.reportsId.length == 0)
         return false;
-      for (let i of this.reportsId)
+      for (const i of this.reportsId)
         if (i == id.$key || i == id) {
           return true;
         }
@@ -366,7 +371,7 @@ export class FirebaseService {
     if (id) {
       if (!this.hotSpotId || this.hotSpotId.length == 0)
         return false;
-      for (let i of this.hotSpotId)
+      for (const i of this.hotSpotId)
         if (i == id.$key || i == id) {
           return true;
         }
@@ -378,7 +383,7 @@ export class FirebaseService {
     if (id) {
       if (!this.coldSpotId || this.coldSpotId.length == 0)
         return false;
-      for (let i of this.coldSpotId)
+      for (const i of this.coldSpotId)
         if (i == id.$key || i == id) {
           return true;
         }
@@ -388,7 +393,7 @@ export class FirebaseService {
 
   getShift(id: string) {
     return this.shiftObsarvable.map(val => {
-      for (let shift of val)
+      for (const shift of val)
         if (shift['key'] == id) {
           return shift;
         }
@@ -404,21 +409,21 @@ export class FirebaseService {
       s = this.afDb.list('shifts/' + id);
       s.subscribe(val => {
         console.log(val);
-        for (let item of val) {
+        for (const item of val) {
           if (item.$key == 'coldSpotId')
-            for (let c of item)
+            for (const c of item)
               this.removeData('coldSpots', c);
           if (val.$key == 'hotSpotId')
-            for (let h of item)
+            for (const h of item)
               this.removeData('hotSpots', h);
 
           if (val.$key == 'reportsId')
-            for (let r of item)
+            for (const r of item)
               this.removeData('reports', r);
 
         }
-        firebase.database().ref('/' + type + '/' + id).remove().then(res => { 
-          console.log(res) }).catch(err => 
+        firebase.database().ref('/' + type + '/' + id).remove().then(res => {
+          console.log(res) }).catch(err =>
           { console.log(err.message) });
         return;
       })
@@ -432,12 +437,12 @@ export class FirebaseService {
   }
 
   public initFirebase() {
-    var config = {
-      apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
-      authDomain: "anti-drugs-jerusalem.firebaseapp.com",
-      databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
-      storageBucket: "anti-drugs-jerusalem.appspot.com",
-      messagingSenderId: "944977183444"
+    const config = {
+      apiKey: 'AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE',
+      authDomain: 'anti-drugs-jerusalem.firebaseapp.com',
+      databaseURL: 'https://anti-drugs-jerusalem.firebaseio.com',
+      storageBucket: 'anti-drugs-jerusalem.appspot.com',
+      messagingSenderId: '944977183444'
     };
     firebase.initializeApp(config);
   };

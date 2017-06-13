@@ -18,15 +18,15 @@ export class MobileLoginComponent implements OnInit {
   email: any;
   password: any;
   error: string;
-  title: string = "כניסה";
-  isLogin: boolean = false;
-  dev_statment: string = 'פותח בעזריאלי המכללה להנדסה ירושלים';
+  title = 'כניסה';
+  isLogin = false;
+  dev_statment = 'פותח בעזריאלי המכללה להנדסה ירושלים';
 
 
   constructor(private router: Router,
     public userServ: UserService,
     public userService: UserService,
-    public firebaseService: FirebaseService, private _pushNotifications : PushNotificationsService) {
+    public firebaseService: FirebaseService, private _pushNotifications: PushNotificationsService) {
     this.error = '';
         this._pushNotifications.requestPermission();
   }
@@ -57,11 +57,11 @@ export class MobileLoginComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('userAndPassword')) {
-      let obj = JSON.parse(localStorage.getItem('userAndPassword'));
+      const obj = JSON.parse(localStorage.getItem('userAndPassword'));
       this.email = obj.email;
       this.password = obj.password;
     }
-    
+
   }
 
 }
