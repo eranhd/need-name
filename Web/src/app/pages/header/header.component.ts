@@ -1,73 +1,77 @@
-import { Component, OnInit } from '@angular/core';
-import { ReportService } from '../../service/report/report.service';
-import { UserService } from '../../service/user/user.service'
-import { Report } from '../../models/Report';
-import { Shift } from '../../models/Shift';
-import { FirebaseService } from '../../service/firebase/firebase.service';
+import { Component, OnInit } from "@angular/core";
+import { ReportService } from "../../service/report/report.service";
+import { UserService } from "../../service/user/user.service"
+import { Report } from "../../models/Report";
+import { Shift } from "../../models/Shift";
+import { FirebaseService } from "../../service/firebase/firebase.service";
+import { LocationName } from "../../pipe/locationName.pipe";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
 
 
-  newsData:string[];
-  curr:string;
-  index:number;
+  newsData: string[];
+  curr: string;
+  index: number;
   shiftIndex: number;
 
 
-  constructor(public userService:UserService, 
-              public reportService:ReportService,
-              public firebaseService: FirebaseService) { 
-    
+  constructor(public userService: UserService,
+              public reportService: ReportService,
+              public firebaseService: FirebaseService,
+              private locPipe: LocationName) {
+
     this.index = 0;
     this.shiftIndex = 0;
-    let event = [];
-    this.firebaseService.shiftObsarvable.subscribe(val=>{
-      for(let s of val)
-        if(this.firebaseService.checkIfShiftBelong(s['$key']))
+    const event = [];
+    this.firebaseService.shiftObsarvable.subscribe(val => {
+      for (const s of val)
+        if (this.firebaseService.checkIfShiftBelong(s["$key"]))
           event.push(s);
     })
-    this.firebaseService.reportObsarvable.subscribe(val=>{
-      for(let s of val)
-        if(this.firebaseService.checkIfReportBelong(s['$key']))
+    this.firebaseService.reportObsarvable.subscribe(val => {
+      for (const s of val)
+        if (this.firebaseService.checkIfReportBelong(s["$key"]))
           event.push(s);
     })
-    this.firebaseService.hotObsarvable.subscribe(val=>{
-      for(let s of val)
-        if(this.firebaseService.checkIfHotBelong(s['$key']))
+    this.firebaseService.hotObsarvable.subscribe(val => {
+      for (const s of val)
+        if (this.firebaseService.checkIfHotBelong(s["$key"]))
           event.push(s);
     })
-    
-    var curr = '';
+
+    const curr = "";
 
 
-    setInterval(()=>{
-      
-      if(event.length != 0){
+    setInterval(() => {
+
+      if (event.length != 0){
 
         this.index %= event.length;
-        
-        if(event[this.index] != null){
-          if(event[this.index] instanceof Shift)
-          {
-            let d = new Date(event[this.index].startShift.date);
-            this.curr = "בתאריך " + d.toLocaleDateString +" בשעה " + d.toLocaleTimeString + "התחילה משמרת";
-          }
-          else if(event[this.index] instanceof Report)
-          {
 
+        if (event[this.index] != null){
+          if (event[this.index].stratShift)
+          {
+            const d = new Date(event[this.index].stratShift.date);
+            this.curr = "בתאריך " + d.toLocaleDateString() + "התחילה משמרת " + " בשעה " + d.toLocaleTimeString();
           }
-          // if(event[this.index].date)
-          // let d = new Date()
-          // this.curr = this.firebaseService.reports[that.index].summary;
+          else if (event[this.index].fields)
+          {
+            const d = new Date(event[this.index].date);
+            this.curr = "בתאריך " + d.toLocaleDateString() + "מולא דוח של התנהגות חריגה";
+          }
+          else if (event[this.index].lat)
+          {
+            this.curr = "נקודה קרה נדקרה ב" + this.locPipe.transform(event[this.index]);
+          }
         }
         this.index++;
       }
-    },3000)
+    }, 3000)
   }
 
   ngOnInit() {

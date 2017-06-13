@@ -1,20 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MapsService } from '../../service/maps/maps.service';
-import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral , SebmGoogleMapMarker} from 'angular2-google-maps/core';
-import { UserService } from '../../service/user/user.service';
-import { ReportService } from '../../service/report/report.service';
-import { Report } from '../../models/Report';
-import { FirebaseService } from '../../service/firebase/firebase.service';
-import { Location } from '../../models/Location';
+import { Component, OnInit, Input } from "@angular/core";
+import { MapsService } from "../../service/maps/maps.service";
+import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral , SebmGoogleMapMarker} from "angular2-google-maps/core";
+import { UserService } from "../../service/user/user.service";
+import { ReportService } from "../../service/report/report.service";
+import { Report } from "../../models/Report";
+import { FirebaseService } from "../../service/firebase/firebase.service";
+import { Location } from "../../models/Location";
 
 
 @Component({
-  selector: 'app-maps',
-  templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.scss']
+  selector: "app-maps",
+  templateUrl: "./maps.component.html",
+  styleUrls: ["./maps.component.scss"]
 })
 export class MapsComponent implements OnInit {
-  zoom: number = 13;
+  zoom = 13;
   @Input() reports: Report[] = null;
   @Input() hot: Report[] = null;
   @Input() cold: Location[] = null;
@@ -23,30 +23,30 @@ export class MapsComponent implements OnInit {
   lat: number;
   lng: number;
 
-  hotLable: string = 'נקודות חמות';
-  coldLable: string = 'נקודות קרות';
-  reportLable: string = 'דוחות';
-  showAllLabel: string = 'הצג הכל';
+  hotLable = "נקודות חמות";
+  coldLable = "נקודות קרות";
+  reportLable = "דוחות";
+  showAllLabel = "הצג הכל";
 
-  hotFlag: boolean = false;
-  coldFlag: boolean= false;
-  reportFlag: boolean = true;
-  showAll: boolean = false;
+  hotFlag = false;
+  coldFlag= false;
+  reportFlag = true;
+  showAll = false;
 
-  constructor(maps:MapsService, 
-              public userService:UserService,
-              public reportService:ReportService,
-              public firebseService: FirebaseService) {     
-    navigator.geolocation.getCurrentPosition((position)=>{
+  constructor(maps: MapsService,
+              public userService: UserService,
+              public reportService: ReportService,
+              public firebseService: FirebaseService) {
+    navigator.geolocation.getCurrentPosition((position) => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
-      
+
     });
   }
 
   select(index: number){
     this.resetFlags();
-    switch(index){
+    switch (index){
       case 1:
         this.reportFlag = true;
         break;

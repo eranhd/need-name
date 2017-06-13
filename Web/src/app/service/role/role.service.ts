@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
 @Injectable()
 export class RoleService {
 
-  userService:UserService;
+  userService: UserService;
   constructor() {
    // this.userService = new UserService();
    };
 
    public canDirect(path){
-    
+
     return true;
    };
 

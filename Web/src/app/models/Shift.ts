@@ -1,6 +1,6 @@
-import { Team } from './Team';
-import { Report } from './Report';
-import { Location } from './Location';
+import { Team } from "./Team";
+import { Report } from "./Report";
+import { Location } from "./Location";
 
 export class Shift {
 
@@ -8,40 +8,40 @@ export class Shift {
     reports: Report[];
     reportsId: string[];
     coldSpotArr: Location[];
-    hotSpotArr:Report[];
+    hotSpotArr: Report[];
     stratShift: StartShift;
     endShift: EndShift;
     coldSpotId: string[];
     hotSpotId: string[];
 
 
-    constructor(location:Location, team: Team, shift?: Shift) {
+    constructor(location: Location, team: Team, shift?: Shift) {
         if (shift) {
             this.team = team;
-            if(shift.reports){
-                this.reports = shift.reports; 
+            if (shift.reports){
+                this.reports = shift.reports;
             }
             else{
-                this.reports = [];  
+                this.reports = [];
             }
-            if(shift.coldSpotArr){
-                 this.coldSpotArr=shift.coldSpotArr;
+            if (shift.coldSpotArr){
+                 this.coldSpotArr = shift.coldSpotArr;
             }
             else{
-                this.coldSpotArr =[];
+                this.coldSpotArr = [];
             }
-            if(shift.hotSpotArr)
-            { this.hotSpotArr=shift.hotSpotArr;}
+            if (shift.hotSpotArr)
+            { this.hotSpotArr = shift.hotSpotArr; }
             else
-            { this.hotSpotArr =[];}
-            this.stratShift = new StartShift(shift.stratShift.location,shift.stratShift);
-            if(this.endShift){
+            { this.hotSpotArr = []; }
+            this.stratShift = new StartShift(shift.stratShift.location, shift.stratShift);
+            if (this.endShift){
                 this.endShift = shift.endShift;
             }
             else{
                 this.endShift = null;
             }
-            if(shift.reportsId){
+            if (shift.reportsId){
                 this.reportsId = shift.reportsId;
             }
             else{
@@ -61,14 +61,14 @@ export class Shift {
             }
         }
         else {
-           
+
             this.team = team;
             this.reports = [];
-            this.hotSpotArr =[];
-            this.coldSpotArr =[];
-            if(location)
+            this.hotSpotArr = [];
+            this.coldSpotArr = [];
+            if (location)
                 this.stratShift = new StartShift(location);
-            
+
             this.endShift = null;
             this.reportsId = [];
             this.coldSpotId = [];
@@ -76,7 +76,7 @@ export class Shift {
         }
     }
 
-    public clone(shift:Shift){
+    public clone(shift: Shift){
         this.stratShift = shift.stratShift;
         this.coldSpotId = shift.coldSpotId;
         this.hotSpotId = shift.hotSpotId;
@@ -85,21 +85,21 @@ export class Shift {
         this.endShift = shift.endShift;
     }
 
-    public addReport(report: Report, id: number, reportId?:string) {
-        if(reportId)
-            this.reportsId.unshift(reportId);      
+    public addReport(report: Report, id: number, reportId?: string) {
+        if (reportId)
+            this.reportsId.unshift(reportId);
     }
 
     addColdSpot(id: string) {
         this.coldSpotId.unshift(id);
     }
-    
+
     addHotSpot(id: string) {
         this.hotSpotId.unshift(id);
     }
 
-    public initEndShift(filling: string,summaryT:string,dilemmas:string,unusualEvents:string, position?: Position) {
-        this.endShift = new EndShift(filling,summaryT,dilemmas,unusualEvents,position);
+    public initEndShift(filling: string, summaryT: string, dilemmas: string, unusualEvents: string, position?: Position) {
+        this.endShift = new EndShift(filling, summaryT, dilemmas, unusualEvents, position);
     }
 
     //  addColdSpot(coldSpot:Location){
@@ -115,19 +115,19 @@ class StartShift {
     date: Date;
     location: Location;
 
-    constructor(location:Location, shift?: StartShift) {
-        if(shift){
+    constructor(location: Location, shift?: StartShift) {
+        if (shift){
             this.date = shift.date;
-           if(shift.location)
+           if (shift.location)
                 this.location = shift.location;
             // else
                // this.location = null;
         }
         else{
-          
+
         this.date = new Date();
 
-        this.location=location;
+        this.location = location;
         }
     }
 
@@ -138,19 +138,19 @@ class EndShift {
     date: Date;
     location: Location;
     filling: string;
-    summary:string;
-    unusualEvents:string;
-    dilemmas:string;
+    summary: string;
+    unusualEvents: string;
+    dilemmas: string;
 
-    constructor(filling: string,summaryT:string,dilemmas:string,unusualEvents:string, position?: Position) {
+    constructor(filling: string, summaryT: string, dilemmas: string, unusualEvents: string, position?: Position) {
 
         this.filling = filling;
-        this.summary=summaryT;
-        this.dilemmas=dilemmas;
-        this.unusualEvents=unusualEvents;
+        this.summary = summaryT;
+        this.dilemmas = dilemmas;
+        this.unusualEvents = unusualEvents;
 
         this.date = new Date();
-        if(position){
+        if (position){
             this.location = new Location(position.coords.longitude, position.coords.latitude);
         }
         else
@@ -158,10 +158,10 @@ class EndShift {
             navigator.geolocation.getCurrentPosition((position) => {
             this.location = new Location(position.coords.longitude, position.coords.latitude);
         }, (error) => {
-            console.log('position start shift error' + error.message);
+            console.log("position start shift error" + error.message);
         });
         }
-        
- 
+
+
     }
 }

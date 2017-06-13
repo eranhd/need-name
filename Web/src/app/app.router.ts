@@ -38,10 +38,10 @@ export const router: Routes = [
             { path: 'report', component: ReportComponent },
             { path: 'maps', component: MapsComponent },
             { path: 'graphs', component: GraphsComponent },
-            {path: 'shift', component:ShiftComponent},
+            {path: 'shift', component: ShiftComponent},
             {path: 'show-shift/:id', component: ShowShiftComponent,
                 children: [
-                    {path: 'show-report/:id', component: ShowReportComponent}        
+                    {path: 'show-report/:id', component: ShowReportComponent}
                 ]},
             {path: 'show-report/:id', component: ShowReportComponent}
         ]

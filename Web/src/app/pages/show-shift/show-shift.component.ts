@@ -20,50 +20,50 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
   shift: any;
   id: number;
   reportChoose: Report;
-  reports: Report[];//need to lead from firebase
+  reports: Report[]; //need to lead from firebase
   colds: Location[];
   hots: Report[];
-  choosen: any = null;//init when report or spot choos
+  choosen: any = null; //init when report or spot choos
 
   constructor(public route: ActivatedRoute, public firebaseService: FirebaseService) {
     this.shift = {
-  "coldSpotId" : [ "-KmDl2J3mpstECgPdqtm", "-KmDl2H3K25NmKIyRsMF", "-KmDhiNTwLsO4_7JGvHl", "-KmDes3KvxfN-2j7lBUJ", "-KmDensBBcfSBwSE4027" ],
-  "endShift" : {
-    "date" : "2017-06-09T21:37:30.723Z",
-    "dilemmas" : "",
-    "filling" : "סבבה",
-    "location" : {
-      "lat" : 31.7238925,
-      "lng" : 35.2205135
+  'coldSpotId' : [ '-KmDl2J3mpstECgPdqtm', '-KmDl2H3K25NmKIyRsMF', '-KmDhiNTwLsO4_7JGvHl', '-KmDes3KvxfN-2j7lBUJ', '-KmDensBBcfSBwSE4027' ],
+  'endShift' : {
+    'date' : '2017-06-09T21:37:30.723Z',
+    'dilemmas' : '',
+    'filling' : 'סבבה',
+    'location' : {
+      'lat' : 31.7238925,
+      'lng' : 35.2205135
     },
-    "summary" : "",
-    "unusualEvents" : ""
+    'summary' : '',
+    'unusualEvents' : ''
   },
-  "hotSpotId" : [ "-KmDU3cUhH2WNtXwG99Y" ],
-  "reportsId" : [ "-KmDeydV5qBAJjOsHfHf" ],
-  "stratShift" : {
-    "date" : "2017-06-09T20:11:29.346Z",
-    "location" : {
-      "lat" : 31.7243562,
-      "lng" : 35.2205931
+  'hotSpotId' : [ '-KmDU3cUhH2WNtXwG99Y' ],
+  'reportsId' : [ '-KmDeydV5qBAJjOsHfHf' ],
+  'stratShift' : {
+    'date' : '2017-06-09T20:11:29.346Z',
+    'location' : {
+      'lat' : 31.7243562,
+      'lng' : 35.2205931
     }
   },
-  "team" : {
-    "lead" : "עידן",
-    "members" : [ {
-      "index" : 0,
-      "name" : "עידן"
+  'team' : {
+    'lead' : 'עידן',
+    'members' : [ {
+      'index' : 0,
+      'name' : 'עידן'
     }, {
-      "index" : 1,
-      "name" : "רותי"
+      'index' : 1,
+      'name' : 'רותי'
     }, {
-      "index" : 2,
-      "name" : "עופר"
+      'index' : 2,
+      'name' : 'עופר'
     }, {
-      "index" : 3,
-      "name" : "מתן"
+      'index' : 3,
+      'name' : 'מתן'
     } ],
-    "teamNum" : "2"
+    'teamNum' : '2'
   }
 
 }

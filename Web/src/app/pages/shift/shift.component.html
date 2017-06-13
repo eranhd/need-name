@@ -3,9 +3,9 @@
     <div fxFlex>
       <input fxFlex type='text' placeholder="שם ראש הצוות" [(ngModel)]='leadName'/>
     </div>
-    <!--<div fxFlex>
+    <div fxFlex>
       <input fxFlex type='text' placeholder="מיקום" [(ngModel)]='locationName'/>
-    </div>-->
+    </div>
     <div fxFlex class='container' fxLayout="row">
 
       <label fxFlex >
@@ -99,6 +99,9 @@
         תאריך
       </th>
       <th>
+        מיקום
+      </th>
+      <th>
         שעת התחלה
       </th>
       <th>
@@ -128,6 +131,9 @@
       </td>
       <td>
         {{shift.stratShift.date | date:'dd.MM.yyyy'}}
+      </td>
+      <td>
+        {{shift.stratShift.location | locationName}}
       </td>
       <td>
         {{shift.stratShift.date | date:'hh:mm:ss'}}

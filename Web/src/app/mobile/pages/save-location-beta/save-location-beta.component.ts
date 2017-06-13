@@ -1,19 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FirebaseService } from '../../../service/firebase/firebase.service';
-import { Location } from '../../../models/Location';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from "@angular/core";
+import { FirebaseService } from "../../../service/firebase/firebase.service";
+import { Location } from "../../../models/Location";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'save-location-beta',
-  templateUrl: './save-location-beta.component.html',
-  styleUrls: ['./save-location-beta.component.scss']
+  selector: "save-location-beta",
+  templateUrl: "./save-location-beta.component.html",
+  styleUrls: ["./save-location-beta.component.scss"]
 })
 export class SaveLocationBetaComponent implements OnInit {
 
-  @Input() message: string = '';
-  @Input() fixed: number = 0;
-  name: string = '';
-  title: string = 'שדה זה מופיע רק בגירסה ביטא';
+  @Input() message = "";
+  @Input() fixed = 0;
+  name = "";
+  title = "שדה זה מופיע רק בגירסה ביטא";
   isSave: Observable<boolean>;
   isProcess: Observable<boolean>;
 
@@ -34,12 +34,12 @@ export class SaveLocationBetaComponent implements OnInit {
         observe.next(true);
         observe.complete()
       })
-      let location = new Location(position.coords.longitude, position.coords.latitude);
+      const location = new Location(position.coords.longitude, position.coords.latitude);
 
       if (this.fixed != 0) {
-        let fix: string = location.lat + '';
+        let fix: string = location.lat + "";
         location.lat = parseFloat(fix.slice(0, this.fixed));
-        fix = location.lng + '';
+        fix = location.lng + "";
         location.lng = parseFloat(fix.slice(0, this.fixed));
       }
 
@@ -56,7 +56,7 @@ export class SaveLocationBetaComponent implements OnInit {
       })
 
     }, error => {
-      alert('אנא הפעל מיקום');
+      alert("אנא הפעל מיקום");
       this.isProcess = new Observable(observe => {
         observe.next(false);
         observe.complete()

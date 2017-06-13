@@ -1,13 +1,13 @@
 export class NavItem{
-    private txt:string;
-    private id:string;
-    private url:string;
-    private icon:string;
-    public selected:boolean;
+    private txt: string;
+    private id: string;
+    private url: string;
+    private icon: string;
+    public selected: boolean;
 
-    constructor(txt:string, id:string, url:string, icon:string){
+    constructor(txt: string, id: string, url: string, icon: string){
         this.txt = txt;
-        this.id = 'nav_item_' + id;
+        this.id = "nav_item_" + id;
         this.url = url;
         this.icon = icon;
         this.selected = false;
@@ -30,5 +30,5 @@ export class NavItem{
     getId(){
         return this.id;
     };
-    
+
 };

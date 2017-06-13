@@ -1,18 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FirebaseService } from '../../service/firebase/firebase.service';
-import { Observable } from 'rxjs';
-import { Shift } from '../../models/Shift';
-// import { LocationName } from '../../pipe/locationName.pipe';
+import { Component, OnInit, Input } from "@angular/core";
+import { FirebaseService } from "../../service/firebase/firebase.service";
+import { Observable } from "rxjs";
+import { Shift } from "../../models/Shift";
+import { LocationName } from "../../pipe/locationName.pipe";
 
 @Component({
-  selector: 'app-shift',
-  templateUrl: './shift.component.html',
-  styleUrls: ['./shift.component.scss']
+  selector: "app-shift",
+  templateUrl: "./shift.component.html",
+  styleUrls: ["./shift.component.scss"]
 })
 export class ShiftComponent implements OnInit {
 
-  numToShow: number = 10;
-  indexToShow: number = 0;
+  numToShow = 10;
+  indexToShow = 0;
 
   data: Array<Shift>;
   originalData: Array<Shift>;
@@ -25,26 +25,26 @@ export class ShiftComponent implements OnInit {
   fromDate: Date;
   toDate: Date;
 
-  fromReportNum: string = "0";
-  toReportNum: string = "0";
+  fromReportNum = "0";
+  toReportNum = "0";
 
-  fromHotNum: string = "0";
-  toHotNum: string = "0";
+  fromHotNum = "0";
+  toHotNum = "0";
 
-  fromColdNum: string = "0";
-  toColdNum: string = "0";
+  fromColdNum = "0";
+  toColdNum = "0";
 
   constructor(public firebseService: FirebaseService,
-    // private locPipe: LocationName
+    private locPipe: LocationName
   ) {
     this.data = [];
     this.numData = [];
     for (let i = 1; i < 20; i++)
-      this.numData.push(i + '');
+      this.numData.push(i + "");
     this.firebseService.shiftObsarvable.subscribe(val => {
-      let arr = [];
-      for (let item of val)
-        if (this.firebseService.checkIfShiftBelong(item['$key'])) {
+      const arr = [];
+      for (const item of val)
+        if (this.firebseService.checkIfShiftBelong(item["$key"])) {
           arr.push(item);
         }
         this.originalData = arr;
@@ -53,37 +53,37 @@ export class ShiftComponent implements OnInit {
   }
 
   search(val: Array<Shift>) {
-    let shifts = [];
-    for (let shift of val) {
-      if (this.leadName && this.leadName != '') {
-        if (shift.team.lead.replace(/ /g, '') != this.leadName.replace(/ /g, ''))
+    const shifts = [];
+    for (const shift of val) {
+      if (this.leadName && this.leadName != "") {
+        if (shift.team.lead.replace(/ /g, "") != this.leadName.replace(/ /g, ""))
           continue;
       }
-      // if (this.locationName && this.locationName != '')
-      //   if (this.locPipe.transform(shift.stratShift.location).replace(/ /g, '') == this.locationName.replace(/ /g, ''))
-      //     continue;
+      if (this.locationName && this.locationName != "")
+        if (this.locPipe.transform(shift.stratShift.location).replace(/ /g, "") != this.locationName.replace(/ /g, ""))
+          continue;
       if (this.fromDate)
         if (this.fromDate > shift.stratShift.date)
           continue;
       if (this.toDate)
         if (this.toDate < shift.stratShift.date)
           continue;
-      if (this.fromReportNum != '0')
+      if (this.fromReportNum != "0")
         if (!shift.reportsId || parseInt(this.fromReportNum) > shift.reportsId.length)
           continue;
-      if (this.toHotNum != '0')
+      if (this.toHotNum != "0")
         if (!shift.reportsId || parseInt(this.toReportNum) < shift.reportsId.length)
           continue;
-      if (this.fromHotNum != '0')
+      if (this.fromHotNum != "0")
         if (!shift.hotSpotId || parseInt(this.fromHotNum) > shift.hotSpotId.length)
           continue;
-      if (this.toHotNum != '0')
+      if (this.toHotNum != "0")
         if (!shift.hotSpotId || parseInt(this.toHotNum) < shift.hotSpotId.length)
           continue;
-      if (this.fromColdNum != '0')
+      if (this.fromColdNum != "0")
         if (!shift.coldSpotId || parseInt(this.fromColdNum) > shift.coldSpotId.length)
           continue;
-      if (this.toColdNum != '0')
+      if (this.toColdNum != "0")
         if (!shift.coldSpotId || parseInt(this.fromColdNum) < shift.coldSpotId.length)
           continue;
 
@@ -97,30 +97,27 @@ export class ShiftComponent implements OnInit {
 
   generateCvs() {
     // console.log(this.data);
-    let d = this.data;
-    let cv = [[]]
-    cv.push(["תאריך", "שעת התחלה", "שעת סיום", "ראש צוות", "מספר אנשי צוות", "מספר אירועים", "מספר נקודות קרות", "מספר נקודות חמות"])
-    for (let shift of d) {
-      let a = [];
+    const d = this.data;
+    const cv = [[]]
+    cv.push(["תאריך", "מיקום", "שעת התחלה", "שעת סיום", "ראש צוות", "מספר אנשי צוות", "מספר אירועים", "מספר נקודות קרות", "מספר נקודות חמות"])
+    for (const shift of d) {
+      const a = [];
       if (shift.stratShift) {
-        let d = new Date(shift.stratShift.date)
-        a.push(d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear());
+        const d = new Date(shift.stratShift.date)
+        a.push(d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear());
         // d = new Date(shift.stratShift.date)
-        a.push(d.getHours() + ':' + d.getMinutes());
+        a.push(d.getHours() + ":" + d.getMinutes());
       }
       else {
         a.push("תאריך לא ידוע");
         a.push("שעה לא ידועה");
       }
       if (shift.endShift) {
-        let d = new Date(shift.endShift.date)
-        a.push(d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear());
+        const d = new Date(shift.endShift.date)
+        a.push(d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear());
       }
       else
         a.push("שעה לא ידועה")
-      // a.push(shift.stratShift == null? "תאריך לא ידוע" : );
-      // a.push(shift.stratShift == null? "שעה לא יועה" : shift.stratShift.date.toLocaleTimeString);
-      // a.push(shift.endShift == null? "תאריך לא ידוע" : shift.endShift.date.toLocaleTimeString);
       a.push(shift.team == null ? "לא ידוע" : shift.team.lead);
       a.push(shift.team == null ? "לא ידוע" : shift.team.members.length);
       a.push(shift.reportsId == null ? "0" : shift.reportsId.length);
@@ -130,18 +127,18 @@ export class ShiftComponent implements OnInit {
     }
 
 
-    var csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+    let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
     cv.forEach(function (infoArray, index) {
 
-      let dataString = infoArray.join(",");
+      const dataString = infoArray.join(",");
       csvContent += index < cv.length ? dataString + "\n" : dataString;
     });
     console.log(csvContent);
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "my_data.csv");
-    link.setAttribute('style', 'display:block;width:200px;height:200px;font-size:50px;')
+    link.setAttribute("style", "display:block;width:200px;height:200px;font-size:50px;")
     document.body.appendChild(link); // Required for FF
 
     link.click(); // This will download the data file named "my_data.csv".
@@ -153,7 +150,7 @@ export class ShiftComponent implements OnInit {
       return;
     this.indexToShow += this.numToShow;
     this.search(this.originalData);
-    
+
   }
   showPrev() {
     // console.log(this.indexToShow);

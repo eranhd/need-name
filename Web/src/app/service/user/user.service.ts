@@ -7,25 +7,25 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Injectable()
 export class UserService{
-  user:User;
-  userLogin:boolean;
-  
-  
-  constructor() {   
+  user: User;
+  userLogin: boolean;
+
+
+  constructor() {
     //need delete
     this.user = new User();
     // if(LocalStorageService.loadUser())
     //   this.user = new User(LocalStorageService.loadUser());
   };
 
-  set _user(user:User){
+  set _user(user: User){
     this.user = new User(user);
   }
 
   get _user(){
     return this.user;
   }
-  public setUser(id:string, user?:User){
+  public setUser(id: string, user?: User){
     /*
     if(user){
       this.user = user;
@@ -53,7 +53,7 @@ export class UserService{
   }
 
   addShift(id: string){
-    this.user.shiftsId.unshift(id);//need to replace to add shift in user
+    this.user.shiftsId.unshift(id); //need to replace to add shift in user
   }
   updateUser(){
     /*console.log(this.user);
@@ -62,7 +62,7 @@ export class UserService{
   }
 
 
-  public addSon(user_id:string){
+  public addSon(user_id: string){
     /*
     this.user.addSon(user_id);
     console.log('user:');
@@ -71,8 +71,8 @@ export class UserService{
     this.fireService.updateUser(this.user);*/
   }
 
-  public setRouter(r:Router){
-    
+  public setRouter(r: Router){
+
   }
 
 

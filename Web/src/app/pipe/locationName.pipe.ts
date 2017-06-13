@@ -1,21 +1,26 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Location } from '../models/Location';
+import { Pipe, PipeTransform } from "@angular/core";
+import { Location } from "../models/Location";
+import { FirebaseService } from "../service/firebase/firebase.service";
 
-@Pipe({ name: 'locationName' })
+@Pipe({ name: "locationName" })
 
 export class LocationName implements PipeTransform {
-    min : number = -1;
+    min: number = -1;
+
+    constructor(public fire: FirebaseService){
+
+    }
     transform(location: Location): string {
-        let name = 'מיקום לא ידוע';
+        let name = "מיקום לא ידוע";
 
         if (this.isArea(31, 35, location, 0))
-            name = 'ירושלים';
+            name = "ירושלים";
         if (this.isArea(31.7566, 35.1955, location, 4))
-            name = 'צומת פת';
+            name = "צומת פת";
         if (this.isArea(31.7533, 35.2146, location, 4))
-            name = 'תלפיות';
+            name = "תלפיות";
         if (this.isArea(31.6618, 35.1395, location, 4))
-            name = 'בית הכרם';
+            name = "בית הכרם";
         if (this.isArea(31.7779666, 35.1855307, location, 7))
             name = "דומינוס פיצה";
         if (this.isArea(31.7804699, 35.1880215, location, 7))
@@ -39,7 +44,7 @@ export class LocationName implements PipeTransform {
 
 
         //generali..
-        let data = {
+        const data = {
              "-aa": {
                 "lat": 31.7566,
                 "lng": 35.1955,
@@ -143,24 +148,21 @@ export class LocationName implements PipeTransform {
         }
 
 
-        for (let loc in data) {//loc is the key
+        for (const loc of this.fire.locations) {//loc is the key
 
-            let num = this.checkDistance(data[loc].lat, location.lat, data[loc].lng, location.lng);
-            if(this.min == -1 || this.min > num)
+            const num = this.checkDistance(loc["lat"], location.lat, loc["lng"], location.lng);
+            if (this.min == -1 || this.min > num)
             {
                 this.min = num;
-                name = data[loc].name;
+                name = loc["name"];
             }
-
-            // if (this.isArea(data[loc].lat, data[loc].lng, location, (data[loc].lng + '').length - 3))
-            //     name = data[loc].name;
         }
 
         return name;
     }
 
     checkDistance(x1: number, x2: number, y1: number, y2: number){
-        return Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
     isArea(lat: number, lng: number, location, fix: number): boolean {
@@ -177,7 +179,7 @@ export class LocationName implements PipeTransform {
 
     fixNumber(num: number, fixed: number): number {
         fixed += 3;
-        let fix: string = num + '';
+        const fix: string = num + "";
         num = parseFloat(fix.slice(0, fixed));
         return num;
     }

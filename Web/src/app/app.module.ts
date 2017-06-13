@@ -66,17 +66,17 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth} from 'angularfire2/auth';
 import { SaveLocationBetaComponent } from './mobile/pages/save-location-beta/save-location-beta.component';
 
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { PushNotificationsModule } from 'angular2-notifications';
 
 export const environment = {
   production: false,
   firebase: {
-  apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
-    authDomain: "antidrugsjerusalem.firebaseapp.com",
-    databaseURL: "https://antidrugsjerusalem.firebaseio.com",
-    storageBucket: "antidrugsjerusalem.appspot.com",
-    messagingSenderId: "767801084656"
+  apiKey: 'AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw',
+    authDomain: 'antidrugsjerusalem.firebaseapp.com',
+    databaseURL: 'https://antidrugsjerusalem.firebaseio.com',
+    storageBucket: 'antidrugsjerusalem.appspot.com',
+    messagingSenderId: '767801084656'
   }
 };
 
@@ -147,7 +147,7 @@ export const environment = {
     FlexLayoutModule,
     PushNotificationsModule
   ],
-  
+
   providers: [
     UserService,
     NavServiceService,
@@ -160,23 +160,24 @@ export const environment = {
     ShiftService,
     LocalStorageService,
     AngularFireAuth,
-    AngularFireDatabase
+    AngularFireDatabase,
+    LocationName
   ],
   bootstrap: [AppComponent],
-  entryComponents:[
+  entryComponents: [
     DialogLastReport
   ]
 })
 export class AppModule {
   constructor(){
-    var str = {
-      apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
-    authDomain: "antidrugsjerusalem.firebaseapp.com",
-    databaseURL: "https://antidrugsjerusalem.firebaseio.com",
-    storageBucket: "antidrugsjerusalem.appspot.com",
-    messagingSenderId: "767801084656"
+    let str = {
+      apiKey: 'AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw',
+    authDomain: 'antidrugsjerusalem.firebaseapp.com',
+    databaseURL: 'https://antidrugsjerusalem.firebaseio.com',
+    storageBucket: 'antidrugsjerusalem.appspot.com',
+    messagingSenderId: '767801084656'
     };
     firebase.initializeApp(str);
   }
-  
+
  }

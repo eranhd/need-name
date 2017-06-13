@@ -5,7 +5,7 @@ import { Shift } from '../../models/Shift';
 @Injectable()
 export class LocalStorageService {
 
-  constructor() { 
+  constructor() {
 
   }
 
@@ -20,19 +20,19 @@ export class LocalStorageService {
   static loadUser(){
     let user = null;
     user = localStorage.getItem('adjTempUser');
-    if(user == '' || user == null || user == undefined)
+    if (user == '' || user == null || user == undefined)
       return null;
     else{
       user = JSON.parse(user);
       user = new User(user);
-      let d = new Date();
-      
+      const d = new Date();
+
     }
 
     return user;
   }
 
-  static saveId(id:string){
+  static saveId(id: string){
     localStorage.setItem('shiftId', id + '');
   }
   static clearId(){
@@ -40,7 +40,7 @@ export class LocalStorageService {
   }
 
   static getId(){
-    if(localStorage.getItem('shiftId'))
+    if (localStorage.getItem('shiftId'))
       return localStorage.getItem('shiftId');
     return null;
   }
@@ -51,11 +51,11 @@ export class LocalStorageService {
   }
   static loadShift(){
     let shift: Shift = null;
-    if(localStorage.getItem('currentShift') == '' || !localStorage.getItem('currentShift'))
+    if (localStorage.getItem('currentShift') == '' || !localStorage.getItem('currentShift'))
     return null;
     shift = <Shift> JSON.parse(localStorage.getItem('currentShift'));
-    
-    let temp = new Shift(null, null);
+
+    const temp = new Shift(null, null);
     temp.clone(shift);
 
     console.log(temp)
