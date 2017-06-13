@@ -7,7 +7,7 @@ export class NavItem{
 
     constructor(txt: string, id: string, url: string, icon: string){
         this.txt = txt;
-        this.id = 'nav_item_' + id;
+        this.id = "nav_item_" + id;
         this.url = url;
         this.icon = icon;
         this.selected = false;

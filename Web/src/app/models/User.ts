@@ -1,5 +1,5 @@
-import { Shift } from './Shift';
-import { Location } from './Location';
+import { Shift } from "./Shift";
+import { Location } from "./Location";
 
 //this models will describe user class.
 export class User {
@@ -71,9 +71,9 @@ export class Details {
             this.lastShift = detail.lastShift;
         }
         else {
-            this.name = '';
-            this.role = new Role(1, 'parentPatrol');
-            this.area = 'jerusalem';
+            this.name = "";
+            this.role = new Role(1, "parentPatrol");
+            this.area = "jerusalem";
             this._sons = [];
             this.numOfReport = 0;
             this.lastShift = new Date();
@@ -110,7 +110,7 @@ export class Role {
              this.type = type;
         }
 
-        if (name != 'parentPatrol' && name != 'dtPatrol') {
+        if (name != "parentPatrol" && name != "dtPatrol") {
                 // alert("שם תפקיד לא קיים");
         }
         else {
@@ -120,12 +120,12 @@ export class Role {
 
     public canDirect(path) {
         // 1 doesnt have any web page Permission:
-        if (this.type == 1 && path == 'main'){
+        if (this.type == 1 && path == "main"){
             return false;
         }
 
         // 2 doesnt have settingReport web page Permission:
-        if (this.type == 2 && path == 'settingReport') {
+        if (this.type == 2 && path == "settingReport") {
             return false;
         }
 

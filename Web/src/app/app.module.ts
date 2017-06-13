@@ -160,7 +160,8 @@ export const environment = {
     ShiftService,
     LocalStorageService,
     AngularFireAuth,
-    AngularFireDatabase
+    AngularFireDatabase,
+    LocationName
   ],
   bootstrap: [AppComponent],
   entryComponents: [

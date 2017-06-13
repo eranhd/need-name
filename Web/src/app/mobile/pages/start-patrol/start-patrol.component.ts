@@ -1,18 +1,18 @@
-import { Component, OnInit, OnChanges, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { Team } from '../../../models/Team';
-import { ShiftService } from '../../../service/shift/shift.service';
-import { FirebaseService } from '../../../service/firebase/firebase.service';
-import { UserService } from '../../../service/user/user.service';
-import { Shift } from '../../../models/Shift';
-import { LocalStorageService } from '../../../service/local-storage/local-storage.service';
-import { Location } from '../../../models/Location';
-import { SaveLocationBetaComponent } from '../save-location-beta/save-location-beta.component';
+import { Component, OnInit, OnChanges, ElementRef } from "@angular/core";
+import { Router } from "@angular/router";
+import { Team } from "../../../models/Team";
+import { ShiftService } from "../../../service/shift/shift.service";
+import { FirebaseService } from "../../../service/firebase/firebase.service";
+import { UserService } from "../../../service/user/user.service";
+import { Shift } from "../../../models/Shift";
+import { LocalStorageService } from "../../../service/local-storage/local-storage.service";
+import { Location } from "../../../models/Location";
+import { SaveLocationBetaComponent } from "../save-location-beta/save-location-beta.component";
 
 @Component({
-  selector: 'app-start-patrol',
-  templateUrl: './start-patrol.component.html',
-  styleUrls: ['./start-patrol.component.css']
+  selector: "app-start-patrol",
+  templateUrl: "./start-patrol.component.html",
+  styleUrls: ["./start-patrol.component.css"]
 })
 export class StartPatrolComponent implements OnInit, OnChanges {
 
@@ -68,16 +68,16 @@ export class StartPatrolComponent implements OnInit, OnChanges {
         this.fireService.saveShift();
       }, (error) => {
           this.isSubmit = false;
-            console.log('position start shift error' + error.message);
+            console.log("position start shift error" + error.message);
         });
 
         this.isValid = true;
-        this.router.navigate(['mobile_main']);
+        this.router.navigate(["mobile_main"]);
       }
   };
 
   ngOnInit() {
-    console.log((<HTMLInputElement>document.getElementById('numOfVolunteers')).value);
+    console.log((<HTMLInputElement>document.getElementById("numOfVolunteers")).value);
     this.numOfMembers = null;
     this.team.members = [];
   }

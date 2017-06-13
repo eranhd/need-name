@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { auth, database } from 'firebase';
-import { UserService } from '../user/user.service';
-import { Router } from '@angular/router';
-import { SettingReportService } from '../setting-report/setting-report.service';
-import { User } from '../../models/User';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Report } from '../../models/Report';
-import { Shift } from '../../models/Shift';
-import { ShiftService } from '../shift/shift.service';
-import { Location } from '../../models/Location';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
+import { auth, database } from "firebase";
+import { UserService } from "../user/user.service";
+import { Router } from "@angular/router";
+import { SettingReportService } from "../setting-report/setting-report.service";
+import { User } from "../../models/User";
+import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database";
+import { AngularFireAuth } from "angularfire2/auth";
+import { Report } from "../../models/Report";
+import { Shift } from "../../models/Shift";
+import { ShiftService } from "../shift/shift.service";
+import { Location } from "../../models/Location";
 
 
 @Injectable()
@@ -58,15 +58,15 @@ export class FirebaseService {
   ) {
 
     this.shifts = [];
-    this.userToSave = afDb.list('/users');
-    this.shiftsToSave = this.afDb.list('/shifts'); // refernce  to shifts
+    this.userToSave = afDb.list("/users");
+    this.shiftsToSave = this.afDb.list("/shifts"); // refernce  to shifts
     this.initLocations();
 
 
-    this.shiftObsarvable = afDb.list('shifts');
-    this.reportObsarvable = afDb.list('reports');
-    this.hotObsarvable = afDb.list('hotSpots');
-    this.coldObsarvable = afDb.list('coldSpots');
+    this.shiftObsarvable = afDb.list("shifts");
+    this.reportObsarvable = afDb.list("reports");
+    this.hotObsarvable = afDb.list("hotSpots");
+    this.coldObsarvable = afDb.list("coldSpots");
 
 
   };
@@ -76,7 +76,7 @@ export class FirebaseService {
 
   public login(email: string, pass: string) {
 
-    if (email == '' || pass == '')
+    if (email == "" || pass == "")
       return;
     this.auth.signInWithEmailAndPassword(email, pass).catch(function (error) {
       console.log(error.message);
@@ -87,15 +87,15 @@ export class FirebaseService {
       if (user) {
       }
       else {
-        console.log('field');
+        console.log("field");
       }
     });
 
   };
 
   public getReportFields() {
-    this.itemToSave = this.afDb.list('/users/' + firebase.auth().currentUser.uid + '/details');
-    firebase.database().ref('report-fields').once('value').then(function (snapshot) {
+    this.itemToSave = this.afDb.list("/users/" + firebase.auth().currentUser.uid + "/details");
+    firebase.database().ref("report-fields").once("value").then(function (snapshot) {
     });
   }
 
@@ -123,8 +123,8 @@ export class FirebaseService {
       // console.log(this.shiftsId);
 
       val.forEach(item => {
-        // console.log(item['$key'])
-        if (this.checkIfShiftBelong(item['$key'])) {
+        // console.log(item["$key"])
+        if (this.checkIfShiftBelong(item["$key"])) {
 
           this.shifts.push(item);
 
@@ -159,14 +159,14 @@ export class FirebaseService {
 
 
   createNewUser(email: string, password: string, user: User) {
-    let newId = '';
+    let newId = "";
     firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot => {
       this.userService._user.details._sons.unshift(snapshot.uid);
       this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
       this.updateUser(user, snapshot.uid);
       newId = snapshot.uid;
     }).catch(error => {
-      console.log('error create user');
+      console.log("error create user");
     });
 
   }
@@ -197,7 +197,7 @@ export class FirebaseService {
     else
       return; // stop
     //console.log(this.listenSons);
-    const listen: FirebaseListObservable<any> = this.afDb.list('users/' + id);
+    const listen: FirebaseListObservable<any> = this.afDb.list("users/" + id);
     listen.subscribe(val => {
       //console.log(val)
       if (val[0]._sons) {
@@ -220,7 +220,7 @@ export class FirebaseService {
 
   initUser(goto?: string) {
 
-    firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(snapshot => {
+    firebase.database().ref("/users/" + firebase.auth().currentUser.uid).once("value").then(snapshot => {
 
       this.userService._user = snapshot.val();
       if (this.userService._user.shiftsId) {
@@ -244,18 +244,18 @@ export class FirebaseService {
 
   }
   initLocations() {
-    this.afDb.list('locations').subscribe(val => {
+    this.afDb.list("locations").subscribe(val => {
       console.log(val);
       this.locations = val;
     });
-    // firebase.database().ref('/locations/').once('value', ids => {
+    // firebase.database().ref("/locations/").once("value", ids => {
     //   for (let key in ids) {
     //     if (!this.locationsId)
     //       this.locationsId = [];
     //     this.locationsId.push(key)
     //   }
     //   for (let id of this.locationsId) {
-    //     firebase.database().ref('/locations/' + id).once('value').then(loc => {
+    //     firebase.database().ref("/locations/" + id).once("value").then(loc => {
     //       if (!this.locations)
     //         this.locations = [];
     //       this.locations.push(loc);
@@ -268,7 +268,7 @@ export class FirebaseService {
 
   saveShift() {
 
-    this.afDb.list('/shifts').push(this.shiftService.shift).then(resolve => {
+    this.afDb.list("/shifts").push(this.shiftService.shift).then(resolve => {
 
       console.log(resolve.path.o[1]);
       this.userService.addShift(resolve.path.o[1]);
@@ -282,9 +282,9 @@ export class FirebaseService {
   }
 
   updateShift() {//this will call after add report to shift
-    // console.log('in update shift ' + this.shiftService.id);
+    // console.log("in update shift " + this.shiftService.id);
     this.shiftsToSave.update(this.shiftService.id, this.shiftService.shift).then(resolve => {
-      console.log('shift update');
+      console.log("shift update");
     }).catch(error => {
       console.log(error.message);
     });
@@ -292,11 +292,11 @@ export class FirebaseService {
 
   saveReport(report: Report, id: string) {//when want to save new report, then i save the report in new id and add the id to reportsid
     console.log(report);
-    if (id == '2') {//save hot spot
+    if (id == "2") {//save hot spot
       this.saveHotSpot(report);
     }
-    else if (id == '1') {//save just report
-      this.afDb.list('/reports').push(report).then(resolve => {
+    else if (id == "1") {//save just report
+      this.afDb.list("/reports").push(report).then(resolve => {
         const id = resolve.path.o[1];
         console.log(resolve.path.o[1]);
         this.shiftService.addReport(report, id);
@@ -308,7 +308,7 @@ export class FirebaseService {
   }
 
   saveHotSpot(report: Report) {
-    this.afDb.list('/hotSpots').push(report).then(resolve => {
+    this.afDb.list("/hotSpots").push(report).then(resolve => {
       const id = resolve.path.o[1];
       console.log(resolve.path.o[1]);
       this.shiftService.addHotSpot(id);
@@ -319,7 +319,7 @@ export class FirebaseService {
   }
 
   saveColdSpot(location: Location) {
-    this.afDb.list('/coldSpots').push(location).then(resolve => {
+    this.afDb.list("/coldSpots").push(location).then(resolve => {
       const id = resolve.path.o[1];
       console.log(resolve.path.o[1]);
       this.shiftService.addColdSpot(id);
@@ -335,8 +335,8 @@ export class FirebaseService {
 
 
   saveLoacation(loc: Location) {//this function save the location and name as insert by user in start patrol or spot
-    this.afDb.list('/locations').push(loc).then(resolve => {
-      console.log('location save');
+    this.afDb.list("/locations").push(loc).then(resolve => {
+      console.log("location save");
     }).catch(error => {
       console.log(error.message);
     })
@@ -394,7 +394,7 @@ export class FirebaseService {
   getShift(id: string) {
     return this.shiftObsarvable.map(val => {
       for (const shift of val)
-        if (shift['key'] == id) {
+        if (shift["key"] == id) {
           return shift;
         }
     })
@@ -405,31 +405,31 @@ export class FirebaseService {
 
     let s = null;
 
-    if (type == 'shifts') {
-      s = this.afDb.list('shifts/' + id);
+    if (type == "shifts") {
+      s = this.afDb.list("shifts/" + id);
       s.subscribe(val => {
         console.log(val);
         for (const item of val) {
-          if (item.$key == 'coldSpotId')
+          if (item.$key == "coldSpotId")
             for (const c of item)
-              this.removeData('coldSpots', c);
-          if (val.$key == 'hotSpotId')
+              this.removeData("coldSpots", c);
+          if (val.$key == "hotSpotId")
             for (const h of item)
-              this.removeData('hotSpots', h);
+              this.removeData("hotSpots", h);
 
-          if (val.$key == 'reportsId')
+          if (val.$key == "reportsId")
             for (const r of item)
-              this.removeData('reports', r);
+              this.removeData("reports", r);
 
         }
-        firebase.database().ref('/' + type + '/' + id).remove().then(res => {
+        firebase.database().ref("/" + type + "/" + id).remove().then(res => {
           console.log(res) }).catch(err =>
           { console.log(err.message) });
         return;
       })
     }
-    else if (type == 'reports' || type == 'hotSpots' || type == 'coldSpots') {
-      firebase.database().ref('/' + type + '/' + id).remove().then(
+    else if (type == "reports" || type == "hotSpots" || type == "coldSpots") {
+      firebase.database().ref("/" + type + "/" + id).remove().then(
         res => { console.log(res) }).catch(
         err => { console.log(err.message) });
       return;
@@ -438,11 +438,11 @@ export class FirebaseService {
 
   public initFirebase() {
     const config = {
-      apiKey: 'AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE',
-      authDomain: 'anti-drugs-jerusalem.firebaseapp.com',
-      databaseURL: 'https://anti-drugs-jerusalem.firebaseio.com',
-      storageBucket: 'anti-drugs-jerusalem.appspot.com',
-      messagingSenderId: '944977183444'
+      apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
+      authDomain: "anti-drugs-jerusalem.firebaseapp.com",
+      databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
+      storageBucket: "anti-drugs-jerusalem.appspot.com",
+      messagingSenderId: "944977183444"
     };
     firebase.initializeApp(config);
   };

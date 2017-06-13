@@ -1,4 +1,4 @@
-import { Location } from './Location';
+import { Location } from "./Location";
 
 export class Report {
     public date: string;
@@ -17,7 +17,7 @@ export class Report {
         if (summary)
             this.summary = summary;
         else
-            this.summary = '';
+            this.summary = "";
 
         if (fields)
             this.fields = fields;
@@ -28,7 +28,7 @@ export class Report {
         if (photoUrl)
             this.photoUrl = photoUrl;
         else
-            this.photoUrl = '';
+            this.photoUrl = "";
     };
 
     public addFiled(name: string, data: string) {
@@ -65,7 +65,7 @@ export class ReportField {
     }
 
     public toString() {
-        return this.name + ': ' + this.data;
+        return this.name + ": " + this.data;
     }
 }
 

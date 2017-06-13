@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Team } from '../../../../models/Team';
-import { TeamComponent } from './team/team.component';
-import { DateComponent } from './date/date.component';
+import { Component, OnInit, Input } from "@angular/core";
+import { Team } from "../../../../models/Team";
+import { TeamComponent } from "./team/team.component";
+import { DateComponent } from "./date/date.component";
 
 @Component({
-  selector: 'popup-title',
-  templateUrl: './title.component.html',
-  styleUrls: ['./title.component.css']
+  selector: "popup-title",
+  templateUrl: "./title.component.html",
+  styleUrls: ["./title.component.css"]
 })
 export class TitleComponent implements OnInit {
 

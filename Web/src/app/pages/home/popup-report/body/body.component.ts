@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ReportField } from '../../../../models/Report';
+import { Component, OnInit, Input } from "@angular/core";
+import { ReportField } from "../../../../models/Report";
 
 @Component({
-  selector: 'popup-body',
-  templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css']
+  selector: "popup-body",
+  templateUrl: "./body.component.html",
+  styleUrls: ["./body.component.css"]
 })
 export class BodyComponent implements OnInit {
 

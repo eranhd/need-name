@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MapsService } from '../../service/maps/maps.service';
-import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral , SebmGoogleMapMarker} from 'angular2-google-maps/core';
-import { UserService } from '../../service/user/user.service';
-import { ReportService } from '../../service/report/report.service';
-import { Report } from '../../models/Report';
-import { FirebaseService } from '../../service/firebase/firebase.service';
-import { Location } from '../../models/Location';
+import { Component, OnInit, Input } from "@angular/core";
+import { MapsService } from "../../service/maps/maps.service";
+import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral , SebmGoogleMapMarker} from "angular2-google-maps/core";
+import { UserService } from "../../service/user/user.service";
+import { ReportService } from "../../service/report/report.service";
+import { Report } from "../../models/Report";
+import { FirebaseService } from "../../service/firebase/firebase.service";
+import { Location } from "../../models/Location";
 
 
 @Component({
-  selector: 'app-maps',
-  templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.scss']
+  selector: "app-maps",
+  templateUrl: "./maps.component.html",
+  styleUrls: ["./maps.component.scss"]
 })
 export class MapsComponent implements OnInit {
   zoom = 13;
@@ -23,10 +23,10 @@ export class MapsComponent implements OnInit {
   lat: number;
   lng: number;
 
-  hotLable = 'נקודות חמות';
-  coldLable = 'נקודות קרות';
-  reportLable = 'דוחות';
-  showAllLabel = 'הצג הכל';
+  hotLable = "נקודות חמות";
+  coldLable = "נקודות קרות";
+  reportLable = "דוחות";
+  showAllLabel = "הצג הכל";
 
   hotFlag = false;
   coldFlag= false;

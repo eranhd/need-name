@@ -8,7 +8,7 @@ export class Team{
     constructor(){
         this.members = [];
         this.teamNum = null;
-        this.lead = '';
+        this.lead = "";
     };
 
 

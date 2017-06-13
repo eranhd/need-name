@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Report } from '../../../models/Report';
-import { MdDialogModule } from '@angular/material';
+import { Component, OnInit, Input } from "@angular/core";
+import { Report } from "../../../models/Report";
+import { MdDialogModule } from "@angular/material";
 
 
 @Component({
-  selector: 'app-last-report',
-  templateUrl: './last-report.component.html',
-  styleUrls: ['./last-report.component.scss']
+  selector: "app-last-report",
+  templateUrl: "./last-report.component.html",
+  styleUrls: ["./last-report.component.scss"]
 })
 export class LastReportComponent implements OnInit {
 
@@ -23,9 +23,9 @@ export class LastReportComponent implements OnInit {
   /*  console.log(Report);
     this.showPopup = !this.showPopup;*/
     /*this.dialog.open(DialogLastReport,{
-      position: 'absolute',
-      width: '50%',
-      height: '50%'
+      position: "absolute",
+      width: "50%",
+      height: "50%"
     });*/
   }
 
@@ -37,8 +37,8 @@ export class LastReportComponent implements OnInit {
 
 
 @Component({
-  selector: 'md-dialog-last-report',
-  templateUrl: './dialog.html'
+  selector: "md-dialog-last-report",
+  templateUrl: "./dialog.html"
 })
 
 export class DialogLastReport{

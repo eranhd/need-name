@@ -1,6 +1,6 @@
-import { Team } from './Team';
-import { Report } from './Report';
-import { Location } from './Location';
+import { Team } from "./Team";
+import { Report } from "./Report";
+import { Location } from "./Location";
 
 export class Shift {
 
@@ -158,7 +158,7 @@ class EndShift {
             navigator.geolocation.getCurrentPosition((position) => {
             this.location = new Location(position.coords.longitude, position.coords.latitude);
         }, (error) => {
-            console.log('position start shift error' + error.message);
+            console.log("position start shift error" + error.message);
         });
         }
 
