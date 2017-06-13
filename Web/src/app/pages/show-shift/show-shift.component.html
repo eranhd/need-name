@@ -33,10 +33,39 @@
       <span>תחושת הצוות:</span>
       <span>{{shift.endShift.filling}}</span>
     </div>
+
+    <div>
+      <table>
+    <tr class='table_head'>
+      <th>
+        נקודות קרות
+      </th>
+      <th>
+        נקודות חמות
+      </th>
+      <th>
+        דיווחים
+      </th>
+    </tr>
+
+       <tr class='table_body' *ngFor='let shift of data' >
+        <td>
+          {{shift.coldSpotArr}}
+        </td>
+        <td>
+          {{shift.hotSpotArr}}
+        </td>
+        <td>
+          {{shift.reports}}
+        </td>
+      </tr>  
+    </table>
+   </div>    
   </aside>
 
   <aside class='container details' fxLayout=column fxFlex=45>
     <section class='choose_details' fxFlex>
+      <show-report [report]='reportChoose'></show-report>
     </section>
     <section class='maps' fxFlex>
       <app-maps [reports]='reports' [cold]='colds' [hot]='hots'>
