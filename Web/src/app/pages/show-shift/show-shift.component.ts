@@ -24,8 +24,12 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
   colds: Location[];
   hots: Report[];
   choosen: any = null; //init when report or spot choos
+  coldSpotArr: Location[];
+  hotSpotArr: Report[];
+  reportsArr: Report[];
 
   constructor(public route: ActivatedRoute, public firebaseService: FirebaseService) {
+ 
     this.shift = {
   'coldSpotId' : [ '-KmDl2J3mpstECgPdqtm', '-KmDl2H3K25NmKIyRsMF', '-KmDhiNTwLsO4_7JGvHl', '-KmDes3KvxfN-2j7lBUJ', '-KmDensBBcfSBwSE4027' ],
   'endShift' : {
@@ -67,6 +71,12 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
   }
 
 }
+   let hotSpot: String;
+    for(let i=0; i< this.shift.hotSpotId.length; i++) {
+        this.firebaseService.getReport(this.shift.hotSpotId[i])
+      }
+    
+}
 
     // this.sub = this.route.params.subscribe(params => {
     //   this.shift = this.firebaseService.getShift(params['id']);
@@ -74,7 +84,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
     //   this.id = params['id'];
     // });
     // this.isChoose = false;
-}
+
 
   ngOnInit() {
 

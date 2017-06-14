@@ -154,6 +154,26 @@ export class FirebaseService {
 
   }
 
+  getReport(id: String) {
+/*        this.afDb.list("hotSpots").subscribe(val => {
+      this.hotSpots = val;
+    });
+      console.log(this.hotSpots)
+     for(let i=0;  i < this.hotSpots.length; i++) {
+        if(id ==  this.hotSpots[i]["key"]) {
+            alert(this.hotSpots[i]);
+        }
+      }
+*/
+      return this.hotObsarvable.subscribe(val => {
+      for (const hots of val)
+        if (hots["key"] == id) {
+          console.log(hots);
+          return hots;
+        }
+    })
+  }
+
 
 
 
