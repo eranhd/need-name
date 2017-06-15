@@ -71,19 +71,35 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
   }
 
 }
+
   this.hotSpotArr=[];
    let hotSpot: Report;
   //  this.hotSpotArr=this.firebaseService.getReport(this.shift.hotSpotId);
-    console.log(this.coldSpotArr);
+    //console.log(this.coldSpotArr);
     for(let i=0; i< this.shift.hotSpotId.length; i++) {
       hotSpot = this.firebaseService.getHotSpot(this.shift.hotSpotId[i]);
-      console.log(hotSpot);
+      
        if( hotSpot !=undefined){
+         //console.log(hotSpot);
         this.hotSpotArr.push(hotSpot);/////////////here problem
        
        }
       }
     console.log(this.hotSpotArr);
+
+    this.coldSpotArr=[];
+    let coldSpot: Report;
+    for(let i=0; i< this.shift.coldSpotId.length; i++) {
+      coldSpot = this.firebaseService.getColdSpot(this.shift.coldSpotId[i]);
+      
+       if( coldSpot !=undefined){
+         //console.log(hotSpot);
+        this.coldSpotArr.push(coldSpot);/////////////here problem
+       
+       }
+      }
+    console.log(this.hotSpotArr);
+
 }
 
     // this.sub = this.route.params.subscribe(params => {
