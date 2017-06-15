@@ -153,13 +153,15 @@ export class FirebaseService {
     // console.log(this.shiftsId)
 
   }
+  private updateDateArry(){
 
+
+  }
   getHotSpot(id: String) {
-        this.afDb.list("hotSpots").subscribe(val => {
+      this.afDb.list("hotSpots").subscribe(val => {
       this.hotSpots = val;
     });
      for(let i=0;  i < this.hotSpots.length; i++) {
-
         if(id ==  this.hotSpots[i]["$key"]) {
           console.log(this.hotSpots[i]);
             return this.hotSpots[i];
@@ -168,6 +170,21 @@ export class FirebaseService {
       return null;
   }
 
+ getColdSpot(id: String) {
+      this.afDb.list("coldSpots").subscribe(val => {
+      this.coldSpots = val;
+      console.log(this.coldSpots);
+    });
+     console.log(this.coldSpots);
+      for(let i=0;  i < this.coldSpots.length; i++) {
+
+        if(id ==  this.coldSpots[i]["$key"]) {
+          console.log(this.coldSpots[i]);
+            return this.coldSpots[i];
+        }
+      }
+      return null;
+  }
 
 
 
