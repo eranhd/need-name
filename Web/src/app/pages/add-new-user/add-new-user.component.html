@@ -1,6 +1,8 @@
 <header>
 </header>
 <main>
+  <div class="title">הוספת משתמשים</div>
+  <br>
   <section class='add_new_user'>
     <md-card>
       <select required placeholder="בחר סוג משתמש" (change)='role = $event.target.value'>
@@ -17,7 +19,7 @@
         </option>
       </select>
       <input id="input_username" type='email' class='form-control' [(ngModel)]='email' placeholder="שם משתמש" required>
-      <input id="input_password" type='password' class='form-control' [(ngModel)]='password' placeholder="" required>
+      <input id="input_password" type='password' class='form-control' [(ngModel)]='password' placeholder="סיסמה" required>
       <input type='text' class='form-control' [(ngModel)]='name' placeholder="שם" required>
       <button type="submit" class='btn btn-default' (click)='signup()'>הוספה</button>
       <button class='btn btn-default' (click)='clear()'>נקה</button>
