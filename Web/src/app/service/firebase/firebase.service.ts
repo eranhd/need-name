@@ -154,7 +154,7 @@ export class FirebaseService {
 
   }
 
-  getReport(id: String) {
+  getHotSpot(id: String) {
         this.afDb.list("hotSpots").subscribe(val => {
       this.hotSpots = val;
     });
