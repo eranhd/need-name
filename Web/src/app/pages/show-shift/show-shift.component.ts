@@ -71,6 +71,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
   }
 
 }
+  this.hotSpotArr=[];
    let hotSpot: Report;
   //  this.hotSpotArr=this.firebaseService.getReport(this.shift.hotSpotId);
     console.log(this.coldSpotArr);
