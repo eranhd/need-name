@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
       this.reports = r.slice(0, 10);
 
     });
+    console.log(this.firebseService.getColdSpot('-Kldk9s0MYEfKwiYBr8E'));
    };
 
    private lastReportSelected(index){

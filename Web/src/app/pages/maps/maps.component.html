@@ -32,7 +32,11 @@
         <span *ngFor='let item of reports'>
           <sebm-google-map-marker *ngIf='item.location != null && firebseService.checkIfReportBelong(item)' [latitude]="item.location.lat" [longitude]="item.location.lng"
             [iconUrl]="' https://firebasestorage.googleapis.com/v0/b/antidrugsjerusalem.appspot.com/o/image%2Fyellow_location.png?alt=media&token=9a78881f-3305-41cf-9a13-e39cf977a55b'">
+            <sebm-google-map-info-window>
+          <strong>{{item.location | locationName}}</strong>
+        </sebm-google-map-info-window>
           </sebm-google-map-marker>
+          
         </span>
       </div>
       <div *ngIf='!reports'>

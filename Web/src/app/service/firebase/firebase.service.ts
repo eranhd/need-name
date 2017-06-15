@@ -32,9 +32,9 @@ export class FirebaseService {
   private locationsId: string[];
 
   shiftObsarvable: Observable<Array<Shift>>;
-  reportObsarvable: Observable<Array<Shift>>;
-  hotObsarvable: Observable<Array<Shift>>;
-  coldObsarvable: Observable<Array<Shift>>;
+  reportObsarvable: Observable<Array<Report>>;
+  hotObsarvable: Observable<Array<Report>>;
+  coldObsarvable: Observable<Array<Location>>;
   locationObsarvable: Observable<Array<Shift>>;
 
   sonsObsarvable: FirebaseListObservable<any>[];
@@ -65,9 +65,21 @@ export class FirebaseService {
 
     this.shiftObsarvable = afDb.list("shifts");
     this.reportObsarvable = afDb.list("reports");
-    this.hotObsarvable = afDb.list("hotSpots");
-    this.coldObsarvable = afDb.list("coldSpots");
+    this.reportObsarvable.subscribe(val=>{
+      console.log(val);
 
+      this.reports = val;
+    })
+    this.hotObsarvable = afDb.list("hotSpots");
+    this.hotObsarvable.subscribe(val=>{
+      console.log(val);
+      this.hotSpots = val;
+    })
+    this.coldObsarvable = afDb.list("coldSpots");
+    this.coldObsarvable.subscribe(val=>{
+      console.log(val);
+      this.coldSpots = val;
+    })
 
   };
 
@@ -158,33 +170,34 @@ export class FirebaseService {
 
   }
   getHotSpot(id: String) {
-      this.afDb.list("hotSpots").subscribe(val => {
-      this.hotSpots = val;
-    });
-     for(let i=0;  i < this.hotSpots.length; i++) {
-        if(id ==  this.hotSpots[i]["$key"]) {
-          console.log(this.hotSpots[i]);
-            return this.hotSpots[i];
-        }
-      }
-      return null;
+
+    for(let hot of this.hotSpots)
+      if(hot['$key'] == id)
+        return hot;
+    //  for(let i=0;  i < this.hotSpots.length; i++) {
+    //     if(id ==  this.hotSpots[i]["$key"]) {
+    //       console.log(this.hotSpots[i]);
+    //         return this.hotSpots[i];
+    //     }
+    //   }
+    return null;
   }
 
- getColdSpot(id: String) {
-      this.afDb.list("coldSpots").subscribe(val => {
-      this.coldSpots = val;
-      console.log(this.coldSpots);
-    });
-     console.log(this.coldSpots);
-      for(let i=0;  i < this.coldSpots.length; i++) {
+getColdSpot(id: String) {
+  for(let cold of this.coldSpots)
+      if(cold['$key'] == id)
+        return cold;
+      
+  return null;
+}
 
-        if(id ==  this.coldSpots[i]["$key"]) {
-          console.log(this.coldSpots[i]);
-            return this.coldSpots[i];
-        }
-      }
-      return null;
-  }
+getReport(id: string){
+  for(let report of this.reports)
+      if(report['$key'] == id)
+        return report;
+      
+  return null;
+}
 
 
 
