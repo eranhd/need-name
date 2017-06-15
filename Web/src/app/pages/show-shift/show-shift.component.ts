@@ -80,7 +80,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
       hotSpot = this.firebaseService.getHotSpot(this.shift.hotSpotId[i]);
       
        if( hotSpot !=undefined){
-         //console.log(hotSpot);
+         console.log(hotSpot);
         this.hotSpotArr.push(hotSpot);/////////////here problem
        
        }
