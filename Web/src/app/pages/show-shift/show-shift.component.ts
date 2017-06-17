@@ -72,6 +72,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
 
 }
 
+    // creating array of hot spots containing the hot spots of this shift:
     this.hotSpotArr=[];
     let hotSpot: Report;
     for(let i=0; i< firebaseService.hotSpots.length; i++) {
@@ -85,6 +86,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
     }
     console.log(this.hotSpotArr);
 
+    // creating array of cold spots containing the cold spots of this shift:
     this.coldSpotArr=[];
     let coldSpot: Location;
     for(let i=0; i< firebaseService.coldSpots.length; i++) {
@@ -97,6 +99,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
     }
     console.log(this.coldSpotArr);
 
+    // creating array of reports containing the reports of this shift: 
     this.reportsArr=[];
     let report: Report;
     for(let i=0; i< firebaseService.reports.length; i++) {
