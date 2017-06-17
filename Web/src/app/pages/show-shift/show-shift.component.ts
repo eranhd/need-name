@@ -72,19 +72,17 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
 
 }
 
-  this.hotSpotArr=[];
-   let hotSpot: Report;
-  //  this.hotSpotArr=this.firebaseService.getReport(this.shift.hotSpotId);
-    //console.log(this.coldSpotArr);
+    this.hotSpotArr=[];
+    let hotSpot: Report;
     for(let i=0; i< firebaseService.hotSpots.length; i++) {
       hotSpot = this.firebaseService.getHotSpot(this.shift.hotSpotId[i]);
       
        if( hotSpot !=undefined){
          console.log(hotSpot);
-        this.hotSpotArr.push(hotSpot);/////////////here problem
+        this.hotSpotArr.push(hotSpot);
        
        }
-      }
+    }
     console.log(this.hotSpotArr);
 
     this.coldSpotArr=[];
@@ -96,7 +94,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
         this.coldSpotArr.push(coldSpot);
        
        }
-      }
+    }
     console.log(this.coldSpotArr);
 
     this.reportsArr=[];
@@ -108,7 +106,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
         this.reportsArr.push(report);
        
        }
-      }
+    }
     console.log(this.reportsArr);
 
 }
