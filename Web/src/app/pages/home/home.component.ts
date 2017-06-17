@@ -48,14 +48,21 @@ export class HomeComponent implements OnInit {
       console.log(this.shifts);
     });
 
-
+    this.reports = [];
     this.firebseService.reportObsarvable.subscribe(val => {
-      const r = [];
+      
+      // const r = [];
       for (const item of val)
         if (this.firebseService.checkIfReportBelong(item["$key"]))
-          r.push(item);
-      this.reports = r.slice(0, 10);
+          this.reports.push(item);
+      this.reports = this.reports.slice(0, 10);
 
+    });
+    this.firebseService.hotObsarvable.subscribe(val=>{
+      for (const item of val)
+        if(this.firebseService.checkIfHotBelong(item['$key']))
+          this.reports.push(item);
+        this.reports = this.reports.slice(0, 10);
     });
     console.log(this.firebseService.getColdSpot('-Kldk9s0MYEfKwiYBr8E'));
    };

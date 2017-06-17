@@ -124,7 +124,7 @@
       </th>
     </tr>
 
-    <tr class='table_body' *ngFor='let shift of data' >
+    <tr class='table_body' *ngFor='let shift of data' row-over>
       <td>
         <button id='btn_delete' (click)='firebseService.removeData("shifts", shift.$key)'><md-icon>delete</md-icon></button>
         <button id='btn_show' [routerLink]='["../show-shift", shift.$key]'><md-icon>zoom_in</md-icon></button>

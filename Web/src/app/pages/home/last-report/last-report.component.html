@@ -2,7 +2,7 @@
   *ngIf='report' 
   (click)='showPopup = true; setPopup()' 
   (mouseleave)='showPopup = flase'
-  class='report-row'>
+  class='report-row' pointer row-over>
   <span *ngIf='report.date'>{{report.date | date:'shortDate'}}</span>
   <span *ngIf='report.date'>{{report.date | date:'HH:mm'}}</span>
   <span *ngIf='report.location'>{{report.location | locationName}}</span>

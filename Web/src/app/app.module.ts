@@ -69,6 +69,10 @@ import { SaveLocationBetaComponent } from "./mobile/pages/save-location-beta/sav
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PushNotificationsModule } from "angular2-notifications";
 
+import { RowOver } from './directives/RowOver.directive';
+import { Pointer } from './directives/Pointer.directive';
+
+
 export const environment = {
   production: false,
   firebase: {
@@ -129,7 +133,9 @@ export const environment = {
     ShowReportComponent,
     ShowShiftComponent,
     LocationName,
-    SaveLocationBetaComponent
+    SaveLocationBetaComponent,
+    RowOver,
+    Pointer
   ],
   imports: [
     BrowserModule,
