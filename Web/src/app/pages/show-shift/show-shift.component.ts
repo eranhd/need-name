@@ -26,7 +26,7 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
   choosen: any = null; //init when report or spot choos
   coldSpotArr: Location[];
   hotSpotArr: Report[];
-  reportsArr: Report[];
+  reportArr: Report[];
 
   constructor(public route: ActivatedRoute, public firebaseService: FirebaseService) {
  
@@ -100,17 +100,17 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
     console.log(this.coldSpotArr);
 
     // creating array of reports containing the reports of this shift: 
-    this.reportsArr=[];
+    this.reportArr=[];
     let report: Report;
     for(let i=0; i< firebaseService.reports.length; i++) {
     report = this.firebaseService.getReport(this.shift.reportsId[i]);
       
        if( report !=undefined){
-        this.reportsArr.push(report);
+        this.reportArr.push(report);
        
        }
     }
-    console.log(this.reportsArr);
+    console.log(this.reportArr);
 
 }
 

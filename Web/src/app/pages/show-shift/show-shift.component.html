@@ -35,7 +35,7 @@
     </div>
 
     <div>
-      <table>
+    <table>
     <tr class='table_head'>
       <th>
         נקודות קרות
@@ -48,17 +48,18 @@
       </th>
     </tr>
 
-       <tr class='table_body' *ngFor='let shift of data' >
-        
+    <tr class='table_body' *ngFor='let shift of data' >
+
         <td>
-            {{this.shift.coldSpotsArr[i].date}}
-            {{this.shift.coldSpotsArr[i].location}}
+            {{show-shift.coldSpotArr[i].location| locationName}}
         </td>
         <td>
-          {{this.shift.hotSpotsArr}}
+            {{show-shift.hotSpotArr[i].date | date:'dd.MM.yyyy'}}
+            {{show-shift.hotSpotArr[i].location| locationName}}
         </td>
         <td>
-          {{this.shift.reportsArr}}
+          {{show-shift.reportArr[i].date | date:'dd.MM.yyyy'}}
+          {{show-shift.reportArr[i].location| locationName}}
         </td>
       </tr>  
     </table>
