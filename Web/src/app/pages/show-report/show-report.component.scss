@@ -1,0 +1,52 @@
+main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    direction: rtl;
+    font-size: 16px;
+    .title{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 20%;
+        background-color: #004381;
+        color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        span{
+            margin: 0 2px;
+        }
+    }
+    .body{
+        position: absolute;
+        top: 20%;
+        right: 0;
+        width: 100%;
+        height: 80%;
+        background-color: white;
+        color: black;
+        white-space: nowrap;
+        overflow: scroll;
+        text-overflow: ellipsis;
+        .report-fields{
+            display: block;
+            height: 20%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            span{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+        }  
+    }
+}
+
+::-webkit-scrollbar{
+    visibility: hidden;
+}

@@ -64,6 +64,9 @@ export class FirebaseService {
 
 
     this.shiftObsarvable = afDb.list("shifts");
+    this.shiftObsarvable.subscribe(val=>{
+      this.shifts = val;
+    })
     this.reportObsarvable = afDb.list("reports");
     this.reportObsarvable.subscribe(val=>{
       console.log(val);
@@ -126,19 +129,17 @@ export class FirebaseService {
 
 
   private getAllDataFromDb() {
-    this.shiftObsarvable.subscribe(val => {
-      //clear all array when shift chnage and load from firebase again
-      this.shifts = [];
+
       this.reportsId = [];
       this.coldSpotId = [];
       this.hotSpotId = [];
-      // console.log(this.shiftsId);
+      // this.shiftsId = [];
 
-      val.forEach(item => {
+      this.shifts.forEach(item => {
         // console.log(item["$key"])
         if (this.checkIfShiftBelong(item["$key"])) {
 
-          this.shifts.push(item);
+          // this.shifts.push(item);
 
           // console.log(item)
           if (item.reportsId) {
@@ -160,7 +161,7 @@ export class FirebaseService {
 
 
       })
-    });
+    // });
 
     // console.log(this.shiftsId)
 
@@ -170,20 +171,19 @@ export class FirebaseService {
 
   }
   getHotSpot(id: String) {
+    if(!this.hotSpots || this.hotSpots.length == 0)
+      return null;
 
     for(let hot of this.hotSpots)
       if(hot['$key'] == id)
         return hot;
-    //  for(let i=0;  i < this.hotSpots.length; i++) {
-    //     if(id ==  this.hotSpots[i]["$key"]) {
-    //       console.log(this.hotSpots[i]);
-    //         return this.hotSpots[i];
-    //     }
-    //   }
+    
     return null;
   }
 
 getColdSpot(id: String) {
+  if(!this.coldSpots || this.coldSpots.length == 0)
+    return null;
   for(let cold of this.coldSpots)
       if(cold['$key'] == id)
         return cold;
@@ -192,6 +192,8 @@ getColdSpot(id: String) {
 }
 
 getReport(id: string){
+  if(!this.reports || this.reports.length == 0)
+    return null;
   for(let report of this.reports)
       if(report['$key'] == id)
         return report;
@@ -250,6 +252,7 @@ getReport(id: string){
       }
       if (val.length > 1)
         for (const shift of val[1]) {
+          console.log(shift);
           if (!this.searchInShiftId(shift))
             this.shiftsId.push(shift);
         }
@@ -267,6 +270,7 @@ getReport(id: string){
     firebase.database().ref("/users/" + firebase.auth().currentUser.uid).once("value").then(snapshot => {
 
       this.userService._user = snapshot.val();
+      console.log(snapshot.val());
       if (this.userService._user.shiftsId) {
         for (const id of this.userService._user.shiftsId) {
 
@@ -292,21 +296,6 @@ getReport(id: string){
       console.log(val);
       this.locations = val;
     });
-    // firebase.database().ref("/locations/").once("value", ids => {
-    //   for (let key in ids) {
-    //     if (!this.locationsId)
-    //       this.locationsId = [];
-    //     this.locationsId.push(key)
-    //   }
-    //   for (let id of this.locationsId) {
-    //     firebase.database().ref("/locations/" + id).once("value").then(loc => {
-    //       if (!this.locations)
-    //         this.locations = [];
-    //       this.locations.push(loc);
-    //     }).catch(error => { console.log(error.message) })
-    //   }
-    //   console.log(this.locations);
-    // })
   }
 
 
@@ -436,13 +425,12 @@ getReport(id: string){
   }
 
   getShift(id: string) {
-    return this.shiftObsarvable.map(val => {
-      for (const shift of val)
-        if (shift["key"] == id) {
-          return shift;
-        }
-    })
-
+    if(!this.shifts || this.shifts.length == 0)
+      return null;
+    for(let s of this.shifts)
+      if(s['$key'] == id)
+        return s;
+    return null;
   }
 
   public removeData(type: string, id: string) {

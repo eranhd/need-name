@@ -1,2 +1,16 @@
 <main *ngIf='report'>
+  <<div class='title'>
+    <!--<span>{{report.summary}}</span>-->
+    <span>{{report.date | date:'dd.MM.yy'}}</span>
+    <span>{{report.date | date:'HH:mm'}}</span>
+    <span>{{report.location | locationName}}</span>
+    </div>
+
+
+    <div class='body'>
+      <div class='report-fields' *ngFor='let item of report.fields'>
+        <span>{{item.name}}</span>
+        <span>: {{item.data}} </span>
+      </div>
+    </div>
 </main>

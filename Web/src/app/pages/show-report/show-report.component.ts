@@ -4,7 +4,7 @@ import { Report } from "../../models/Report";
 @Component({
   selector: "show-report",
   templateUrl: "./show-report.component.html",
-  styleUrls: ["./show-report.component.css"]
+  styleUrls: ["./show-report.component.scss"]
 })
 export class ShowReportComponent implements OnInit {
 

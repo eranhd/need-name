@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { MapsService } from "../../service/maps/maps.service";
-import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral , SebmGoogleMapMarker} from "angular2-google-maps/core";
+import { SebmGoogleMap, SebmGoogleMapInfoWindow, SebmGoogleMapPolygon, LatLngLiteral , SebmGoogleMapMarker} from "angular2-google-maps/core";
 import { UserService } from "../../service/user/user.service";
 import { ReportService } from "../../service/report/report.service";
 import { Report } from "../../models/Report";
@@ -18,7 +18,8 @@ export class MapsComponent implements OnInit {
   @Input() reports: Report[] = null;
   @Input() hot: Report[] = null;
   @Input() cold: Location[] = null;
-
+  @Input() reportChoosen: Report = null;
+  @Input() choosen: any = null;
 
   lat: number;
   lng: number;
@@ -69,6 +70,20 @@ export class MapsComponent implements OnInit {
     this.hotFlag = false;
     this.reportFlag = false;
     this.showAll = false;
+  }
+
+  get _choosen(){
+    if(this.choosen)
+      if(!this.choosen.lat)
+        this.choosen = this.choosen.location;
+    return this.choosen;
+  }
+
+  set _choosen(c){
+    if(c.lat)
+      this.choosen = c;
+    else
+      this.choosen = c.location;
   }
 
   ngOnInit() {
