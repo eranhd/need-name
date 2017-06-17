@@ -49,14 +49,16 @@
     </tr>
 
        <tr class='table_body' *ngFor='let shift of data' >
+        
         <td>
-          {{shift.coldSpotArr.location}}
+            {{this.shift.coldSpotsArr[i].date}}
+            {{this.shift.coldSpotsArr[i].location}}
         </td>
         <td>
-          {{shift.hotSpotArr}}
+          {{this.shift.hotSpotsArr}}
         </td>
         <td>
-          {{shift.reports}}
+          {{this.shift.reportsArr}}
         </td>
       </tr>  
     </table>
