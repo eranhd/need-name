@@ -6,9 +6,11 @@ import { ReportService } from "../../service/report/report.service";
 import { FirebaseService } from "../../service/firebase/firebase.service";
 import { RoleService } from "../../service/role/role.service";
 import { Shift } from "../../models/Shift";
-
+import { Observable } from 'rxjs';
 
 import { LastReportComponent } from "./last-report/last-report.component";
+import { SpinnerComponent } from '../spinner/spinner.component';
+
 
 @Component({
   selector: "app-home",
@@ -23,67 +25,63 @@ export class HomeComponent implements OnInit {
   public selectedTitle: string;
   public selectedBody: string;
 
-  shifts: Array<Shift>;
-  reports: Array<any>;
+  showReports: Observable<boolean>;
+  showShifts: Observable<boolean>;
+
+  _shifts: Array<Shift>;
+  _reports: Array<any>;
   shiftShow = 0;
 
   constructor(public userService: UserService,
-              public reportService: ReportService,
-              public firebseService: FirebaseService,
-              public router: Router
-  )
-  {
+    public reportService: ReportService,
+    public firebseService: FirebaseService,
+    public router: Router
+  ) {
 
-    this.lastReport = new TableItem("lastReport", 3, [ "תאריך", "שעה", "איזור"]);
-    this.hotArea = new TableItem("hotArea", 2, ["איזור", "מספר תקריות"]);
-    this.nowActive = new TableItem("nowActive", 2, ["איזור", "דוח תחילת משמרת"]);
-    this.lastReport.getTypeRows();
-    // console.log(this.firebseService.reportsId);
-    this.firebseService.shiftObsarvable.subscribe(val => {
-      const s = [];
-      for (const item of val)
-        if (this.firebseService.checkIfShiftBelong(item["$key"]))
-          s.push(item);
-      this.shifts = s.slice(0, 10);
-      console.log(this.shifts);
+    this.showReports = new Observable(ob => {
+      ob.next(false);
+      ob.complete();
+    });
+    this.showShifts = new Observable(ob => {
+      ob.next(false);
+      ob.complete();
     });
 
-    this.reports = [];
-    this.firebseService.reportObsarvable.subscribe(val => {
-      
-      // const r = [];
-      for (const item of val)
-        if (this.firebseService.checkIfReportBelong(item["$key"]))
-          this.reports.push(item);
-      this.reports = this.reports.slice(0, 10);
+  };
 
+  get shifts() {
+    this._shifts = [];
+    
+    const s = [];
+    for (const item of this.firebseService.shifts)
+      if (this.firebseService.checkIfShiftBelong(item["$key"]))
+        s.push(item);
+    this._shifts = s.slice(0, 10);
+    this.showShifts = new Observable(ob => {
+      ob.next(true);
+      ob.complete();
     });
-    this.firebseService.hotObsarvable.subscribe(val=>{
-      for (const item of val)
-        if(this.firebseService.checkIfHotBelong(item['$key']))
-          this.reports.push(item);
-        this.reports = this.reports.slice(0, 10);
+   
+    return this._shifts;
+  }
+
+  get reports() {
+    this._reports = [];   
+    for (const item of this.firebseService.reports)
+      if (this.firebseService.checkIfReportBelong(item["$key"]))
+        this._reports.push(item);
+    
+    for (const item of this.firebseService.hotSpots)
+      if (this.firebseService.checkIfHotBelong(item['$key']))
+        this._reports.push(item);
+    this._reports = this._reports.slice(0, 10);
+    this.showReports = new Observable(ob => {
+      ob.next(true);
+      ob.complete();
     });
-    console.log(this.firebseService.getColdSpot('-Kldk9s0MYEfKwiYBr8E'));
-   };
-
-   private lastReportSelected(index){
-     const event = this.reportService.lastReportArr[index];
-     this.selectedTitle = event.summary;
-     this.selectedBody = event.summary;
-     console.log("show");
-
-   }
-
-   showMore(id: string): boolean{
-     if (!this.firebseService.checkIfShiftBelong(id))
-     return false;
-     if (this.shiftShow == 3)
-      return false;
-    this.shiftShow++;
-    return true;
-
-   }
+    
+    return this._reports;
+  }
 
   ngOnInit() {
   };

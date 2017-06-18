@@ -69,18 +69,18 @@ export class FirebaseService {
     })
     this.reportObsarvable = afDb.list("reports");
     this.reportObsarvable.subscribe(val=>{
-      console.log(val);
+      // console.log(val);
 
       this.reports = val;
     })
     this.hotObsarvable = afDb.list("hotSpots");
     this.hotObsarvable.subscribe(val=>{
-      console.log(val);
+      // console.log(val);
       this.hotSpots = val;
     })
     this.coldObsarvable = afDb.list("coldSpots");
     this.coldObsarvable.subscribe(val=>{
-      console.log(val);
+      // console.log(val);
       this.coldSpots = val;
     })
 
@@ -252,7 +252,7 @@ getReport(id: string){
       }
       if (val.length > 1)
         for (const shift of val[1]) {
-          console.log(shift);
+          // console.log(shift);
           if (!this.searchInShiftId(shift))
             this.shiftsId.push(shift);
         }
@@ -270,7 +270,7 @@ getReport(id: string){
     firebase.database().ref("/users/" + firebase.auth().currentUser.uid).once("value").then(snapshot => {
 
       this.userService._user = snapshot.val();
-      console.log(snapshot.val());
+      // console.log(snapshot.val());
       if (this.userService._user.shiftsId) {
         for (const id of this.userService._user.shiftsId) {
 
@@ -293,7 +293,7 @@ getReport(id: string){
   }
   initLocations() {
     this.afDb.list("locations").subscribe(val => {
-      console.log(val);
+      // console.log(val);
       this.locations = val;
     });
   }

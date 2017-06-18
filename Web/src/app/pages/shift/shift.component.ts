@@ -56,11 +56,11 @@ export class ShiftComponent implements OnInit {
     const shifts = [];
     for (const shift of val) {
       if (this.leadName && this.leadName != "") {
-        if (shift.team.lead.replace(/ /g, "") != this.leadName.replace(/ /g, ""))
+        if (!shift.team.lead.replace(/ /g, "").includes(this.leadName.replace(/ /g, "")))
           continue;
       }
       if (this.locationName && this.locationName != "")
-        if (this.locPipe.transform(shift.stratShift.location).replace(/ /g, "") != this.locationName.replace(/ /g, ""))
+        if (!this.locPipe.transform(shift.stratShift.location).replace(/ /g, "").includes(this.locationName.replace(/ /g, "")))
           continue;
       if (this.fromDate)
         if (this.fromDate > shift.stratShift.date)

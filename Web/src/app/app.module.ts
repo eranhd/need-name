@@ -71,6 +71,7 @@ import { PushNotificationsModule } from "angular2-notifications";
 
 import { RowOver } from './directives/RowOver.directive';
 import { Pointer } from './directives/Pointer.directive';
+import { SpinnerComponent } from './pages/spinner/spinner.component';
 
 
 export const environment = {
@@ -135,7 +136,8 @@ export const environment = {
     LocationName,
     SaveLocationBetaComponent,
     RowOver,
-    Pointer
+    Pointer,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

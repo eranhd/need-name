@@ -1,11 +1,14 @@
 <main>
   <section>
     <h1>משמרות אחרונות</h1>
-    <div class='div_last_shifts'>
+    <div *ngIf='showShifts' class='div_last_shifts'>
       <div class='last_shift' *ngFor='let shift of shifts '>
         <last-shift [shift]='shift'>
         </last-shift>
       </div>
+    </div>
+    <div *ngIf='!showShifts' class='div_last_shifts'>
+      <spinner></spinner>
     </div>
   </section>
 
@@ -22,11 +25,14 @@
 
   <section>
     <h1>אירועים אחרונים</h1>
-    <div class='div_last_report'>
+    <div *ngIf='showReports' class='div_last_report'>
       <div class='last_report' *ngFor='let report of reports'>
         <app-last-report  [report]='report' row-over>
         </app-last-report>
       </div>
+    </div>
+    <div *ngIf='!showReports' class='div_last_shifts'>
+      <spinner></spinner>
     </div>
   </section>
 </main>
