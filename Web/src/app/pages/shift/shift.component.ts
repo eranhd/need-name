@@ -11,7 +11,7 @@ import { LocationName } from "../../pipe/locationName.pipe";
 })
 export class ShiftComponent implements OnInit {
 
-  numToShow = 10;
+  numToShow = 7;
   indexToShow = 0;
 
   data: Array<Shift>;
@@ -151,6 +151,13 @@ export class ShiftComponent implements OnInit {
     this.indexToShow += this.numToShow;
     this.search(this.originalData);
 
+  }
+  remove(type: string, id: string){
+    let ans = confirm("מחיקה אינה מאפשרת שחזור של המשמרת האם למחוק?");
+    if(ans)
+      this.firebseService.removeData(type, id)
+    else
+      return;
   }
   showPrev() {
     // console.log(this.indexToShow);

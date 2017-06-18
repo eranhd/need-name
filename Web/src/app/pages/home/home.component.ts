@@ -37,6 +37,8 @@ export class HomeComponent implements OnInit {
     public firebseService: FirebaseService,
     public router: Router
   ) {
+    this._shifts = [];
+    this._reports = [];
 
     this.showReports = new Observable(ob => {
       ob.next(false);

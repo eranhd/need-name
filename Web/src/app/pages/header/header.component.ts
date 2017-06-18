@@ -58,10 +58,10 @@ export class HeaderComponent implements OnInit {
           {
             const d = new Date(event[this.index].stratShift.date);
             this.curr = "בתאריך " + d.toLocaleDateString() + "התחילה משמרת " + " בשעה " + d.toLocaleTimeString();
-            this.curr += " במקום: " + this.locPipe.transform(event[this.index].stratShift.location);
+            this.curr += " ב" + this.locPipe.transform(event[this.index].stratShift.location);
             if(event[this.index].endShift){
               const ed = new Date(event[this.index].endShift.date);
-              this.curr +=  " והסתיימה ב " + ed.toLocaleTimeString();
+              this.curr +=  " והסתיימה בשעה " + ed.toLocaleTimeString() + " ב" + this.locPipe.transform(event[this.index].endShift.location);
             }
             else
               this.curr += " אך לא הסתיימה";
