@@ -7,7 +7,7 @@ import {routes} from "./app.router";
 import { AppComponent } from "./app.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { LoginComponent } from "./pages/login/login.component";
-
+import { ConfirmationDialog } from "./dialog/confirm-dialog";
 import {NavServiceService} from"./service/nav/nav-service.service";
 import { SettingReportService } from "./service/setting-report/setting-report.service";
 import { ReportService } from "./service/report/report.service"
@@ -111,6 +111,7 @@ export const environment = {
     ReportComponent,
     MapsComponent,
     MobileMainComponent,
+    ConfirmationDialog,
   //  StartShiftComponent,
     GraphsComponent,
     LastReportComponent,
@@ -173,7 +174,8 @@ export const environment = {
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogLastReport
+    DialogLastReport,
+    ConfirmationDialog
   ]
 })
 export class AppModule {

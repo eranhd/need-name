@@ -7,6 +7,8 @@ import { UserService } from "../../../service/user/user.service";
 import { Shift } from "../../../models/Shift";
 import { Location } from "../../../models/Location";
 import { LocalStorageService } from "../../../service/local-storage/local-storage.service";
+import { ConfirmationDialog } from '../../../dialog/confirm-dialog';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: "app-end-patrol",
@@ -19,11 +21,13 @@ export class EndPatrolComponent implements OnInit {
   summaryT: string;
   unusualEvents: string;
   dilemmas: string;
+  dialogRef: MdDialogRef<ConfirmationDialog>;
 
   constructor(public router: Router,
     public shiftService: ShiftService,
     public fireService: FirebaseService,
-    public userService: UserService) {
+    public userService: UserService,
+    public dialog: MdDialog,) {
 
     this.filling = "";
     this.summaryT = "";
@@ -41,13 +45,43 @@ export class EndPatrolComponent implements OnInit {
       LocalStorageService.clearUser();
       this.fireService.updateShift();
       LocalStorageService.clearShift();
-
+      this.openConfirmationDialog(filling);
       this.router.navigate(["mobile_main"]);
     }, (error) => {
       alert("אנא הפעל מיקום");
     });
 
   }
+
+  openConfirmationDialog(filling) {
+    this.dialogRef = this.dialog.open(ConfirmationDialog, {
+      disableClose: false
+    });
+    this.dialogRef.componentInstance.confirmMessage = "הסיור נגמר";
+    switch(filling){
+      case "סבבה":
+        this.dialogRef.componentInstance.body = "מקווים שסיור הבא יימשך במגמה חיובית זו";
+        break;
+      case "מצויין":
+        this.dialogRef.componentInstance.body = "אנו שמחים שהסיור עבר בצורה טובה. ";
+        break;
+      case "גרוע":
+        this.dialogRef.componentInstance.body = "הפירוט שמולא יטופל בהתאם. ";
+        break;
+      case "לא משהו":
+        this.dialogRef.componentInstance.body = "אנו מקווים שסיור הבא יהיה מוצלח יותר ";
+        break;
+    }
+    this.dialogRef.componentInstance.body += "שיהיה המשך ערב טוב";
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        // do confirmation actions
+      }
+      this.dialogRef = null;
+    });
+  }
+
   ngOnInit() {
   }
 

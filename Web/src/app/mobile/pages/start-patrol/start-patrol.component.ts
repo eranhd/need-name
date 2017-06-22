@@ -8,6 +8,9 @@ import { Shift } from "../../../models/Shift";
 import { LocalStorageService } from "../../../service/local-storage/local-storage.service";
 import { Location } from "../../../models/Location";
 import { SaveLocationBetaComponent } from "../save-location-beta/save-location-beta.component";
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { ConfirmationDialog } from '../../../dialog/confirm-dialog';
+
 
 @Component({
   selector: "app-start-patrol",
@@ -23,9 +26,10 @@ export class StartPatrolComponent implements OnInit, OnChanges {
   team: Team;
   location: Location;
   isSubmit = false;
-
+  dialogRef: MdDialogRef<ConfirmationDialog>;
 
   constructor(public router: Router,
+              public dialog: MdDialog,
               public shiftService: ShiftService,
               public fireService: FirebaseService,
               public userService: UserService) {
@@ -34,6 +38,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
     this.isValid = true;
     this.memberValid = false;
     this.location = null;
+    
   }
 
    deleteMember(){
@@ -42,6 +47,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
 
   public startPatrol() {
+    
     this.isSubmit = true;
     if (this.numOfMembers <= 0 || this.team.teamNum <= 0 || !this.team.teamNum || this.team.lead == null || !this.team.lead){
       this.isValid = false;
@@ -72,6 +78,7 @@ export class StartPatrolComponent implements OnInit, OnChanges {
         });
 
         this.isValid = true;
+        this.openConfirmationDialog();
         this.router.navigate(["mobile_main"]);
       }
   };
@@ -84,6 +91,21 @@ export class StartPatrolComponent implements OnInit, OnChanges {
 
   ngOnChanges(item){
 
+  }
+
+  openConfirmationDialog() {
+    this.dialogRef = this.dialog.open(ConfirmationDialog, {
+      disableClose: false
+    });
+    this.dialogRef.componentInstance.confirmMessage = "הסיור החל";
+    this.dialogRef.componentInstance.body = "סיור מוצלח";
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        // do confirmation actions
+      }
+      this.dialogRef = null;
+    });
   }
 }
 

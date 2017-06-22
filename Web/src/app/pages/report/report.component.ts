@@ -9,6 +9,9 @@ import { ShiftService } from "../../service/shift/shift.service";
 import { Team } from "../../models/Team";
 import { LocalStorageService } from "../../service/local-storage/local-storage.service";
 import { SaveLocationBetaComponent } from "../../mobile/pages/save-location-beta/save-location-beta.component";
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { ConfirmationDialog } from '../../dialog/confirm-dialog';
+
 
 @Component({
   selector: "app-report",
@@ -23,16 +26,37 @@ export class ReportComponent implements OnInit {
   summary: string;
   photoUrl: string;
   isSubmit = false;
+  dialogRef: MdDialogRef<ConfirmationDialog>;
+
   constructor(public settingReportService: SettingReportService,
     private router: Router,
     public activedRouter: ActivatedRoute,
     public userService: UserService,
     public firebaseService: FirebaseService,
     public shiftService: ShiftService,
+    public dialog: MdDialog,
     private element: ElementRef) {
 
     this.sub = this.activedRouter.params.subscribe(params => {
       this.id = params["id"];
+    });
+  }
+
+  openConfirmationDialog() {
+    this.dialogRef = this.dialog.open(ConfirmationDialog, {
+      disableClose: false
+    });
+    if(this.id+"" == "2")
+      this.dialogRef.componentInstance.confirmMessage = "נקודה חמה דווחה";
+    else
+      this.dialogRef.componentInstance.confirmMessage = "דוח נוסף";
+    this.dialogRef.componentInstance.body = "תודה";
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        // do confirmation actions
+      }
+      this.dialogRef = null;
     });
   }
 
@@ -58,7 +82,7 @@ export class ReportComponent implements OnInit {
 
       this.firebaseService.saveReport(report, this.id + "");
       LocalStorageService.saveUser(this.userService.user);
-
+      this.openConfirmationDialog();
       this.router.navigate(["mobile_main"]);
     },
       (error) => {
@@ -67,6 +91,7 @@ export class ReportComponent implements OnInit {
       });
 
   };
+  
 
   getImage(event) {
     const reader = new FileReader();

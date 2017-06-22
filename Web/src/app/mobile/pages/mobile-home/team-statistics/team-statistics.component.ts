@@ -12,7 +12,7 @@ export class TeamStatisticsComponent implements OnInit {
 
   constructor(public userService: UserService,
               public shift: ShiftService) {
-
+                
    }
 
 
