@@ -106,10 +106,12 @@ export class ShiftComponent implements OnInit {
         const d = new Date(shift.stratShift.date)
         a.push(d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear());
         // d = new Date(shift.stratShift.date)
+        a.push(this.locPipe.transform(shift.stratShift.location));
         a.push(d.getHours() + ":" + d.getMinutes());
       }
       else {
         a.push("תאריך לא ידוע");
+        a.push("מיקום לא ידוע")
         a.push("שעה לא ידועה");
       }
       if (shift.endShift) {

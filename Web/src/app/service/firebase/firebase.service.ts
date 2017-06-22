@@ -31,6 +31,7 @@ export class FirebaseService {
   private hotSpotId: string[];
   private locationsId: string[];
 
+  private firebaseApp = [];
   shiftObsarvable: Observable<Array<Shift>>;
   reportObsarvable: Observable<Array<Report>>;
   hotObsarvable: Observable<Array<Report>>;
@@ -118,13 +119,12 @@ export class FirebaseService {
     if (id) {
       this.userToSave.update(id, user).catch(error => { console.log(error.message) })
     }
-    else {
-      this.userToSave.update(firebase.auth().currentUser.uid, user).catch(error => {
-        console.log(error.message);
-      });
-
-      console.log(user);
-    }
+    // else {
+    //   this.userToSave.update(firebase.auth().currentUser.uid, user).catch(error => {
+    //     console.log(error.message);
+    //   });
+    // }
+    console.log(user);
   }
 
 
@@ -206,15 +206,32 @@ getReport(id: string){
 
   createNewUser(email: string, password: string, user: User) {
     let newId = "";
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot => {
-      this.userService._user.details._sons.unshift(snapshot.uid);
-      this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
-      this.updateUser(user, snapshot.uid);
-      newId = snapshot.uid;
+    
+    let config = {
+      apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
+      authDomain: "anti-drugs-jerusalem.firebaseapp.com",
+      databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
+      storageBucket: "anti-drugs-jerusalem.appspot.com",
+      messagingSenderId: "944977183444"
+    };
+    this.firebaseApp.unshift(firebase.initializeApp(config, "Secondary" + this.firebaseApp.length));
+
+    this.firebaseApp[0].auth().createUserWithEmailAndPassword(email, password).then((firebaseUser) =>{
+        this.userService._user.details._sons.unshift(firebaseUser.uid);
+        this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
+        this.updateUser(user, firebaseUser.uid);
+        this.firebaseApp[0].auth().signOut();
     }).catch(error => {
       console.log("error create user");
     });
 
+
+    // firebase.auth().createUserWithEmailAndPassword(email, password).then(snapshot => {
+    //   this.userService._user.details._sons.unshift(snapshot.uid);
+    //   this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
+    //   this.updateUser(user, snapshot.uid);
+    //   newId = snapshot.uid;
+    // })
   }
 
   searchInSons(id) {
