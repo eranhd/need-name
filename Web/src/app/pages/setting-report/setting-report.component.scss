@@ -12,14 +12,12 @@ main{
         right: 0;
         width: 45%;
         height: 100%;
-        .full-width{
-            width: 100%;
-            display: block;
-        }
+
         input{
             font-weight: normal;
             text-align: right;
             display: inline-block;
+            margin:2%;
         }
     }
     .report{
@@ -32,17 +30,30 @@ main{
         height: 100%;
         overflow: scroll;
     }
+    .btn-success,.btn-danger{
+        margin-top: 3%;
+        width: 20%;
+        margin: 2%;
+    }
+
+    .deletfieldSection,.addSection{
+    margin: 1%;
+    width: 50%;
+    border:solid 2px;
+    border-radius: 7px;
+    border-color: #00638e; 
+    }
 }
 
 ::-webkit-scrollbar{
     visibility: hidden;
 }
 
-.btn-deleteField{
+/*.btn-danger{
     clear:both;   
     display: block;
     margin-top:10%;
-    width: 50%;
+    width: 30%;
     height: 10%;
     font-family: 'Arial';
     font-size: 15px;
@@ -50,8 +61,18 @@ main{
     color: white;
     border-radius:5px; 
 
-}
+}*/
 
 .deleteField{
     text-align: right;
+    margin: 2%;
 }
+
+.deleteTitle,.addField,.title{
+    margin-top: 5%;
+    margin: 2%;
+}
+.typeInput{
+    margin: 2%;
+}
+

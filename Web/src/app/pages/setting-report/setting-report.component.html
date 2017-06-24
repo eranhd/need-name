@@ -1,36 +1,37 @@
 <main>
   <section class='setting'>
-    <div class='title'>
-      <h1>הגדרת טפסים</h1>
-      <h2>הוספת שדה לטופס קיים</h2>
-    </div>
-    <div class='div_inputs'>
-      <div class='full-width'>
-        <input  placeholder='שם השדה' [(ngModel)]='label' />
-      </div>
-      <div class='full-width'>
-        <input  placeholder='תיאור' [(ngModel)]='placeHolder'/>
-      </div>
-      <label>סוג הערך שיוכנס
+      <h1 class='title'>הגדרת טפסים</h1>
+      <div class='div_inputs'>
+        <div class="addSection">
+          <h3 class="addField">הוספת שדה לטופס קיים</h3>
+          <div class='full-width'>
+            <input placeholder='שם השדה' [(ngModel)]='label' />
+          </div>
+          <div class='full-width'>
+            <input  placeholder='תיאור' [(ngModel)]='placeHolder'/>
+          </div>
+          <label class="typeInput" >סוג הערך שיוכנס</label>
         <select [(ngModel)]='type'>
           <option (select)='type = "text"' value="text">טקסט</option>
           <option (select)='type = "number"' value="number">מספר</option>
         </select>
-        <button  class='btn btn-success full-width' (click)='addToInputItem()'>שמירה</button>
-        <!---->
         <br>
-        <div class="delet field">
-            <div>מחיקת שדה</div>
+        <button  class='btn btn-success full-width' (click)='addToInputItem()'>שמירה</button>
+        </div>
+       
+        
+        <div class="deletfieldSection">
+            <h3 class="deleteTitle" >מחיקת שדה</h3>
             <br>
              <select class="deleteField" [(ngModel)]="this.placeHolderId" >
                <option value="" disabled selected>בחר שדה למחיקה</option>
                <option *ngFor='let item of this.settingReportService.getInputs()' value="{{item.placeHolder}}" >{{item.placeHolder}}</option>
                </select>
                <br>
-            <button  class='btn-deleteField' (click)='this.settingReportService.deleteField(this.placeHolderId)'>מחק שדה</button>
+            <button  class='btn btn-danger' (click)='this.settingReportService.deleteField(this.placeHolderId)'>מחק שדה</button>
         </div>
         <!---->
-      </label>
+      
     </div>
   </section>
   <section class='report'>
