@@ -1,5 +1,8 @@
 <main *ngIf='canShow' class='container' fxLayout=row>
   <aside class='shift_details' fxFlex=45>
+    <div>
+      <!--<button (click)="sendToMail()">שלח למייל</button>-->
+    </div>
     <div *ngIf='shift.stratShift'>
       <span class="label">תאריך משמרת:</span>
       <span>{{shift.stratShift.date | date:'dd.MM.yyyy'}}</span>

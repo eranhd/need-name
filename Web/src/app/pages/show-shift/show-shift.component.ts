@@ -122,6 +122,17 @@ export class ShowShiftComponent implements OnInit, OnDestroy {
 
   }
 
+  sendToMail(){
+    var link = "mailto:eranm22@gmail.com"
+             + "?cc=igudjr.az@gmail.com‬"
+             + "&subject=" + ("This is my subject")
+             + "&body=" + "test"
+    ;
+
+    window.location.href = link;
+    // window.open('mailto:?subject=subject&body=body');
+  }
+
   ngOnDestroy() {
     // this.sub.unsubscribe();
   }

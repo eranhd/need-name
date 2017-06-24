@@ -15,6 +15,8 @@ export class AddNewUserComponent implements OnInit {
   newUser: User;
   email: string;
   password: string;
+  _passwordAgain: string;
+  error_message: string = "";
   name: string;
   role: string;
   type: string;
@@ -33,6 +35,8 @@ export class AddNewUserComponent implements OnInit {
   }
 
    public signup(){
+     if(this._passwordAgain !== this.password)
+      return;
      if ( !(this.email == "" || !this.email || this.password == "" || !this.password)){
         this.newUser = new User();
         this.newUser.details.name = this.name;
@@ -49,6 +53,18 @@ export class AddNewUserComponent implements OnInit {
        console.log("error in create user")
      }
    };
+
+   get passwordAgain(){
+    if(this.password !== this._passwordAgain)
+      this.error_message = "הסיסמאות אינם תואמות";
+    else
+      this.error_message = "";
+    return this._passwordAgain;
+   }
+
+   set passwordAgain(str:string){
+    this._passwordAgain = str;
+   }
 
    clear(){
 
