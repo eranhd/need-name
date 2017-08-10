@@ -40,7 +40,7 @@ export class FirebaseService {
 
   sonsObsarvable: FirebaseListObservable<any>[];
 
-  isUserInit  = false;
+  isUserInit = false;
 
   shifts: Shift[];
   reports: Report[];
@@ -65,22 +65,22 @@ export class FirebaseService {
 
 
     this.shiftObsarvable = afDb.list("shifts");
-    this.shiftObsarvable.subscribe(val=>{
+    this.shiftObsarvable.subscribe(val => {
       this.shifts = val;
     })
     this.reportObsarvable = afDb.list("reports");
-    this.reportObsarvable.subscribe(val=>{
+    this.reportObsarvable.subscribe(val => {
       // console.log(val);
 
       this.reports = val;
     })
     this.hotObsarvable = afDb.list("hotSpots");
-    this.hotObsarvable.subscribe(val=>{
+    this.hotObsarvable.subscribe(val => {
       // console.log(val);
       this.hotSpots = val;
     })
     this.coldObsarvable = afDb.list("coldSpots");
-    this.coldObsarvable.subscribe(val=>{
+    this.coldObsarvable.subscribe(val => {
       // console.log(val);
       this.coldSpots = val;
     })
@@ -130,98 +130,101 @@ export class FirebaseService {
 
   private getAllDataFromDb() {
 
-      this.reportsId = [];
-      this.coldSpotId = [];
-      this.hotSpotId = [];
-      // this.shiftsId = [];
+    this.reportsId = [];
+    this.coldSpotId = [];
+    this.hotSpotId = [];
+    // this.shiftsId = [];
 
-      this.shifts.forEach(item => {
-        // console.log(item["$key"])
-        if (this.checkIfShiftBelong(item["$key"])) {
+    this.shifts.forEach(item => {
+      // console.log(item["$key"])
+      if (this.checkIfShiftBelong(item["$key"])) {
 
-          // this.shifts.push(item);
+        // this.shifts.push(item);
 
-          // console.log(item)
-          if (item.reportsId) {
+        // console.log(item)
+        if (item.reportsId) {
 
-            for (const report of item.reportsId) {
-              this.reportsId.push(report);
-            }
+          for (const report of item.reportsId) {
+            this.reportsId.push(report);
           }
-          if (item.coldSpotId)
-            for (const id of item.coldSpotId) {
-              this.coldSpotId.push(id);
-            }
-          if (item.hotSpotId)
-            for (const id of item.hotSpotId) {
-              this.hotSpotId.push(id);
-            }
         }
-        // console.log(this.reportsId);
+        if (item.coldSpotId)
+          for (const id of item.coldSpotId) {
+            this.coldSpotId.push(id);
+          }
+        if (item.hotSpotId)
+          for (const id of item.hotSpotId) {
+            this.hotSpotId.push(id);
+          }
+      }
+      // console.log(this.reportsId);
 
 
-      })
+    })
     // });
 
     // console.log(this.shiftsId)
 
   }
-  private updateDateArry(){
+  private updateDateArry() {
 
 
   }
   getHotSpot(id: String) {
-    if(!this.hotSpots || this.hotSpots.length == 0)
+    if (!this.hotSpots || this.hotSpots.length == 0)
       return null;
 
-    for(let hot of this.hotSpots)
-      if(hot['$key'] == id)
+    for (let hot of this.hotSpots)
+      if (hot['$key'] == id)
         return hot;
-    
+
     return null;
   }
 
-getColdSpot(id: String) {
-  if(!this.coldSpots || this.coldSpots.length == 0)
-    return null;
-  for(let cold of this.coldSpots)
-      if(cold['$key'] == id)
+  getColdSpot(id: String) {
+    if (!this.coldSpots || this.coldSpots.length == 0)
+      return null;
+    for (let cold of this.coldSpots)
+      if (cold['$key'] == id)
         return cold;
-      
-  return null;
-}
 
-getReport(id: string){
-  if(!this.reports || this.reports.length == 0)
     return null;
-  for(let report of this.reports)
-      if(report['$key'] == id)
+  }
+
+  getReport(id: string) {
+    if (!this.reports || this.reports.length == 0)
+      return null;
+    for (let report of this.reports)
+      if (report['$key'] == id)
         return report;
-      
-  return null;
-}
+
+    return null;
+  }
 
 
 
 
   createNewUser(email: string, password: string, user: User) {
     let newId = "";
-    
+
     let config = {
-      apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
-      authDomain: "anti-drugs-jerusalem.firebaseapp.com",
-      databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
-      storageBucket: "anti-drugs-jerusalem.appspot.com",
-      messagingSenderId: "944977183444"
+      apiKey: "AIzaSyDeVGTdGOQK0VvvstT4SwZlVUkYKygytQY",
+      authDomain: "adjerusalem-6f3ba.firebaseapp.com",
+      databaseURL: "https://adjerusalem-6f3ba.firebaseio.com",
+      projectId: "adjerusalem-6f3ba",
+      storageBucket: "",
+      messagingSenderId: "227453393413"
     };
     this.firebaseApp.unshift(firebase.initializeApp(config, "Secondary" + this.firebaseApp.length));
 
-    this.firebaseApp[0].auth().createUserWithEmailAndPassword(email, password).then((firebaseUser) =>{
-        this.userService._user.details._sons.unshift(firebaseUser.uid);
-        this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
-        this.updateUser(user, firebaseUser.uid);
-        this.firebaseApp[0].auth().signOut();
+    this.firebaseApp[0].auth().createUserWithEmailAndPassword(email, password).then((firebaseUser) => {
+      this.userService._user.details._sons.unshift(firebaseUser.uid);
+      this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
+      this.updateUser(user, firebaseUser.uid);
+      this.firebaseApp[0].auth().signOut();
     }).catch(error => {
+      console.log(error.message);
+      console.log(error.code);
       console.log("error create user");
     });
 
@@ -320,13 +323,13 @@ getReport(id: string){
 
     this.afDb.list("/shifts").push(this.shiftService.shift).then(resolve => {
 
-      console.log(resolve.path.o[1]);
-      this.userService.addShift(resolve.path.o[1]);
-      this.shiftService.id = resolve.path.o[1];
-      this.updateUser(this.userService.user);
+      console.log(resolve.key);
+      this.userService.addShift(resolve.key);
+      this.shiftService.id = resolve.key;
+      this.updateUser(this.userService._user, firebase.auth().currentUser.uid);
       this.updateShift();
     }).catch(error => {
-
+      console.log("errir add shift " + error.message)
     });
 
   }
@@ -442,10 +445,10 @@ getReport(id: string){
   }
 
   getShift(id: string) {
-    if(!this.shifts || this.shifts.length == 0)
+    if (!this.shifts || this.shifts.length == 0)
       return null;
-    for(let s of this.shifts)
-      if(s['$key'] == id)
+    for (let s of this.shifts)
+      if (s['$key'] == id)
         return s;
     return null;
   }
@@ -472,8 +475,9 @@ getReport(id: string){
 
         }
         firebase.database().ref("/" + type + "/" + id).remove().then(res => {
-          console.log(res) }).catch(err =>
-          { console.log(err.message) });
+          console.log(res)
+        }).catch(err =>
+        { console.log(err.message) });
         return;
       })
     }
@@ -487,11 +491,12 @@ getReport(id: string){
 
   public initFirebase() {
     const config = {
-      apiKey: "AIzaSyAOpMbZqfS8nVvrC-BoPGP-UAmuJdFyLzE",
-      authDomain: "anti-drugs-jerusalem.firebaseapp.com",
-      databaseURL: "https://anti-drugs-jerusalem.firebaseio.com",
-      storageBucket: "anti-drugs-jerusalem.appspot.com",
-      messagingSenderId: "944977183444"
+      apiKey: "AIzaSyDeVGTdGOQK0VvvstT4SwZlVUkYKygytQY",
+      authDomain: "adjerusalem-6f3ba.firebaseapp.com",
+      databaseURL: "https://adjerusalem-6f3ba.firebaseio.com",
+      projectId: "adjerusalem-6f3ba",
+      storageBucket: "",
+      messagingSenderId: "227453393413"
     };
     firebase.initializeApp(config);
   };

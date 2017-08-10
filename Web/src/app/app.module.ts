@@ -2,13 +2,13 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
-import {routes} from "./app.router";
+import { routes } from "./app.router";
 
 import { AppComponent } from "./app.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { ConfirmationDialog } from "./dialog/confirm-dialog";
-import {NavServiceService} from"./service/nav/nav-service.service";
+import { NavServiceService } from "./service/nav/nav-service.service";
 import { SettingReportService } from "./service/setting-report/setting-report.service";
 import { ReportService } from "./service/report/report.service"
 import { UserService } from "./service/user/user.service";
@@ -35,7 +35,7 @@ import { MobileMainComponent } from "./mobile/pages/mobile-main/mobile-main.comp
 //import { StartShiftComponent } from "./pages/report/start-shift/start-shift.component";
 import { ShiftService } from "./service/shift/shift.service";
 import { GraphsComponent } from "./pages/graphs/graphs/graphs.component";
-import { LastReportComponent,  DialogLastReport } from "./pages/home/last-report/last-report.component";
+import { LastReportComponent, DialogLastReport } from "./pages/home/last-report/last-report.component";
 import { PopupReportComponent } from "./pages/home/popup-report/popup-report.component";
 import { TitleComponent } from "./pages/home/popup-report/title/title.component";
 import { BodyComponent } from "./pages/home/popup-report/body/body.component";
@@ -63,7 +63,7 @@ import { LocationName } from "./pipe/locationName.pipe";
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabase } from "angularfire2/database";
-import { AngularFireAuth} from "angularfire2/auth";
+import { AngularFireAuth } from "angularfire2/auth";
 import { SaveLocationBetaComponent } from "./mobile/pages/save-location-beta/save-location-beta.component";
 
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -73,15 +73,17 @@ import { RowOver } from './directives/RowOver.directive';
 import { Pointer } from './directives/Pointer.directive';
 import { SpinnerComponent } from './pages/spinner/spinner.component';
 
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 export const environment = {
   production: false,
   firebase: {
-  apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
-    authDomain: "antidrugsjerusalem.firebaseapp.com",
-    databaseURL: "https://antidrugsjerusalem.firebaseio.com",
-    storageBucket: "antidrugsjerusalem.appspot.com",
-    messagingSenderId: "767801084656"
+    apiKey: "AIzaSyDeVGTdGOQK0VvvstT4SwZlVUkYKygytQY",
+    authDomain: "adjerusalem-6f3ba.firebaseapp.com",
+    databaseURL: "https://adjerusalem-6f3ba.firebaseio.com",
+    projectId: "adjerusalem-6f3ba",
+    storageBucket: "",
+    messagingSenderId: "227453393413"
   }
 };
 
@@ -112,7 +114,7 @@ export const environment = {
     MapsComponent,
     MobileMainComponent,
     ConfirmationDialog,
-  //  StartShiftComponent,
+    //  StartShiftComponent,
     GraphsComponent,
     LastReportComponent,
     PopupReportComponent,
@@ -154,7 +156,8 @@ export const environment = {
     MaterialModule,
     ChartsModule,
     FlexLayoutModule,
-    PushNotificationsModule
+    PushNotificationsModule,
+    BrowserAnimationsModule
   ],
 
   providers: [
@@ -179,15 +182,16 @@ export const environment = {
   ]
 })
 export class AppModule {
-  constructor(){
+  constructor() {
     let str = {
-      apiKey: "AIzaSyBzTCOzgKlkX-8vxhzDDFdH_M5QKRW53gw",
-    authDomain: "antidrugsjerusalem.firebaseapp.com",
-    databaseURL: "https://antidrugsjerusalem.firebaseio.com",
-    storageBucket: "antidrugsjerusalem.appspot.com",
-    messagingSenderId: "767801084656"
+      apiKey: "AIzaSyDeVGTdGOQK0VvvstT4SwZlVUkYKygytQY",
+      authDomain: "adjerusalem-6f3ba.firebaseapp.com",
+      databaseURL: "https://adjerusalem-6f3ba.firebaseio.com",
+      projectId: "adjerusalem-6f3ba",
+      storageBucket: "",
+      messagingSenderId: "227453393413"
     };
     firebase.initializeApp(str);
   }
 
- }
+}

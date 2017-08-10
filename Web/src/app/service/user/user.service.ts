@@ -53,6 +53,8 @@ export class UserService{
   }
 
   addShift(id: string){
+    if(!this.user.shiftsId)
+      this.user.shiftsId = [];
     this.user.shiftsId.unshift(id); //need to replace to add shift in user
   }
   updateUser(){
